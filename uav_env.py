@@ -49,23 +49,23 @@ class UAVenv(gym.Env):
     # User distribution on the target area // NUM_USER/5 users in each of four hotspots
     # Remaining NUM_USER/5 is then uniformly distributed in the target area
 
-    HOTSPOTS = np.array(
-        [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
-    USER_DIS = int(NUM_USER / NUM_UAV)
-    USER_LOC = np.zeros((NUM_USER - USER_DIS, 2))
+    # HOTSPOTS = np.array(
+    #     [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
+    # USER_DIS = int(NUM_USER / NUM_UAV)
+    # USER_LOC = np.zeros((NUM_USER - USER_DIS, 2))
     
-    for i in range(len(HOTSPOTS)):
-        for j in range(USER_DIS):
-            temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
-            temp_loc_theta = random.uniform(0, 2*math.pi)
-            temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
-            (temp_loc_1, temp_loc_2) = temp_loc
-            temp_loc_1 = temp_loc_1 + HOTSPOTS[i, 0]
-            temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
-            USER_LOC[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
-    temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
-    USER_LOC = np.concatenate((USER_LOC, temp_loc))
-    np.savetxt('UserLocation.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
+    # for i in range(len(HOTSPOTS)):
+    #     for j in range(USER_DIS):
+    #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
+    #         temp_loc_theta = random.uniform(0, 2*math.pi)
+    #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
+    #         (temp_loc_1, temp_loc_2) = temp_loc
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
+    #         USER_LOC[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
+    # USER_LOC = np.concatenate((USER_LOC, temp_loc))
+    # np.savetxt('UserLocation.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
 
@@ -159,7 +159,7 @@ class UAVenv(gym.Env):
         user_asso_flag = np.zeros(shape=(self.NUM_UAV, self.NUM_USER), dtype="int")
         for i in range(self.NUM_UAV):
             # Maximum Capacity for a single UAV
-            cap_user_num = int(1 * max_user_num)
+            cap_user_num = int(0.8 * max_user_num)
             # Sorting the users with the connection request to this UAV
             temp_user = np.where(connection_request[i, :] == 1)
             temp_user_distance = dist_u_uav[i, temp_user]
