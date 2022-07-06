@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from pygame import bufferproxy
 from scipy.io import savemat
 from scipy.signal import savgol_filter
-from torch import ne
+from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
 import gym 
@@ -35,10 +35,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # DNN modeling
 class NeuralNetwork(nn.Module):
-    def __init__(self):
+    def __init__(self, state_size, action_size):
         super(NeuralNetwork, self).__init__()
-        self.state_size = 2
-        self.action_size = 5
+        self.state_size = state_size
+        self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
             nn.Linear(self.state_size,20),
             nn.Linear(20,20),
@@ -46,8 +46,8 @@ class NeuralNetwork(nn.Module):
         )
 
     def forward(self, x):
-        logits = self.linear_stack(x)
-        return logits
+        Q_values = self.linear_stack(x)
+        return Q_values
 
 
 class DQL:
@@ -55,89 +55,78 @@ class DQL:
     def __init__(self):
         self.state_size = 2
         self.action_size = 5
-        self.replay_buffer = deque(maxlen = 10000)
+        self.replay_buffer = deque(maxlen = 125000)
         self.gamma = 0.90
         self.epsilon = 0.1
         self.update_rate = 20
-        self.main_network = NeuralNetwork()
-        self.main_network.to(device)
-        self.target_network = NeuralNetwork()
-        self.target_network.to(device)
-        # self.target_network.set_weights(self.main_network.get_weights())
+        self.learning_rate = 0.1
+        self.main_network = NeuralNetwork(self.state_size, self.action_size)
+        self.target_network = NeuralNetwork(self.state_size, self.action_size)
+        self.target_network.load_state_dict(self.main_network.state_dict())
+        self.optimizer = torch.optim.Adam(self.main_network.parameters(), lr = self.learning_rate)
+        self.loss_func = nn.MSELoss()
 
-    # DNN modeling
-    class NeuralNetwork(nn.Module):
-        def __init__(self):
-            super(NeuralNetwork, self).__init__()
-            self.linear_stack = model = nn.Sequential(
-                nn.Linear(self.state_size,20),
-                nn.Linear(20,20),
-                nn.Linear(20, self.action_size)
-            )
-    
-        def forward(self, x):
-            logits = self.linear_stack(x)
-            return logits
-    
     # Storing information of individual UAV information in their respective buffer
     def store_transition(self, state, action, reward, next_state, done):
         self.replay_buffer.append((state, action, reward, next_state, done))
     
     # Deployment of epsilon greedy policy
-    def epsilon_greedy(self, state):   
+    def epsilon_greedy(self, state):
+        random.seed(10)   
         temp = random.random()
         if temp <= self.epsilon:
             action = random.randint(0, 4)
         else:
-            Q_values = self.main_network.predict(state, verbose = 0)
+            state = torch.unsqueeze(torch.FloatTensor(state),0)
+            Q_values = self.main_network.forward(state)
             # print(Q_values)
-            action = np.argmax(Q_values[0])
+            action = torch.max(Q_values, 1)[1].data.numpy()
+            # print(action)
+            action = action[0]
         return action
 
     # Training of the DNN 
     def train(self,batch_size_internal):
-        Q_val_full = np.array([])
-        states_full = np.array([])
         minibatch = random.sample(self.replay_buffer, batch_size_internal)
-        for state, action, reward, next_state, done in minibatch:
-            if not done:
-                next_state = next_state.reshape(1,2)
-                target_Q = (reward + self.gamma * np.argmax(self.target_network.predict(next_state, verbose=0)))
-            else:
-                target_Q = reward
-            state = state.reshape(1,2)
-            Q_values = self.main_network.predict(state, verbose=0)
-            Q_values[0][action] = target_Q
-            Q_val_full = np.append(Q_val_full, Q_values[0].tolist())
-            states_full = np.append(states_full, state.tolist())
-        Q_val_full = np.reshape(Q_val_full, (32,5))
-        states_full = np.reshape(states_full,(32,2))
-        # Wrap data in Dataset objects.
-        train_data = tf.data.Dataset.from_tensor_slices((states_full, Q_val_full))
-        # The batch size must now be set on the Dataset objects.
-        batch = 32
-        train_data = train_data.batch(batch)
-        options = tf.data.Options()
-        options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
-        train_data = train_data.with_options(options)
-        self.main_network.fit(train_data, epochs=1, verbose=1, use_multiprocessing=True, callbacks=self.callbacks)
+        minibatch = np.vstack(minibatch)
+        minibatch = minibatch.reshape(batch_size,5)
+        state = torch.FloatTensor(np.vstack(minibatch[:,0]))
+        # print(state)
+        action = torch.LongTensor(np.vstack(minibatch[:,1]))
+        reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
+        next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
+        done = torch.Tensor(np.vstack(minibatch[:,4]))
+                
+        Q_main = self.main_network(state).gather(1, action).squeeze()
+        Q_next = self.target_network(next_state).detach()
+        target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size_internal, 1).squeeze() * (
+            1 - np.array([state[e].mean() == next_state[e].mean() for e in range(len(next_state))])
+        ) 
+
+        target_Q = target_Q.float()
+
+        loss = self.loss_func(Q_main, target_Q.detach())
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
 
 
-    # Updating the weights of the target network from the main network
-    def update_target_network(self):
-        self.target_network.set_weights(self.main_network.get_weights())
+    # # Updating the weights of the target network from the main network
+    # def update_target_network(self):
+    #     self.target_network.set_weights(self.main_network.get_weights())
 
 
 u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 20
-num_epochs = 20
+num_episode = 50
+num_epochs = 500
 discount_factor = 0.90
 alpha = 0.5
 epsilon = 0.1
-batch_size = 32
+batch_size = 128
 update_rate = 20
 
 random.seed(10)
@@ -172,15 +161,17 @@ for i_episode in range(num_episode):
         # Update the target network 
         for k in range(NUM_UAV):
             if t % update_rate == 0:
-                UAV_OB[k].update_target_network()
+                UAV_OB[k].target_network.load_state_dict(UAV_OB[k].main_network.state_dict())
                 
         # Determining the actions for all drones
+        states_ten = torch.from_numpy(states)
         for k in range(NUM_UAV):
-                state = states[k, :]
-                # print(state)
-                state = state.reshape(1,2)
-                action = UAV_OB[k].epsilon_greedy(state)
-                drone_act_list.append(action + 1)
+            state = states_ten[k,:]
+            # print(state)                
+            action = UAV_OB[k].epsilon_greedy(state.float())
+            # print(action)
+            drone_act_list.append(action + 1)
+            # print('new')
     
         # Find the global reward for the combined set of actions for the UAV
         # print(drone_act_list)
@@ -211,16 +202,20 @@ for i_episode in range(num_episode):
         # Get the states
         # Get the states
         states = u_env.get_state()
+        states_ten = torch.from_numpy(states)
         for t in range(100):
             drone_act_list = []
             for k in range(NUM_UAV):
-                state = states[k, :]
-                state = state.reshape(1,2)
-                Q_values = UAV_OB[k].main_network.predict(state, verbose=0)
+                state = states[k,:]
+                state = torch.unsqueeze(torch.FloatTensor(state),0)
+                Q_values = UAV_OB[k].main_network.forward(state.float())
                 # print(Q_values)
-                best_next_action = np.argmax(Q_values[0])
+                best_next_action = torch.max(Q_values, 1)[1].data.numpy()
+                best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action + 1)
+            print(drone_act_list)
             temp_data = u_env.step(drone_act_list)
+            print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
             states = u_env.get_state()
             states_fin = states
         u_env.render(ax1)

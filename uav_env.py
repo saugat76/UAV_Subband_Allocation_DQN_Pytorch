@@ -104,6 +104,7 @@ class UAVenv(gym.Env):
             tem_x = self.state[i, 0]
             tem_y = self.state[i, 1]
             # one step action
+            # print(action)
             if action[i] == 1:
                 self.state[i, 0] = self.state[i, 0] + 1
             elif action[i] == 2:
@@ -203,7 +204,7 @@ class UAVenv(gym.Env):
             isDone = True
 
         # Return of obs, reward, done, info
-        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty"
+        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", new_reward
 
     def render(self, ax, mode='human', close=False):
         # implement viz
