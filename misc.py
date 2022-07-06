@@ -7,7 +7,6 @@ import math
 
 def final_render(state):
     USER_LOC = np.loadtxt('UserLocation.txt', dtype=np.int32, delimiter=' ')
-    state = np.array([[10,4],[2,3],[7,3],[9,7],[3,8]])
     u_loc = USER_LOC
     fig = plt.figure()
     gs = GridSpec(1, 1, figure=fig)
@@ -16,7 +15,6 @@ def final_render(state):
     UAV_HEIGHT = 350
     THETA = 60 * math.pi / 180
     coverage_radius = UAV_HEIGHT * np.tan(THETA / 2)
-
 
     ax.cla()
     position = state[:, 0:2] * grid_space
