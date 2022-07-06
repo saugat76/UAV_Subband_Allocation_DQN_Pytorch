@@ -198,6 +198,9 @@ class UAVenv(gym.Env):
         if flag != 0:
             isDone = True
             reward -= 10
+        
+        if action == [5,5,5,5,5]:
+            isDone = True
 
         # Return of obs, reward, done, info
         return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty"

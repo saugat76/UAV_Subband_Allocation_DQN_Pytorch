@@ -3,6 +3,7 @@ from os import stat_result, times_result
 import random
 from re import S
 from sre_parse import State
+from ssl import ALERT_DESCRIPTION_USER_CANCELLED
 from tabnanny import verbose
 import numpy as np
 from collections import defaultdict
@@ -16,46 +17,37 @@ from uav_env import UAVenv
 from misc import final_render
 import gym 
 from collections import deque
-import tensorflow as tf
-from tensorflow.keras import Sequential 
-from tensorflow.keras.layers import Dense, Activation, Flatten
-from tensorflow.keras.optimizers import Adam
+import torch
+from torch import Tensor, nn 
+import torch.optim as optim
+import torch.nn.functional as F
+import torchvision.transforms as T
+
+from torch.utils.data import DataLoader
+from torch.utils.data.dataset import IterableDataset
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
 ## GPU configuration use for faster processing
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-gpus = tf.config.list_physical_devices('GPU')
-if gpus:
-  # Restrict TensorFlow to only allocate memory on the GPU
-  try:
-    tf.config.set_logical_device_configuration(
-        gpus[0],
-        [tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024)
-        ])
-    tf.config.set_logical_device_configuration(
-        gpus[1],
-        [tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024),
-        tf.config.LogicalDeviceConfiguration(memory_limit=1024)])  
-    logical_gpus = tf.config.list_logical_devices('GPU')
-    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
-  except RuntimeError as e:
-    # Virtual devices must be set before GPUs have been initialized
-    print(e)
+# DNN modeling
+class NeuralNetwork(nn.Module):
+    def __init__(self):
+        super(NeuralNetwork, self).__init__()
+        self.state_size = 2
+        self.action_size = 5
+        self.linear_stack = model = nn.Sequential(
+            nn.Linear(self.state_size,20),
+            nn.Linear(20,20),
+            nn.Linear(20, self.action_size)
+        )
 
-strategy = tf.distribute.MirroredStrategy(logical_gpus,  cross_device_ops=tf.distribute.HierarchicalCopyAllReduce())
-# cross_tower_ops = tf.distribute.AllReduceCrossTowerOps(
-#     'hierarchical_copy', num_packs=len(logical_gpus))
-# strategy = tf.distribute.MirroredStrategy(cross_tower_ops=cross_tower_ops)
-
-checkpoint_dir = "./training_checkpoints"
-checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
+    def forward(self, x):
+        logits = self.linear_stack(x)
+        return logits
 
 
 class DQL:
@@ -67,28 +59,25 @@ class DQL:
         self.gamma = 0.90
         self.epsilon = 0.1
         self.update_rate = 20
-        self.main_network = self.build_network()
-        self.callbacks = [
-                tf.keras.callbacks.TensorBoard(
-                    log_dir="./logs", write_images=True, update_freq="batch"
-                ),
-                tf.keras.callbacks.ModelCheckpoint(
-                    filepath=checkpoint_prefix, save_weights_only=True
-                ),
-            ]
-        self.target_network = self.build_network()
-        self.target_network.set_weights(self.main_network.get_weights())
+        self.main_network = NeuralNetwork()
+        self.main_network.to(device)
+        self.target_network = NeuralNetwork()
+        self.target_network.to(device)
+        # self.target_network.set_weights(self.main_network.get_weights())
 
     # DNN modeling
-    def build_network(self):
-        with strategy.scope():
-            model = Sequential()
-            model.add(Dense(20, input_shape=(self.state_size,)))
-            model.add(Dense(20))
-            model.add(Dense(self.action_size))
-            model.compile(loss = 'MSE', optimizer = 'Adam')
-            # model.summary()
-            return model 
+    class NeuralNetwork(nn.Module):
+        def __init__(self):
+            super(NeuralNetwork, self).__init__()
+            self.linear_stack = model = nn.Sequential(
+                nn.Linear(self.state_size,20),
+                nn.Linear(20,20),
+                nn.Linear(20, self.action_size)
+            )
+    
+        def forward(self, x):
+            logits = self.linear_stack(x)
+            return logits
     
     # Storing information of individual UAV information in their respective buffer
     def store_transition(self, state, action, reward, next_state, done):
@@ -132,7 +121,7 @@ class DQL:
         options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
         train_data = train_data.with_options(options)
         self.main_network.fit(train_data, epochs=1, verbose=1, use_multiprocessing=True, callbacks=self.callbacks)
-        self.main_network.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
+
 
     # Updating the weights of the target network from the main network
     def update_target_network(self):
