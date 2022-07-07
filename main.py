@@ -70,7 +70,7 @@ class DQL:
         self.replay_buffer.append((state, action, reward, next_state, done))
     
     # Deployment of epsilon greedy policy
-    def epsilon_greedy(self, state):
+    def epsilon_greedy(self, state, dnn_epoch):
         random.seed(10)   
         temp = random.random()
         if temp <= self.epsilon:
@@ -86,39 +86,36 @@ class DQL:
 
     # Training of the DNN 
     def train(self,batch_size_internal):
-        minibatch = random.sample(self.replay_buffer, batch_size_internal)
-        minibatch = np.vstack(minibatch)
-        minibatch = minibatch.reshape(batch_size,5)
-        state = torch.FloatTensor(np.vstack(minibatch[:,0]))
-        # print(state)
-        action = torch.LongTensor(np.vstack(minibatch[:,1]))
-        reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
-        next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
-        done = torch.Tensor(np.vstack(minibatch[:,4]))
-        state = state.to(device = device)
-        action = action.to(device = device)
-        reward = reward.to(device = device)
-        next_state = next_state.to(device = device)
-        done = done.to(device = device)
+        for k in range(dnn_epoch):
+            minibatch = random.sample(self.replay_buffer, batch_size_internal)
+            minibatch = np.vstack(minibatch)
+            minibatch = minibatch.reshape(batch_size,5)
+            state = torch.FloatTensor(np.vstack(minibatch[:,0]))
+            # print(state)
+            action = torch.LongTensor(np.vstack(minibatch[:,1]))
+            reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
+            next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
+            done = torch.Tensor(np.vstack(minibatch[:,4]))
+            state = state.to(device = device)
+            action = action.to(device = device)
+            reward = reward.to(device = device)
+            next_state = next_state.to(device = device)
+            done = done.to(device = device)
 
-        Q_main = self.main_network(state).gather(1, action).squeeze()
-        Q_next = self.target_network(next_state).detach()
-        target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size_internal, 1).squeeze() * (
-            1 - np.array([state[e].cpu().mean() == next_state[e].cpu().mean() for e in range(len(next_state))])
-        ) 
+            Q_main = self.main_network(state).gather(1, action).squeeze()
+            Q_next = self.target_network(next_state).detach()
+            target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size_internal, 1).squeeze() * (
+                1 - np.array([state[e].cpu().mean() == next_state[e].cpu().mean() for e in range(len(next_state))])
+            ) 
 
-        target_Q = target_Q.float()
+            target_Q = target_Q.float()
 
-        loss = self.loss_func(Q_main.cpu(), target_Q.cpu().detach())
+            loss = self.loss_func(Q_main.cpu(), target_Q.cpu().detach())
 
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
-
-    # # Updating the weights of the target network from the main network
-    # def update_target_network(self):
-    #     self.target_network.set_weights(self.main_network.get_weights())
 
 
 u_env = UAVenv()
@@ -132,6 +129,7 @@ alpha = 0.5
 epsilon = 0.1
 batch_size = 128
 update_rate = 20
+dnn_epoch = 20
 
 random.seed(10)
 
@@ -198,7 +196,7 @@ for i_episode in range(num_episode):
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
                 # with strategy.scope():
-                UAV_OB[k].train(batch_size)
+                UAV_OB[k].train(batch_size, dnn_epoch)
 
     if i_episode % 10 == 0:
         # Reset of the environment
