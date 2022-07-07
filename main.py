@@ -40,9 +40,10 @@ class NeuralNetwork(nn.Module):
         self.state_size = state_size
         self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
-            nn.Linear(self.state_size,20),
-            nn.Linear(20,20),
-            nn.Linear(20, self.action_size)
+            nn.Linear(self.state_size,128),
+            nn.Linear(128,128),
+            nn.Linear(128,64),
+            nn.Linear(64, self.action_size)
         )
 
     def forward(self, x):
@@ -86,30 +87,31 @@ class DQL:
         return action
 
     # Training of the DNN 
-    def train(self,batch_size_internal):
-        minibatch = random.sample(self.replay_buffer, batch_size_internal)
-        minibatch = np.vstack(minibatch)
-        minibatch = minibatch.reshape(batch_size,5)
-        state = torch.FloatTensor(np.vstack(minibatch[:,0]))
-        # print(state)
-        action = torch.LongTensor(np.vstack(minibatch[:,1]))
-        reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
-        next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
-        done = torch.Tensor(np.vstack(minibatch[:,4]))
-                
-        Q_main = self.main_network(state).gather(1, action).squeeze()
-        Q_next = self.target_network(next_state).detach()
-        target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size_internal, 1).squeeze() * (
-            1 - np.array([state[e].mean() == next_state[e].mean() for e in range(len(next_state))])
-        ) 
+    def train(self,batch_size_internal, dnn_epoch):
+        for k in range(dnn_epoch):
+            minibatch = random.sample(self.replay_buffer, batch_size_internal)
+            minibatch = np.vstack(minibatch)
+            minibatch = minibatch.reshape(batch_size,5)
+            state = torch.FloatTensor(np.vstack(minibatch[:,0]))
+            # print(state)
+            action = torch.LongTensor(np.vstack(minibatch[:,1]))
+            reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
+            next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
+            done = torch.Tensor(np.vstack(minibatch[:,4]))
+                    
+            Q_main = self.main_network(state).gather(1, action).squeeze()
+            Q_next = self.target_network(next_state).detach()
+            target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size_internal, 1).squeeze() * (
+                1 - np.array([state[e].mean() == next_state[e].mean() for e in range(len(next_state))])
+            ) 
 
-        target_Q = target_Q.float()
+            target_Q = target_Q.float()
 
-        loss = self.loss_func(Q_main, target_Q.detach())
+            loss = self.loss_func(Q_main, target_Q.detach())
 
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
 
     # # Updating the weights of the target network from the main network
@@ -121,12 +123,13 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 50
+num_episode = 150
 num_epochs = 500
+dnn_epoch = 10
 discount_factor = 0.90
 alpha = 0.5
 epsilon = 0.1
-batch_size = 128
+batch_size = 256
 update_rate = 20
 
 random.seed(10)
@@ -194,7 +197,7 @@ for i_episode in range(num_episode):
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
                 # with strategy.scope():
-                UAV_OB[k].train(batch_size)
+                UAV_OB[k].train(batch_size, dnn_epoch)
 
     if i_episode % 10 == 0:
         # Reset of the environment
@@ -213,11 +216,12 @@ for i_episode in range(num_episode):
                 best_next_action = torch.max(Q_values, 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action + 1)
-            print(drone_act_list)
+            
             temp_data = u_env.step(drone_act_list)
-            print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
             states = u_env.get_state()
             states_fin = states
+        print(drone_act_list)
+        print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
         u_env.render(ax1)
 
 
