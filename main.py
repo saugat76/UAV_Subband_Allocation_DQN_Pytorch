@@ -2,6 +2,7 @@ from ctypes.wintypes import tagRECT
 from os import stat_result, times_result
 import random
 from re import S
+import re
 from sre_parse import State
 from ssl import ALERT_DESCRIPTION_USER_CANCELLED
 from tabnanny import verbose
@@ -9,9 +10,6 @@ import numpy as np
 from collections import defaultdict
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
-from pygame import bufferproxy
-from scipy.io import savemat
-from scipy.signal import savgol_filter
 from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
@@ -46,6 +44,7 @@ class NeuralNetwork(nn.Module):
         )
 
     def forward(self, x):
+        x = x.to(device)
         Q_values = self.linear_stack(x)
         return Q_values
 
@@ -60,8 +59,8 @@ class DQL:
         self.epsilon = 0.1
         self.update_rate = 20
         self.learning_rate = 0.1
-        self.main_network = NeuralNetwork(self.state_size, self.action_size)
-        self.target_network = NeuralNetwork(self.state_size, self.action_size)
+        self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
+        self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network.load_state_dict(self.main_network.state_dict())
         self.optimizer = torch.optim.Adam(self.main_network.parameters(), lr = self.learning_rate)
         self.loss_func = nn.MSELoss()
@@ -80,7 +79,7 @@ class DQL:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
             Q_values = self.main_network.forward(state)
             # print(Q_values)
-            action = torch.max(Q_values, 1)[1].data.numpy()
+            action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
             # print(action)
             action = action[0]
         return action
@@ -96,16 +95,21 @@ class DQL:
         reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
         next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
         done = torch.Tensor(np.vstack(minibatch[:,4]))
-                
+        state = state.to(device = device)
+        action = action.to(device = device)
+        reward = reward.to(device = device)
+        next_state = next_state.to(device = device)
+        done = done.to(device = device)
+
         Q_main = self.main_network(state).gather(1, action).squeeze()
         Q_next = self.target_network(next_state).detach()
-        target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size_internal, 1).squeeze() * (
-            1 - np.array([state[e].mean() == next_state[e].mean() for e in range(len(next_state))])
+        target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size_internal, 1).squeeze() * (
+            1 - np.array([state[e].cpu().mean() == next_state[e].cpu().mean() for e in range(len(next_state))])
         ) 
 
         target_Q = target_Q.float()
 
-        loss = self.loss_func(Q_main, target_Q.detach())
+        loss = self.loss_func(Q_main.cpu(), target_Q.cpu().detach())
 
         self.optimizer.zero_grad()
         loss.backward()
@@ -210,15 +214,16 @@ for i_episode in range(num_episode):
                 state = torch.unsqueeze(torch.FloatTensor(state),0)
                 Q_values = UAV_OB[k].main_network.forward(state.float())
                 # print(Q_values)
-                best_next_action = torch.max(Q_values, 1)[1].data.numpy()
+                best_next_action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action + 1)
-            print(drone_act_list)
             temp_data = u_env.step(drone_act_list)
-            print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
             states = u_env.get_state()
             states_fin = states
         u_env.render(ax1)
+        print(drone_act_list)
+        print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+
 
 
 def smooth(y, pts):
