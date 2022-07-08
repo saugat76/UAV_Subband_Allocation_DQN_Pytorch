@@ -70,7 +70,7 @@ class DQL:
         self.replay_buffer.append((state, action, reward, next_state, done))
     
     # Deployment of epsilon greedy policy
-    def epsilon_greedy(self, state, dnn_epoch):
+    def epsilon_greedy(self, state):
         random.seed(10)   
         temp = random.random()
         if temp <= self.epsilon:
@@ -85,7 +85,7 @@ class DQL:
         return action
 
     # Training of the DNN 
-    def train(self,batch_size_internal):
+    def train(self,batch_size_internal, dnn_epoch):
         for k in range(dnn_epoch):
             minibatch = random.sample(self.replay_buffer, batch_size_internal)
             minibatch = np.vstack(minibatch)
@@ -117,19 +117,18 @@ class DQL:
             self.optimizer.step()
 
 
-
 u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 50
+num_episode = 200
 num_epochs = 500
 discount_factor = 0.90
 alpha = 0.5
 epsilon = 0.1
-batch_size = 128
+batch_size = 2048
 update_rate = 20
-dnn_epoch = 20
+dnn_epoch = 100
 
 random.seed(10)
 
