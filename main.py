@@ -9,9 +9,6 @@ import numpy as np
 from collections import defaultdict
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
-from pygame import bufferproxy
-from scipy.io import savemat
-from scipy.signal import savgol_filter
 from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
@@ -39,9 +36,8 @@ class NeuralNetwork(nn.Module):
         super(NeuralNetwork, self).__init__()
         self.state_size = state_size
         self.action_size = action_size
-        self.linear_stack = model = nn.Sequential(
+        self.linear_stack = nn.Sequential(
             nn.Linear(self.state_size,128),
-            nn.Linear(128,128),
             nn.Linear(128,64),
             nn.Linear(64, self.action_size)
         )
@@ -60,7 +56,7 @@ class DQL:
         self.gamma = 0.90
         self.epsilon = 0.1
         self.update_rate = 20
-        self.learning_rate = 0.1
+        self.learning_rate = 0.025
         self.main_network = NeuralNetwork(self.state_size, self.action_size)
         self.target_network = NeuralNetwork(self.state_size, self.action_size)
         self.target_network.load_state_dict(self.main_network.state_dict())
@@ -88,7 +84,7 @@ class DQL:
 
     # Training of the DNN 
     def train(self,batch_size_internal, dnn_epoch):
-        for k in range(dnn_epoch):
+    
             minibatch = random.sample(self.replay_buffer, batch_size_internal)
             minibatch = np.vstack(minibatch)
             minibatch = minibatch.reshape(batch_size,5)
@@ -123,13 +119,13 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 150
+num_episode = 200
 num_epochs = 500
-dnn_epoch = 10
+dnn_epoch = 100
 discount_factor = 0.90
 alpha = 0.5
 epsilon = 0.1
-batch_size = 256
+batch_size = 2048
 update_rate = 20
 
 random.seed(10)
