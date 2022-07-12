@@ -38,9 +38,9 @@ class NeuralNetwork(nn.Module):
         self.state_size = state_size
         self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
-            nn.Linear(self.state_size,20),
-            nn.Linear(20,20),
-            nn.Linear(20, self.action_size)
+            nn.Linear(self.state_size,128),
+            nn.Linear(128,64),
+            nn.Linear(64, self.action_size)
         )
 
     def forward(self, x):
@@ -56,9 +56,8 @@ class DQL:
         self.action_size = 5
         self.replay_buffer = deque(maxlen = 125000)
         self.gamma = 0.90
-        self.epsilon = 0.1
-        self.update_rate = 20
-        self.learning_rate = 0.1
+        self.epsilon = 0.4
+        self.learning_rate = 0.05
         self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network.load_state_dict(self.main_network.state_dict())
@@ -85,11 +84,12 @@ class DQL:
         return action
 
     # Training of the DNN 
-    def train(self,batch_size_internal, dnn_epoch):
+    def train(self,batch_size, dnn_epoch, batch_size_internal):
+        # internal_buffer = random.sample(self.replay_buffer, batch_size)
         for k in range(dnn_epoch):
             minibatch = random.sample(self.replay_buffer, batch_size_internal)
             minibatch = np.vstack(minibatch)
-            minibatch = minibatch.reshape(batch_size,5)
+            minibatch = minibatch.reshape(batch_size_internal,5)
             state = torch.FloatTensor(np.vstack(minibatch[:,0]))
             # print(state)
             action = torch.LongTensor(np.vstack(minibatch[:,1]))
@@ -121,13 +121,13 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 200
+num_episode = 25
 num_epochs = 500
 discount_factor = 0.90
 alpha = 0.5
-epsilon = 0.1
-batch_size = 2048
-update_rate = 20
+batch_size = 128
+batch_size_internal = 128
+update_rate = 50
 dnn_epoch = 100
 
 random.seed(10)
@@ -195,7 +195,7 @@ for i_episode in range(num_episode):
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
                 # with strategy.scope():
-                UAV_OB[k].train(batch_size, dnn_epoch)
+                UAV_OB[k].train(batch_size, dnn_epoch, batch_size_internal)
 
     if i_episode % 10 == 0:
         # Reset of the environment
@@ -204,7 +204,7 @@ for i_episode in range(num_episode):
         # Get the states
         states = u_env.get_state()
         states_ten = torch.from_numpy(states)
-        for t in range(100):
+        for t in range(500):
             drone_act_list = []
             for k in range(NUM_UAV):
                 state = states[k,:]
