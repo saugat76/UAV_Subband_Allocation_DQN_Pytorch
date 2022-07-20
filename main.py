@@ -152,6 +152,7 @@ UAV_OB = [None, None, None, None, None]
 for k in range(NUM_UAV):
             UAV_OB[k] = DQL()
 
+best_result = 0
 
 for i_episode in range(num_episode):
     print(i_episode)
@@ -231,8 +232,12 @@ for i_episode in range(num_episode):
             states = u_env.get_state()
             states_fin = states
         u_env.render(ax1)
+        plt.title("Intermediate state of UAV in ",i_episode"episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+        if best_result < temp_data[4]:
+            best_result = temp_data[4]
+            best_state = states
 
 
 
@@ -245,12 +250,18 @@ def smooth(y, pts):
 fig = plt.figure()
 plt.plot(range(0, num_episode), episode_reward)
 plt.show()
+plt.xlabel("Episode")
+plt.ylable("Episodic Reward")
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
 plt.show()
+plt.xlabel("Episode")
+plt.ylable("Episodic Reward")
 final_render(states_fin)
-
+plt.title("Final state of UAV")
+final_render(best_state)
+plt.title("Best state of UAV")
 # mdict = {'Q': Q_values}
 # savemat('Q.mat', mdict)
 print(states_fin)
