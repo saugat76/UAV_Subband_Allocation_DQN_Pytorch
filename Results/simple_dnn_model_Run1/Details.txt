@@ -1,0 +1,16 @@
+DNN Structure - 
+Input - 2
+1st Hidden - 256
+2nd Hidden - 128
+3rd Hidden - 64
+Output - 5
+
+
+Epsilon - 0.1
+Discount Factor - 0.9
+alpha = 0.5
+batch_size = 512
+batch_size_internal = 512
+update_rate = 10
+dnn_epoch = 1
+train_freq = 32

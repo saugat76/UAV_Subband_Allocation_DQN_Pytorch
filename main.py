@@ -43,8 +43,6 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),
             nn.Linear(256,128),
             nn.ReLU(),
-            nn.Linear(128,128),
-            nn.ReLU(),
             nn.Linear(128,64),
             nn.ReLU(),
             nn.Linear(64, self.action_size)
@@ -58,12 +56,12 @@ class NeuralNetwork(nn.Module):
 
 class DQL:
     # Initializing a Deep Neural Network
-    def __init__(self):
+    def __init__(self, epsilon):
         self.state_size = 2
         self.action_size = 5
         self.replay_buffer = deque(maxlen = 125000)
-        self.gamma = 0.90
-        self.epsilon = 0.1
+        self.gamma = 0.95
+        self.epsilon = epsilon
         self.learning_rate = 0.0075
         self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
@@ -127,15 +125,18 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 401
+num_episode = 100
 num_epochs = 100
-discount_factor = 0.90
+discount_factor = 0.95
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
 update_rate = 10  #50
 dnn_epoch = 1
 train_freq = 32 #NA
+epsilon = 1
+min_epsilon = 0.1
+decay_constant = 0.99
 
 random.seed(10)
 
@@ -150,7 +151,7 @@ UAV_OB = [None, None, None, None, None]
 
 
 for k in range(NUM_UAV):
-            UAV_OB[k] = DQL()
+            UAV_OB[k] = DQL(epsilon)
 
 best_result = 0
 
@@ -231,13 +232,19 @@ for i_episode in range(num_episode):
             temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
+            if best_result < temp_data[4]:
+                best_result = temp_data[4]
+                best_state = states
+
         u_env.render(ax1)
-        plt.title("Intermediate state of UAV in ",i_episode"episode")
+        plt.title("Intermediate state of UAV in current episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
-        if best_result < temp_data[4]:
-            best_result = temp_data[4]
-            best_state = states
+
+    print(epsilon)
+    if epsilon > min_epsilon:
+        epsilon = epsilon * decay_constant
+    
 
 
 
@@ -249,20 +256,25 @@ def smooth(y, pts):
 # Plot the accumulated reward vs episodes
 fig = plt.figure()
 plt.plot(range(0, num_episode), episode_reward)
-plt.show()
 plt.xlabel("Episode")
-plt.ylable("Episodic Reward")
+plt.ylabel("Episodic Reward")
+plt.title("Episode vs Episodic Reward")
+plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
 plt.show()
 plt.xlabel("Episode")
-plt.ylable("Episodic Reward")
-final_render(states_fin)
-plt.title("Final state of UAV")
-final_render(best_state)
-plt.title("Best state of UAV")
+plt.ylabel("Episodic Reward")
+plt.title("Smoothed Epidode vs Episodic Reward")
+fig = plt.figure()
+final_render(states_fin, "final")
+fig = plt.figure()
+final_render(best_state, "best")
 # mdict = {'Q': Q_values}
 # savemat('Q.mat', mdict)
 print(states_fin)
 print('Total Connected User in Final Stage', temp_data[4])
+print("Best State")
+print(best_state)
+print("Total Connected User (Best Outcome)", best_result)
