@@ -232,7 +232,7 @@ for i_episode in range(num_episode):
             states = u_env.get_state()
             states_fin = states
         u_env.render(ax1)
-        plt.title("Intermediate state of UAV in ",i_episode"episode")
+        plt.title("Intermediate state of UAV in this episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
         if best_result < temp_data[4]:
