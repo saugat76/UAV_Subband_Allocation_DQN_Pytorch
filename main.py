@@ -43,6 +43,8 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),
             nn.Linear(256,128),
             nn.ReLU(),
+            nn.Linear(128,128),
+            nn.ReLU(),
             nn.Linear(128,64),
             nn.ReLU(),
             nn.Linear(64, self.action_size)
@@ -125,7 +127,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 100
+num_episode = 40
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
