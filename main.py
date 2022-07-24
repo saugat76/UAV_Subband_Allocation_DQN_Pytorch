@@ -127,13 +127,13 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 5
+num_episode = 200
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
-update_rate = 10  #50
+update_rate = 50  #50
 dnn_epoch = 1
 train_freq = 32 #NA
 random.seed(10)
