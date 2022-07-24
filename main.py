@@ -45,8 +45,6 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),
             nn.Linear(128,128),
             nn.ReLU(),
-            nn.Linear(128,128),
-            nn.ReLU(),
             nn.Linear(128,64),
             nn.ReLU(),
             nn.Linear(64, self.action_size)
@@ -129,7 +127,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 30
+num_episode = 5
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
@@ -138,7 +136,6 @@ batch_size_internal = 512
 update_rate = 10  #50
 dnn_epoch = 1
 train_freq = 32 #NA
-
 random.seed(10)
 
 # Keeping track of the episode reward
@@ -248,23 +245,29 @@ def smooth(y, pts):
     y_smooth = np.convolve(y, box, mode='same')
     return y_smooth
 
+
 # Plot the accumulated reward vs episodes
 fig = plt.figure()
 plt.plot(range(0, num_episode), episode_reward)
-plt.show()
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
+plt.title("Episode vs Episodic Reward")
+plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
 plt.show()
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
-final_render(states_fin)
-plt.title("Final state of UAV")
-final_render(best_state)
-plt.title("Best state of UAV")
+plt.title("Smoothed Epidode vs Episodic Reward")
+fig = plt.figure()
+final_render(states_fin, "final")
+fig = plt.figure()
+final_render(best_state, "best")
 # mdict = {'Q': Q_values}
 # savemat('Q.mat', mdict)
 print(states_fin)
 print('Total Connected User in Final Stage', temp_data[4])
+print("Best State")
+print(best_state)
+print("Total Connected User (Best Outcome)", best_result)
