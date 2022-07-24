@@ -127,7 +127,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 40
+num_episode = 201
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
@@ -243,7 +243,7 @@ for i_episode in range(num_episode):
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
 
-    print(epsilon)
+    # print(epsilon)
     if epsilon > min_epsilon:
         epsilon = epsilon * decay_constant
     
