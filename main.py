@@ -133,7 +133,7 @@ discount_factor = 0.90
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
-update_rate = 50  #50
+update_rate = 10  #50
 dnn_epoch = 1
 train_freq = 32 #NA
 random.seed(10)
