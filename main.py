@@ -58,12 +58,11 @@ class NeuralNetwork(nn.Module):
 
 class DQL:
     # Initializing a Deep Neural Network
-    def __init__(self, epsilon):
+    def __init__(self, gamma):
         self.state_size = 2
         self.action_size = 5
         self.replay_buffer = deque(maxlen = 125000)
-        self.gamma = 0.95
-        self.epsilon = epsilon
+        self.gamma = gamma
         self.learning_rate = 0.0075
         self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
@@ -78,7 +77,7 @@ class DQL:
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
         temp = random.random()
-        if temp <= self.epsilon:
+        if temp <= epsilon:
             action = np.random.randint(0, 4)
         else:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
@@ -127,18 +126,18 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 201
+num_episode = 100
 num_epochs = 100
-discount_factor = 0.90
+discount_factor = 0.95
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
 update_rate = 10  #50
 dnn_epoch = 1
 train_freq = 32 #NA
-epsilon = 1
+epsilon = 0.6
 min_epsilon = 0.1
-decay_constant = 0.99
+decay_constant = 0.97
 
 random.seed(10)
 
@@ -153,7 +152,7 @@ UAV_OB = [None, None, None, None, None]
 
 
 for k in range(NUM_UAV):
-            UAV_OB[k] = DQL(epsilon)
+            UAV_OB[k] = DQL(discount_factor)
 
 best_result = 0
 
@@ -243,7 +242,7 @@ for i_episode in range(num_episode):
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
 
-    # print(epsilon)
+    print(epsilon)
     if epsilon > min_epsilon:
         epsilon = epsilon * decay_constant
     
@@ -265,10 +264,10 @@ plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
-plt.show()
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
 plt.title("Smoothed Epidode vs Episodic Reward")
+plt.show()
 fig = plt.figure()
 final_render(states_fin, "final")
 fig = plt.figure()
