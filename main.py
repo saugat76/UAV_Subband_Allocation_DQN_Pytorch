@@ -30,7 +30,6 @@ PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
 ## GPU configuration use for faster processing
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-device = "cpu"
 
 # DNN modeling
 class NeuralNetwork(nn.Module):
@@ -127,13 +126,13 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 100
+num_episode = 60
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
-update_rate = 10  #50
+update_rate =  10 #50
 dnn_epoch = 1
 train_freq = 32 #NA
 
@@ -232,7 +231,7 @@ for i_episode in range(num_episode):
             states = u_env.get_state()
             states_fin = states
         u_env.render(ax1)
-        plt.title("Intermediate state of UAV in ",i_episode"episode")
+        plt.title("Intermediate state of UAV in this episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
         if best_result < temp_data[4]:
@@ -249,20 +248,25 @@ def smooth(y, pts):
 # Plot the accumulated reward vs episodes
 fig = plt.figure()
 plt.plot(range(0, num_episode), episode_reward)
-plt.show()
 plt.xlabel("Episode")
-plt.ylable("Episodic Reward")
+plt.ylabel("Episodic Reward")
+plt.title("Episode vs Episodic Reward")
+plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
-plt.show()
 plt.xlabel("Episode")
-plt.ylable("Episodic Reward")
-final_render(states_fin)
-plt.title("Final state of UAV")
-final_render(best_state)
-plt.title("Best state of UAV")
+plt.ylabel("Episodic Reward")
+plt.title("Smoothed Epidode vs Episodic Reward")
+plt.show()
+fig = plt.figure()
+final_render(states_fin, "final")
+fig = plt.figure()
+final_render(best_state, "best")
 # mdict = {'Q': Q_values}
 # savemat('Q.mat', mdict)
 print(states_fin)
 print('Total Connected User in Final Stage', temp_data[4])
+print("Best State")
+print(best_state)
+print("Total Connected User (Best Outcome)", best_result)

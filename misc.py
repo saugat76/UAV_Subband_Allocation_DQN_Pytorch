@@ -1,3 +1,5 @@
+
+
 from matplotlib import gridspec
 import matplotlib.pyplot as plt
 from uav_env import UAVenv
@@ -5,7 +7,7 @@ import numpy as np
 from matplotlib.gridspec import GridSpec
 import math
 
-def final_render(state):
+def final_render(state, remark):
     USER_LOC = np.loadtxt('UserLocation.txt', dtype=np.int32, delimiter=' ')
     u_loc = USER_LOC
     fig = plt.figure()
@@ -16,6 +18,7 @@ def final_render(state):
     THETA = 60 * math.pi / 180
     coverage_radius = UAV_HEIGHT * np.tan(THETA / 2)
 
+
     ax.cla()
     position = state[:, 0:2] * grid_space
     ax.scatter(u_loc[:, 0], u_loc[:, 1], c = '#ff0000', marker='o', label = "Users")
@@ -25,6 +28,10 @@ def final_render(state):
         ax.set_aspect(1)
         ax.add_artist(cc)
     ax.legend()
+    if remark == "best":
+        plt.title("Best state of UAV")
+    elif remark == "final":
+        plt.title("Final state of UAV")
     plt.pause(0.5)
     plt.xlim(-50, 1050)
     plt.ylim(-50, 1050)
