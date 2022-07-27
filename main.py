@@ -125,11 +125,8 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-<<<<<<< Updated upstream
 num_episode = 100
-=======
 num_episode = 60
->>>>>>> Stashed changes
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
@@ -138,12 +135,9 @@ batch_size_internal = 512
 update_rate =  10 #50
 dnn_epoch = 1
 train_freq = 32 #NA
-<<<<<<< Updated upstream
-epsilon = 0.6
+epsilon = 0.1
 min_epsilon = 0.1
-decay_constant = 0.97
-=======
->>>>>>> Stashed changes
+# decay_constant = 0.97
 
 random.seed(10)
 
@@ -248,9 +242,9 @@ for i_episode in range(num_episode):
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
 
-    print(epsilon)
-    if epsilon > min_epsilon:
-        epsilon = epsilon * decay_constant
+    # print(epsilon)
+    # if epsilon > min_epsilon:
+    #     epsilon = epsilon * decay_constant
     
 
 
