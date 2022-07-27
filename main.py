@@ -30,7 +30,6 @@ PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
 ## GPU configuration use for faster processing
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-device = "cpu"
 
 # DNN modeling
 class NeuralNetwork(nn.Module):
@@ -126,18 +125,25 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
+<<<<<<< Updated upstream
 num_episode = 100
+=======
+num_episode = 60
+>>>>>>> Stashed changes
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
 batch_size = 512
 batch_size_internal = 512
-update_rate = 10  #50
+update_rate =  10 #50
 dnn_epoch = 1
 train_freq = 32 #NA
+<<<<<<< Updated upstream
 epsilon = 0.6
 min_epsilon = 0.1
 decay_constant = 0.97
+=======
+>>>>>>> Stashed changes
 
 random.seed(10)
 
