@@ -127,7 +127,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 100
+num_episode = 40
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
@@ -251,7 +251,7 @@ fig = plt.figure()
 plt.plot(range(0, num_episode), episode_reward)
 plt.show()
 plt.xlabel("Episode")
-plt.ylable("Episodic Reward")
+plt.ylabel("Episodic Reward")
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
