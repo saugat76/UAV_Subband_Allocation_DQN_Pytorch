@@ -39,15 +39,15 @@ class NeuralNetwork(nn.Module):
         self.state_size = state_size
         self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
-            nn.Linear(self.state_size,256),
+            nn.Linear(self.state_size,400),
             nn.ReLU(),
-            nn.Linear(256,128),
+            nn.Linear(400,400),
             nn.ReLU(),
-            nn.Linear(128,128),
-            nn.ReLU(),
-            nn.Linear(128,64),
-            nn.ReLU(),
-            nn.Linear(64, self.action_size)
+            # nn.Linear(128,128),
+            # nn.ReLU(),
+            # nn.Linear(128,64),
+            # nn.ReLU(),
+            nn.Linear(400, self.action_size)
         ).to(device=device)
 
     def forward(self, x):
