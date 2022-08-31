@@ -193,12 +193,12 @@ class UAVenv(gym.Env):
         # Need to work on the return parameter of done, info, reward, and obs
         # Calculation of reward function too i.e. total bandwidth provided to the user
         new_reward = sum(sum(user_asso_flag))
-        reward = new_reward - previous_reward
-        previous_reward = new_reward
+        reward = new_reward
+        # previous_reward = new_reward
 
         if flag != 0:
             isDone = True
-            reward -= 10
+            reward = new_reward - 10 
         
         if action == [5,5,5,5,5]:
             isDone = True

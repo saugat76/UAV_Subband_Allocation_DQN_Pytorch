@@ -1,4 +1,5 @@
 from ctypes.wintypes import tagRECT
+from math import gamma
 from os import stat_result, times_result
 import random
 from re import S
@@ -43,10 +44,6 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),
             nn.Linear(400,400),
             nn.ReLU(),
-            # nn.Linear(128,128),
-            # nn.ReLU(),
-            # nn.Linear(128,64),
-            # nn.ReLU(),
             nn.Linear(400, self.action_size)
         ).to(device=device)
 
@@ -62,9 +59,10 @@ class DQL:
         self.state_size = 2
         self.action_size = 5
         self.replay_buffer = deque(maxlen = 125000)
-        self.gamma = 0.90
+        self.gamma = discount_factor
+        self.alpha = alpha
         self.epsilon = 0.1
-        self.learning_rate = 0.0075
+        self.learning_rate = 0.0025
         self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network.load_state_dict(self.main_network.state_dict())
@@ -127,7 +125,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 20
+num_episode = 41
 num_epochs = 100
 discount_factor = 0.90
 alpha = 0.5
