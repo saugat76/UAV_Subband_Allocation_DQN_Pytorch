@@ -1,20 +1,12 @@
-from ctypes.wintypes import tagRECT
-from math import gamma
-from os import stat_result, times_result
 import random
-from re import S
-import re
-from sre_parse import State
-from ssl import ALERT_DESCRIPTION_USER_CANCELLED
-from tabnanny import verbose
 import numpy as np
+import math
 from collections import defaultdict
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
 from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
-import gym 
 from collections import deque
 import torch
 from torch import Tensor, nn 
@@ -52,7 +44,6 @@ class NeuralNetwork(nn.Module):
         Q_values = self.linear_stack(x)
         return Q_values
 
-
 class DQL:
     # Initializing a Deep Neural Network
     def __init__(self):
@@ -60,43 +51,43 @@ class DQL:
         self.action_size = 5
         self.replay_buffer = deque(maxlen = 125000)
         self.gamma = discount_factor
-        self.alpha = alpha
-        self.epsilon = 0.1
-        self.learning_rate = 0.0025
+        self.epsilon = epsilon        
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.learning_rate = alpha
         self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
         self.target_network.load_state_dict(self.main_network.state_dict())
         self.optimizer = torch.optim.Adam(self.main_network.parameters(), lr = self.learning_rate)
-        self.loss_func = nn.MSELoss()
+        self.loss_func = nn.SmoothL1Loss()      # Huber Loss // Combines MSE and MAE
+        self.steps_done = 0
 
     # Storing information of individual UAV information in their respective buffer
     def store_transition(self, state, action, reward, next_state, done):
         self.replay_buffer.append((state, action, reward, next_state, done))
     
+    
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
         temp = random.random()
-        if temp <= self.epsilon:
-            action = np.random.randint(0, 4)
+        # Epsilon decay policy is employed for faster convergence
+        epsilon_thres = self.epsilon_min + (self.epsilon - self.epsilon_min) * math.exp(-1*self.steps_done/self.epsilon_decay)
+        self.steps_done += 1 
+        if temp <= epsilon_thres:
+            action = torch.tensor([[np.random.randint(0, 4)]], device = device, dtype = torch.long)
         else:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
-            # print(state)
-            Q_values = self.main_network.forward(state)
-            # print(Q_values)
-            action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
-            # print(action)
-            action = action[0]
+            Q_values = self.main_network(state)
+            action = Q_values.max(1)[1].view(1,1)
         return action
 
     # Training of the DNN 
-    def train(self,batch_size, dnn_epoch, batch_size_internal):
-        # internal_buffer = random.sample(self.replay_buffer, batch_size)
+    def train(self,batch_size, dnn_epoch):
         for k in range(dnn_epoch):
-            minibatch = random.sample(self.replay_buffer, batch_size_internal)
+            minibatch = random.sample(self.replay_buffer, batch_size)
             minibatch = np.vstack(minibatch)
-            minibatch = minibatch.reshape(batch_size_internal,5)
+            minibatch = minibatch.reshape(batch_size,5)
             state = torch.FloatTensor(np.vstack(minibatch[:,0]))
-            # print(state)
             action = torch.LongTensor(np.vstack(minibatch[:,1]))
             reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
             next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
@@ -108,16 +99,22 @@ class DQL:
             done = done.to(device = device)
 
             Q_next = self.target_network(next_state).detach()
-            target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size_internal, 1).squeeze() * (
+            target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size, 1).squeeze() * (
                 1 - np.array([state[e].cpu().mean() == next_state[e].cpu().mean() for e in range(len(next_state))])
             ) 
+            
+            # Forward 
+            # Loss calculation based on loss function
             target_Q = target_Q.float()
             Q_main = self.main_network(state).gather(1, action).squeeze()
-
-            loss = self.loss_func(Q_main.cpu(), target_Q.cpu().detach())
-
+            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            # Backward
             self.optimizer.zero_grad()
             loss.backward()
+            # For gradient clipping
+            for param in self.main_network.parameters():
+                param.grad.data.clamp_(-1,1)
+            # Gradient descent
             self.optimizer.step()
 
 
@@ -125,15 +122,16 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 41
+num_episode = 201
 num_epochs = 100
 discount_factor = 0.90
-alpha = 0.5
+alpha = 7.5e-4
 batch_size = 512
-batch_size_internal = 512
 update_rate = 10  #50
 dnn_epoch = 1
-train_freq = 32 #NA
+epsilon = 0.8
+epsilon_min = 0.1
+epsilon_decay = 1000
 random.seed(10)
 
 # Keeping track of the episode reward
@@ -206,7 +204,7 @@ for i_episode in range(num_episode):
 
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
-                UAV_OB[k].train(batch_size, dnn_epoch, batch_size_internal)
+                UAV_OB[k].train(batch_size, dnn_epoch)
 
     if i_episode % 10 == 0:
         # Reset of the environment
