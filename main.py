@@ -124,13 +124,13 @@ NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
 num_episode = 201
 num_epochs = 100
-discount_factor = 0.90
+discount_factor = 0.95
 alpha = 7.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
-epsilon = 0.8
-epsilon_min = 0.1
+epsilon = 0.90
+epsilon_min = 0.05
 epsilon_decay = 1000
 random.seed(10)
 
@@ -168,21 +168,14 @@ for i_episode in range(num_episode):
                 UAV_OB[k].target_network.load_state_dict(UAV_OB[k].main_network.state_dict())
                 
         # Determining the actions for all drones
-        # print(states)
         states_ten = torch.from_numpy(states)
-        # print(states_ten)
         for k in range(NUM_UAV):
             state = states_ten[k, :]
-            # print(state)                
             action = UAV_OB[k].epsilon_greedy(state.float())
-            # print(action)
             drone_act_list.append(action + 1)
-            # print('new')
 
-        # print(drone_act_list)
 
         # Find the global reward for the combined set of actions for the UAV
-        # print(drone_act_list)
         temp_data = u_env.step(drone_act_list)
         reward = temp_data[1]
         done = temp_data[2]
@@ -193,14 +186,13 @@ for i_episode in range(num_episode):
                 state = states_ten[k, :]
                 action = drone_act_list[k] - 1
                 next_sta = next_state[k, :]
-                UAV_OB[k].store_transition(state, action, reward, next_sta, done)
+                reward_in = reward[k]
+                UAV_OB[k].store_transition(state, action, reward_in, next_sta, done)
 
-        episode_reward[i_episode] += reward
+        episode_reward[i_episode] += sum(reward)
 
         states = next_state
 
-        # if done:
-        #     break
 
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
@@ -219,21 +211,19 @@ for i_episode in range(num_episode):
                 state = states[k,:]
                 state = torch.unsqueeze(torch.FloatTensor(state),0)
                 Q_values = UAV_OB[k].main_network.forward(state.float())
-                # print(Q_values)
                 best_next_action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action + 1)
             temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
+            if best_result < temp_data[4]:
+                best_result = temp_data[4]
+                best_state = states
         u_env.render(ax1)
         plt.title("Intermediate state of UAV in this episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
-        if best_result < temp_data[4]:
-            best_result = temp_data[4]
-            best_state = states
-
 
 
 def smooth(y, pts):
@@ -252,10 +242,10 @@ plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
-plt.show()
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
 plt.title("Smoothed Epidode vs Episodic Reward")
+plt.show()
 fig = plt.figure()
 final_render(states_fin, "final")
 fig = plt.figure()

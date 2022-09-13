@@ -73,8 +73,12 @@ class UAVenv(gym.Env):
     #############################################################################
     ##     Second User Distribution // Hotspots with Uniform Distribution      ##
     #############################################################################
+    # USER_LOC = np.random.uniform(low=0, high=COVERAGE_XY, size=(NUM_USER, 2))
+    # np.savetxt('UserLocation_Uniform.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
 
+    # Saving the user location on a file instead of generating everytime
 
+    # USER_LOC = np.loadtxt('UserLocation_Uniform.txt', delimiter=' ').astype(np.int64)
 
 
 
@@ -97,6 +101,8 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
+        # Starting UAV Position at the center of the target area
+        # self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
         self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
@@ -212,27 +218,29 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # reward = np.zeros(np.size(sum_user_assoc))
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         reward[k] = sum_user_assoc[k] - 2
-        #         isDone = True
-        #     else:
-        #         reward[k] = sum_user_assoc[k]
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        reward = np.zeros(np.size(sum_user_assoc))
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                reward[k] = sum_user_assoc[k] - 2
+                isDone = True
+            else:
+                reward[k] = sum_user_assoc[k]
 
         ################################################################
         ##     Opt.2  No. of User Connected as Collective Reward      ##
         ################################################################
-        sum_user_assoc = np.sum(np.sum(user_asso_flag))
-        reward = 0
-        if any(self.flag) != 0:
-            reward = sum_user_assoc - 10
-            isDone = True
-        else:
-            reward = sum_user_assoc
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # reward = 0
+        # for user_num_con in list(sum_user_assoc):
+        #     if user_num_con != 0:
+        #         reward += user_num_con - 2
+        #         isDone = True
+        #     else:
+        #         reward += user_num_con
+        
         # Return of obs, reward, done, info
-        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum_user_assoc, rb_allocated
+        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated
 
     def render(self, ax, mode='human', close=False):
         # Implement viz
@@ -257,6 +265,8 @@ class UAVenv(gym.Env):
         # further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # Starting UAV Position at the center of the target area
+        # self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
