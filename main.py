@@ -124,14 +124,14 @@ NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
 num_episode = 201
 num_epochs = 100
-discount_factor = 0.95
+discount_factor = 0.90
 alpha = 7.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
-epsilon_min = 0.05
-epsilon_decay = 1000
+epsilon_min = 0.20
+epsilon_decay = 400
 random.seed(10)
 
 # Keeping track of the episode reward
@@ -183,12 +183,17 @@ for i_episode in range(num_episode):
 
         # Store the transition information
         for k in range(NUM_UAV):
-                state = states_ten[k, :]
-                action = drone_act_list[k] - 1
-                next_sta = next_state[k, :]
-                reward_in = reward[k]
-                UAV_OB[k].store_transition(state, action, reward_in, next_sta, done)
-
+            ## Ommiting this in this run ##
+            # Sharing of all the information of both state and reward between the UAVs 
+            # Should not use collective number of user as reward but store the state and the reward of others in it's replay buffer too
+            # Try this in a more complex setup with lower number of UAV and bigger grid size for better result
+            # This in theory should perform far better
+            state = states_ten[k, :]
+            action = drone_act_list[k] - 1
+            next_sta = next_state[k, :]
+            reward_ind = reward[k]
+            UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)
+        # print(reward)
         episode_reward[i_episode] += sum(reward)
 
         states = next_state

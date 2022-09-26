@@ -2,6 +2,7 @@
 ## Environment Setup of for UAV  ##
 ###################################
 
+from traceback import print_tb
 import gym
 from gym import spaces
 import numpy as np
@@ -102,8 +103,8 @@ class UAVenv(gym.Env):
         # further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
+        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
@@ -140,7 +141,9 @@ class UAVenv(gym.Env):
             if self.state[i,0] < 0 or self.state[i,0] > self.GRID_SIZE or self.state[i, 1] < 0 or self.state[i,1] > self.GRID_SIZE:
                 self.state[i, 0] = temp_x
                 self.state[i, 1] = temp_y
-                self.flag[i] += 1                # Later penalize the reward value based on the flag
+                self.flag[i] = 1                # Later penalize the reward value based on the flag
+            else:
+                self.flag[i] = 0
 
             # Calculation of the distance value for all UAV and User
             for l in range(self.NUM_USER):
@@ -162,12 +165,13 @@ class UAVenv(gym.Env):
         # User requesting to connect
         
         connection_request = np.zeros(shape=(self.NUM_UAV, self.NUM_USER), dtype="int")
+        user_covered = np.zeros(shape=(self.NUM_UAV,1), dtype="int")
 
         for i in range(self.NUM_USER):
-            if not(np.any(connection_request[:,i] == 1)):                 # Skip if connection request already sent
                 close_uav = np.argmin(dist_u_uav[:,i])                    # Closest UAV index
                 if dist_u_uav[close_uav, i] <= self.coverage_radius:      # UAV - User distance within the coverage radius then only connection request
                     connection_request[close_uav, i] = 1                  # All staifies, then connection request for the UAV - User
+
 
         # Allocating only 80% of max cap in first run
         # After all the user has send their connection request,
@@ -215,30 +219,53 @@ class UAVenv(gym.Env):
         
         # Need to work on the return parameter of done, info, reward, and obs
         # Calculation of reward function too i.e. total bandwidth providednew to the user
+        # Using some form of weighted average to do the reward calculation instead of the collective reward value only
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
+        U_density_solo = self.NUM_USER / self.NUM_UAV
         sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward = np.zeros(np.size(sum_user_assoc))
+        reward_solo = np.zeros(np.size(sum_user_assoc))
         for k in range(self.NUM_UAV):
             if self.flag[k] != 0:
-                reward[k] = sum_user_assoc[k] - 2
+                reward_solo[k] = (sum_user_assoc[k] - 2)/U_density_solo
                 isDone = True
             else:
-                reward[k] = sum_user_assoc[k]
+                reward_solo[k] = sum_user_assoc[k] / U_density_solo
+        reward = np.copy(reward_solo)
 
+        # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         ################################################################
         ##     Opt.2  No. of User Connected as Collective Reward      ##
         ################################################################
+        # U_density = self.NUM_USER / self.NUM_UAV
         # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # sum_user_assoc_temp = np.copy(sum_user_assoc)
+        # reward_ind = np.zeros(np.size(sum_user_assoc))
         # reward = 0
-        # for user_num_con in list(sum_user_assoc):
-        #     if user_num_con != 0:
-        #         reward += user_num_con - 2
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         sum_user_assoc_temp[k] -= 2
+        #         reward_ind[k] = np.sum(sum_user_assoc_temp / U_density)
         #         isDone = True
         #     else:
-        #         reward += user_num_con
-        
+        #         reward_ind[k] = np.sum(sum_user_assoc / U_density)
+
+        # w1_reward_solo = 0.7
+        # w2_reward_collective = 0.3
+        # reward = np.copy(w1_reward_solo * reward_solo + w2_reward_collective * reward_ind)
+        ## For debugging the reward function
+        # print('reward individual based on collective', reward_ind)
+        # print('user association temporary', sum_user_assoc_temp)
+        # print('flag bits', self.flag)
+        # print('sum user assocation', sum_user_assoc)
+        # print('individual reward collective form', reward_ind)
+        # print('individual reward values', reward_solo)
+        # print('final reaward weighted', reward)
+
+        ## New Reward Function for the coverage of the user rather than the connected user 
+        # reward = np.copy(user_covered)
+
         # Return of obs, reward, done, info
         return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated
 
@@ -264,9 +291,9 @@ class UAVenv(gym.Env):
         # set the states to the hotspots and one at the centre for faster convergence
         # further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
