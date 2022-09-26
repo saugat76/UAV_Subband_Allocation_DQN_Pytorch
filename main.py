@@ -4,26 +4,16 @@ import math
 from collections import defaultdict
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
-from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
 from collections import deque
 import torch
 from torch import Tensor, nn 
-import torch.optim as optim
-import torch.nn.functional as F
-import torchvision.transforms as T
 
-from torch.utils.data import DataLoader
-from torch.utils.data.dataset import IterableDataset
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
-
-## GPU configuration use for faster processing
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-device = "cpu"
 
 # DNN modeling
 class NeuralNetwork(nn.Module):
@@ -37,10 +27,9 @@ class NeuralNetwork(nn.Module):
             nn.Linear(400,400),
             nn.ReLU(),
             nn.Linear(400, self.action_size)
-        ).to(device=device)
+        )
 
     def forward(self, x):
-        x = x.to(device)
         Q_values = self.linear_stack(x)
         return Q_values
 
@@ -55,8 +44,8 @@ class DQL:
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
         self.learning_rate = alpha
-        self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
-        self.target_network = NeuralNetwork(self.state_size, self.action_size).to(device)
+        self.main_network = NeuralNetwork(self.state_size, self.action_size)
+        self.target_network = NeuralNetwork(self.state_size, self.action_size)
         self.target_network.load_state_dict(self.main_network.state_dict())
         self.optimizer = torch.optim.Adam(self.main_network.parameters(), lr = self.learning_rate)
         self.loss_func = nn.SmoothL1Loss()      # Huber Loss // Combines MSE and MAE
@@ -71,10 +60,11 @@ class DQL:
     def epsilon_greedy(self, state):
         temp = random.random()
         # Epsilon decay policy is employed for faster convergence
+        # Epsilon value decays based on the decay parameter
         epsilon_thres = self.epsilon_min + (self.epsilon - self.epsilon_min) * math.exp(-1*self.steps_done/self.epsilon_decay)
         self.steps_done += 1 
         if temp <= epsilon_thres:
-            action = torch.tensor([[np.random.randint(0, 4)]], device = device, dtype = torch.long)
+            action = torch.tensor([[np.random.randint(0, 4)]], dtype = torch.long)
         else:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
             Q_values = self.main_network(state)
@@ -87,28 +77,28 @@ class DQL:
             minibatch = random.sample(self.replay_buffer, batch_size)
             minibatch = np.vstack(minibatch)
             minibatch = minibatch.reshape(batch_size,5)
+            # The reshaped minibatch data is separeted to form the stack of state, action, reward, next_state and done
             state = torch.FloatTensor(np.vstack(minibatch[:,0]))
             action = torch.LongTensor(np.vstack(minibatch[:,1]))
             reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
             next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
             done = torch.Tensor(np.vstack(minibatch[:,4]))
-            state = state.to(device = device)
-            action = action.to(device = device)
-            reward = reward.to(device = device)
-            next_state = next_state.to(device = device)
-            done = done.to(device = device)
 
+            # Calculation of the Q next and the target Q
+            # (1 - (state == next_state)) is done to differentiate the case of target_Q calculation for terminal and nonterminal
+            # Squeeze function removes a dimension from the tensor and view changes the tensor shape
+            # So, bacically changing the dimesion to same value so the calculation can be done in tensor // faster
             Q_next = self.target_network(next_state).detach()
-            target_Q = reward.cpu().squeeze() + self.gamma * Q_next.cpu().max(1)[0].view(batch_size, 1).squeeze() * (
-                1 - np.array([state[e].cpu().mean() == next_state[e].cpu().mean() for e in range(len(next_state))])
+            target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * (
+                1 - np.array([state[e].mean() == next_state[e].mean() for e in range(len(next_state))])
             ) 
             
             # Forward 
             # Loss calculation based on loss function
             target_Q = target_Q.float()
             Q_main = self.main_network(state).gather(1, action).squeeze()
-            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
-            # Backward
+            loss = self.loss_func(target_Q.detach(), Q_main)
+            # Back Propagation
             self.optimizer.zero_grad()
             loss.backward()
             # For gradient clipping
@@ -216,7 +206,7 @@ for i_episode in range(num_episode):
                 state = states[k,:]
                 state = torch.unsqueeze(torch.FloatTensor(state),0)
                 Q_values = UAV_OB[k].main_network.forward(state.float())
-                best_next_action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
+                best_next_action = torch.max(Q_values, 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action + 1)
             temp_data = u_env.step(drone_act_list)

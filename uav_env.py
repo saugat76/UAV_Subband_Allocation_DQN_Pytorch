@@ -116,7 +116,6 @@ class UAVenv(gym.Env):
         # Execution of one step within the environment
         # Deal with out of boundaries conditions
         isDone = False
-        previous_reward = 0
         # Calculate the distance of every users to the UAV BS and organize as a list
         dist_u_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER))
         for i in range(self.NUM_UAV):
@@ -218,7 +217,7 @@ class UAVenv(gym.Env):
 
         
         # Need to work on the return parameter of done, info, reward, and obs
-        # Calculation of reward function too i.e. total bandwidth providednew to the user
+        # Calculation of reward function
         # Using some form of weighted average to do the reward calculation instead of the collective reward value only
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
