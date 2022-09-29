@@ -123,15 +123,15 @@ GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
 num_episode = 201
-num_epochs = 100
-discount_factor = 0.90
+num_epochs = 20
+discount_factor = 0.95
 alpha = 7.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
-epsilon_min = 0.20
-epsilon_decay = 400
+epsilon_min = 0.10
+epsilon_decay = 100
 random.seed(10)
 
 # Keeping track of the episode reward
@@ -193,7 +193,8 @@ for i_episode in range(num_episode):
             next_sta = next_state[k, :]
             reward_ind = reward[k]
             UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)
-        # print(reward)
+
+        
         episode_reward[i_episode] += sum(reward)
 
         states = next_state
@@ -222,6 +223,7 @@ for i_episode in range(num_episode):
             temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
+            # print(temp_data)
             if best_result < temp_data[4]:
                 best_result = temp_data[4]
                 best_state = states
@@ -229,6 +231,7 @@ for i_episode in range(num_episode):
         plt.title("Intermediate state of UAV in this episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+        # print(temp_data[6])
 
 
 def smooth(y, pts):

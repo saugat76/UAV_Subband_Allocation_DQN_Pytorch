@@ -2,6 +2,7 @@
 ## Environment Setup of for UAV  ##
 ###################################
 
+from trace import CoverageResults
 from traceback import print_tb
 import gym
 from gym import spaces
@@ -10,6 +11,7 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
+
 
 ###################################
 ##     UAV Class Defination      ##
@@ -103,8 +105,8 @@ class UAVenv(gym.Env):
         # further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
-        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
@@ -165,12 +167,25 @@ class UAVenv(gym.Env):
         # User requesting to connect
         
         connection_request = np.zeros(shape=(self.NUM_UAV, self.NUM_USER), dtype="int")
-        user_covered = np.zeros(shape=(self.NUM_UAV,1), dtype="int")
 
         for i in range(self.NUM_USER):
                 close_uav = np.argmin(dist_u_uav[:,i])                    # Closest UAV index
                 if dist_u_uav[close_uav, i] <= self.coverage_radius:      # UAV - User distance within the coverage radius then only connection request
                     connection_request[close_uav, i] = 1                  # All staifies, then connection request for the UAV - User
+
+        # Coverage of the user by individual UAVs
+        user_covered = np.zeros(shape=(self.NUM_UAV,1), dtype="int")
+        for l in range(self.NUM_UAV):
+            for v in range(self.NUM_USER):
+                if dist_u_uav[l, v] <= self.coverage_radius:
+                    user_covered[l] += 1
+
+        # Total coverage of the user by UAv
+        total_user_covered = 0
+        for v in range(self.NUM_USER):
+            if any(dist_u_uav[:,v] <= self.coverage_radius):
+                total_user_covered += 1
+
 
 
         # Allocating only 80% of max cap in first run
@@ -263,11 +278,15 @@ class UAVenv(gym.Env):
         # print('individual reward values', reward_solo)
         # print('final reaward weighted', reward)
 
-        ## New Reward Function for the coverage of the user rather than the connected user 
-        # reward = np.copy(user_covered)
+        
+        # Defining the reward function by the number of covered user
+        ################################################################
+        ##            Opt.3  No. of User Covered as Reward            ##
+        ################################################################
+        # reward = np.copy(total_user_covered)
 
         # Return of obs, reward, done, info
-        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated
+        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated, user_covered
 
     def render(self, ax, mode='human', close=False):
         # Implement viz
@@ -291,9 +310,9 @@ class UAVenv(gym.Env):
         # set the states to the hotspots and one at the centre for faster convergence
         # further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
