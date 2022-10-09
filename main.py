@@ -123,7 +123,7 @@ GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
 num_episode = 201
-num_epochs = 20
+num_epochs = 100
 discount_factor = 0.95
 alpha = 7.5e-4
 batch_size = 512
@@ -131,11 +131,12 @@ update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
 epsilon_min = 0.10
-epsilon_decay = 100
+epsilon_decay = 400
 random.seed(10)
 
 # Keeping track of the episode reward
 episode_reward = np.zeros(num_episode)
+episode_user_connected = np.zeros(num_episode)
 
 fig = plt.figure()
 gs = GridSpec(1, 1, figure=fig)
@@ -196,6 +197,7 @@ for i_episode in range(num_episode):
 
         
         episode_reward[i_episode] += sum(reward)
+        episode_user_connected[i_episode] += temp_data[4]
 
         states = next_state
 
@@ -231,8 +233,6 @@ for i_episode in range(num_episode):
         plt.title("Intermediate state of UAV in this episode")
         print(drone_act_list)
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
-        # print(temp_data[6])
-
 
 def smooth(y, pts):
     box = np.ones(pts)/pts
@@ -246,6 +246,12 @@ plt.plot(range(0, num_episode), episode_reward)
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
 plt.title("Episode vs Episodic Reward")
+plt.show()
+fig = plt.figure()
+plt.plot(range(0, num_episode), episode_user_connected)
+plt.xlabel("Episode")
+plt.ylabel("Connected User in Episode")
+plt.title("Episode vs Connected User in Epsisode")
 plt.show()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)

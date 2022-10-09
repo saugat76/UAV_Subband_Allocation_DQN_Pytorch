@@ -2,8 +2,11 @@
 ## Environment Setup of for UAV  ##
 ###################################
 
+from ast import Num
 from trace import CoverageResults
 from traceback import print_tb
+from turtle import pen, shape
+from types import DynamicClassAttribute
 import gym
 from gym import spaces
 import numpy as np
@@ -11,6 +14,8 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
+
+from torch import zero_
 
 
 ###################################
@@ -29,7 +34,7 @@ class UAVenv(gym.Env):
     COVERAGE_XY = 1000
     UAV_HEIGHT = 350
     BS_LOC = np.zeros((NUM_UAV, 3))
-    THETA = 60 * math.pi / 180              # in radian  // Bandwidth for a resource block (This value is representing 2*theta instead of theta)
+    THETA = 60 * math.pi / 180              # In radian  // Bandwidth for a resource block (This value is representing 2*theta instead of theta)
     BW_UAV = 4e6                            # Total Bandwidth per UAV   
     BW_RB = 180e3                           # Bandwidth of a Resource Block
     ACTUAL_BW_UAV = BW_UAV * 0.9
@@ -153,6 +158,30 @@ class UAVenv(gym.Env):
                                                                                         (self.state[i, 1] * self.grid_space)) ** 2)
         max_rb_num = self.ACTUAL_BW_UAV / self.BW_RB
 
+        ##############################################
+        ## UAV Buffer to Penalize the Reward Value  ##
+        ##############################################
+
+        # Calculation of the distance between the UAVs
+        # Based on these value another penalty of the reward will be condidered
+        # This is done to increase the spacing beteween the UAVs 
+        # Can be thought as the exchange of the UAVs postition information
+        # As the distance between the neighbour (in this case all) UAV is use to reduce the overlapping region
+        dist_uav_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER), dtype="float32")
+        for k in range(self.NUM_UAV):
+            for l in range(self.NUM_UAV):
+                dist_uav_uav[k, l] = math.sqrt(((self.state[l, 0] - self.state[k, 0]) * self.grid_space) ** 2 + ((self.state[l, 1] -
+                                                                                        self.state[k, 1]) * self.grid_space) ** 2)
+
+        penalty_overlap = np.zeros(shape=(self.NUM_UAV, 1), dtype="float32")
+        max_overlap_penalty = 4  # Half of about max user connected to the UAV
+        for k in range(self.NUM_UAV):
+            temp_penalty = 0
+            for l in range(self.NUM_UAV):
+                if k != l:
+                    temp_penalty = max(0, ((2*self.coverage_radius - dist_uav_uav[k, l]) / (2*self.coverage_radius)) * max_overlap_penalty)
+                    penalty_overlap[k] += temp_penalty  
+
         ######################
         ## Final Algorithm  ##
         ######################
@@ -171,22 +200,7 @@ class UAVenv(gym.Env):
         for i in range(self.NUM_USER):
                 close_uav = np.argmin(dist_u_uav[:,i])                    # Closest UAV index
                 if dist_u_uav[close_uav, i] <= self.coverage_radius:      # UAV - User distance within the coverage radius then only connection request
-                    connection_request[close_uav, i] = 1                  # All staifies, then connection request for the UAV - User
-
-        # Coverage of the user by individual UAVs
-        user_covered = np.zeros(shape=(self.NUM_UAV,1), dtype="int")
-        for l in range(self.NUM_UAV):
-            for v in range(self.NUM_USER):
-                if dist_u_uav[l, v] <= self.coverage_radius:
-                    user_covered[l] += 1
-
-        # Total coverage of the user by UAv
-        total_user_covered = 0
-        for v in range(self.NUM_USER):
-            if any(dist_u_uav[:,v] <= self.coverage_radius):
-                total_user_covered += 1
-
-
+                    connection_request[close_uav, i] = 1                  # All staifies, then connection request for the UAV - User   
 
         # Allocating only 80% of max cap in first run
         # After all the user has send their connection request,
@@ -238,15 +252,16 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        U_density_solo = self.NUM_USER / self.NUM_UAV
         sum_user_assoc = np.sum(user_asso_flag, axis = 1)
         reward_solo = np.zeros(np.size(sum_user_assoc))
         for k in range(self.NUM_UAV):
             if self.flag[k] != 0:
-                reward_solo[k] = (sum_user_assoc[k] - 2)/U_density_solo
+                # reward_solo[k] = (sum_user_assoc[k] - 2) - penalty_overlap[k]
+                reward_solo[k] = (sum_user_assoc[k] - 2)
                 isDone = True
             else:
-                reward_solo[k] = sum_user_assoc[k] / U_density_solo
+                # reward_solo[k] = sum_user_assoc[k] - penalty_overlap[k]
+                reward_solo[k] = sum_user_assoc[k] 
         reward = np.copy(reward_solo)
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
@@ -286,7 +301,8 @@ class UAVenv(gym.Env):
         # reward = np.copy(total_user_covered)
 
         # Return of obs, reward, done, info
-        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated, user_covered
+        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated
+
 
     def render(self, ax, mode='human', close=False):
         # Implement viz
