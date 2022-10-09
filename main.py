@@ -69,6 +69,9 @@ class DQL:
     
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
+
+
+
         temp = random.random()
         # Epsilon decay policy is employed for faster convergence
         epsilon_thres = self.epsilon_min + (self.epsilon - self.epsilon_min) * math.exp(-1*self.steps_done/self.epsilon_decay)
@@ -125,7 +128,7 @@ NUM_USER = u_env.NUM_USER
 num_episode = 201
 num_epochs = 100
 discount_factor = 0.95
-alpha = 7.5e-4
+alpha = 3.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
