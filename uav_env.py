@@ -256,17 +256,30 @@ class UAVenv(gym.Env):
         reward_solo = np.zeros(np.size(sum_user_assoc))
         for k in range(self.NUM_UAV):
             if self.flag[k] != 0:
-                # reward_solo[k] = (sum_user_assoc[k] - 2) - penalty_overlap[k]
                 reward_solo[k] = (sum_user_assoc[k] - 2)
                 isDone = True
             else:
-                # reward_solo[k] = sum_user_assoc[k] - penalty_overlap[k]
                 reward_solo[k] = sum_user_assoc[k] 
         reward = np.copy(reward_solo)
 
+        #############################################################################################
+        ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
+        #############################################################################################
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)ss
+        # reward_solo = np.zeros(np.size(sum_user_assoc))
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         reward_solo[k] = (sum_user_assoc[k] - 2) - penalty_overlap[k]
+        #         reward_solo[k] = (sum_user_assoc[k] - 2)
+        #         isDone = True
+        #     else:
+        #         reward_solo[k] = sum_user_assoc[k] - penalty_overlap[k]
+        #         reward_solo[k] = sum_user_assoc[k] 
+        # reward = np.copy(reward_solo)
+
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         ################################################################
-        ##     Opt.2  No. of User Connected as Collective Reward      ##
+        ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
         # U_density = self.NUM_USER / self.NUM_UAV
         # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
@@ -296,7 +309,7 @@ class UAVenv(gym.Env):
         
         # Defining the reward function by the number of covered user
         ################################################################
-        ##            Opt.3  No. of User Covered as Reward            ##
+        ##            Opt.4  No. of User Covered as Reward            ##
         ################################################################
         # reward = np.copy(total_user_covered)
 

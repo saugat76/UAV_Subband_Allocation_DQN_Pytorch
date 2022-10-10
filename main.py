@@ -69,9 +69,6 @@ class DQL:
     
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
-
-
-
         temp = random.random()
         # Epsilon decay policy is employed for faster convergence
         epsilon_thres = self.epsilon_min + (self.epsilon - self.epsilon_min) * math.exp(-1*self.steps_done/self.epsilon_decay)
@@ -125,10 +122,10 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 201
+num_episode = 251
 num_epochs = 100
 discount_factor = 0.95
-alpha = 3.5e-4
+alpha = 4e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
@@ -187,11 +184,7 @@ for i_episode in range(num_episode):
 
         # Store the transition information
         for k in range(NUM_UAV):
-            ## Ommiting this in this run ##
-            # Sharing of all the information of both state and reward between the UAVs 
-            # Should not use collective number of user as reward but store the state and the reward of others in it's replay buffer too
-            # Try this in a more complex setup with lower number of UAV and bigger grid size for better result
-            # This in theory should perform far better
+            ## Storing of the information on the individual UAV and it's reward value in itself.
             state = states_ten[k, :]
             action = drone_act_list[k] - 1
             next_sta = next_state[k, :]
