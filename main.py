@@ -173,7 +173,7 @@ for i_episode in range(num_episode):
         for k in range(NUM_UAV):
             state = states_ten[k, :]
             action = UAV_OB[k].epsilon_greedy(state.float())
-            drone_act_list.append(action + 1)
+            drone_act_list.append(action)
 
 
         # Find the global reward for the combined set of actions for the UAV
@@ -186,7 +186,7 @@ for i_episode in range(num_episode):
         for k in range(NUM_UAV):
             ## Storing of the information on the individual UAV and it's reward value in itself.
             state = states_ten[k, :]
-            action = drone_act_list[k] - 1
+            action = drone_act_list[k]
             next_sta = next_state[k, :]
             reward_ind = reward[k]
             UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)

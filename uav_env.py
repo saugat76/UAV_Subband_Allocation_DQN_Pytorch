@@ -101,7 +101,7 @@ class UAVenv(gym.Env):
         super(UAVenv, self).__init__()
         # Defining action spaces // UAV RB allocation to each user increase each by 1 untill remains
         # Five different action for the movement of each UAV
-        # 1 = Right, 2 = Left, 3 = straight, 4 = back ,5 = Hover
+        # 0 = Right, 1 = Left, 2 = straight, 3 = back, 4 = Hover
         # Defining Observation spaces // UAV RB to each user
         # Position of the UAV in space // X and Y pos
         self.u_loc = self.USER_LOC
@@ -131,15 +131,15 @@ class UAVenv(gym.Env):
             temp_y = self.state[i, 1]
             # one step action
             # print(action)
-            if action[i] == 1:
+            if action[i] == 0:
                 self.state[i, 0] = self.state[i, 0] + 1
-            elif action[i] == 2:
+            elif action[i] == 1:
                 self.state[i, 0] = self.state[i, 0] - 1
-            elif action[i] == 3:
+            elif action[i] == 2:
                 self.state[i, 1] = self.state[i, 1] + 1
-            elif action[i] == 4:
+            elif action[i] == 3:
                 self.state[i, 1] = self.state[i, 1] - 1
-            elif action[i] == 5:
+            elif action[i] == 4:
                 pass
             else:
                 print("Error Action Value")
