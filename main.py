@@ -1,10 +1,9 @@
+from ast import Num
 import random
 import numpy as np
 import math
-from collections import defaultdict
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
-from torch import ne, tensor
 from uav_env import UAVenv
 from misc import final_render
 from collections import deque
@@ -13,13 +12,17 @@ from torch import Tensor, nn
 import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
-
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import IterableDataset
 import os
+
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
+
+SEED = 10
+torch.manual_seed(SEED)
+np.random.seed(SEED)
 
 ## GPU configuration use for faster processing
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
@@ -125,14 +128,14 @@ NUM_USER = u_env.NUM_USER
 num_episode = 251
 num_epochs = 100
 discount_factor = 0.95
-alpha = 4e-4
+alpha = 3.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
 epsilon_min = 0.10
 epsilon_decay = 400
-random.seed(10)
+random.seed(SEED)
 
 # Keeping track of the episode reward
 episode_reward = np.zeros(num_episode)
@@ -158,11 +161,11 @@ for i_episode in range(num_episode):
 
     # Get the initial states
     states = u_env.get_state()
+    reward = np.zeros(NUM_UAV)
 
     
     for t in range(num_epochs):
         drone_act_list = []
-
         # Update the target network 
         for k in range(NUM_UAV):
             if t % update_rate == 0:
@@ -177,7 +180,7 @@ for i_episode in range(num_episode):
 
 
         # Find the global reward for the combined set of actions for the UAV
-        temp_data = u_env.step(drone_act_list)
+        temp_data = u_env.step(drone_act_list, reward)
         reward = temp_data[1]
         done = temp_data[2]
         next_state = u_env.get_state()
@@ -191,12 +194,12 @@ for i_episode in range(num_episode):
             reward_ind = reward[k]
             UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)
 
-        
+        # Calculation of the total episodic reward of all the UAVs 
+        # Calculation of the total number of connected User for the combination of all UAVs
         episode_reward[i_episode] += sum(reward)
         episode_user_connected[i_episode] += temp_data[4]
 
         states = next_state
-
 
         for k in range(NUM_UAV):
             if len(UAV_OB[k].replay_buffer) > batch_size:
@@ -205,7 +208,6 @@ for i_episode in range(num_episode):
     if i_episode % 10 == 0:
         # Reset of the environment
         u_env.reset()
-        # Get the states
         # Get the states
         states = u_env.get_state()
         states_ten = torch.from_numpy(states)
@@ -217,8 +219,8 @@ for i_episode in range(num_episode):
                 Q_values = UAV_OB[k].main_network.forward(state.float())
                 best_next_action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
-                drone_act_list.append(best_next_action + 1)
-            temp_data = u_env.step(drone_act_list)
+                drone_act_list.append(best_next_action)
+            temp_data = u_env.step(drone_act_list, reward)
             states = u_env.get_state()
             states_fin = states
             # print(temp_data)

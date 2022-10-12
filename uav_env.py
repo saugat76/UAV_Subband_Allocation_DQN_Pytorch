@@ -1,22 +1,10 @@
 ###################################
 ## Environment Setup of for UAV  ##
 ###################################
-
-from ast import Num
-from trace import CoverageResults
-from traceback import print_tb
-from turtle import pen, shape
-from types import DynamicClassAttribute
 import gym
-from gym import spaces
 import numpy as np
 import math
-import pandas as pd
 import matplotlib.pyplot as plt
-import random
-
-from torch import zero_
-
 
 ###################################
 ##     UAV Class Defination      ##
@@ -107,7 +95,7 @@ class UAVenv(gym.Env):
         self.u_loc = self.USER_LOC
         self.state = np.zeros((self.NUM_UAV, 3), dtype=np.int32)
         # Set the states to the hotspots and one at the centre for faster convergence
-        # further complexity by choosing random value of state or starting at same initial position
+        # Further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
@@ -116,14 +104,13 @@ class UAVenv(gym.Env):
         self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
 
-    def step(self, action):
+    def step(self, action, previous_reward):
         # Take the action
         # Assignment of sub carrier band to users
         # Reshape of actions
         # Execution of one step within the environment
         # Deal with out of boundaries conditions
         isDone = False
-        previous_reward = 0
         # Calculate the distance of every users to the UAV BS and organize as a list
         dist_u_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER))
         for i in range(self.NUM_UAV):
@@ -244,7 +231,6 @@ class UAVenv(gym.Env):
                             rb_allocated[close_id] += self.USER_RB_REQ[j]
                             user_asso_flag[close_id, j] = 1
                             break
-
         
         # Need to work on the return parameter of done, info, reward, and obs
         # Calculation of reward function too i.e. total bandwidth providednew to the user
@@ -252,31 +238,33 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward_solo = np.zeros(np.size(sum_user_assoc))
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                reward_solo[k] = (sum_user_assoc[k] - 2)
-                isDone = True
-            else:
-                reward_solo[k] = sum_user_assoc[k] 
-        reward = np.copy(reward_solo)
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # reward_solo = np.zeros(np.size(sum_user_assoc))
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+        #         isDone = True
+        #     else:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k]) 
+        # reward = np.copy(reward_solo)
 
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
         #############################################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)ss
-        # reward_solo = np.zeros(np.size(sum_user_assoc))
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         reward_solo[k] = (sum_user_assoc[k] - 2) - penalty_overlap[k]
-        #         reward_solo[k] = (sum_user_assoc[k] - 2)
-        #         isDone = True
-        #     else:
-        #         reward_solo[k] = sum_user_assoc[k] - penalty_overlap[k]
-        #         reward_solo[k] = sum_user_assoc[k] 
-        # reward = np.copy(reward_solo)
-
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        reward_solo = np.zeros(np.size(sum_user_assoc))
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
+                reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+                isDone = True
+            else:
+                reward_solo[k] = np.copy(sum_user_assoc[k] - penalty_overlap[k])
+                reward_solo[k] = np.copy(sum_user_assoc[k]) 
+        # Calculation of reward based in the change in the number of connected user
+        reward = np.copy(reward_solo)
+        # print(reward)
+ 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
