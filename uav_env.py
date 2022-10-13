@@ -238,33 +238,36 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # reward_solo = np.zeros(np.size(sum_user_assoc))
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
-        #         isDone = True
-        #     else:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k]) 
-        # reward = np.copy(reward_solo)
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+                isDone = True
+            else:
+                reward_solo[k] = np.copy(sum_user_assoc[k]) 
+        reward = np.copy(reward_solo)
 
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
         #############################################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward_solo = np.zeros(np.size(sum_user_assoc))
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
-                reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
-                isDone = True
-            else:
-                reward_solo[k] = np.copy(sum_user_assoc[k] - penalty_overlap[k])
-                reward_solo[k] = np.copy(sum_user_assoc[k]) 
-        # Calculation of reward based in the change in the number of connected user
-        reward = np.copy(reward_solo)
-        # print(reward)
- 
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # reward_solo = np.zeros(np.size(sum_user_assoc), dtype = "float32")
+        # penalty_overlap = penalty_overlap.flatten()
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
+        #         isDone = True
+        #     else:
+        #         reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
+        # # Calculation of reward based in the change in the number of connected user
+        # reward = np.copy(reward_solo)
+
+        # Debugging steps
+        # print("Sum User Association", np.sum(user_asso_flag, axis = 1))
+        # print("Penalty Overlap", penalty_overlap)
+        # print("Reward", reward)
+
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##

@@ -20,7 +20,7 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
-SEED = 10
+SEED = 1
 torch.manual_seed(SEED)
 np.random.seed(SEED)
 
@@ -125,7 +125,7 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 251
+num_episode = 351
 num_epochs = 100
 discount_factor = 0.95
 alpha = 3.5e-4
