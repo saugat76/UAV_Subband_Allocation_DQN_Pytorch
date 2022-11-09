@@ -238,15 +238,15 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
-                isDone = True
-            else:
-                reward_solo[k] = np.copy(sum_user_assoc[k]) 
-        reward = np.copy(reward_solo)
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+        #         isDone = True
+        #     else:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k]) 
+        # reward = np.copy(reward_solo)
 
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
@@ -263,40 +263,24 @@ class UAVenv(gym.Env):
         # # Calculation of reward based in the change in the number of connected user
         # reward = np.copy(reward_solo)
 
-        # Debugging steps
-        # print("Sum User Association", np.sum(user_asso_flag, axis = 1))
-        # print("Penalty Overlap", penalty_overlap)
-        # print("Reward", reward)
-
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
-        # U_density = self.NUM_USER / self.NUM_UAV
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # sum_user_assoc_temp = np.copy(sum_user_assoc)
-        # reward_ind = np.zeros(np.size(sum_user_assoc))
-        # reward = 0
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         sum_user_assoc_temp[k] -= 2
-        #         reward_ind[k] = np.sum(sum_user_assoc_temp / U_density)
-        #         isDone = True
-        #     else:
-        #         reward_ind[k] = np.sum(sum_user_assoc / U_density)
-
-        # w1_reward_solo = 0.7
-        # w2_reward_collective = 0.3
-        # reward = np.copy(w1_reward_solo * reward_solo + w2_reward_collective * reward_ind)
-        ## For debugging the reward function
-        # print('reward individual based on collective', reward_ind)
-        # print('user association temporary', sum_user_assoc_temp)
-        # print('flag bits', self.flag)
-        # print('sum user assocation', sum_user_assoc)
-        # print('individual reward collective form', reward_ind)
-        # print('individual reward values', reward_solo)
-        # print('final reaward weighted', reward)
-
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        sum_user_assoc_temp = np.copy(sum_user_assoc)
+        reward_ind = np.zeros(np.size(sum_user_assoc))
+        reward = 0
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                sum_user_assoc_temp[k] -= 2
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+                isDone = True
+            else:
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+        reward = np.copy(reward_ind)
         
         # Defining the reward function by the number of covered user
         ################################################################

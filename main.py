@@ -15,6 +15,7 @@ import torchvision.transforms as T
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import IterableDataset
 import os
+from scipy.io import savemat
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
@@ -125,16 +126,16 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 351
+num_episode = 350
 num_epochs = 100
 discount_factor = 0.95
-alpha = 3.5e-4
+alpha = 1e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
 epsilon_min = 0.10
-epsilon_decay = 400
+epsilon_decay = 1500
 random.seed(SEED)
 
 # Keeping track of the episode reward
@@ -237,6 +238,9 @@ def smooth(y, pts):
     y_smooth = np.convolve(y, box, mode='same')
     return y_smooth
 
+## Save the data from the run as a file
+mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
+savemat('Results\\Result_11_08\\5_UAV\\Level_1_Implicit_Info_Exchange\\episodic_reward.mat', mdict)
 
 # Plot the accumulated reward vs episodes
 fig = plt.figure()
@@ -262,8 +266,6 @@ fig = plt.figure()
 final_render(states_fin, "final")
 fig = plt.figure()
 final_render(best_state, "best")
-# mdict = {'Q': Q_values}
-# savemat('Q.mat', mdict)
 print(states_fin)
 print('Total Connected User in Final Stage', temp_data[4])
 print("Best State")
