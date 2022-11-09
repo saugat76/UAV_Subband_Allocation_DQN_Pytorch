@@ -125,16 +125,16 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 351
-num_epochs = 100
+num_episode = 10
+num_epochs = 10
 discount_factor = 0.95
-alpha = 3.5e-4
+alpha = 1e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.90
 epsilon_min = 0.10
-epsilon_decay = 400
+epsilon_decay = 1500
 random.seed(SEED)
 
 # Keeping track of the episode reward
@@ -262,8 +262,6 @@ fig = plt.figure()
 final_render(states_fin, "final")
 fig = plt.figure()
 final_render(best_state, "best")
-# mdict = {'Q': Q_values}
-# savemat('Q.mat', mdict)
 print(states_fin)
 print('Total Connected User in Final Stage', temp_data[4])
 print("Best State")
