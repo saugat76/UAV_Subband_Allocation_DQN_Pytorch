@@ -273,13 +273,12 @@ class UAVenv(gym.Env):
         reward = 0
         for k in range(self.NUM_UAV):
             if self.flag[k] != 0:
+                # Only penalized if the respective UAV is out of bound
                 sum_user_assoc_temp[k] -= 2
-                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-                reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+                reward_ind[k] = np.average(sum_user_assoc_temp)
                 isDone = True
             else:
-                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+                reward_ind[k] = np.average(sum_user_assoc)
         reward = np.copy(reward_ind)
         
         # Defining the reward function by the number of covered user

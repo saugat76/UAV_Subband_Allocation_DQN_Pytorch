@@ -126,16 +126,16 @@ u_env = UAVenv()
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 350
+num_episode = 450 
 num_epochs = 100
 discount_factor = 0.95
-alpha = 1e-4
+alpha = 3.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
-epsilon = 0.90
+epsilon = 0.10
 epsilon_min = 0.10
-epsilon_decay = 1500
+epsilon_decay = 1
 random.seed(SEED)
 
 # Keeping track of the episode reward
@@ -151,7 +151,6 @@ UAV_OB = [None, None, None, None, None]
 
 for k in range(NUM_UAV):
             UAV_OB[k] = DQL()
-
 best_result = 0
 
 for i_episode in range(num_episode):
