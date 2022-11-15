@@ -15,6 +15,7 @@ import torchvision.transforms as T
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import IterableDataset
 import os
+from scipy.io import savemat
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
@@ -129,7 +130,7 @@ num_episode = 351
 num_epochs = 100
 discount_factor = 0.95
 alpha = 1e-4
-batch_size = 512
+batch_size = 1024
 update_rate = 10  #50
 dnn_epoch = 1
 epsilon = 0.10
@@ -145,7 +146,7 @@ fig = plt.figure()
 gs = GridSpec(1, 1, figure=fig)
 ax1 = fig.add_subplot(gs[0:1, 0:1])
 
-UAV_OB = [None, None, None, None, None]
+UAV_OB = [None, None, None, None, None, None, None]
 
 
 for k in range(NUM_UAV):
@@ -237,6 +238,10 @@ def smooth(y, pts):
     y_smooth = np.convolve(y, box, mode='same')
     return y_smooth
 
+## Save the data from the run as a file
+mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
+savemat('Results\\Result_11_08\\5_UAV\\Level_2_Reward_Info_Exchange\\episodic_reward.mat', mdict)
+
 
 # Plot the accumulated reward vs episodes
 fig = plt.figure()
@@ -267,3 +272,4 @@ print('Total Connected User in Final Stage', temp_data[4])
 print("Best State")
 print(best_state)
 print("Total Connected User (Best Outcome)", best_result)
+

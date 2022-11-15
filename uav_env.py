@@ -15,7 +15,7 @@ class UAVenv(gym.Env):
     metadata = {'render.modes': ['human']}
     # Fixed Input Parameters
     NUM_USER = 100                          # Number of ground user
-    NUM_UAV = 5                             # Number of UAV
+    NUM_UAV = 7                             # Number of UAV
     Fc = 2                                  # Operating Frequency 2 GHz
     LightSpeed = 3 * (10 ** 8)              # Speed of Light
     WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
@@ -28,7 +28,7 @@ class UAVenv(gym.Env):
     ACTUAL_BW_UAV = BW_UAV * 0.9
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000
+    UAV_DIST_THRS = 300
 
     ## Polar to Cartesian and vice versa
     def pol2cart(r,theta):
@@ -97,9 +97,9 @@ class UAVenv(gym.Env):
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
-        self.flag = [0, 0, 0, 0, 0]
+        self.flag = [0, 0, 0, 0, 0, 0, 0]
         print(self.coverage_radius)
 
     def step(self, action, previous_reward):
@@ -262,6 +262,7 @@ class UAVenv(gym.Env):
         # reward = np.copy(reward_solo)
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
+        # Only share the information to the neighbours based on distance values
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
@@ -313,7 +314,7 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
