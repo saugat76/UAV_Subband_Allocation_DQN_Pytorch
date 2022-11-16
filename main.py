@@ -243,6 +243,8 @@ def smooth(y, pts):
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
 savemat(r'Results\Results_11_15\7_UAV\Distance Threshold Neighbours\Distance_Threshold1000\Level_3_Position_of_UAV_(Distance_Penalty)\episodic_reward.mat', mdict)
+mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
+savemat(r'Results\Results_11_15\7_UAV\Distance Threshold Neighbours\Distance_Threshold1000\Level_3_Position_of_UAV_(Distance_Penalty)\connected_user.mat', mdict_2)
 
 
 # Plot the accumulated reward vs episodes
