@@ -15,7 +15,7 @@ class UAVenv(gym.Env):
     metadata = {'render.modes': ['human']}
     # Fixed Input Parameters
     NUM_USER = 100                          # Number of ground user
-    NUM_UAV = 7                             # Number of UAV
+    NUM_UAV = 5                             # Number of UAV
     Fc = 2                                  # Operating Frequency 2 GHz
     LightSpeed = 3 * (10 ** 8)              # Speed of Light
     WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
@@ -29,7 +29,7 @@ class UAVenv(gym.Env):
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
     UAV_DIST_THRS = 1000                    # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/4)                 # Priority value for defined for the distance penalty // 
+    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
                                             # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
                                             
 
@@ -99,10 +99,10 @@ class UAVenv(gym.Env):
         # Further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
-        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
-        self.flag = [0, 0, 0, 0, 0, 0, 0]
+        self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
 
     def step(self, action, previous_reward):
@@ -318,9 +318,9 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
