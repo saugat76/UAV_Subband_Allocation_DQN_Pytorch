@@ -307,6 +307,7 @@ class UAVenv(gym.Env):
                 ax.set_aspect(1)
                 ax.add_artist(cc)
             ax.legend()
+            
             plt.pause(0.5)
             plt.xlim(-50, 1050)
             plt.ylim(-50, 1050)
