@@ -50,8 +50,8 @@ plt.plot(num_episode_3, episode_reward_3, 'b', label='Level 3')
 plt.plot(num_episode_4, episode_reward_4, 'm', label='Level 4')
 plt.legend(loc="lower right")
 plt.xlabel("Episode")
-plt.ylabel("Episodic Reward")
-plt.title("Episode vs Episodic Reward with 002 Hyperparameters")
+plt.ylabel("Episodic reward")
+plt.title("Episode vs episodic reward with run001 parameters")
 plt.show()
 
 # ## Plot for data from NUM_UAV - 7 and NUM_UAV - 5 Compari
