@@ -36,13 +36,11 @@ class NeuralNetwork(nn.Module):
         self.state_size = state_size
         self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
-            nn.Linear(self.state_size,300),
+            nn.Linear(self.state_size,400),
             nn.ReLU(),
-            nn.Linear(300,300),
+            nn.Linear(400,400),
             nn.ReLU(),
-            nn.Linear(300,300),
-            nn.ReLU(),
-            nn.Linear(300, self.action_size)
+            nn.Linear(400, self.action_size)
         ).to(device=device)
 
     def forward(self, x):
@@ -149,7 +147,7 @@ fig = plt.figure()
 gs = GridSpec(1, 1, figure=fig)
 ax1 = fig.add_subplot(gs[0:1, 0:1])
 
-UAV_OB = [None, None, None, None, None, None, None]
+UAV_OB = [None, None, None, None, None]
 
 
 for k in range(NUM_UAV):
@@ -243,9 +241,9 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\episodic_reward.mat', mdict)
+savemat(r'M:\Results_Params0017_MobileWorkstation\Results\Another_test\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\connected_user.mat', mdict_2)
+savemat(r'M:\Results_Params0017_MobileWorkstation\Results\Another_test\connected_user.mat', mdict_2)
 
 
 # Plot the accumulated reward vs episodes
