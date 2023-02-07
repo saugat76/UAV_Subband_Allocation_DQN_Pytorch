@@ -1,6 +1,12 @@
 from scipy.io import savemat, loadmat
 import os
 import matplotlib.pyplot as plt
+import matplotlib
+
+font = {'family': 'Times New Roman',
+        'size' : 12}
+
+matplotlib.rc('font', **font)
 
 
 ###############################################################
@@ -17,10 +23,10 @@ import matplotlib.pyplot as plt
 # Aplha / Learning Rate = 3.5e-4
 
 ## Plot for data from NUM_UAV - 5
-episode_reward_level_1 = loadmat(r'Results\Result_11_08\5_UAV\Level_1_Implicit_Info_Exchange\Run_001\episodic_reward.mat')
-episode_reward_level_2 = loadmat(r'Results\Result_11_08\5_UAV\Level_2_Reward_Info_Exchange\Run_001\episodic_reward.mat')
-episode_reward_level_3 = loadmat(r'Results\Result_11_08\5_UAV\Level_3_Position_of_UAV_(Distance_Penalty)\Run_001\episodic_reward.mat')
-episode_reward_level_4 = loadmat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\episodic_reward.mat')
+episode_reward_level_1 = loadmat(r'Results\Result_11_08\5_UAV\Level_1_Implicit_Info_Exchange\Run_002\episodic_reward.mat')
+episode_reward_level_2 = loadmat(r'Results\Result_11_08\5_UAV\Level_2_Reward_Info_Exchange\Run_002\episodic_reward.mat')
+episode_reward_level_3 = loadmat(r'Results\Result_11_08\5_UAV\Level_3_Position_of_UAV_(Distance_Penalty)\Run_002\episodic_reward.mat')
+episode_reward_level_4 = loadmat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_002\episodic_reward.mat')
 
 
 num_episode_1 = list(episode_reward_level_1['num_episode'])
@@ -44,14 +50,14 @@ episode_reward_4 = episode_reward_4[0]
 
 
 fig = plt.figure()
-plt.plot(num_episode_1, episode_reward_1, 'r', label='Level 1')
-plt.plot(num_episode_2, episode_reward_2, 'g', label='Level 2')
-plt.plot(num_episode_3, episode_reward_3, 'b', label='Level 3')
-plt.plot(num_episode_4, episode_reward_4, 'm', label='Level 4')
+plt.plot(num_episode_1[0:350], episode_reward_1[0:350], 'r', label='Level 1: Implicit')
+plt.plot(num_episode_2[0:350], episode_reward_2[0:350], 'g', label='Level 2: Reward exchange')
+plt.plot(num_episode_3, episode_reward_3, 'b', label='Level 3: Distance penalty')
+plt.plot(num_episode_4, episode_reward_4, 'm', label='Level 4: State')
 plt.legend(loc="lower right")
-plt.xlabel("Episode")
-plt.ylabel("Episodic reward")
-plt.title("Episode vs episodic reward with run001 parameters")
+plt.xlabel("Episode", fontsize = 14, family = 'Times New Roman')
+plt.ylabel("Episodic reward", fontsize = 14, family = 'Times New Roman')
+plt.title("Episode vs episodic reward with run002 parameters")
 plt.show()
 
 # ## Plot for data from NUM_UAV - 7 and NUM_UAV - 5 Compari

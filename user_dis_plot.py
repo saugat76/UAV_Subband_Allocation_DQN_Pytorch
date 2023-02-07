@@ -45,7 +45,7 @@ print(USER_LOC)
 # USER_LOC[USER_LOC[:,2] == 0, 2] = '#99ff66'
 
 position = HOTSPOTS
-fig = plt.figure()
+fig = plt.figure(figsize=(6, 6), dpi=200)
 gs = GridSpec(1, 1, figure=fig)
 ax = fig.add_subplot(gs[0:1, 0:1])
 ax.cla()
@@ -62,7 +62,8 @@ for i in range(0, 100):
         co = '#F1C40F'
 
     ax.scatter(USER_LOC[i, 0], USER_LOC[i, 1], c = co, marker='o')
-ax.scatter(position[:, 0], position[:, 1], c = '#000000', marker='x', label = 'Hotspot')
+ax.scatter(position[:, 0], position[:, 1], c = '#000000', marker='x', label = 'Hotspot center')
+ax.scatter([], [], c = '#000000', marker='o', label = "User" )
 
 # for (i,j) in (position[:,:]):
 #     cc = plt.Circle((i,j), (1/3.5)*1000, alpha=0.1)
