@@ -241,9 +241,9 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'M:\Results_Params0017_AIWorkstation\Result\episodic_reward.mat', mdict)
+savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'M:\Results_Params0017_AIWorkstation\Result\connected_user.mat', mdict_2)
+savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\connected_user.mat', mdict_2)
 
 
 # Plot the accumulated reward vs episodes
