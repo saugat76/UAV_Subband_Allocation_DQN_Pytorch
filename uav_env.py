@@ -28,8 +28,8 @@ class UAVenv(gym.Env):
     ACTUAL_BW_UAV = BW_UAV * 0.9
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000                    # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
+    UAV_DIST_THRS = 300                   # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
+    dis_penalty_pri = (1/4)                 # Priority value for defined for the distance penalty // 
                                             # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
                                             
 
@@ -252,37 +252,37 @@ class UAVenv(gym.Env):
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
         #############################################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward_solo = np.zeros(np.size(sum_user_assoc), dtype = "float32")
-        penalty_overlap = penalty_overlap.flatten()
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
-                isDone = True
-            else:
-                reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
-        # Calculation of reward based in the change in the number of connected user
-        reward = np.copy(reward_solo)
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # reward_solo = np.zeros(np.size(sum_user_assoc), dtype = "float32")
+        # penalty_overlap = penalty_overlap.flatten()
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
+        #         isDone = True
+        #     else:
+        #         reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
+        # # Calculation of reward based in the change in the number of connected user
+        # reward = np.copy(reward_solo)
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         # Only share the information to the neighbours based on distance values
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # sum_user_assoc_temp = np.copy(sum_user_assoc)
-        # reward_ind = np.zeros(np.size(sum_user_assoc))
-        # reward = 0
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         sum_user_assoc_temp[k] -= 2
-        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-        #         reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
-        #         isDone = True
-        #     else:
-        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-        #         reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
-        # reward = np.copy(reward_ind)
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        sum_user_assoc_temp = np.copy(sum_user_assoc)
+        reward_ind = np.zeros(np.size(sum_user_assoc))
+        reward = 0
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                sum_user_assoc_temp[k] -= 2
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+                isDone = True
+            else:
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+        reward = np.copy(reward_ind)
 
         
         # Defining the reward function by the number of covered user

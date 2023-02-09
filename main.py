@@ -134,9 +134,9 @@ alpha = 1e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
-epsilon = 0.9
+epsilon = 0.10
 epsilon_min = 0.10
-epsilon_decay = 1500
+epsilon_decay = 1
 random.seed(SEED)
 
 # Keeping track of the episode reward
