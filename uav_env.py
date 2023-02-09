@@ -28,9 +28,7 @@ class UAVenv(gym.Env):
     ACTUAL_BW_UAV = BW_UAV * 0.9
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000                    # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/4)                 # Priority value for defined for the distance penalty // 
-    UAV_DIST_THRS = 300                   # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
+    UAV_DIST_THRS = 300                     # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
     dis_penalty_pri = (1/4)                 # Priority value for defined for the distance penalty // 
                                             # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
                                             
