@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import random
 
+
+
  ## Polar to Cartesian and vice versa
 def pol2cart(r,theta):
     return (r * np.cos(theta), r * np.sin(theta))
@@ -62,19 +64,24 @@ for i in range(0, 100):
         co = '#F1C40F'
 
     ax.scatter(USER_LOC[i, 0], USER_LOC[i, 1], c = co, marker='o')
-ax.scatter(position[:, 0], position[:, 1], c = '#000000', marker='x', label = 'Hotspot center')
-ax.scatter([], [], c = '#000000', marker='o', label = "User" )
 
+ax.scatter([], [], c = '#CB4335', marker='o', label = "User: Region 1" )
+ax.scatter([], [], c = '#7D3C98', marker='o', label = "User: Region 2" )
+ax.scatter([], [], c = '#2E86C1', marker='o', label = "User: Region 3" )
+ax.scatter([], [], c = '#28B463', marker='o', label = "User: Region 4" )
+ax.scatter([], [], c = '#F1C40F', marker='o', label = "Scattered Users" )
+# ax.scatter(position[:, 0], position[:, 1], c = '#000000', marker='X', label = 'Hotspot center')
 # for (i,j) in (position[:,:]):
 #     cc = plt.Circle((i,j), (1/3.5)*1000, alpha=0.1)
 #     ax.set_aspect(1)
 #     ax.add_artist(cc)
+# fig = pylab.figure()
 
-# plt.pause(0.5)
-plt.legend()
+# plt.legend()
 plt.xlim(-50, 1050)
 plt.ylim(-50, 1050)
 plt.draw()
 plt.show()
+# fig.show()
 
 

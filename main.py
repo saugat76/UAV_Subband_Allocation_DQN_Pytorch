@@ -16,10 +16,13 @@ from torch.utils.data import DataLoader
 from torch.utils.data.dataset import IterableDataset
 import os
 from scipy.io import savemat
+from matplotlib.animation import FuncAnimation
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
+
+os.chdir = ("")
 
 SEED = 1
 torch.manual_seed(SEED)
@@ -130,7 +133,7 @@ NUM_USER = u_env.NUM_USER
 num_episode = 351
 num_epochs = 100
 discount_factor = 0.95
-alpha = 1e-4
+alpha = 3.5e-4
 batch_size = 512
 update_rate = 10  #50
 dnn_epoch = 1
@@ -228,11 +231,12 @@ for i_episode in range(num_episode):
             # print(temp_data)
             if best_result < temp_data[4]:
                 best_result = temp_data[4]
-                best_state = states
-        u_env.render(ax1)
-        plt.title("Intermediate state of UAV in this episode")
-        print(drone_act_list)
-        print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+                best_state = states        
+            u_env.render(ax1)
+            plt.title("Simulation")
+            plt.savefig(r'C:\Users\tripats\Documents\Results_SameParams0017\Simulations\simul' + str(i_episode)  + str(t) + '.png')
+            # print(drone_act_list)
+            # print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
 
 def smooth(y, pts):
     box = np.ones(pts)/pts
@@ -241,38 +245,40 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\episodic_reward.mat', mdict)
+savemat(r'Results\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'Results\Result_11_08\5_UAV\Level_4_Drone_State_Space_Exchange\Run_001\connected_user.mat', mdict_2)
+savemat(r'Results\connected_user.mat', mdict_2)
 
 
 # Plot the accumulated reward vs episodes
-fig = plt.figure()
-plt.plot(range(0, num_episode), episode_reward)
-plt.xlabel("Episode")
-plt.ylabel("Episodic Reward")
-plt.title("Episode vs Episodic Reward")
-plt.show()
-fig = plt.figure()
-plt.plot(range(0, num_episode), episode_user_connected)
-plt.xlabel("Episode")
-plt.ylabel("Connected User in Episode")
-plt.title("Episode vs Connected User in Epsisode")
-plt.show()
-fig = plt.figure()
-smoothed = smooth(episode_reward, 10)
-plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
-plt.xlabel("Episode")
-plt.ylabel("Episodic Reward")
-plt.title("Smoothed Epidode vs Episodic Reward")
-plt.show()
-fig = plt.figure()
-final_render(states_fin, "final")
-fig = plt.figure()
-final_render(best_state, "best")
-print(states_fin)
-print('Total Connected User in Final Stage', temp_data[4])
-print("Best State")
-print(best_state)
-print("Total Connected User (Best Outcome)", best_result)
+# fig = plt.figure()
+# plt.plot(range(0, num_episode), episode_reward)
+# plt.xlabel("Episode")
+# plt.ylabel("Episodic Reward")
+# plt.title("Episode vs Episodic Reward")
+# plt.show()
+# fig = plt.figure()
+# plt.plot(range(0, num_episode), episode_user_connected)
+# plt.xlabel("Episode")
+# plt.ylabel("Connected User in Episode")
+# plt.title("Episode vs Connected User in Epsisode")
+# plt.show()
+# fig = plt.figure()
+# smoothed = smooth(episode_reward, 10)
+# plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
+# plt.xlabel("Episode")
+# plt.ylabel("Episodic Reward")
+# plt.title("Smoothed Epidode vs Episodic Reward")
+# plt.show()
+# fig = plt.figure()
+# final_render(states_fin, "final")
+# fig = plt.figure()
+# final_render(best_state, "best")
+# print(states_fin)
+# print('Total Connected User in Final Stage', temp_data[4])
+# print("Best State")
+# print(best_state)
+# print("Total Connected User (Best Outcome)", best_result)
+
+
 
