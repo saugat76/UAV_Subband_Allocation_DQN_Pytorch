@@ -106,7 +106,7 @@ class UAVenv(gym.Env):
         self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
 
-    def step(self, action, previous_reward):
+    def step(self, action):
         # Take the action
         # Assignment of sub carrier band to users
         # Reshape of actions

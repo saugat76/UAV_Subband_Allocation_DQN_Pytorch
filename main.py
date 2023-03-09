@@ -224,7 +224,7 @@ for i_episode in range(num_episode):
                 best_next_action = torch.max(Q_values.cpu(), 1)[1].data.numpy()
                 best_next_action = best_next_action[0]
                 drone_act_list.append(best_next_action)
-            temp_data = u_env.step(drone_act_list, reward)
+            temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
             # print(temp_data)
