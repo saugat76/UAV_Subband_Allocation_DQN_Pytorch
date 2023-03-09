@@ -5,6 +5,7 @@ import gym
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 ###################################
 ##     UAV Class Defination      ##
@@ -28,6 +29,10 @@ class UAVenv(gym.Env):
     ACTUAL_BW_UAV = BW_UAV * 0.9
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
+    UAV_DIST_THRS = 1000                     # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
+    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
+                                            # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
+                                            
 
     ## Polar to Cartesian and vice versa
     def pol2cart(r,theta):
@@ -75,9 +80,6 @@ class UAVenv(gym.Env):
     # Saving the user location on a file instead of generating everytime
 
     # USER_LOC = np.loadtxt('UserLocation_Uniform.txt', delimiter=' ').astype(np.int64)
-
-
-
     # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
     # USER_RB_REQ = np.random.randint(low=1, high=3, size=(NUM_USER, 1))
     # USER_RB_REQ[np.random.randint(low = 0, high=NUM_USER, size=(NUM_USER,1))] = 1
@@ -98,7 +100,7 @@ class UAVenv(gym.Env):
         # Further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
         self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
@@ -116,7 +118,7 @@ class UAVenv(gym.Env):
         for i in range(self.NUM_UAV):
             temp_x = self.state[i, 0]
             temp_y = self.state[i, 1]
-            # one step action
+            # One Step Action
             # print(action)
             if action[i] == 0:
                 self.state[i, 0] = self.state[i, 0] + 1
@@ -154,14 +156,14 @@ class UAVenv(gym.Env):
         # This is done to increase the spacing beteween the UAVs 
         # Can be thought as the exchange of the UAVs postition information
         # As the distance between the neighbour (in this case all) UAV is use to reduce the overlapping region
-        dist_uav_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER), dtype="float32")
+        dist_uav_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_UAV), dtype="float32")
         for k in range(self.NUM_UAV):
             for l in range(self.NUM_UAV):
                 dist_uav_uav[k, l] = math.sqrt(((self.state[l, 0] - self.state[k, 0]) * self.grid_space) ** 2 + ((self.state[l, 1] -
                                                                                         self.state[k, 1]) * self.grid_space) ** 2)
 
         penalty_overlap = np.zeros(shape=(self.NUM_UAV, 1), dtype="float32")
-        max_overlap_penalty = 4  # Half of about max user connected to the UAV
+        max_overlap_penalty = self.dis_penalty_pri *(self.NUM_USER / self.NUM_UAV)
         for k in range(self.NUM_UAV):
             temp_penalty = 0
             for l in range(self.NUM_UAV):
@@ -264,6 +266,7 @@ class UAVenv(gym.Env):
         # reward = np.copy(reward_solo)
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
+        # Only share the information to the neighbours based on distance values
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
@@ -273,13 +276,15 @@ class UAVenv(gym.Env):
         reward = 0
         for k in range(self.NUM_UAV):
             if self.flag[k] != 0:
-                # Only penalized if the respective UAV is out of bound
                 sum_user_assoc_temp[k] -= 2
-                reward_ind[k] = np.average(sum_user_assoc_temp)
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
                 isDone = True
             else:
-                reward_ind[k] = np.average(sum_user_assoc)
+                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
         reward = np.copy(reward_ind)
+
         
         # Defining the reward function by the number of covered user
         ################################################################
@@ -303,19 +308,20 @@ class UAVenv(gym.Env):
                 ax.set_aspect(1)
                 ax.add_artist(cc)
             ax.legend()
+            
             plt.pause(0.5)
             plt.xlim(-50, 1050)
             plt.ylim(-50, 1050)
             plt.draw()
 
     def reset(self):
-        # reset out states
-        # set the states to the hotspots and one at the centre for faster convergence
-        # further complexity by choosing random value of state
+        # Reset out states
+        # Set the states to the hotspots and one at the centre for faster convergence
+        # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5],[5, 5]]
+        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
