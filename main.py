@@ -30,7 +30,7 @@ np.random.seed(SEED)
 
 ## GPU configuration use for faster processing
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-device = "cpu"
+# device = "cpu"
 
 # DNN modeling
 class NeuralNetwork(nn.Module):
