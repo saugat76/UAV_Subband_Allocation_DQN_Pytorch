@@ -29,7 +29,8 @@ torch.manual_seed(SEED)
 np.random.seed(SEED)
 
 ## GPU configuration use for faster processing
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+torch.backends.cudnn.benchmark = True
 # device = "cpu"
 
 # DNN modeling
@@ -71,7 +72,10 @@ class DQL:
 
     # Storing information of individual UAV information in their respective buffer
     def store_transition(self, state, action, reward, next_state, done):
-        self.replay_buffer.append((state, action, reward, next_state, done))
+        # Move all tensors to the CPU
+        transition = (state, action, reward, next_state, done)
+        transition = tuple(item.cpu() if isinstance(item, torch.Tensor) else item for item in transition)
+        self.replay_buffer.append(transition)
     
     
     # Deployment of epsilon greedy policy
@@ -86,12 +90,13 @@ class DQL:
         else:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
             Q_values = self.main_network(state)
-            action = Q_values.max(1)[1].view(1,1)
+            action = Q_values.max(1)[1].view(1,1).to(device = device)
         return action
 
     # Training of the DNN 
     def train(self,batch_size, dnn_epoch):
         for k in range(dnn_epoch):
+            minibatch = np.empty(batch_size, dtype=object)
             minibatch = random.sample(self.replay_buffer, batch_size)
             minibatch = np.vstack(minibatch)
             minibatch = minibatch.reshape(batch_size,5)
@@ -126,12 +131,17 @@ class DQL:
             self.optimizer.step()
 
 
-u_env = UAVenv()
+## Main Program 
+
+user_loc_1 = np.loadtxt('UserLocation_1.txt', delimiter=' ').astype(np.int64)
+user_loc_2 = np.loadtxt('UserLocation_2.txt', delimiter=' ').astype(np.int64)
+
+u_env = UAVenv(user_loc_1)
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 450 
-num_epochs = 100
+num_episode = 900 
+num_epochs = 20
 discount_factor = 0.95
 alpha = 3.5e-4
 batch_size = 512
@@ -142,15 +152,19 @@ epsilon_min = 0.10
 epsilon_decay = 1
 random.seed(SEED)
 
+
 # Keeping track of the episode reward
 episode_reward = np.zeros(num_episode)
 episode_user_connected = np.zeros(num_episode)
+
+# Keeping track of individual agents 
+episode_reward_agent = np.zeros((NUM_UAV, 1))
 
 fig = plt.figure()
 gs = GridSpec(1, 1, figure=fig)
 ax1 = fig.add_subplot(gs[0:1, 0:1])
 
-UAV_OB = [None, None, None, None, None]
+UAV_OB = [None, None, None, None]
 
 
 for k in range(NUM_UAV):
@@ -184,7 +198,7 @@ for i_episode in range(num_episode):
 
 
         # Find the global reward for the combined set of actions for the UAV
-        temp_data = u_env.step(drone_act_list, reward)
+        temp_data = u_env.step(drone_act_list)
         reward = temp_data[1]
         done = temp_data[2]
         next_state = u_env.get_state()
@@ -202,6 +216,9 @@ for i_episode in range(num_episode):
         # Calculation of the total number of connected User for the combination of all UAVs
         episode_reward[i_episode] += sum(reward)
         episode_user_connected[i_episode] += temp_data[4]
+
+        # Also calculting episodic reward for each agent // Add this in your main program 
+        episode_reward_agent = np.add(episode_reward_agent, reward)
 
         states = next_state
 
@@ -231,11 +248,13 @@ for i_episode in range(num_episode):
             if best_result < temp_data[4]:
                 best_result = temp_data[4]
                 best_state = states        
-            u_env.render(ax1)
-            plt.title("Simulation")
-            plt.savefig(r'C:\Users\tripats\Documents\Results_SameParams0017\Simulations\simul' + str(i_episode)  + str(t) + '.png')
-            # print(drone_act_list)
-            # print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+        print(drone_act_list)
+        print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+        u_env.render(ax1)
+        plt.title("Intermediate State")
+        
+    if i_episode + 1 % (num_episode/2) == 0:
+        u_env.u_loc = user_loc_2
 
 def smooth(y, pts):
     box = np.ones(pts)/pts
@@ -244,32 +263,34 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'Results\episodic_reward.mat', mdict)
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'Results\connected_user.mat', mdict_2)
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\connected_user.mat', mdict_2)
+mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward_agent}
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\epsiodic_reward_agent.mat', mdict_3)
 
 
 # Plot the accumulated reward vs episodes
-# fig = plt.figure()
-# plt.plot(range(0, num_episode), episode_reward)
-# plt.xlabel("Episode")
-# plt.ylabel("Episodic Reward")
-# plt.title("Episode vs Episodic Reward")
-# plt.show()
-# fig = plt.figure()
-# plt.plot(range(0, num_episode), episode_user_connected)
-# plt.xlabel("Episode")
-# plt.ylabel("Connected User in Episode")
-# plt.title("Episode vs Connected User in Epsisode")
-# plt.show()
-# fig = plt.figure()
-# smoothed = smooth(episode_reward, 10)
-# plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
-# plt.xlabel("Episode")
-# plt.ylabel("Episodic Reward")
-# plt.title("Smoothed Epidode vs Episodic Reward")
-# plt.show()
-# fig = plt.figure()
+fig = plt.figure()
+plt.plot(range(0, num_episode), episode_reward)
+plt.xlabel("Episode")
+plt.ylabel("Episodic Reward")
+plt.title("Episode vs Episodic Reward")
+plt.show()
+fig = plt.figure()
+plt.plot(range(0, num_episode), episode_user_connected)
+plt.xlabel("Episode")
+plt.ylabel("Connected User in Episode")
+plt.title("Episode vs Connected User in Epsisode")
+plt.show()
+fig = plt.figure()
+smoothed = smooth(episode_reward, 10)
+plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
+plt.xlabel("Episode")
+plt.ylabel("Episodic Reward")
+plt.title("Smoothed Epidode vs Episodic Reward")
+plt.show()
+fig = plt.figure()
 # final_render(states_fin, "final")
 # fig = plt.figure()
 # final_render(best_state, "best")

@@ -6,6 +6,11 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+import random
+
+SEED = 1
+np.random.seed(SEED)
+random.seed(SEED)
 
 ###################################
 ##     UAV Class Defination      ##
@@ -15,8 +20,8 @@ class UAVenv(gym.Env):
     """Custom Environment that follows gym interface """
     metadata = {'render.modes': ['human']}
     # Fixed Input Parameters
-    NUM_USER = 100                          # Number of ground user
-    NUM_UAV = 5                             # Number of UAV
+    NUM_USER = 80                           # Number of ground user
+    NUM_UAV = 4                             # Number of UAV
     Fc = 2                                  # Operating Frequency 2 GHz
     LightSpeed = 3 * (10 ** 8)              # Speed of Light
     WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
@@ -29,9 +34,9 @@ class UAVenv(gym.Env):
     ACTUAL_BW_UAV = BW_UAV * 0.9
     grid_space = 100
     GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000                     # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
-                                            # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
+    UAV_DIST_THRS = 1000                       # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
+    dis_penalty_pri = (1/5)                    # Priority value for defined for the distance penalty // 
+                                               # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
                                             
 
     ## Polar to Cartesian and vice versa
@@ -48,60 +53,75 @@ class UAVenv(gym.Env):
     # User distribution on the target area // NUM_USER/5 users in each of four hotspots
     # Remaining NUM_USER/5 is then uniformly distributed in the target area
 
-    # HOTSPOTS = np.array(
-    #     [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
+    # HOTSPOTS_1 = np.array(
+    #     [[500, 200], [800, 800], [300, 800]])  # Position setup in grid size rather than actual distance
     # USER_DIS = int(NUM_USER / NUM_UAV)
-    # USER_LOC = np.zeros((NUM_USER - USER_DIS, 2))
+    # USER_LOC_1 = np.zeros((NUM_USER - USER_DIS, 2))
     
-    # for i in range(len(HOTSPOTS)):
+    # for i in range(len(HOTSPOTS_1)):
     #     for j in range(USER_DIS):
     #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
     #         temp_loc_theta = random.uniform(0, 2*math.pi)
     #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
     #         (temp_loc_1, temp_loc_2) = temp_loc
-    #         temp_loc_1 = temp_loc_1 + HOTSPOTS[i, 0]
-    #         temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
-    #         USER_LOC[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_1[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_1[i, 1]
+    #         USER_LOC_1[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
     # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
-    # USER_LOC = np.concatenate((USER_LOC, temp_loc))
-    # np.savetxt('UserLocation.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
+    # USER_LOC_1 = np.concatenate((USER_LOC_1, temp_loc))
+
+    # np.savetxt('UserLocation_1.txt', USER_LOC_1, fmt='%.3e', delimiter=' ', newline='\n')
+
+    #############################################################################
+    ##     Second User Distribution // Dynamic Environment // Movement User    ##
+    #############################################################################
+
+    # HOTSPOTS_2 = np.array(
+    #     [[500, 300], [700, 700], [400, 700]])  # Position setup in grid size rather than actual distance
+    # USER_LOC_2 = np.zeros((NUM_USER - USER_DIS, 2))
+
+    # for i in range(len(HOTSPOTS_2)):
+    #     for j in range(USER_DIS):
+    #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
+    #         temp_loc_theta = random.uniform(0, 2*math.pi)
+    #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
+    #         (temp_loc_1, temp_loc_2) = temp_loc
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_2[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_2[i, 1]
+    #         USER_LOC_2[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
+    # USER_LOC_2 = np.concatenate((USER_LOC_2, temp_loc))
+
+    # np.savetxt('UserLocation_2.txt', USER_LOC_2, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
-
-    USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
-
-
-    #############################################################################
-    ##     Second User Distribution // Hotspots with Uniform Distribution      ##
-    #############################################################################
-    # USER_LOC = np.random.uniform(low=0, high=COVERAGE_XY, size=(NUM_USER, 2))
-    # np.savetxt('UserLocation_Uniform.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
 
     # USER_LOC = np.loadtxt('UserLocation_Uniform.txt', delimiter=' ').astype(np.int64)
-    # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
+    # # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
     # USER_RB_REQ = np.random.randint(low=1, high=3, size=(NUM_USER, 1))
     # USER_RB_REQ[np.random.randint(low = 0, high=NUM_USER, size=(NUM_USER,1))] = 1
     # print(sum(USER_RB_REQ))
     # np.savetxt('UserRBReq.txt', USER_RB_REQ, delimiter=' ', newline='\n')
+
     USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
 
-    def __init__(self):
+    def __init__(self, user_loc):
         super(UAVenv, self).__init__()
         # Defining action spaces // UAV RB allocation to each user increase each by 1 untill remains
         # Five different action for the movement of each UAV
         # 0 = Right, 1 = Left, 2 = straight, 3 = back, 4 = Hover
         # Defining Observation spaces // UAV RB to each user
         # Position of the UAV in space // X and Y pos
-        self.u_loc = self.USER_LOC
+        self.u_loc = user_loc
         self.state = np.zeros((self.NUM_UAV, 3), dtype=np.int32)
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5]]
+        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
@@ -240,15 +260,15 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
-        #         isDone = True
-        #     else:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k]) 
-        # reward = np.copy(reward_solo)
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
+        for k in range(self.NUM_UAV):
+            if self.flag[k] != 0:
+                reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+                isDone = True
+            else:
+                reward_solo[k] = np.copy(sum_user_assoc[k]) 
+        reward = np.copy(reward_solo)
 
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
@@ -270,20 +290,20 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        sum_user_assoc_temp = np.copy(sum_user_assoc)
-        reward_ind = np.zeros(np.size(sum_user_assoc))
-        reward = 0
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                sum_user_assoc_temp[k] -= 2
-                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-                reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
-                isDone = True
-            else:
-                temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
-        reward = np.copy(reward_ind)
+        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        # sum_user_assoc_temp = np.copy(sum_user_assoc)
+        # reward_ind = np.zeros(np.size(sum_user_assoc))
+        # reward = 0
+        # for k in range(self.NUM_UAV):
+        #     if self.flag[k] != 0:
+        #         sum_user_assoc_temp[k] -= 2
+        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+        #         reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+        #         isDone = True
+        #     else:
+        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+        #         reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+        # reward = np.copy(reward_ind)
 
         
         # Defining the reward function by the number of covered user
@@ -319,9 +339,9 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 
