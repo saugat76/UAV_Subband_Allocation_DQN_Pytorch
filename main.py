@@ -140,8 +140,8 @@ u_env = UAVenv(user_loc_1)
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 900 
-num_epochs = 20
+num_episode = 450
+num_epochs = 30
 discount_factor = 0.95
 alpha = 3.5e-4
 batch_size = 512
@@ -226,6 +226,11 @@ for i_episode in range(num_episode):
             if len(UAV_OB[k].replay_buffer) > batch_size:
                 UAV_OB[k].train(batch_size, dnn_epoch)
 
+        if t == num_episode/2:
+            u_env.u_loc = user_loc_2
+        elif t == 0:
+            u_env.u_loc = user_loc_1
+
     if i_episode % 10 == 0:
         # Reset of the environment
         u_env.reset()
@@ -244,7 +249,6 @@ for i_episode in range(num_episode):
             temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
-            # print(temp_data)
             if best_result < temp_data[4]:
                 best_result = temp_data[4]
                 best_state = states        
@@ -252,9 +256,11 @@ for i_episode in range(num_episode):
         print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
         u_env.render(ax1)
         plt.title("Intermediate State")
+        if t == num_episode/2:
+            u_env.u_loc = user_loc_2
+        elif t == 0:
+            u_env.u_loc = user_loc_1
         
-    if i_episode + 1 % (num_episode/2) == 0:
-        u_env.u_loc = user_loc_2
 
 def smooth(y, pts):
     box = np.ones(pts)/pts
@@ -263,11 +269,11 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\episodic_reward.mat', mdict)
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\connected_user.mat', mdict_2)
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\connected_user.mat', mdict_2)
 mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward_agent}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run102_Dynamic\epsiodic_reward_agent.mat', mdict_3)
+savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\epsiodic_reward_agent.mat', mdict_3)
 
 
 # Plot the accumulated reward vs episodes
