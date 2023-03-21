@@ -140,7 +140,7 @@ u_env = UAVenv(user_loc_1)
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 450
+num_episode = 10
 num_epochs = 30
 discount_factor = 0.95
 alpha = 3.5e-4
@@ -169,7 +169,8 @@ UAV_OB = [None, None, None, None]
 
 for k in range(NUM_UAV):
             UAV_OB[k] = DQL()
-best_result = 0
+best_result_1 = 0
+best_result_2 = 0
 
 for i_episode in range(num_episode):
     print(i_episode)
@@ -249,18 +250,30 @@ for i_episode in range(num_episode):
             temp_data = u_env.step(drone_act_list)
             states = u_env.get_state()
             states_fin = states
-            if best_result < temp_data[4]:
-                best_result = temp_data[4]
-                best_state = states        
-        print(drone_act_list)
-        print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
-        u_env.render(ax1)
-        plt.title("Intermediate State")
-        if t == num_episode/2:
-            u_env.u_loc = user_loc_2
-        elif t == 0:
-            u_env.u_loc = user_loc_1
+
+            if t < num_episode/2:
+                u_env.u_loc = user_loc_1
+                temp_user_2 = temp_data[4]
+                if best_result_2 < temp_data[4]:
+                    best_result_2 = temp_data[4]
+                    best_state_2 = states 
+                    
+            if t >= num_episode/2:
+                u_env.u_loc = user_loc_2
+                temp_user_1 = temp_data[4]
+                if best_result_1 < temp_data[4]:
+                    best_result_1 = temp_data[4]
+                    best_state_1 = states  
         
+        print(drone_act_list)
+        print("Number of user connected before channge in ",i_episode," episode is: ", temp_user_1)
+        u_env.render(ax1)
+        plt.title("Intermediate State: Before Change")
+        
+        print(drone_act_list)
+        print("Number of user connected after change in ",i_episode," episode is: ", temp_user_2)
+        u_env.render(ax1)
+        plt.title("Intermediate State: After Change")
 
 def smooth(y, pts):
     box = np.ones(pts)/pts
@@ -294,17 +307,19 @@ smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
-plt.title("Smoothed Epidode vs Episodic Reward")
+plt.title("Smoothed Episode vs Episodic Reward")
 plt.show()
-fig = plt.figure()
-# final_render(states_fin, "final")
-# fig = plt.figure()
-# final_render(best_state, "best")
-# print(states_fin)
-# print('Total Connected User in Final Stage', temp_data[4])
-# print("Best State")
-# print(best_state)
-# print("Total Connected User (Best Outcome)", best_result)
 
+fig = plt.figure()
+final_render(best_state_1, "best_user1")
+print("Best State")
+print(best_state_1)
+print("Total Connected User (Best Outcome): Before Change", best_result_1)
+
+fig = plt.figure()
+final_render(best_state_2, "best_user2")
+print("Best State")
+print(best_state_2)
+print("Total Connected User (Best Outcome): After Change", best_result_2)
 
 
