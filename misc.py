@@ -30,7 +30,7 @@ def final_render(state, remark):
     if remark == "best_user1":
         plt.title("Best state of UAV: Before Change")
     elif remark == "best_user2":
-        plt.title("Final state of UAV: After Change")
+        plt.title("Best state of UAV: After Change")
     plt.pause(0.5)
     plt.xlim(-50, 1050)
     plt.ylim(-50, 1050)

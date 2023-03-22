@@ -140,7 +140,7 @@ u_env = UAVenv(user_loc_1)
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 10
+num_episode = 450
 num_epochs = 30
 discount_factor = 0.95
 alpha = 3.5e-4
@@ -238,7 +238,7 @@ for i_episode in range(num_episode):
         # Get the states
         states = u_env.get_state()
         states_ten = torch.from_numpy(states)
-        for t in range(100):
+        for t in range(num_epochs):
             drone_act_list = []
             for k in range(NUM_UAV):
                 state = states[k,:]
@@ -251,26 +251,25 @@ for i_episode in range(num_episode):
             states = u_env.get_state()
             states_fin = states
 
-            if t < num_episode/2:
+            if t < num_epochs/2:
                 u_env.u_loc = user_loc_1
                 temp_user_2 = temp_data[4]
                 if best_result_2 < temp_data[4]:
                     best_result_2 = temp_data[4]
                     best_state_2 = states 
                     
-            if t >= num_episode/2:
+            if t >= num_epochs/2:
                 u_env.u_loc = user_loc_2
                 temp_user_1 = temp_data[4]
                 if best_result_1 < temp_data[4]:
                     best_result_1 = temp_data[4]
                     best_state_1 = states  
         
-        print(drone_act_list)
         print("Number of user connected before channge in ",i_episode," episode is: ", temp_user_1)
+        # plt.figure()
         u_env.render(ax1)
         plt.title("Intermediate State: Before Change")
-        
-        print(drone_act_list)
+        # plt.figure()
         print("Number of user connected after change in ",i_episode," episode is: ", temp_user_2)
         u_env.render(ax1)
         plt.title("Intermediate State: After Change")
