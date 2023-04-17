@@ -15,14 +15,14 @@ def cart2pol(z):
         return (np.abs(z), np.angle(z))
 
 
-NUM_USER = 80
-NUM_UAV = 4
+NUM_USER = 100
+NUM_UAV = 5
 COVERAGE_XY = 1000
 SEED = 1
 random.seed(SEED)
 
 HOTSPOTS = np.array(
-        [[500, 200], [800, 800], [300, 800]])  # Position setup in grid size rather than actual distance
+            [[200, 200], [800, 800], [200, 800], [800, 200]])  # Position setup in grid size rather than actual distance
 USER_DIS = int(NUM_USER / NUM_UAV)
 USER_LOC = np.zeros((NUM_USER - USER_DIS, 3))
 
@@ -88,8 +88,8 @@ plt.show()
 
 ## User distribution after change
 
-HOTSPOTS = np.array(
-        [[500, 300], [700, 700], [400, 700]])  # Position setup in grid size rather than actual distance
+HOTSPOTS = np.array([[300, 400], [600, 700], [400, 500], [400, 600]]
+    )  # Position setup in grid size rather than actual distance
 USER_DIS = int(NUM_USER / NUM_UAV)
 USER_LOC = np.zeros((NUM_USER - USER_DIS, 3))
 

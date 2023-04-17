@@ -7,6 +7,9 @@ import math
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import random
+import sys
+
+reward_level = int(sys.argv[1])
 
 SEED = 1
 np.random.seed(SEED)
@@ -20,8 +23,8 @@ class UAVenv(gym.Env):
     """Custom Environment that follows gym interface """
     metadata = {'render.modes': ['human']}
     # Fixed Input Parameters
-    NUM_USER = 80                           # Number of ground user
-    NUM_UAV = 4                             # Number of UAV
+    NUM_USER = 100                           # Number of ground user
+    NUM_UAV = 5                             # Number of UAV
     Fc = 2                                  # Operating Frequency 2 GHz
     LightSpeed = 3 * (10 ** 8)              # Speed of Light
     WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
@@ -54,7 +57,7 @@ class UAVenv(gym.Env):
     # Remaining NUM_USER/5 is then uniformly distributed in the target area
 
     # HOTSPOTS_1 = np.array(
-    #     [[500, 200], [800, 800], [300, 800]])  # Position setup in grid size rather than actual distance
+    #     [[200, 200], [800, 800], [200, 800], [800, 200]])  # Position setup in grid size rather than actual distance
     # USER_DIS = int(NUM_USER / NUM_UAV)
     # USER_LOC_1 = np.zeros((NUM_USER - USER_DIS, 2))
     
@@ -77,7 +80,7 @@ class UAVenv(gym.Env):
     #############################################################################
 
     # HOTSPOTS_2 = np.array(
-    #     [[500, 300], [700, 700], [400, 700]])  # Position setup in grid size rather than actual distance
+    #     [[300, 400], [600, 700], [400, 500], [400, 600]])  # Position setup in grid size rather than actual distance
     # USER_LOC_2 = np.zeros((NUM_USER - USER_DIS, 2))
 
     # for i in range(len(HOTSPOTS_2)):
@@ -99,7 +102,7 @@ class UAVenv(gym.Env):
     # Saving the user location on a file instead of generating everytime
 
     # USER_LOC = np.loadtxt('UserLocation_Uniform.txt', delimiter=' ').astype(np.int64)
-    # # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
+    # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
     # USER_RB_REQ = np.random.randint(low=1, high=3, size=(NUM_USER, 1))
     # USER_RB_REQ[np.random.randint(low = 0, high=NUM_USER, size=(NUM_USER,1))] = 1
     # print(sum(USER_RB_REQ))
@@ -120,7 +123,7 @@ class UAVenv(gym.Env):
         # Further complexity by choosing random value of state or starting at same initial position
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5]]
         # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = [0, 0, 0, 0, 0]
@@ -133,6 +136,8 @@ class UAVenv(gym.Env):
         # Execution of one step within the environment
         # Deal with out of boundaries conditions
         isDone = False
+        # Initialize sum_user_association
+        sum_user_assoc = 0
         # Calculate the distance of every users to the UAV BS and organize as a list
         dist_u_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER))
         for i in range(self.NUM_UAV):
@@ -234,11 +239,12 @@ class UAVenv(gym.Env):
             # rb_allocated = 0
             # Iterate over the sorted user index and allocate RB is only available
             for user_index in temp_user_actual_idx[0]:
-                if self.USER_RB_REQ[user_index] + rb_allocated[i] <= cap_rb_num:
-                    user_asso_flag[i, user_index] = 1
-                    rb_allocated[i] += self.USER_RB_REQ[user_index]
-                else:
-                    break
+                if dist_u_uav[i, user_index] <= self.coverage_radius:
+                    if self.USER_RB_REQ[user_index] + rb_allocated[i] <= cap_rb_num:
+                        user_asso_flag[i, user_index] = 1
+                        rb_allocated[i] += self.USER_RB_REQ[user_index]
+                    else:
+                        break
 
         # For the second sweep, sweep through all users
         # If the user is not associated choose the closest UAV and check whether it has any available resource
@@ -260,30 +266,32 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
-        #         isDone = True
-        #     else:
-        #         reward_solo[k] = np.copy(sum_user_assoc[k]) 
-        # reward = np.copy(reward_solo)
+        if reward_level == 1:
+            sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+            reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
+            for k in range(self.NUM_UAV):
+                if self.flag[k] != 0:
+                    reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+                    isDone = True
+                else:
+                    reward_solo[k] = np.copy(sum_user_assoc[k]) 
+            reward = np.copy(reward_solo)
 
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
         #############################################################################################
-        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        reward_solo = np.zeros(np.size(sum_user_assoc), dtype = "float32")
-        penalty_overlap = penalty_overlap.flatten()
-        for k in range(self.NUM_UAV):
-            if self.flag[k] != 0:
-                reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
-                isDone = True
-            else:
-                reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
-        # Calculation of reward based in the change in the number of connected user
-        reward = np.copy(reward_solo)
+        elif reward_level == 3:
+            sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+            reward_solo = np.zeros(np.size(sum_user_assoc), dtype = "float32")
+            penalty_overlap = penalty_overlap.flatten()
+            for k in range(self.NUM_UAV):
+                if self.flag[k] != 0:
+                    reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
+                    isDone = True
+                else:
+                    reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
+            # Calculation of reward based in the change in the number of connected user
+            reward = np.copy(reward_solo)
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         # Only share the information to the neighbours based on distance values
@@ -291,20 +299,21 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
-        # sum_user_assoc = np.sum(user_asso_flag, axis = 1)
-        # sum_user_assoc_temp = np.copy(sum_user_assoc)
-        # reward_ind = np.zeros(np.size(sum_user_assoc))
-        # reward = 0
-        # for k in range(self.NUM_UAV):
-        #     if self.flag[k] != 0:
-        #         sum_user_assoc_temp[k] -= 2
-        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-        #         reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
-        #         isDone = True
-        #     else:
-        #         temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-        #         reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
-        # reward = np.copy(reward_ind)
+        elif reward_level == 2:
+            sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+            sum_user_assoc_temp = np.copy(sum_user_assoc)
+            reward_ind = np.zeros(np.size(sum_user_assoc))
+            reward = 0
+            for k in range(self.NUM_UAV):
+                if self.flag[k] != 0:
+                    sum_user_assoc_temp[k] -= 2
+                    temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                    reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+                    isDone = True
+                else:
+                    temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
+                    reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+            reward = np.copy(reward_ind)
 
         
         # Defining the reward function by the number of covered user
@@ -314,6 +323,7 @@ class UAVenv(gym.Env):
         # reward = np.copy(total_user_covered)
 
         # Return of obs, reward, done, info
+        print(sum_user_assoc)
         return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum(sum_user_assoc), rb_allocated
 
 
@@ -342,7 +352,7 @@ class UAVenv(gym.Env):
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
-        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5]]
+        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
 

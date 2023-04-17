@@ -17,6 +17,18 @@ from torch.utils.data.dataset import IterableDataset
 import os
 from scipy.io import savemat
 from matplotlib.animation import FuncAnimation
+import sys
+
+i = int(sys.argv[1])
+
+level_path = [
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl1',
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl2',
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl3'
+]
+
+level_path_value = level_path[i-1]
+
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
@@ -140,7 +152,7 @@ u_env = UAVenv(user_loc_1)
 GRID_SIZE = u_env.GRID_SIZE
 NUM_UAV = u_env.NUM_UAV
 NUM_USER = u_env.NUM_USER
-num_episode = 450
+num_episode = 351
 num_epochs = 30
 discount_factor = 0.95
 alpha = 3.5e-4
@@ -164,7 +176,7 @@ fig = plt.figure()
 gs = GridSpec(1, 1, figure=fig)
 ax1 = fig.add_subplot(gs[0:1, 0:1])
 
-UAV_OB = [None, None, None, None]
+UAV_OB = [None, None, None, None, None]
 
 
 for k in range(NUM_UAV):
@@ -281,11 +293,11 @@ def smooth(y, pts):
 
 ## Save the data from the run as a file
 mdict = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\episodic_reward.mat', mdict)
+savemat(level_path_value + '\episodic_reward.mat', mdict)
 mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\connected_user.mat', mdict_2)
+savemat(level_path_value + '\connected_user.mat', mdict_2)
 mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward_agent}
-savemat(r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\epsiodic_reward_agent.mat', mdict_3)
+savemat(level_path_value + '\epsiodic_reward_agent.mat', mdict_3)
 
 
 # Plot the accumulated reward vs episodes
@@ -294,29 +306,36 @@ plt.plot(range(0, num_episode), episode_reward)
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
 plt.title("Episode vs Episodic Reward")
-plt.show()
+plt.savefig(level_path_value + '\episode_vs_reward.png')
+plt.close()
 fig = plt.figure()
 plt.plot(range(0, num_episode), episode_user_connected)
 plt.xlabel("Episode")
 plt.ylabel("Connected User in Episode")
 plt.title("Episode vs Connected User in Epsisode")
-plt.show()
+plt.savefig(level_path_value + '\episode_vs_conenctedusers.png')
+plt.close()
 fig = plt.figure()
 smoothed = smooth(episode_reward, 10)
 plt.plot(range(0, num_episode-10), smoothed[0:len(smoothed)-10] )
 plt.xlabel("Episode")
 plt.ylabel("Episodic Reward")
 plt.title("Smoothed Episode vs Episodic Reward")
-plt.show()
+plt.savefig(level_path_value + '\episode_vs_reward_smoothed.png')
+plt.close()
 
 fig = plt.figure()
 final_render(best_state_1, "best_user1")
+plt.savefig(level_path_value + '\Best_Before_Change.png')
+plt.close()
 print("Best State")
 print(best_state_1)
 print("Total Connected User (Best Outcome): Before Change", best_result_1)
 
 fig = plt.figure()
 final_render(best_state_2, "best_user2")
+plt.savefig(level_path_value + '\Best_After_Change.png')
+plt.close()
 print("Best State")
 print(best_state_2)
 print("Total Connected User (Best Outcome): After Change", best_result_2)

@@ -34,4 +34,3 @@ def final_render(state, remark):
     plt.pause(0.5)
     plt.xlim(-50, 1050)
     plt.ylim(-50, 1050)
-    plt.show()
