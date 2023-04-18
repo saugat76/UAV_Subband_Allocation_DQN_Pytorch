@@ -16,7 +16,9 @@ import argparse
 from distutils.util import strtobool
 import time
 import warnings
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
@@ -28,12 +30,12 @@ os.chdir = ("")
 def parse_args():
     parser = argparse.ArgumentParser()
     # Arguments for the experiments name / run / setup and Weights and Biases
-    parser.add_argument("--exp-name", type=str, default="madql_uav", help="name of this experiment")
+    parser.add_argument("--exp-name", type=str, default="madql_uav_dynamic_user", help="name of this experiment")
     parser.add_argument("--seed", type=int, default=1, help="seed of experiment to ensure reproducibility")
-    parser.add_argument("--torch-determinsitc", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
+    parser.add_argument("--torch-deterministic", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
     parser.add_argument("--cuda", type=lambda x: bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggled, cuda will be enabled by default")
     parser.add_argument("--wandb-track", type=lambda x: bool(strtobool(x)), default=False, help="if toggled, this experiment will be tracked with Weights and Biases project")
-    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch", help="project name in Weight and Biases")
+    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch_Dynamic", help="project name in Weight and Biases")
     parser.add_argument("--wandb-entity", type=str, default= None, help="entity(team) for Weights and Biases project")
 
     # Arguments specific to the Algotithm used 
@@ -60,7 +62,7 @@ def parse_args():
 
 
 # GPU configuration use for faster processing
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available())
 
 
 # DNN modeling
@@ -164,7 +166,18 @@ class DQL:
 
 if __name__ == "__main__":
     args = parse_args()
-    u_env = UAVenv()
+
+    # Set the seed value from arg parser to ensure reproducibility 
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.use_deterministic_algorithms = args.torch_deterministic
+
+    # User location initialization for the dynamicity 
+    user_loc_1 = np.loadtxt('UserLocation_1.txt', delimiter=' ').astype(np.int64)
+    user_loc_2 = np.loadtxt('UserLocation_2.txt', delimiter=' ').astype(np.int64)
+
+    u_env = UAVenv(user_loc=user_loc_1)
     GRID_SIZE = u_env.GRID_SIZE
     NUM_UAV = u_env.NUM_UAV
     NUM_USER = u_env.NUM_USER
@@ -182,12 +195,6 @@ if __name__ == "__main__":
     # Set the run id name to tack all the runs 
     run_id = f"{args.exp_name}__lvl{args.info_exchange_lvl}__{u_env.NUM_UAV}__{args.seed}__{int(time.time())}"
 
-    # Set the seed value from arg parser to ensure reproducibility 
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    torch.use_deterministic_algorithms = args.torch_determinsitc
-
     # If wandb tack is set to True // Track the training process, hyperparamters and results
     if args.wandb_track:
         wandb.init(
@@ -196,8 +203,8 @@ if __name__ == "__main__":
             entity=args.wandb_entity,
             sync_tensorboard= True,
             # track hyperparameters and run metadata
-            config=vars(args),
-            name= run_id,
+            config = vars(args),
+            name = run_id,
             save_code= True,
         )
     # Track everyruns inside run folder // Tensorboard files to keep track of the results
@@ -225,6 +232,9 @@ if __name__ == "__main__":
     episode_reward = np.zeros(num_episode)
     episode_user_connected = np.zeros(num_episode)
 
+    # Keeping track of individual agents 
+    episode_reward_agent = np.zeros((NUM_UAV, 1))
+
     # Plot the grid space
     fig = plt.figure()
     gs = GridSpec(1, 1, figure=fig)
@@ -234,7 +244,8 @@ if __name__ == "__main__":
     UAV_OB = []
     for k in range(NUM_UAV):
                 UAV_OB.append(DQL())
-    best_result = 0
+    best_result_1 = 0
+    best_result_2 = 0
 
     # Start of the episode
     for i_episode in range(num_episode):
@@ -264,7 +275,6 @@ if __name__ == "__main__":
                     state = states_ten.flatten()
                 action = UAV_OB[k].epsilon_greedy(state.float())
                 drone_act_list.append(action)
-
 
             # Find the global reward for the combined set of actions for the UAV
             temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
@@ -297,11 +307,19 @@ if __name__ == "__main__":
             episode_user_connected[i_episode] += sum(temp_data[4])
             user_connected = temp_data[4]
 
+            # Also calculting episodic reward for each agent // Add this in your main program 
+            episode_reward_agent = np.add(episode_reward_agent, reward)
+
             states = next_state
 
             for k in range(NUM_UAV):
                 if len(UAV_OB[k].replay_buffer) > batch_size:
                     UAV_OB[k].train(batch_size, dnn_epoch)
+            
+            if t == num_epochs/2:
+                u_env.u_loc = user_loc_2
+            elif t == 0:
+                u_env.u_loc = user_loc_1
 
 
         #############################
@@ -343,16 +361,26 @@ if __name__ == "__main__":
                 temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
                 states = u_env.get_state()
                 states_fin = states
-                if best_result < sum(temp_data[4]):
-                    best_result = sum(temp_data[4])
-                    best_state = states    
+
+                if t >= num_epochs/2:
+                    u_env.u_loc = user_loc_2
+                    temp_user_2 = temp_data[4]
+                    if best_result_2 < sum(temp_data[4]):
+                        best_result_2 = sum(temp_data[4])
+                        best_state_2 = states  
+
+                elif t < num_epochs/2:
+                    u_env.u_loc = user_loc_1
+                    temp_user_1 = temp_data[4]
+                    if best_result_1 < sum(temp_data[4]):
+                        best_result_1 = sum(temp_data[4])
+                        best_state_1 = states    
 
             # Custom logs and figures save / 
             custom_dir = f'custom_logs\lvl_{args.info_exchange_lvl}\{run_id}'
             if not os.path.exists(custom_dir):
                 os.makedirs(custom_dir)
-                
-            u_env.render(ax1)
+
             ##########################
             ####   Custom logs    ####
             ##########################
@@ -364,8 +392,15 @@ if __name__ == "__main__":
             #############################
             # writer.add_figure("images/uav_users", figure, i_episode)
 
+            writer.add_scalar("chart/connected_users_after", sum(temp_user_2))
+            writer.add_scalar("chart/connected_users_before", sum(temp_user_1))
+
             print(drone_act_list)
-            print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
+            print("Number of user connected before change in ",i_episode," episode is: ", temp_user_1)
+            print("Total user connected before change in ",i_episode," episode is: ", sum(temp_user_1))
+            print("Number of user connected after change in ",i_episode," episode is: ", temp_user_2)
+            print("Total user connected after change in ",i_episode," episode is: ", sum(temp_user_2))
+
 
     def smooth(y, pts):
         box = np.ones(pts)/pts
@@ -380,6 +415,9 @@ if __name__ == "__main__":
     savemat(custom_dir + f'\episodic_reward.mat', mdict)
     mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
     savemat(custom_dir + f'\connected_users.mat', mdict_2)
+    mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward_agent}
+    savemat(custom_dir + f'\epsiodic_reward_agent.mat', mdict_3)
+
     # Plot the accumulated reward vs episodes // Save the figures in the respective directory 
     # Episodic Reward vs Episodes
     fig_1 = plt.figure()
@@ -407,26 +445,30 @@ if __name__ == "__main__":
     plt.savefig(custom_dir + f'\episode_vs_rewards(smoothed).png')
     plt.close()
     # Plot for best and final states 
-    fig = plt.figure()
-    final_render(states_fin, "final")
-    plt.savefig(custom_dir + r'\final_users.png')
-    plt.close()
+
     fig_4 = plt.figure()
-    final_render(best_state, "best")
-    plt.savefig(custom_dir + r'\best_users.png')
+    final_render(best_state_1, "best_user1")
+    plt.savefig(custom_dir + r'\Best_Before_Change.png')
+    writer.add_figure("images/uav_users_best_before", fig_4)
     plt.close()
-    print(states_fin)
-    print('Total Connected User in Final Stage', temp_data[4])
     print("Best State")
-    print(best_state)
-    print("Total Connected User (Best Outcome)", best_result)
+    print(best_state_1)
+    print("Total Connected User (Best Outcome): Before Change", best_result_1)
+
+    fig_5 = plt.figure()
+    final_render(best_state_2, "best_user2")
+    plt.savefig(custom_dir + r'\Best_After_Change.png')
+    writer.add_figure("images/uav_users_best_after", fig_5)
+    plt.close()
+    print("Best State")
+    print(best_state_2)
+    print("Total Connected User (Best Outcome): After Change", best_result_2)
 
     #############################
     ####   Tensorboard logs  ####
     #############################
-    writer.add_figure("images/uav_users_best", fig_4)
-    writer.add_text(
-            "best outcome", str(best_state))
-    
+    writer.add_text("best outcome_before", str(best_state_1))
+    writer.add_text("best outcome_after", str(best_state_2))
+
     writer.close()
 

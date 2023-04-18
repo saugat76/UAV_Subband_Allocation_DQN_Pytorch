@@ -7,6 +7,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import time 
+import random
 
 
 ###################################
@@ -49,54 +50,65 @@ class UAVenv(gym.Env):
     # User distribution on the target area // NUM_USER/5 users in each of four hotspots
     # Remaining NUM_USER/5 is then uniformly distributed in the target area
 
-    # HOTSPOTS = np.array(
-    #     [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
+    # HOTSPOTS_1 = np.array(
+    #     [[200, 200], [800, 800], [200, 800], [800, 200]])  # Position setup in grid size rather than actual distance
     # USER_DIS = int(NUM_USER / NUM_UAV)
-    # USER_LOC = np.zeros((NUM_USER - USER_DIS, 2))
+    # USER_LOC_1 = np.zeros((NUM_USER - USER_DIS, 2))
     
-    # for i in range(len(HOTSPOTS)):
+    # for i in range(len(HOTSPOTS_1)):
     #     for j in range(USER_DIS):
     #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
     #         temp_loc_theta = random.uniform(0, 2*math.pi)
     #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
     #         (temp_loc_1, temp_loc_2) = temp_loc
-    #         temp_loc_1 = temp_loc_1 + HOTSPOTS[i, 0]
-    #         temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
-    #         USER_LOC[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_1[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_1[i, 1]
+    #         USER_LOC_1[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
     # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
-    # USER_LOC = np.concatenate((USER_LOC, temp_loc))
-    # np.savetxt('UserLocation.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
+    # USER_LOC_1 = np.concatenate((USER_LOC_1, temp_loc))
+
+    # np.savetxt('UserLocation_1.txt', USER_LOC_1, fmt='%.3e', delimiter=' ', newline='\n')
+
+    ############################################################################
+    #     Second User Distribution // Dynamic Environment // Movement User    ##
+    ############################################################################
+
+    # HOTSPOTS_2 = np.array(
+    #     [[300, 400], [600, 700], [400, 500], [400, 600]])  # Position setup in grid size rather than actual distance
+    # USER_LOC_2 = np.zeros((NUM_USER - USER_DIS, 2))
+
+    # for i in range(len(HOTSPOTS_2)):
+    #     for j in range(USER_DIS):
+    #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
+    #         temp_loc_theta = random.uniform(0, 2*math.pi)
+    #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
+    #         (temp_loc_1, temp_loc_2) = temp_loc
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_2[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_2[i, 1]
+    #         USER_LOC_2[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
+    # USER_LOC_2 = np.concatenate((USER_LOC_2, temp_loc))
+
+    # np.savetxt('UserLocation_2.txt', USER_LOC_2, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
 
-    USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
-
-
-    #############################################################################
-    ##     Second User Distribution // Hotspots with Uniform Distribution      ##
-    #############################################################################
-    # USER_LOC = np.random.uniform(low=0, high=COVERAGE_XY, size=(NUM_USER, 2))
-    # np.savetxt('UserLocation_Uniform.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
-
-    # Saving the user location on a file instead of generating everytime
-
-    # USER_LOC = np.loadtxt('UserLocation_Uniform.txt', delimiter=' ').astype(np.int64)
     # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
     # USER_RB_REQ = np.random.randint(low=1, high=3, size=(NUM_USER, 1))
     # USER_RB_REQ[np.random.randint(low = 0, high=NUM_USER, size=(NUM_USER,1))] = 1
     # print(sum(USER_RB_REQ))
     # np.savetxt('UserRBReq.txt', USER_RB_REQ, delimiter=' ', newline='\n')
-    
+
     USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
 
-    def __init__(self):
+    def __init__(self, user_loc):
         super(UAVenv, self).__init__()
         # Defining action spaces // UAV RB allocation to each user increase each by 1 untill remains
         # Five different action for the movement of each UAV
         # 0 = Right, 1 = Left, 2 = straight, 3 = back, 4 = Hover
         # Defining Observation spaces // UAV RB to each user
         # Position of the UAV in space // X and Y pos
-        self.u_loc = self.USER_LOC
+        self.u_loc = user_loc
         self.state = np.zeros((self.NUM_UAV, 3), dtype=np.int32)
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state or starting at same initial position
