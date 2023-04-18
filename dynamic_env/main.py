@@ -16,9 +16,7 @@ import argparse
 from distutils.util import strtobool
 import time
 import warnings
-
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
