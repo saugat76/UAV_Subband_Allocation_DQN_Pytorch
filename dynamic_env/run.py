@@ -6,4 +6,4 @@ for i in range(1, 5):
     print('####  Running the code for Level:', i, "info exchange  ####")
     print('#######################################################')
     p = subprocess.run(["python", "uav_env.py"])
-    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--wandb-track", "True"])
+    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--wandb-track", "True", "--num-episode", str(800)])

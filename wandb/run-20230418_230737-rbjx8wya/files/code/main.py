@@ -210,7 +210,7 @@ if __name__ == "__main__":
     )
 
     # Store environment specific parameters
-    env_params = {'num_uav':NUM_UAV, 'num_user': NUM_USER, 'grid_size': GRID_SIZE, 'start_pos': str(u_env.state), 
+    env_params = {'num_uav':NUM_UAV, 'num_user': NUM_USER, 'grid_size': GRID_SIZE, 'start_pos': u_env.state, 
                       'coverage_xy':u_env.COVERAGE_XY, 'uav_height': u_env.UAV_HEIGHT, 'bw_uav': u_env.BW_UAV, 
                       'bw_rb':u_env.BW_RB, 'actual_bw_uav':u_env.ACTUAL_BW_UAV, 'uav_dis_thres': u_env.UAV_DIST_THRS,
                       'dist_penalty_pri': u_env.dis_penalty_pri}
@@ -219,6 +219,8 @@ if __name__ == "__main__":
         "|params|value|\n|-|-|\n%s" % ("\n".join([f"|{key}|{value}" for key, value in env_params.items()]))
     )
 
+    # Initialize global step value
+    global_step = 0
 
     # Keeping track of the episode reward
     episode_reward = np.zeros(num_episode)
@@ -312,8 +314,8 @@ if __name__ == "__main__":
         writer.add_scalar("charts/connected_users", episode_user_connected[i_episode], i_episode)
         if args.wandb_track:
             wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode] })
-            # wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
-            # wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
+            wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
+            wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
 
         # Keep track of hyper parameter and other valuable information in tensorboard log directory 
         # Track the params of all agent
@@ -362,7 +364,7 @@ if __name__ == "__main__":
             ####   Tensorboard logs  ####
             #############################
             # writer.add_figure("images/uav_users", figure, i_episode)
-            writer.add_scalar("charts/connected_users_test", sum(temp_data[4]))
+            writer.add_scalar("chart/connected_users", sum(temp_data[4]))
 
             print(drone_act_list)
             print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
@@ -429,8 +431,6 @@ if __name__ == "__main__":
     writer.add_figure("images/uav_users_best", fig_4)
     writer.add_text(
             "best outcome", str(best_state))
-    writer.add_text(
-            "best result", str(best_result))
-    wandb.finish()
+    
     writer.close()
 

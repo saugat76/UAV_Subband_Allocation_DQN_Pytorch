@@ -206,6 +206,7 @@ if __name__ == "__main__":
             name = run_id,
             save_code= True,
         )
+
     # Track everyruns inside run folder // Tensorboard files to keep track of the results
     writer = SummaryWriter(f"runs/{run_id}")
     # Store the hyper paramters used in run as a Scaler text inside the tensor board summary
@@ -215,7 +216,7 @@ if __name__ == "__main__":
     )
 
     # Store environment specific parameters
-    env_params = {'num_uav':NUM_UAV, 'num_user': NUM_USER, 'grid_size': GRID_SIZE, 'start_pos': u_env.state, 
+    env_params = {'num_uav':NUM_UAV, 'num_user': NUM_USER, 'grid_size': GRID_SIZE, 'start_pos': str(u_env.state), 
                       'coverage_xy':u_env.COVERAGE_XY, 'uav_height': u_env.UAV_HEIGHT, 'bw_uav': u_env.BW_UAV, 
                       'bw_rb':u_env.BW_RB, 'actual_bw_uav':u_env.ACTUAL_BW_UAV, 'uav_dis_thres': u_env.UAV_DIST_THRS,
                       'dist_penalty_pri': u_env.dis_penalty_pri}
@@ -329,7 +330,7 @@ if __name__ == "__main__":
         writer.add_scalar("charts/episodic_length", num_epochs, i_episode)
         writer.add_scalar("charts/connected_users", episode_user_connected[i_episode], i_episode)
         if args.wandb_track:
-            wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode] })
+            wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode]})
             wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
             wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
 
@@ -375,7 +376,7 @@ if __name__ == "__main__":
                         best_result_1 = sum(temp_data[4])
                         best_state_1 = states    
 
-            # Custom logs and figures save / 
+            # Custom logs and save figures
             custom_dir = f'custom_logs\lvl_{args.info_exchange_lvl}\{run_id}'
             if not os.path.exists(custom_dir):
                 os.makedirs(custom_dir)
@@ -391,8 +392,8 @@ if __name__ == "__main__":
             #############################
             # writer.add_figure("images/uav_users", figure, i_episode)
 
-            writer.add_scalar("chart/connected_users_after", sum(temp_user_2))
-            writer.add_scalar("chart/connected_users_before", sum(temp_user_1))
+            writer.add_scalar("charts/connected_users_after", sum(temp_user_2), i_episode)
+            writer.add_scalar("charts/connected_users_before", sum(temp_user_1), i_episode)
 
             print(drone_act_list)
             print("Number of user connected before change in ",i_episode," episode is: ", temp_user_1)
@@ -466,8 +467,11 @@ if __name__ == "__main__":
     #############################
     ####   Tensorboard logs  ####
     #############################
-    writer.add_text("best outcome_before", str(best_state_1))
-    writer.add_text("best outcome_after", str(best_state_2))
+    writer.add_text("best state before", str(best_state_1))
+    writer.add_text("best outcome before", str(best_result_1))
+    writer.add_text("best state after", str(best_state_2))
+    writer.add_text("best outcome after", str(best_result_2))
 
+    wandb.finish()
     writer.close()
 
