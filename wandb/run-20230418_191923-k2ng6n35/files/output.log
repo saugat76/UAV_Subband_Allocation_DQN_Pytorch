@@ -1,0 +1,475 @@
+
+0
+[1, 4, 4, 4, 1]
+Number of user connected in  0  episode is:  [0 0 0 8 4]
+Total user connected in  0  episode is:  12
+1
+2
+3
+4
+5
+C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\numpy\core\shape_base.py:121: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  ary = asanyarray(ary)
+6
+7
+8
+9
+10
+[0, 2, 3, 0, 0]
+Number of user connected in  10  episode is:  [ 6  0  4 11  2]
+Total user connected in  10  episode is:  23
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+[0, 0, 1, 3, 1]
+Number of user connected in  20  episode is:  [ 2  4  8 11  0]
+Total user connected in  20  episode is:  25
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+[1, 0, 0, 3, 2]
+Number of user connected in  30  episode is:  [ 4 12  5  1  2]
+Total user connected in  30  episode is:  24
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+[1, 1, 1, 3, 2]
+Number of user connected in  40  episode is:  [ 8 12  7  4  1]
+Total user connected in  40  episode is:  32
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+[0, 0, 0, 3, 2]
+Number of user connected in  50  episode is:  [ 6  3  7 13  9]
+Total user connected in  50  episode is:  38
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+[0, 1, 0, 3, 2]
+Number of user connected in  60  episode is:  [13  4  0 13 14]
+Total user connected in  60  episode is:  44
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+[1, 1, 0, 3, 0]
+Number of user connected in  70  episode is:  [10  4  7 13 17]
+Total user connected in  70  episode is:  51
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+[0, 1, 2, 3, 0]
+Number of user connected in  80  episode is:  [15  2  3 13 17]
+Total user connected in  80  episode is:  50
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+[0, 0, 2, 2, 3]
+Number of user connected in  90  episode is:  [15  5  3 10 17]
+Total user connected in  90  episode is:  50
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+[0, 0, 2, 2, 2]
+Number of user connected in  100  episode is:  [15  5  3 10 17]
+Total user connected in  100  episode is:  50
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+[0, 0, 0, 2, 3]
+Number of user connected in  110  episode is:  [15  8  4 10 13]
+Total user connected in  110  episode is:  50
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+[0, 2, 2, 2, 0]
+Number of user connected in  120  episode is:  [13 14  4 11 10]
+Total user connected in  120  episode is:  52
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+[1, 2, 1, 2, 0]
+Number of user connected in  130  episode is:  [15 14  4 11 10]
+Total user connected in  130  episode is:  54
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+[3, 0, 0, 2, 0]
+Number of user connected in  140  episode is:  [15 14  4 10 10]
+Total user connected in  140  episode is:  53
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+[1, 2, 0, 2, 0]
+Number of user connected in  150  episode is:  [15 14  4 11 10]
+Total user connected in  150  episode is:  54
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+[1, 3, 0, 2, 1]
+Number of user connected in  160  episode is:  [15 11  4 11 14]
+Total user connected in  160  episode is:  55
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+[1, 3, 0, 2, 1]
+Number of user connected in  170  episode is:  [15 11  4 11 14]
+Total user connected in  170  episode is:  55
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+[0, 3, 0, 2, 1]
+Number of user connected in  180  episode is:  [14 11  4 11 14]
+Total user connected in  180  episode is:  54
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+[0, 1, 0, 2, 1]
+Number of user connected in  190  episode is:  [14 13  4 11 10]
+Total user connected in  190  episode is:  52
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+[3, 3, 0, 2, 1]
+Number of user connected in  200  episode is:  [15 14  4 11 10]
+Total user connected in  200  episode is:  54
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+[2, 3, 0, 2, 1]
+Number of user connected in  210  episode is:  [14 11  4 11 14]
+Total user connected in  210  episode is:  54
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+[2, 3, 0, 2, 1]
+Number of user connected in  220  episode is:  [14 11  4 11 14]
+Total user connected in  220  episode is:  54
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+[3, 3, 0, 2, 1]
+Number of user connected in  230  episode is:  [15 11  4 11 14]
+Total user connected in  230  episode is:  55
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+[3, 1, 2, 2, 1]
+Number of user connected in  240  episode is:  [15 13  8 10 10]
+Total user connected in  240  episode is:  56
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+[3, 3, 2, 3, 3]
+Number of user connected in  250  episode is:  [15 11  8 10 14]
+Total user connected in  250  episode is:  58
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+[3, 0, 3, 3, 3]
+Number of user connected in  260  episode is:  [15 11  8 11 14]
+Total user connected in  260  episode is:  59
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+[2, 0, 0, 3, 3]
+Number of user connected in  270  episode is:  [14 11  4 10 14]
+Total user connected in  270  episode is:  53
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+[3, 1, 2, 3, 3]
+Number of user connected in  280  episode is:  [15 13  8 10 10]
+Total user connected in  280  episode is:  56
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+[3, 3, 2, 3, 3]
+Number of user connected in  290  episode is:  [15 11  8 10 14]
+Total user connected in  290  episode is:  58
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+[0, 3, 1, 3, 3]
+Number of user connected in  300  episode is:  [14 11 14 10 14]
+Total user connected in  300  episode is:  63
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+[3, 0, 1, 3, 3]
+Number of user connected in  310  episode is:  [15 11 14 10 14]
+Total user connected in  310  episode is:  64
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+[1, 0, 3, 3, 2]
+Number of user connected in  320  episode is:  [15 12 11 10 16]
+Total user connected in  320  episode is:  64
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+[3, 0, 2, 3, 2]
+Number of user connected in  330  episode is:  [15 12 10  9 16]
+Total user connected in  330  episode is:  62
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+[1, 0, 2, 3, 2]
+Number of user connected in  340  episode is:  [15 12 10  9 16]
+Total user connected in  340  episode is:  62
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+[3, 0, 2, 3, 2]
+Number of user connected in  350  episode is:  [15 12 10  9 16]
+Total user connected in  350  episode is:  62
+[[ 2.  8.]
+ [10.  2.]
+ [ 2.  2.]
+ [ 2.  4.]
+ [ 8.  6.]]
+Total Connected User in Final Stage [15 12 10  9 16]
+Best State
+[[2. 9.]
+ [9. 2.]
+ [2. 1.]
+ [2. 5.]
+ [8. 5.]]
+Total Connected User (Best Outcome) 67
