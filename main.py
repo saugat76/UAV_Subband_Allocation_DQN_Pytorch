@@ -219,10 +219,15 @@ if __name__ == "__main__":
         "|params|value|\n|-|-|\n%s" % ("\n".join([f"|{key}|{value}" for key, value in env_params.items()]))
     )
 
+    # Initialize global step value
+    global_step = 0
 
     # Keeping track of the episode reward
     episode_reward = np.zeros(num_episode)
     episode_user_connected = np.zeros(num_episode)
+
+    # Keeping track of individual agents 
+    episode_reward_agent = np.zeros((NUM_UAV, 1))
 
     # Plot the grid space
     fig = plt.figure()
@@ -295,12 +300,19 @@ if __name__ == "__main__":
             episode_reward[i_episode] += sum(reward)
             episode_user_connected[i_episode] += sum(temp_data[4])
             user_connected = temp_data[4]
+            
+            # Also calculting episodic reward for each agent // Add this in your main program 
+            episode_reward_agent = np.add(episode_reward_agent, reward)
 
             states = next_state
 
             for k in range(NUM_UAV):
                 if len(UAV_OB[k].replay_buffer) > batch_size:
                     UAV_OB[k].train(batch_size, dnn_epoch)
+
+            if args.wandb_track:
+                wandb.log({"global steps": global_step})
+            global_step += 1
 
 
         #############################
@@ -382,6 +394,9 @@ if __name__ == "__main__":
     savemat(custom_dir + f'\episodic_reward.mat', mdict)
     mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
     savemat(custom_dir + f'\connected_users.mat', mdict_2)
+    mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward_agent': episode_reward_agent}
+    savemat(custom_dir + f'\epsiodic_reward_agent.mat', mdict_3)
+    
     # Plot the accumulated reward vs episodes // Save the figures in the respective directory 
     # Episodic Reward vs Episodes
     fig_1 = plt.figure()
