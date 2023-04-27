@@ -144,15 +144,15 @@ class DQL:
             done = done.to(device = device)
             diff = state - next_state
             done_local = (diff != 0).any(dim=1).float().to(device)
-
+            
             Q_next = self.target_network(next_state).detach()
             target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
-            
             # Forward 
-            # Loss calculation based on loss function
             target_Q = target_Q.float()
             Q_main = self.main_network(state).gather(1, action).squeeze()
-            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+
+            # Loss calculation based on loss function
+            loss = self.loss_func(target_Q.detach(), Q_main)
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
             loss.backward()
@@ -321,6 +321,10 @@ if __name__ == "__main__":
             elif t == 0:
                 u_env.u_loc = user_loc_1
 
+            if args.wandb_track:
+                wandb.log({"global steps": global_step})
+            global_step += 1
+
 
         #############################
         ####   Tensorboard logs  ####
@@ -331,6 +335,7 @@ if __name__ == "__main__":
         writer.add_scalar("charts/connected_users", episode_user_connected[i_episode], i_episode)
         if args.wandb_track:
             wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode]})
+            wandb.log({"episode": i_episode})
             wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
             wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
 
@@ -415,7 +420,7 @@ if __name__ == "__main__":
     savemat(custom_dir + f'\episodic_reward.mat', mdict)
     mdict_2 = {'num_episode':range(0, num_episode),'connected_user': episode_user_connected}
     savemat(custom_dir + f'\connected_users.mat', mdict_2)
-    mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward': episode_reward_agent}
+    mdict_3 = {'num_episode':range(0, num_episode),'episodic_reward_agent': episode_reward_agent}
     savemat(custom_dir + f'\epsiodic_reward_agent.mat', mdict_3)
 
     # Plot the accumulated reward vs episodes // Save the figures in the respective directory 
