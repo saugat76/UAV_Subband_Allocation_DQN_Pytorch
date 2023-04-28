@@ -55,7 +55,20 @@ def parse_args():
 
     # Environment specific arguments 
     parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state")
-
+    # Arguments for used inside the wireless UAV based enviornment  
+    parser.add_argument("--num-user", type=int, default=100, help="number of user in defined environment")
+    parser.add_argument("--num-uav", type=int, default=5, help="number of uav for the defined environment")
+    parser.add_argument("--generate-user-distribution", type=lambda x: bool(strtobool(x)), default=False, help="if true generate a new user distribution, set true if changing number of users")
+    parser.add_argument("--carrier-freq", type=int, default=2, help="set the frequency of the carrier signal in GHz")
+    parser.add_argument("--coverage-xy", type=int, default=1000, help="set the length of target area (square)")
+    parser.add_argument("--uav-height", type=int, default=350, help="define the altitude for all uav")
+    parser.add_argument("--theta", type=int, default=60, help="angle of coverage for a uav in degree")
+    parser.add_argument("--bw-uav", type=float, default=4e6, help="actual bandwidth of the uav")
+    parser.add_argument("--bw-rb", type=float, default=180e3, help="bandwidth of a resource block")
+    parser.add_argument("--grid-space", type=int, default=100, help="seperating space for grid")
+    parser.add_argument("--uav-dis-th", type=int, default=1000, help="distance value that defines which uav agent share info")
+    parser.add_argument("--dist-pri-param", type=float, default=1/5, help="distance penalty priority parameter used in level 3 info exchange")
+    
     args = parser.parse_args()
 
     return args
@@ -165,7 +178,7 @@ class DQL:
 
 if __name__ == "__main__":
     args = parse_args()
-    u_env = UAVenv()
+    u_env = UAVenv(args)
     GRID_SIZE = u_env.GRID_SIZE
     NUM_UAV = u_env.NUM_UAV
     NUM_USER = u_env.NUM_USER
@@ -311,7 +324,7 @@ if __name__ == "__main__":
                     UAV_OB[k].train(batch_size, dnn_epoch)
 
             if args.wandb_track:
-                wandb.log({"global steps": global_step})
+                wandb.log({"global_steps": global_step})
             global_step += 1
 
 
@@ -406,12 +419,12 @@ if __name__ == "__main__":
     plt.title("Episode vs Episodic Reward")
     plt.savefig(custom_dir + f'\episode_vs_reward.png')
     plt.close()
-    # Epsiode vs Connected Users
+    # Episode vs Connected Users
     fig_2 = plt.figure()
     plt.plot(range(0, num_episode), episode_user_connected)
     plt.xlabel("Episode")
     plt.ylabel("Connected User in Episode")
-    plt.title("Episode vs Connected User in Epsisode")
+    plt.title("Episode vs Connected User in Episode")
     plt.savefig(custom_dir + f'\episode_vs_connected_users.png')
     plt.close()
     # Episodic Reward vs Episodes (Smoothed)

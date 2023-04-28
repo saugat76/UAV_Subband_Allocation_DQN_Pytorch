@@ -1,0 +1,1 @@
+{"global steps": 79999, "_timestamp": 1682605703.147138, "_runtime": 5109.069364070892, "_step": 80799, "episodic_reward": 5482.130930304527, "episodic_length": 100, "connected_users": 6221.0, "_wandb": {"runtime": 5110}}

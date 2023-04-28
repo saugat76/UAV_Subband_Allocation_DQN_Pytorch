@@ -1,0 +1,34 @@
+2023-04-27 10:28:45,462 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Configure stats pid to 25208
+2023-04-27 10:28:45,462 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tripats\.config\wandb\settings
+2023-04-27 10:28:45,463 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\settings
+2023-04-27 10:28:45,463 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-27 10:28:45,463 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-04-27 10:28:45,463 INFO    MainThread:25208 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\main.py'}
+2023-04-27 10:28:45,470 INFO    MainThread:25208 [wandb_init.py:_log_setup():507] Logging user logs to C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230427_102845-ihwyq7pe\logs\debug.log
+2023-04-27 10:28:45,470 INFO    MainThread:25208 [wandb_init.py:_log_setup():508] Logging internal logs to C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230427_102845-ihwyq7pe\logs\debug-internal.log
+2023-04-27 10:28:45,471 INFO    MainThread:25208 [wandb_init.py:init():547] calling init triggers
+2023-04-27 10:28:45,472 INFO    MainThread:25208 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'exp_name': 'madql_uav', 'seed': 1, 'torch_deterministic': True, 'cuda': True, 'wandb_track': True, 'wandb_name': 'UAV_Subband_Allocation_DQN_Pytorch', 'wandb_entity': None, 'env_id': 'ma-custom-UAV-connectivity', 'num_env': 1, 'num_episode': 800, 'num_steps': 100, 'learning_rate': 0.00035, 'gamma': 0.95, 'batch_size': 512, 'epsilon': 0.1, 'update_rate': 10, 'buffer_size': 125000, 'epsilon_min': 0.1, 'epsilon_decay': False, 'epsilon_decay_steps': 1, 'info_exchange_lvl': 3, 'num_user': 100, 'num_uav': 5, 'generate_user_distribution': False, 'carrier_freq': 2, 'coverage_xy': 1000, 'uav_height': 350, 'theta': 60, 'bw_uav': 4000000.0, 'bw_rb': 180000.0, 'grid_space': 100, 'uav_dis_th': 500, 'dist_pri_param': 0.2}
+2023-04-27 10:28:45,473 INFO    MainThread:25208 [wandb_init.py:init():595] starting backend
+2023-04-27 10:28:45,473 INFO    MainThread:25208 [wandb_init.py:init():599] setting up manager
+2023-04-27 10:28:45,486 INFO    MainThread:25208 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-04-27 10:28:45,489 INFO    MainThread:25208 [wandb_init.py:init():605] backend started and connected
+2023-04-27 10:28:45,497 INFO    MainThread:25208 [wandb_init.py:init():695] updated telemetry
+2023-04-27 10:28:45,556 INFO    MainThread:25208 [wandb_init.py:init():732] communicating run to backend with 60.0 second timeout
+2023-04-27 10:28:45,977 INFO    MainThread:25208 [wandb_run.py:_on_init():2176] communicating current version
+2023-04-27 10:28:46,137 INFO    MainThread:25208 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.15.0 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-04-27 10:28:46,137 INFO    MainThread:25208 [wandb_init.py:init():782] starting run threads in backend
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_run.py:_console_start():2157] atexit reg
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_run.py:_redirect():2012] redirect: SettingsConsole.WRAP_RAW
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_run.py:_redirect():2077] Wrapping output streams.
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_run.py:_redirect():2102] Redirects installed.
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_init.py:init():824] run started, returning control to user process
+2023-04-27 10:28:46,756 INFO    MainThread:25208 [wandb_run.py:_tensorboard_callback():1432] tensorboard callback: runs/madql_uav__lvl3__5__1__1682605724, True
+2023-04-27 11:51:43,675 INFO    MainThread:25208 [wandb_run.py:_finish():1892] finishing run saugat76/UAV_Subband_Allocation_DQN_Pytorch/ihwyq7pe
+2023-04-27 11:51:43,675 INFO    MainThread:25208 [wandb_run.py:_atexit_cleanup():2126] got exitcode: 0
+2023-04-27 11:51:43,675 INFO    MainThread:25208 [wandb_run.py:_restore():2109] restore
+2023-04-27 11:51:43,675 INFO    MainThread:25208 [wandb_run.py:_restore():2115] restore done
+2023-04-27 11:51:55,797 INFO    MainThread:25208 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-04-27 11:51:55,798 INFO    MainThread:25208 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-04-27 11:51:55,815 INFO    MainThread:25208 [wandb_run.py:_footer_sync_info():3434] logging synced files

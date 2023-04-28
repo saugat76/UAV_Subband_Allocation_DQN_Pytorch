@@ -8,7 +8,6 @@ import math
 import matplotlib.pyplot as plt
 import time 
 
-
 ###################################
 ##     UAV Class Defination      ##
 ###################################
@@ -16,24 +15,6 @@ import time
 class UAVenv(gym.Env):
     """Custom Environment that follows gym interface """
     metadata = {'render.modes': ['human']}
-    # Fixed Input Parameters
-    NUM_USER = 100                          # Number of ground user
-    NUM_UAV = 5                             # Number of UAV
-    Fc = 2                                  # Operating Frequency 2 GHz
-    LightSpeed = 3 * (10 ** 8)              # Speed of Light
-    WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
-    COVERAGE_XY = 1000
-    UAV_HEIGHT = 350
-    BS_LOC = np.zeros((NUM_UAV, 3))
-    THETA = 60 * math.pi / 180              # In radian  // Bandwidth for a resource block (This value is representing 2*theta instead of theta)
-    BW_UAV = 4e6                            # Total Bandwidth per UAV   
-    BW_RB = 180e3                           # Bandwidth of a Resource Block
-    ACTUAL_BW_UAV = BW_UAV * 0.9
-    grid_space = 100
-    GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000                     # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
-                                            # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)                                          
 
     ## Polar to Cartesian and vice versa
     def pol2cart(r,theta):
@@ -45,10 +26,8 @@ class UAVenv(gym.Env):
     ############################################################################
     ##     First User Distribution // Hotspots with Uniform Distribution      ##
     ############################################################################
-
     # User distribution on the target area // NUM_USER/5 users in each of four hotspots
     # Remaining NUM_USER/5 is then uniformly distributed in the target area
-
     # HOTSPOTS = np.array(
     #     [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
     # USER_DIS = int(NUM_USER / NUM_UAV)
@@ -89,13 +68,35 @@ class UAVenv(gym.Env):
     
     USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
 
-    def __init__(self):
+    def __init__(self, args):
         super(UAVenv, self).__init__()
+         
+        # Environment specific params 
+        self.args = args
+        self.NUM_USER = self.args.num_user                      # Number of ground user
+        self.NUM_UAV = self.args.num_uav                        # Number of UAV
+        Fc = self.args.carrier_freq                             # Operating Frequency 2 GHz
+        LightSpeed = 3 * (10 ** 8)                              # Speed of Light
+        self.WaveLength = LightSpeed / (Fc * (10 ** 9))         # Wavelength of the wave
+        self.COVERAGE_XY = self.args.coverage_xy
+        self.UAV_HEIGHT = self.args.uav_height
+        self.BS_LOC = np.zeros((self.NUM_UAV, 3))
+        self.THETA = self.args.theta * math.pi / 180            # In radian  // Bandwidth for a resource block (This value is representing 2*theta instead of theta)
+        self. BW_UAV = self.args.bw_uav                         # Total Bandwidth per UAV   
+        self.BW_RB = self.args.bw_rb                            # Bandwidth of a Resource Block
+        self.ACTUAL_BW_UAV = self.BW_UAV * 0.9
+        self.grid_space = self.args.grid_space
+        self.GRID_SIZE = int(self.COVERAGE_XY / self.grid_space)# Each grid defined as 100m block
+        self.UAV_DIST_THRS = self.args.uav_dis_th               # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
+        self.dis_penalty_pri = self.args.dist_pri_param         # Priority value for defined for the distance penalty // 
+                                                                # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)
+
+
         # Defining action spaces // UAV RB allocation to each user increase each by 1 untill remains
         # Five different action for the movement of each UAV
         # 0 = Right, 1 = Left, 2 = straight, 3 = back, 4 = Hover
         # Defining Observation spaces // UAV RB to each user
-        # Position of the UAV in space // X and Y pos
+        # Position of the UAV in space // X and Y pos                                          
         self.u_loc = self.USER_LOC
         self.state = np.zeros((self.NUM_UAV, 3), dtype=np.int32)
         # Set the states to the hotspots and one at the centre for faster convergence
@@ -280,9 +281,9 @@ class UAVenv(gym.Env):
             reward = 0
             for k in range(self.NUM_UAV):
                 if self.flag[k] != 0:
-                    sum_user_assoc_temp[k] -= 2
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
                     reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
+                    reward_ind[k] -= 2
                     isDone = True
                 else:
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
