@@ -12,7 +12,7 @@ grid_space = 100
 coverage_radius = 350 * np.tan(60 * math.pi / 180 / 2)
 u_loc = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
 state = np.zeros((5, 3), dtype=np.int32)
-state[:, 0:2] = [[2, 1], [4, 7], [9, 2], [8, 5], [7, 8]]
+state[:, 0:2] = [[3, 0], [3, 4], [2, 9], [8, 7], [9, 2]]
 
 
 ax.cla()
@@ -23,5 +23,5 @@ for (i,j) in (position[:,:]):
     cc = plt.Circle((i,j), coverage_radius, alpha=0.1)
     ax.set_aspect(1)
     ax.add_artist(cc)
-ax.legend()
+ax.legend(loc="lower right")
 plt.show()
