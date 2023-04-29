@@ -323,11 +323,6 @@ if __name__ == "__main__":
                 if len(UAV_OB[k].replay_buffer) > batch_size:
                     UAV_OB[k].train(batch_size, dnn_epoch)
 
-            if args.wandb_track:
-                wandb.log({"global_steps": global_step})
-            global_step += 1
-
-
         #############################
         ####   Tensorboard logs  ####
         #############################
@@ -336,10 +331,11 @@ if __name__ == "__main__":
         writer.add_scalar("charts/episodic_length", num_epochs, i_episode)
         writer.add_scalar("charts/connected_users", episode_user_connected[i_episode], i_episode)
         if args.wandb_track:
-            wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode] })
+            wandb.log({"episodic_reward": episode_reward[i_episode], "episodic_length": num_epochs, "connected_users":episode_user_connected[i_episode], "global_steps": global_step})
             # wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
             # wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
-
+        global_step += 1
+        
         # Keep track of hyper parameter and other valuable information in tensorboard log directory 
         # Track the params of all agent
         # Since all agents are identical only tracking one agents params
