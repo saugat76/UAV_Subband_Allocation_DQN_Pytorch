@@ -14,24 +14,6 @@ import matplotlib.pyplot as plt
 class UAVenv(gym.Env):
     """Custom Environment that follows gym interface """
     metadata = {'render.modes': ['human']}
-    # Fixed Input Parameters
-    NUM_USER = 100                          # Number of ground user
-    NUM_UAV = 5                             # Number of UAV
-    Fc = 2                                  # Operating Frequency 2 GHz
-    LightSpeed = 3 * (10 ** 8)              # Speed of Light
-    WaveLength = LightSpeed / (Fc * (10 ** 9))  # Wavelength of the wave
-    COVERAGE_XY = 1000
-    UAV_HEIGHT = 350
-    BS_LOC = np.zeros((NUM_UAV, 3))
-    THETA = 60 * math.pi / 180              # In radian  // Bandwidth for a resource block (This value is representing 2*theta instead of theta)
-    BW_UAV = 4e6                            # Total Bandwidth per UAV   
-    BW_RB = 180e3                           # Bandwidth of a Resource Block
-    ACTUAL_BW_UAV = BW_UAV * 0.9
-    grid_space = 100
-    GRID_SIZE = int(COVERAGE_XY / grid_space)  # Each grid defined as 100m block
-    UAV_DIST_THRS = 1000                     # Distnce that defines the term "neighbours" // UAV closer than this distance share their information
-    dis_penalty_pri = (1/5)                 # Priority value for defined for the distance penalty // 
-                                            # // Value ranges from 0 (overlapping UAV doesnot affect reward) to 1 (Prioritizes overlapping area as negative reward to full extent)                                          
 
     ## Polar to Cartesian and vice versa
     def pol2cart(r,theta):
@@ -39,6 +21,7 @@ class UAVenv(gym.Env):
 
     def cart2pol(z):
             return (np.abs(z), np.angle(z))
+    
 
     ############################################################################
     ##     First User Distribution // Hotspots with Uniform Distribution      ##
