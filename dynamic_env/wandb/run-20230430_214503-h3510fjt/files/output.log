@@ -1020,3 +1020,498 @@ Total user connected after change in  670  episode is:  83
 676
 677
 678
+679
+680
+[2, 0, 0, 1, 0]
+Number of user connected before change in  680  episode is:  [ 3 11  3  3 12]
+Total user connected before change in  680  episode is:  32
+Number of user connected after change in  680  episode is:  [17 18 12 17 17]
+Total user connected after change in  680  episode is:  81
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+[3, 0, 1, 3, 4]
+Number of user connected before change in  690  episode is:  [ 1 11  5  5 13]
+Total user connected before change in  690  episode is:  35
+Number of user connected after change in  690  episode is:  [14 18 15 17 17]
+Total user connected after change in  690  episode is:  81
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+[2, 0, 1, 0, 3]
+Number of user connected before change in  700  episode is:  [ 5 10  3  4 12]
+Total user connected before change in  700  episode is:  34
+Number of user connected after change in  700  episode is:  [16 16 17 17 16]
+Total user connected after change in  700  episode is:  82
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+[3, 0, 0, 4, 4]
+Number of user connected before change in  710  episode is:  [ 1 10  5  4 12]
+Total user connected before change in  710  episode is:  32
+Number of user connected after change in  710  episode is:  [17 15 16 17 17]
+Total user connected after change in  710  episode is:  82
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+[2, 3, 0, 2, 0]
+Number of user connected before change in  720  episode is:  [ 2 10  5  8 12]
+Total user connected before change in  720  episode is:  37
+Number of user connected after change in  720  episode is:  [18 16 16 14 17]
+Total user connected after change in  720  episode is:  81
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+[3, 0, 0, 4, 4]
+Number of user connected before change in  730  episode is:  [ 1 10  5  4 12]
+Total user connected before change in  730  episode is:  32
+Number of user connected after change in  730  episode is:  [17 15 16 17 17]
+Total user connected after change in  730  episode is:  82
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+[2, 0, 0, 4, 0]
+Number of user connected before change in  740  episode is:  [ 3 10  5  3 12]
+Total user connected before change in  740  episode is:  33
+Number of user connected after change in  740  episode is:  [17 16 16 17 17]
+Total user connected after change in  740  episode is:  83
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+[2, 0, 0, 4, 0]
+Number of user connected before change in  750  episode is:  [ 3 10  5  3 12]
+Total user connected before change in  750  episode is:  33
+Number of user connected after change in  750  episode is:  [17 16 16 17 17]
+Total user connected after change in  750  episode is:  83
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+[3, 0, 0, 4, 4]
+Number of user connected before change in  760  episode is:  [ 1 10  5  4 12]
+Total user connected before change in  760  episode is:  32
+Number of user connected after change in  760  episode is:  [17 15 16 17 17]
+Total user connected after change in  760  episode is:  82
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+[1, 3, 3, 0, 2]
+Number of user connected before change in  770  episode is:  [11  0  4  7 13]
+Total user connected before change in  770  episode is:  35
+Number of user connected after change in  770  episode is:  [16 17 17 16 16]
+Total user connected after change in  770  episode is:  82
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+[3, 0, 2, 3, 1]
+Number of user connected before change in  780  episode is:  [ 1 13 13  4 13]
+Total user connected before change in  780  episode is:  44
+Number of user connected after change in  780  episode is:  [17 18 14 17 15]
+Total user connected after change in  780  episode is:  81
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+[2, 0, 0, 4, 1]
+Number of user connected before change in  790  episode is:  [ 3 10  5  4 13]
+Total user connected before change in  790  episode is:  35
+Number of user connected after change in  790  episode is:  [17 16 16 17 15]
+Total user connected after change in  790  episode is:  81
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+[2, 0, 0, 4, 4]
+Number of user connected before change in  800  episode is:  [ 1 10  6  4 11]
+Total user connected before change in  800  episode is:  32
+Number of user connected after change in  800  episode is:  [17 16 16 17 17]
+Total user connected after change in  800  episode is:  83
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+[2, 0, 0, 1, 1]
+Number of user connected before change in  810  episode is:  [ 3 10  5  4 13]
+Total user connected before change in  810  episode is:  35
+Number of user connected after change in  810  episode is:  [17 16 16 17 15]
+Total user connected after change in  810  episode is:  81
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+[3, 0, 0, 4, 0]
+Number of user connected before change in  820  episode is:  [ 1 13  4  3 12]
+Total user connected before change in  820  episode is:  33
+Number of user connected after change in  820  episode is:  [16 18 16 15 17]
+Total user connected after change in  820  episode is:  82
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+[2, 0, 1, 1, 2]
+Number of user connected before change in  830  episode is:  [ 5 10 10  4 11]
+Total user connected before change in  830  episode is:  40
+Number of user connected after change in  830  episode is:  [15 16  6 18 15]
+Total user connected after change in  830  episode is:  70
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+[2, 0, 0, 3, 1]
+Number of user connected before change in  840  episode is:  [ 3 10  5  4 13]
+Total user connected before change in  840  episode is:  35
+Number of user connected after change in  840  episode is:  [17 16 16 17 15]
+Total user connected after change in  840  episode is:  81
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+[3, 0, 1, 3, 1]
+Number of user connected before change in  850  episode is:  [ 4 13  0  4 13]
+Total user connected before change in  850  episode is:  34
+Number of user connected after change in  850  episode is:  [18 18 18 13 11]
+Total user connected after change in  850  episode is:  78
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+[3, 0, 0, 0, 3]
+Number of user connected before change in  860  episode is:  [ 1 13  5  0 15]
+Total user connected before change in  860  episode is:  34
+Number of user connected after change in  860  episode is:  [16 18 18  5 17]
+Total user connected after change in  860  episode is:  74
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+[2, 0, 0, 4, 3]
+Number of user connected before change in  870  episode is:  [ 8 14  2  8 12]
+Total user connected before change in  870  episode is:  44
+Number of user connected after change in  870  episode is:  [16 10 18 14 17]
+Total user connected after change in  870  episode is:  75
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+[2, 0, 0, 2, 4]
+Number of user connected before change in  880  episode is:  [11  0  2  8 14]
+Total user connected before change in  880  episode is:  35
+Number of user connected after change in  880  episode is:  [16 16 18 13 17]
+Total user connected after change in  880  episode is:  80
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+[3, 0, 1, 4, 4]
+Number of user connected before change in  890  episode is:  [ 3 11  0  4 11]
+Total user connected before change in  890  episode is:  29
+Number of user connected after change in  890  episode is:  [17 16 16 16 12]
+Total user connected after change in  890  episode is:  77
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+[1, 2, 2, 1, 1]
+Number of user connected before change in  900  episode is:  [ 8 14 12  6 12]
+Total user connected before change in  900  episode is:  52
+Number of user connected after change in  900  episode is:  [15 11 17 15 17]
+Total user connected after change in  900  episode is:  75
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+[3, 0, 0, 0, 0]
+Number of user connected before change in  910  episode is:  [ 1 13  4  3 12]
+Total user connected before change in  910  episode is:  33
+Number of user connected after change in  910  episode is:  [16 18 16 15 17]
+Total user connected after change in  910  episode is:  82
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+[3, 0, 3, 1, 2]
+Number of user connected before change in  920  episode is:  [ 1 13  7  3 12]
+Total user connected before change in  920  episode is:  36
+Number of user connected after change in  920  episode is:  [17 18 15 12 17]
+Total user connected after change in  920  episode is:  79
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+[0, 0, 2, 3, 1]
+Number of user connected before change in  930  episode is:  [ 1 13  3  8 14]
+Total user connected before change in  930  episode is:  39
+Number of user connected after change in  930  episode is:  [16 16 18 16 11]
+Total user connected after change in  930  episode is:  77
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+[1, 3, 0, 0, 0]
+Number of user connected before change in  940  episode is:  [ 5 10  4  0  4]
+Total user connected before change in  940  episode is:  23
+Number of user connected after change in  940  episode is:  [16 15 18  6 17]
+Total user connected after change in  940  episode is:  72
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+[3, 0, 0, 3, 1]
+Number of user connected before change in  950  episode is:  [ 1 13  4  4 13]
+Total user connected before change in  950  episode is:  35
+Number of user connected after change in  950  episode is:  [16 18 16 17 14]
+Total user connected after change in  950  episode is:  81
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+[2, 0, 0, 3, 1]
+Number of user connected before change in  960  episode is:  [ 5 10  2  8 14]
+Total user connected before change in  960  episode is:  39
+Number of user connected after change in  960  episode is:  [16 15 16 18 16]
+Total user connected after change in  960  episode is:  81
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+[2, 0, 3, 4, 3]
+Number of user connected before change in  970  episode is:  [ 5 10  2  8 14]
+Total user connected before change in  970  episode is:  39
+Number of user connected after change in  970  episode is:  [16 16 17 17 15]
+Total user connected after change in  970  episode is:  81
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+[2, 0, 0, 2, 4]
+Number of user connected before change in  980  episode is:  [ 5 10  3  4 13]
+Total user connected before change in  980  episode is:  35
+Number of user connected after change in  980  episode is:  [16 16 18 13 17]
+Total user connected after change in  980  episode is:  80
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+[2, 0, 3, 4, 4]
+Number of user connected before change in  990  episode is:  [ 5 10  3  3 12]
+Total user connected before change in  990  episode is:  33
+Number of user connected after change in  990  episode is:  [16 16 17 17 17]
+Total user connected after change in  990  episode is:  83
+991
+992
+993
+994
+995
+996
+997
+998
+999
+Best State
+[[2. 9.]
+ [9. 2.]
+ [7. 8.]
+ [0. 3.]
+ [3. 2.]]
+Total Connected User (Best Outcome): Before Change 66
+Best State
+[[3. 6.]
+ [6. 7.]
+ [6. 6.]
+ [3. 5.]
+ [2. 3.]]
+Total Connected User (Best Outcome): After Change 85
