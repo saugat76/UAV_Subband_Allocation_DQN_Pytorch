@@ -1,7 +1,7 @@
 import subprocess
 
 #Run the script for multiple levels of information exchange from level 1 to level 4
-for i in range(2,3):
+for i in range(1,5):
     print('#######################################################')
     print('####  Running the code for Level:', i, "info exchange  ####")
     print('#######################################################')
@@ -9,7 +9,7 @@ for i in range(2,3):
     g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(1000), "--wandb-track", "True", "--learning-rate", str(2.5e-4)])
 
 #   python uav_env.py
-#   python main.py --num-episode 1000 --wandb-track True --learning-rate 2.5e-4 --info-exchange-lvl 1
+#   python main.py --num-episode 1000 --wandb-track True --learning-rate 2.5e-4 --info-exchange-lvl 1 --num-uav 7
 
 # # ## Running for level 3 with different distance values
 for i in range(0,1000, 250):

@@ -52,3 +52,23 @@
 2023-04-30 22:37:01 INFO NumExpr defaulting to 8 threads.
 2023-04-30 22:38:22 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
 2023-04-30 22:38:22 INFO NumExpr defaulting to 8 threads.
+2023-04-30 23:16:34 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-04-30 23:16:34 INFO NumExpr defaulting to 8 threads.
+2023-04-30 23:19:38 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-04-30 23:19:38 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:48:51 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:48:51 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:49:45 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:49:45 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:50:19 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:50:19 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:50:38 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:50:38 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:51:10 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:51:10 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:51:30 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:51:30 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:52:01 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:52:01 INFO NumExpr defaulting to 8 threads.
+2023-05-01 01:52:46 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-05-01 01:52:46 INFO NumExpr defaulting to 8 threads.

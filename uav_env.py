@@ -104,9 +104,15 @@ class UAVenv(gym.Env):
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        if args.num_uav == 7:
+            self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        elif args.num_uav == 5:
+            self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
-        self.flag = [0, 0, 0, 0, 0]
+        if args.num_uav == 7:
+            self.flag = [0, 0, 0, 0, 0, 0, 0]
+        elif args.num_uav == 5:
+            self.flag = [0, 0, 0, 0, 0]
         print(self.coverage_radius)
 
     def step(self, action, info_exchange_lvl):
@@ -324,8 +330,10 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
-        # Starting UAV Position at the center of the target area
+        if self.NUM_UAV == 7:
+            self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        elif self.NUM_UAV == 5:
+            self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]        # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
         self.state[:, 2] = self.UAV_HEIGHT
         return self.state
