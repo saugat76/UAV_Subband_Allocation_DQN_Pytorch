@@ -25,7 +25,7 @@ def final_render(state, remark):
         cc = plt.Circle((i,j), coverage_radius, alpha=0.1)
         ax.set_aspect(1)
         ax.add_artist(cc)
-    ax.legend()
+    ax.legend(loc="lower right")
     if remark == "best":
         plt.title("Best state of UAV")
     elif remark == "final":

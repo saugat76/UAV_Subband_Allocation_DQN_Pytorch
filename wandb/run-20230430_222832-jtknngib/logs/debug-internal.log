@@ -1,0 +1,1097 @@
+2023-04-30 22:28:32,121 INFO    StreamThr :38420 [internal.py:wandb_internal():86] W&B internal server running at pid: 38420, started at: 2023-04-30 22:28:32.121212
+2023-04-30 22:28:32,126 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status
+2023-04-30 22:28:32,133 INFO    WriterThread:38420 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\run-jtknngib.wandb
+2023-04-30 22:28:32,135 DEBUG   SenderThread:38420 [sender.py:send():375] send: header
+2023-04-30 22:28:32,199 DEBUG   SenderThread:38420 [sender.py:send():375] send: run
+2023-04-30 22:28:32,416 INFO    SenderThread:38420 [dir_watcher.py:__init__():219] watching files in: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files
+2023-04-30 22:28:32,416 INFO    SenderThread:38420 [sender.py:_start_run_threads():1124] run started: jtknngib with start time 1682908112.121211
+2023-04-30 22:28:32,421 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:32,421 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:32,426 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: check_version
+2023-04-30 22:28:32,426 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: check_version
+2023-04-30 22:28:32,573 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: run_start
+2023-04-30 22:28:32,602 DEBUG   HandlerThread:38420 [system_info.py:__init__():31] System info init
+2023-04-30 22:28:32,602 DEBUG   HandlerThread:38420 [system_info.py:__init__():46] System info init done
+2023-04-30 22:28:32,602 INFO    HandlerThread:38420 [system_monitor.py:start():181] Starting system monitor
+2023-04-30 22:28:32,602 INFO    SystemMonitor:38420 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-04-30 22:28:32,602 INFO    HandlerThread:38420 [system_monitor.py:probe():201] Collecting system info
+2023-04-30 22:28:32,608 INFO    SystemMonitor:38420 [interfaces.py:start():190] Started cpu monitoring
+2023-04-30 22:28:32,608 INFO    SystemMonitor:38420 [interfaces.py:start():190] Started disk monitoring
+2023-04-30 22:28:32,608 INFO    SystemMonitor:38420 [interfaces.py:start():190] Started gpu monitoring
+2023-04-30 22:28:32,614 INFO    SystemMonitor:38420 [interfaces.py:start():190] Started memory monitoring
+2023-04-30 22:28:32,629 INFO    SystemMonitor:38420 [interfaces.py:start():190] Started network monitoring
+2023-04-30 22:28:32,647 DEBUG   HandlerThread:38420 [system_info.py:probe():195] Probing system
+2023-04-30 22:28:32,647 DEBUG   HandlerThread:38420 [system_info.py:_probe_git():180] Probing git
+2023-04-30 22:28:32,652 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:32,766 DEBUG   HandlerThread:38420 [system_info.py:_probe_git():188] Probing git done
+2023-04-30 22:28:32,766 DEBUG   HandlerThread:38420 [system_info.py:probe():240] Probing system done
+2023-04-30 22:28:32,766 DEBUG   HandlerThread:38420 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.19044-SP0', 'python': '3.10.4', 'heartbeatAt': '2023-05-01T02:28:32.647526', 'startedAt': '2023-05-01T02:28:32.094272', 'docker': None, 'cuda': None, 'args': ('--num-episode', '1000', '--wandb-track', 'True', '--learning-rate', '2.5e-4', '--info-exchange-lvl', '4'), 'state': 'running', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git', 'commit': '4b55ed60a09b549df4224d5ae9da4568f9a8f0da'}, 'email': 'saugat.tripathi76@gmail.com', 'root': 'C:/Users/tripats/Documents/GitHub/UAV_Subband_Allocation_DQN_Pytorch', 'host': 'CEC-ZHANGR43776', 'username': 'tripats', 'executable': 'C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2496.0, 'min': 0.0, 'max': 2496.0}, 'cpu_freq_per_core': [{'current': 2496.0, 'min': 0.0, 'max': 2496.0}], 'disk': {'total': 943.7177696228027, 'used': 209.3252067565918}, 'gpu': 'NVIDIA RTX A5000 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA RTX A5000 Laptop GPU', 'memory_total': 17179869184}], 'memory': {'total': 63.204471588134766}}
+2023-04-30 22:28:32,766 INFO    HandlerThread:38420 [system_monitor.py:probe():211] Finished collecting system info
+2023-04-30 22:28:32,766 INFO    HandlerThread:38420 [system_monitor.py:probe():214] Publishing system info
+2023-04-30 22:28:32,766 DEBUG   HandlerThread:38420 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-04-30 22:28:32,766 DEBUG   HandlerThread:38420 [system_info.py:_save_pip():67] Saving pip packages done
+2023-04-30 22:28:32,771 DEBUG   HandlerThread:38420 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-04-30 22:28:32,776 ERROR   HandlerThread:38420 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-04-30 22:28:32,776 DEBUG   HandlerThread:38420 [system_info.py:_save_conda():86] Saving conda packages done
+2023-04-30 22:28:32,776 DEBUG   HandlerThread:38420 [system_info.py:_save_code():89] Saving code
+2023-04-30 22:28:32,840 DEBUG   HandlerThread:38420 [system_info.py:_save_code():110] Saving code done
+2023-04-30 22:28:32,840 DEBUG   HandlerThread:38420 [system_info.py:_save_patches():127] Saving git patches
+2023-04-30 22:28:33,254 DEBUG   HandlerThread:38420 [system_info.py:_save_patches():169] Saving git patches done
+2023-04-30 22:28:33,259 INFO    HandlerThread:38420 [system_monitor.py:probe():216] Finished publishing system info
+2023-04-30 22:28:33,269 DEBUG   SenderThread:38420 [sender.py:send():375] send: files
+2023-04-30 22:28:33,269 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-04-30 22:28:33,269 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file code\main.py with policy now
+2023-04-30 22:28:33,269 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file diff.patch with policy now
+2023-04-30 22:28:33,279 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:28:33,279 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:28:33,279 INFO    HandlerThread:38420 [handler.py:handle_tbrecord():750] handling tbrecord: tbrecord {
+  log_dir: "runs/madql_uav__lvl4__5__1__1682908108"
+  save: true
+}
+control {
+  relay_id: "07171fcdfc61433ba710e779762d7b5c"
+}
+_info {
+  stream_id: "jtknngib"
+}
+
+2023-04-30 22:28:33,279 DEBUG   HandlerThread:38420 [config_util.py:dict_from_config_file():104] no default config file found in config-defaults.yaml
+2023-04-30 22:28:33,361 DEBUG   SenderThread:38420 [sender.py:send():375] send: telemetry
+2023-04-30 22:28:33,371 INFO    wandb-upload_1:38420 [upload_job.py:push():117] Skipped uploading C:\Users\tripats\AppData\Local\Temp\tmp5zt2i3w8wandb\p0wm2nuk-code/main.py
+2023-04-30 22:28:33,382 DEBUG   SenderThread:38420 [sender.py:send():375] send: tbrecord
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\diff.patch
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\code\main.py
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\requirements.txt
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\conda-environment.yaml
+2023-04-30 22:28:33,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-metadata.json
+2023-04-30 22:28:33,434 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\code
+2023-04-30 22:28:33,635 INFO    wandb-upload_0:38420 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmp5zt2i3w8wandb\yqtv34tz-wandb-metadata.json
+2023-04-30 22:28:33,686 INFO    wandb-upload_2:38420 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmp5zt2i3w8wandb\23vasc6g-diff.patch
+2023-04-30 22:28:34,685 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:35,436 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:36,227 DEBUG   Thread-34 (_thread_except_body):38420 [tb_watcher.py:_process_events():274] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\runs\\madql_uav__lvl4__5__1__1682908108\\events.out.tfevents.1682908113.CEC-ZHANGR43776.23936.0' -> 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\wandb\\run-20230430_222832-jtknngib\\files\\events.out.tfevents.1682908113.CEC-ZHANGR43776.23936.0'
+2023-04-30 22:28:36,533 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:36,534 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:36,534 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:36,535 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:36,713 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:37,458 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:37,458 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:37,536 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:28:38,561 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:38,561 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:38,561 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:38,561 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:38,733 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:39,368 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:39,374 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:39,374 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:39,374 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:39,475 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:39,475 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:40,166 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:40,168 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:40,168 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:40,168 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:40,479 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:40,756 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:40,981 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:40,986 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:40,986 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:40,986 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:41,482 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:41,482 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:42,780 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:43,097 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:28:43,499 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:44,801 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:44,978 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:44,983 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:44,983 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:44,983 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:45,513 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:46,816 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:47,518 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:48,289 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:28:48,289 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:28:48,291 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:28:48,844 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:49,830 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:49,830 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:49,830 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:49,830 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:50,547 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:50,864 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:51,555 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:52,878 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:53,885 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:28:54,913 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:55,353 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:28:55,358 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:28:55,358 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:28:55,358 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:28:55,600 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:28:56,934 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:57,618 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:28:58,957 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:28:59,394 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:00,933 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:00,933 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:00,933 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:00,933 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:00,975 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:01,659 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:03,050 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:03,305 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:29:03,305 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:29:03,684 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:05,064 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:05,396 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:06,640 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:06,645 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:06,646 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:06,646 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:06,708 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:06,708 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\config.yaml
+2023-04-30 22:29:07,077 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:07,708 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:09,087 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:11,108 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:11,693 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:12,429 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:12,429 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:12,434 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:12,434 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:12,761 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:13,125 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:15,135 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:15,787 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:17,141 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:17,602 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:18,028 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:18,028 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:18,028 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:18,028 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:18,329 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:29:18,329 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:29:18,813 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:19,165 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:19,828 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:21,183 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:22,900 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:22,904 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:22,904 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:22,904 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:22,904 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:23,204 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:23,864 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:25,222 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:25,875 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:27,237 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:27,938 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:28,769 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:28,769 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:28,769 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:28,769 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:28,893 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:29,252 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:31,275 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:31,921 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:32,641 DEBUG   SystemMonitor:38420 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-04-30 22:29:32,641 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:29:33,339 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:33,344 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:29:33,344 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:29:33,391 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:34,605 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:34,607 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:34,607 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:34,608 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:34,936 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:35,349 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:35,946 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:37,354 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:38,634 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:39,369 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:40,447 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:40,447 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:40,447 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:40,447 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:40,967 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:41,397 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:41,977 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:43,421 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:44,482 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:45,443 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:47,360 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:47,361 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:47,362 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:47,363 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:47,464 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:48,043 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:48,359 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:29:48,360 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:29:49,496 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:50,054 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:50,412 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:51,523 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:53,540 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:55,365 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:29:55,365 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:29:55,365 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:29:55,372 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:29:55,565 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:56,112 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:29:56,375 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:29:57,589 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:29:58,124 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:29:59,620 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:01,411 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:01,637 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:02,650 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:30:03,376 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:30:03,377 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:30:03,755 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:04,337 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:04,340 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:04,340 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:04,342 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:05,202 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:05,203 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:05,766 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:07,367 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:07,795 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:09,817 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:11,828 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:12,393 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:12,761 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:12,761 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:12,766 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:12,768 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:13,250 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:13,250 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:13,844 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:15,859 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:17,787 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:17,876 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:18,382 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:30:18,383 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:30:19,893 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:21,522 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:21,536 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:21,537 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:21,538 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:21,927 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:22,346 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:22,939 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:23,362 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:23,956 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:25,973 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:27,980 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:27,985 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:28,129 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:28,129 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:28,134 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:28,134 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:28,411 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:29,418 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:30,008 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:32,016 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:32,664 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:30:33,384 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:30:33,385 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:30:33,432 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:34,129 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:34,211 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:34,213 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:34,213 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:34,215 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:34,445 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:35,452 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:36,140 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:38,159 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:39,252 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:40,167 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:42,191 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:42,863 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:42,863 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:42,869 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:42,869 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:43,504 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:43,505 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:44,199 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:44,898 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:46,208 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:48,220 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:48,390 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:30:48,391 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:30:50,235 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:50,455 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:51,554 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:51,557 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:51,557 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:51,559 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:51,563 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:30:52,249 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:53,579 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:30:54,258 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:55,600 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:30:56,273 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:58,301 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:30:59,631 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:30:59,634 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:30:59,634 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:30:59,634 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:30:59,634 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:00,343 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:00,648 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:01,663 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:02,368 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:02,669 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:31:03,390 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:31:03,390 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:31:04,434 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:06,445 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:06,455 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:07,329 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:07,329 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:07,329 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:07,329 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:07,708 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:08,472 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:09,726 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:10,481 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:12,374 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:12,499 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:14,520 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:15,193 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:15,195 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:15,195 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:15,197 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:15,775 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:15,776 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:16,539 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:18,220 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:18,399 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:31:18,400 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:31:18,563 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:20,588 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:22,618 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:22,967 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:22,969 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:22,969 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:22,971 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:23,881 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:23,882 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:23,977 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:24,658 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:26,686 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:28,744 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:29,018 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:30,407 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:30,409 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:30,409 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:30,412 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:30,772 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:30,950 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:31,967 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:32,681 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:31:32,797 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:33,398 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:31:33,398 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:31:34,449 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:34,891 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:36,913 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:37,105 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:37,106 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:37,106 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:37,106 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:38,031 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:38,926 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:39,486 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:40,058 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:40,945 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:42,965 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:44,314 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:44,316 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:44,317 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:44,320 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:44,983 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:45,104 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:45,324 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:46,115 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:47,001 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:48,403 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:31:48,403 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:31:49,014 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:51,036 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:51,040 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:51,040 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:51,040 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:51,041 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:51,041 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:51,157 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:31:52,173 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:31:53,068 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:55,090 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:56,077 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:31:57,100 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:58,481 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:31:58,486 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:31:58,486 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:31:58,486 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:31:59,112 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:31:59,247 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:00,259 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:01,129 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:01,495 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:02,687 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:32:03,147 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:03,403 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:32:03,404 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:32:05,251 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:06,510 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:06,605 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:06,609 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:06,609 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:06,609 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:07,266 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:07,324 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:08,340 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:09,286 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:11,307 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:11,657 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:13,315 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:14,498 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:14,499 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:14,500 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:14,502 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:15,331 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:15,405 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:16,410 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:17,337 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:17,528 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:18,396 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:32:18,396 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:32:19,348 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:21,362 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:21,593 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:21,598 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:21,598 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:21,598 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:22,464 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:22,607 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:23,372 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:24,486 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:25,394 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:27,413 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:27,633 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:29,450 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:29,816 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:29,819 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:29,819 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:29,819 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:30,548 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:31,474 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:32,572 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:32,696 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:32:32,696 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:33,404 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:32:33,404 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:32:33,493 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:35,583 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:37,565 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:37,570 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:37,570 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:37,570 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:37,607 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:37,617 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:38,590 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:38,622 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:39,619 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:41,631 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:43,620 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:43,641 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:45,243 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:45,243 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:45,243 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:45,249 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:45,660 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:45,685 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:46,692 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:47,675 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:48,414 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:32:48,417 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:32:49,466 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:49,691 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:51,710 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:53,287 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:53,293 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:53,293 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:53,293 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:53,736 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:53,742 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:32:54,677 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:32:55,753 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:56,777 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:32:57,774 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:59,233 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:32:59,238 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:32:59,238 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:32:59,238 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:32:59,788 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:32:59,798 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:00,248 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:00,816 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:01,809 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:02,707 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:33:03,425 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:33:03,425 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:33:03,825 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:04,018 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:04,018 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:04,018 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:04,023 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:04,836 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:05,945 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:06,034 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:06,902 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:07,967 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:09,976 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:11,074 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:12,004 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:12,918 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:12,923 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:12,923 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:12,923 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:12,958 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:13,983 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:14,018 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:16,038 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:16,955 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:18,054 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:18,434 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:33:18,435 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:33:20,075 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:21,883 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:21,885 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:21,886 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:21,888 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:22,099 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:22,101 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:22,902 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:24,126 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:24,136 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:26,160 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:27,951 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:28,177 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:30,203 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:30,522 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:30,522 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:30,527 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:30,527 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:31,206 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:32,231 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:32,237 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:32,711 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:33:33,425 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:33:33,426 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:33:33,491 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:34,265 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:36,378 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:38,386 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:38,536 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:38,859 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:38,859 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:38,859 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:38,864 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:39,367 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:40,371 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:40,399 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:42,410 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:43,915 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:44,423 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:46,439 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:47,057 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:47,062 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:47,064 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:47,064 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:47,451 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:48,453 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:33:48,458 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:33:48,464 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:48,464 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:49,523 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:50,491 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:52,532 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:54,565 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:54,570 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:33:56,001 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:33:56,006 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:33:56,007 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:33:56,008 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:33:56,591 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:33:56,591 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:33:58,613 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:33:58,623 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:00,023 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:00,641 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:02,668 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:02,718 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:34:03,439 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:34:03,439 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:34:04,689 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:05,501 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:06,808 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:06,978 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:06,979 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:06,979 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:06,981 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:07,772 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:08,788 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:08,825 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:10,840 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:11,010 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:12,858 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:14,869 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:16,043 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:16,702 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:16,702 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:16,702 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:16,702 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:16,868 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:16,889 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:18,453 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:34:18,453 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:34:18,911 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:20,901 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:20,923 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:21,525 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:22,935 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:23,530 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:23,532 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:23,532 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:23,532 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:23,920 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:24,922 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:24,941 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:26,574 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:26,954 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:28,977 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:30,990 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:31,615 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:32,010 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:32,010 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:32,015 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:32,015 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:32,725 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:34:33,003 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:33,003 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:33,008 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:33,462 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:34:33,463 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:34:35,027 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:37,100 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:37,545 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:39,126 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:41,146 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:41,994 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:41,994 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:41,994 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:41,999 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:42,123 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:43,010 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:43,133 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:43,155 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:45,179 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:47,192 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:48,047 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:48,471 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:34:48,471 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:34:49,213 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:51,225 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:51,555 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:34:51,560 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:34:51,560 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:34:51,560 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:34:52,207 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:34:53,211 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:34:53,233 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:53,568 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:55,248 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:57,257 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:34:58,610 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:34:59,270 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:01,292 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:01,965 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:01,965 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:01,965 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:01,968 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:02,300 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:02,726 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:35:03,305 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:03,310 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:03,475 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:35:03,475 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:35:04,525 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:05,327 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:07,398 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:09,406 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:09,569 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:11,422 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:11,661 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:11,666 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:11,666 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:11,667 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:12,411 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:13,422 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:13,442 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:14,704 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:15,458 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:17,473 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:18,485 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:35:18,486 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:35:19,495 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:20,535 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:21,103 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:21,103 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:21,103 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:21,103 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:21,503 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:21,513 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:23,526 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:23,535 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:25,532 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:26,123 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:27,540 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:29,555 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:30,838 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:30,838 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:30,838 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:30,838 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:31,569 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:31,596 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:31,851 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:32,731 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:35:33,484 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:35:33,484 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:35:33,584 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:33,609 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:35,603 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:37,575 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:37,690 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:39,708 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:40,608 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:40,608 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:40,613 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:40,613 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:40,712 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:41,720 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:42,630 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:42,726 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:43,739 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:45,748 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:47,651 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:47,763 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:48,498 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:35:48,498 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:35:49,780 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:51,791 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:52,616 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:52,616 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:52,616 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:52,616 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:35:52,832 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:35:53,629 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:53,806 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:54,852 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:35:55,826 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:57,843 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:59,373 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:35:59,862 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:35:59,975 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:35:59,975 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:35:59,975 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:35:59,975 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:00,904 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:00,904 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:01,883 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:02,743 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:36:03,506 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:36:03,506 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:36:03,900 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:04,560 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:05,912 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:07,980 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:08,321 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:08,326 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:08,326 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:08,326 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:08,990 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:08,990 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:09,991 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:10,338 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:12,000 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:14,013 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:15,376 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:16,032 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:18,049 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:18,435 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:18,440 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:18,440 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:18,440 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:18,516 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:36:18,516 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:36:19,081 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:19,081 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:20,056 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:20,812 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:22,074 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:24,093 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:25,841 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:26,109 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:28,119 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:28,325 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:28,325 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:28,325 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:28,330 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:29,184 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:29,184 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:30,138 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:31,353 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:32,148 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:32,755 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:36:33,517 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:36:33,518 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:36:34,167 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:36,185 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:36,602 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:38,117 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:38,118 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:38,119 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:38,120 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:38,260 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:38,279 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:39,289 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:40,280 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:42,148 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:42,293 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:44,309 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:46,317 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:47,064 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:47,064 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:47,064 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:47,064 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:47,332 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:48,071 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:48,326 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:48,521 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:36:48,521 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:36:49,349 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:36:50,347 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:52,371 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:53,606 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:54,381 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:56,403 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:57,097 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:36:57,102 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:36:57,103 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:36:57,103 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:36:57,399 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:36:58,434 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:36:59,117 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:36:59,429 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:00,451 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:02,480 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:02,756 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:37:03,529 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:37:03,529 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:37:04,504 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:04,574 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:06,524 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:07,013 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:07,018 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:07,018 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:07,021 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:37:07,527 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:37:08,605 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:09,584 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:10,034 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:10,619 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:12,637 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:14,652 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:15,074 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:16,671 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:17,371 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:17,371 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:17,371 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:17,371 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:37:17,626 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:37:18,538 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:37:18,538 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:37:18,687 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:19,632 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:20,591 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:20,706 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:22,727 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:24,741 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:25,630 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:26,761 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:27,270 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:27,270 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:27,270 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:27,273 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:37:27,717 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:37:28,767 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:30,774 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:30,969 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:31,759 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:32,777 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:37:32,782 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:33,546 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:37:33,546 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:37:34,798 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:36,630 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:36,817 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:38,898 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:39,119 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:39,120 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:39,120 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:39,120 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:37:39,882 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:37:40,908 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:41,888 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:42,137 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:42,922 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:44,930 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:46,941 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:47,189 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:48,543 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:37:48,544 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:37:48,954 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:49,119 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:49,121 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:49,122 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:49,124 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:37:49,960 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:37:50,976 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:51,984 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:37:52,991 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:53,167 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:55,006 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:57,031 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:58,216 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:37:59,050 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:37:59,432 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:37:59,432 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:37:59,438 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:37:59,438 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:00,062 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:01,067 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:02,068 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:02,785 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:38:03,094 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:03,561 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:38:03,566 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:38:03,608 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:05,128 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:07,156 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:08,646 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:09,255 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:09,801 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:38:09,807 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:38:09,807 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:38:09,808 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:10,236 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:11,252 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:11,274 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:13,293 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:13,855 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:15,309 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:17,320 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:18,576 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:38:18,576 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:38:19,330 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:19,630 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:21,062 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:38:21,067 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:38:21,067 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:38:21,067 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:21,345 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:21,345 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:21,351 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:23,373 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:25,120 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:25,396 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:27,420 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:29,442 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:30,172 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:31,501 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:32,316 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:38:32,316 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:38:32,316 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:38:32,322 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:32,509 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:32,795 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:38:33,512 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:33,519 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:33,579 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:38:33,580 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:38:35,547 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:35,639 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:37,576 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:39,676 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:40,680 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:41,698 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:43,715 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:43,966 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:38:43,968 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:38:43,968 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:38:43,970 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:44,668 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:45,687 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:45,735 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:45,985 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:47,756 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:48,587 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:38:48,588 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:38:49,773 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:51,650 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:51,782 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:53,799 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:55,222 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:38:55,222 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:38:55,222 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:38:55,222 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:38:55,806 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:38:55,810 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:57,246 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:38:57,824 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:38:57,827 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:38:59,852 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:39:01,876 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:39:02,291 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:39:02,808 DEBUG   SenderThread:38420 [sender.py:send():375] send: stats
+2023-04-30 22:39:03,604 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:39:03,605 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:39:03,894 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:39:05,920 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:39:06,640 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:39:06,640 DEBUG   SenderThread:38420 [sender.py:send():375] send: history
+2023-04-30 22:39:06,640 DEBUG   SenderThread:38420 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:39:06,640 INFO    SenderThread:38420 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:39:06,918 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\wandb-summary.json
+2023-04-30 22:39:07,655 DEBUG   HandlerThread:38420 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:39:07,939 INFO    Thread-16 :38420 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_222832-jtknngib\files\output.log
+2023-04-30 22:39:07,943 ERROR   gpu       :38420 [interfaces.py:monitor():144] Failed to sample metric: Not Supported

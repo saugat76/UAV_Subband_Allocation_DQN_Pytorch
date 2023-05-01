@@ -312,7 +312,7 @@ class UAVenv(gym.Env):
                 cc = plt.Circle((i,j), self.coverage_radius, alpha=0.1)
                 ax.set_aspect(1)
                 ax.add_artist(cc)
-            ax.legend()
+            ax.legend(loc="lower right")
             
             plt.pause(0.5)
             plt.xlim(-50, 1050)

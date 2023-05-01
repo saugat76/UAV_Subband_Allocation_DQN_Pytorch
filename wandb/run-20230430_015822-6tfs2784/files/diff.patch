@@ -1,0 +1,43 @@
+diff --git a/__pycache__/misc.cpython-310.pyc b/__pycache__/misc.cpython-310.pyc
+index 911dc85..754a1e2 100644
+Binary files a/__pycache__/misc.cpython-310.pyc and b/__pycache__/misc.cpython-310.pyc differ
+diff --git a/__pycache__/uav_env.cpython-310.pyc b/__pycache__/uav_env.cpython-310.pyc
+index 862bee9..de88508 100644
+Binary files a/__pycache__/uav_env.cpython-310.pyc and b/__pycache__/uav_env.cpython-310.pyc differ
+diff --git a/run.py b/run.py
+index b34d5c6..4912a1f 100644
+--- a/run.py
++++ b/run.py
+@@ -6,12 +6,12 @@ for i in range(1, 5):
+     print('####  Running the code for Level:', i, "info exchange  ####")
+     print('#######################################################')
+     p = subprocess.run(["python", "uav_env.py"])
+-    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(450), "--wandb-track", "True", "--learning-rate", str(3.5e-4)])
++    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(450), "--wandb-track", "True", "--learning-rate", str(2.5e-4)])
+ 
+ # ## Running for level 3 with different distance values
+-for i in range(0,1000, 250):
+-    print('###########################################################')
+-    print('####  Running the code for distance threshold:', i, " with Level: 2 ####")
+-    print('###########################################################')
+-    p = subprocess.run(["python", "uav_env.py"])
+-    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(2), "--num-episode", str(800), "--wandb-track", "True", "--uav-dis-th", str(i), "--learning-rate", str(3.5e-4)])
++# for i in range(0,1000, 250):
++#     print('###########################################################')
++#     print('####  Running the code for distance threshold:', i, " with Level: 2 ####")
++#     print('###########################################################')
++#     p = subprocess.run(["python", "uav_env.py"])
++#     g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(2), "--num-episode", str(800), "--wandb-track", "True", "--uav-dis-th", str(i), "--learning-rate", str(3.5e-4)])
+diff --git a/wandb/debug-cli.tripats.log b/wandb/debug-cli.tripats.log
+index e69de29..5f62815 100644
+--- a/wandb/debug-cli.tripats.log
++++ b/wandb/debug-cli.tripats.log
+@@ -0,0 +1,8 @@
++2023-04-29 16:41:59 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 16:41:59 INFO NumExpr defaulting to 8 threads.
++2023-04-29 17:26:24 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 17:26:24 INFO NumExpr defaulting to 8 threads.
++2023-04-29 18:11:04 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 18:11:04 INFO NumExpr defaulting to 8 threads.
++2023-04-29 18:52:09 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 18:52:09 INFO NumExpr defaulting to 8 threads.

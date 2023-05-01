@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 254, in <module>
+    UAV_OB.append(DQL())
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 116, in __init__
+    self.main_network = NeuralNetwork(self.state_size, self.action_size).to(device)
+AttributeError: 'DQL' object has no attribute 'state_size'

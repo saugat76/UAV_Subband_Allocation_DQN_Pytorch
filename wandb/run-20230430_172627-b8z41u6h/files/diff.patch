@@ -1,0 +1,95 @@
+diff --git a/__pycache__/misc.cpython-310.pyc b/__pycache__/misc.cpython-310.pyc
+index 911dc85..ebdacc3 100644
+Binary files a/__pycache__/misc.cpython-310.pyc and b/__pycache__/misc.cpython-310.pyc differ
+diff --git a/__pycache__/uav_env.cpython-310.pyc b/__pycache__/uav_env.cpython-310.pyc
+index 862bee9..731e264 100644
+Binary files a/__pycache__/uav_env.cpython-310.pyc and b/__pycache__/uav_env.cpython-310.pyc differ
+diff --git a/main.py b/main.py
+index b86df41..553f611 100644
+--- a/main.py
++++ b/main.py
+@@ -158,6 +158,7 @@ class DQL:
+             diff = state - next_state
+             done_local = (diff != 0).any(dim=1).float().to(device)
+ 
++            # Implementation of DQL algorithm 
+             Q_next = self.target_network(next_state).detach()
+             target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
+ 
+diff --git a/misc.py b/misc.py
+index 3f5f107..ad6ad8d 100644
+--- a/misc.py
++++ b/misc.py
+@@ -25,7 +25,7 @@ def final_render(state, remark):
+         cc = plt.Circle((i,j), coverage_radius, alpha=0.1)
+         ax.set_aspect(1)
+         ax.add_artist(cc)
+-    ax.legend()
++    ax.legend(loc="lower right")
+     if remark == "best":
+         plt.title("Best state of UAV")
+     elif remark == "final":
+diff --git a/run.py b/run.py
+index b34d5c6..6e5f8df 100644
+--- a/run.py
++++ b/run.py
+@@ -6,12 +6,12 @@ for i in range(1, 5):
+     print('####  Running the code for Level:', i, "info exchange  ####")
+     print('#######################################################')
+     p = subprocess.run(["python", "uav_env.py"])
+-    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(450), "--wandb-track", "True", "--learning-rate", str(3.5e-4)])
++    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(600), "--wandb-track", "True", "--learning-rate", str(2.5e-4)])
+ 
+ # ## Running for level 3 with different distance values
+-for i in range(0,1000, 250):
+-    print('###########################################################')
+-    print('####  Running the code for distance threshold:', i, " with Level: 2 ####")
+-    print('###########################################################')
+-    p = subprocess.run(["python", "uav_env.py"])
+-    g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(2), "--num-episode", str(800), "--wandb-track", "True", "--uav-dis-th", str(i), "--learning-rate", str(3.5e-4)])
++# for i in range(0,1000, 250):
++#     print('###########################################################')
++#     print('####  Running the code for distance threshold:', i, " with Level: 2 ####")
++#     print('###########################################################')
++#     p = subprocess.run(["python", "uav_env.py"])
++#     g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(2), "--num-episode", str(800), "--wandb-track", "True", "--uav-dis-th", str(i), "--learning-rate", str(3.5e-4)])
+diff --git a/uav_env.py b/uav_env.py
+index dd8bf69..f01f6d1 100644
+--- a/uav_env.py
++++ b/uav_env.py
+@@ -312,7 +312,7 @@ class UAVenv(gym.Env):
+                 cc = plt.Circle((i,j), self.coverage_radius, alpha=0.1)
+                 ax.set_aspect(1)
+                 ax.add_artist(cc)
+-            ax.legend()
++            ax.legend(loc="lower right")
+             
+             plt.pause(0.5)
+             plt.xlim(-50, 1050)
+diff --git a/wandb/debug-cli.tripats.log b/wandb/debug-cli.tripats.log
+index e69de29..984b7ed 100644
+--- a/wandb/debug-cli.tripats.log
++++ b/wandb/debug-cli.tripats.log
+@@ -0,0 +1,22 @@
++2023-04-29 16:41:59 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 16:41:59 INFO NumExpr defaulting to 8 threads.
++2023-04-29 17:26:24 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 17:26:24 INFO NumExpr defaulting to 8 threads.
++2023-04-29 18:11:04 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 18:11:04 INFO NumExpr defaulting to 8 threads.
++2023-04-29 18:52:09 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-29 18:52:09 INFO NumExpr defaulting to 8 threads.
++2023-04-30 01:58:25 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 01:58:25 INFO NumExpr defaulting to 8 threads.
++2023-04-30 02:45:30 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 02:45:30 INFO NumExpr defaulting to 8 threads.
++2023-04-30 03:32:51 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 03:32:51 INFO NumExpr defaulting to 8 threads.
++2023-04-30 04:20:39 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 04:20:39 INFO NumExpr defaulting to 8 threads.
++2023-04-30 14:34:01 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 14:34:01 INFO NumExpr defaulting to 8 threads.
++2023-04-30 15:30:45 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 15:30:45 INFO NumExpr defaulting to 8 threads.
++2023-04-30 16:27:01 INFO Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
++2023-04-30 16:27:01 INFO NumExpr defaulting to 8 threads.

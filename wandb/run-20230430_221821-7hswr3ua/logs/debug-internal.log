@@ -1,0 +1,168 @@
+2023-04-30 22:18:21,247 INFO    StreamThr :29436 [internal.py:wandb_internal():86] W&B internal server running at pid: 29436, started at: 2023-04-30 22:18:21.247417
+2023-04-30 22:18:21,247 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: status
+2023-04-30 22:18:21,252 INFO    WriterThread:29436 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\run-7hswr3ua.wandb
+2023-04-30 22:18:21,252 DEBUG   SenderThread:29436 [sender.py:send():375] send: header
+2023-04-30 22:18:21,321 DEBUG   SenderThread:29436 [sender.py:send():375] send: run
+2023-04-30 22:18:21,649 INFO    SenderThread:29436 [dir_watcher.py:__init__():219] watching files in: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files
+2023-04-30 22:18:21,649 INFO    SenderThread:29436 [sender.py:_start_run_threads():1124] run started: 7hswr3ua with start time 1682907501.245303
+2023-04-30 22:18:21,655 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:21,655 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:21,658 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: check_version
+2023-04-30 22:18:21,660 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: check_version
+2023-04-30 22:18:21,836 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: run_start
+2023-04-30 22:18:21,863 DEBUG   HandlerThread:29436 [system_info.py:__init__():31] System info init
+2023-04-30 22:18:21,863 DEBUG   HandlerThread:29436 [system_info.py:__init__():46] System info init done
+2023-04-30 22:18:21,863 INFO    HandlerThread:29436 [system_monitor.py:start():181] Starting system monitor
+2023-04-30 22:18:21,864 INFO    SystemMonitor:29436 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-04-30 22:18:21,864 INFO    HandlerThread:29436 [system_monitor.py:probe():201] Collecting system info
+2023-04-30 22:18:21,870 INFO    SystemMonitor:29436 [interfaces.py:start():190] Started cpu monitoring
+2023-04-30 22:18:21,871 INFO    SystemMonitor:29436 [interfaces.py:start():190] Started disk monitoring
+2023-04-30 22:18:21,871 INFO    SystemMonitor:29436 [interfaces.py:start():190] Started gpu monitoring
+2023-04-30 22:18:21,883 INFO    SystemMonitor:29436 [interfaces.py:start():190] Started memory monitoring
+2023-04-30 22:18:21,902 DEBUG   HandlerThread:29436 [system_info.py:probe():195] Probing system
+2023-04-30 22:18:21,902 INFO    SystemMonitor:29436 [interfaces.py:start():190] Started network monitoring
+2023-04-30 22:18:21,903 DEBUG   HandlerThread:29436 [system_info.py:_probe_git():180] Probing git
+2023-04-30 22:18:21,910 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:22,013 DEBUG   HandlerThread:29436 [system_info.py:_probe_git():188] Probing git done
+2023-04-30 22:18:22,013 DEBUG   HandlerThread:29436 [system_info.py:probe():240] Probing system done
+2023-04-30 22:18:22,013 DEBUG   HandlerThread:29436 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.19044-SP0', 'python': '3.10.4', 'heartbeatAt': '2023-05-01T02:18:21.902766', 'startedAt': '2023-05-01T02:18:21.224384', 'docker': None, 'cuda': None, 'args': ('--info-exchange-lvl', '1', '--num-episode', '1000', '--wandb-track', 'True', '--learning-rate', '0.00025'), 'state': 'running', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git', 'commit': '4b55ed60a09b549df4224d5ae9da4568f9a8f0da'}, 'email': 'saugat.tripathi76@gmail.com', 'root': 'C:/Users/tripats/Documents/GitHub/UAV_Subband_Allocation_DQN_Pytorch', 'host': 'CEC-ZHANGR43776', 'username': 'tripats', 'executable': 'C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2496.0, 'min': 0.0, 'max': 2496.0}, 'cpu_freq_per_core': [{'current': 2496.0, 'min': 0.0, 'max': 2496.0}], 'disk': {'total': 943.7177696228027, 'used': 209.32247924804688}, 'gpu': 'NVIDIA RTX A5000 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA RTX A5000 Laptop GPU', 'memory_total': 17179869184}], 'memory': {'total': 63.204471588134766}}
+2023-04-30 22:18:22,013 INFO    HandlerThread:29436 [system_monitor.py:probe():211] Finished collecting system info
+2023-04-30 22:18:22,013 INFO    HandlerThread:29436 [system_monitor.py:probe():214] Publishing system info
+2023-04-30 22:18:22,013 DEBUG   HandlerThread:29436 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-04-30 22:18:22,014 DEBUG   HandlerThread:29436 [system_info.py:_save_pip():67] Saving pip packages done
+2023-04-30 22:18:22,014 DEBUG   HandlerThread:29436 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-04-30 22:18:22,016 ERROR   HandlerThread:29436 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-04-30 22:18:22,017 DEBUG   HandlerThread:29436 [system_info.py:_save_conda():86] Saving conda packages done
+2023-04-30 22:18:22,017 DEBUG   HandlerThread:29436 [system_info.py:_save_code():89] Saving code
+2023-04-30 22:18:22,071 DEBUG   HandlerThread:29436 [system_info.py:_save_code():110] Saving code done
+2023-04-30 22:18:22,071 DEBUG   HandlerThread:29436 [system_info.py:_save_patches():127] Saving git patches
+2023-04-30 22:18:22,441 DEBUG   HandlerThread:29436 [system_info.py:_save_patches():169] Saving git patches done
+2023-04-30 22:18:22,442 INFO    HandlerThread:29436 [system_monitor.py:probe():216] Finished publishing system info
+2023-04-30 22:18:22,452 DEBUG   SenderThread:29436 [sender.py:send():375] send: files
+2023-04-30 22:18:22,452 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-04-30 22:18:22,452 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file code\main.py with policy now
+2023-04-30 22:18:22,453 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file diff.patch with policy now
+2023-04-30 22:18:22,461 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:18:22,461 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:18:22,464 INFO    HandlerThread:29436 [handler.py:handle_tbrecord():750] handling tbrecord: tbrecord {
+  log_dir: "runs/madql_uav__lvl1__5__1__1682907497"
+  save: true
+}
+control {
+  relay_id: "2bcb20a5bfd94d2993ff0f98e0d4cee9"
+}
+_info {
+  stream_id: "7hswr3ua"
+}
+
+2023-04-30 22:18:22,466 DEBUG   HandlerThread:29436 [config_util.py:dict_from_config_file():104] no default config file found in config-defaults.yaml
+2023-04-30 22:18:22,534 INFO    wandb-upload_1:29436 [upload_job.py:push():117] Skipped uploading C:\Users\tripats\AppData\Local\Temp\tmpde5qk3ajwandb\jo716gth-code/main.py
+2023-04-30 22:18:22,546 DEBUG   SenderThread:29436 [sender.py:send():375] send: telemetry
+2023-04-30 22:18:22,554 DEBUG   SenderThread:29436 [sender.py:send():375] send: tbrecord
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-metadata.json
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\diff.patch
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\code\main.py
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\conda-environment.yaml
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\requirements.txt
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:22,681 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\code
+2023-04-30 22:18:22,805 INFO    wandb-upload_0:29436 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpde5qk3ajwandb\2xxqjyz5-wandb-metadata.json
+2023-04-30 22:18:22,849 INFO    wandb-upload_2:29436 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpde5qk3ajwandb\fwcbd4ds-diff.patch
+2023-04-30 22:18:23,683 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:23,930 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:24,953 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:24,953 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:24,953 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:24,953 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:25,004 DEBUG   Thread-34 (_thread_except_body):29436 [tb_watcher.py:_process_events():274] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\runs\\madql_uav__lvl1__5__1__1682907497\\events.out.tfevents.1682907502.CEC-ZHANGR43776.40480.0' -> 'C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\wandb\\run-20230430_221821-7hswr3ua\\files\\events.out.tfevents.1682907502.CEC-ZHANGR43776.40480.0'
+2023-04-30 22:18:25,715 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:25,715 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:25,944 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:26,322 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:26,328 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:26,328 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:26,328 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:18:26,329 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:26,722 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:26,788 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:26,790 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:26,790 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:26,791 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:27,252 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:27,254 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:27,254 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:27,256 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:27,731 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:27,731 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:27,733 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:27,734 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:27,734 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:27,736 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:27,964 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:28,740 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:29,751 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:29,987 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:30,763 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:30,885 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:30,886 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:30,886 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:30,887 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:31,771 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:31,771 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:31,889 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:18:32,005 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:34,025 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:34,670 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:34,672 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:34,672 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:34,675 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:34,790 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:35,793 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:36,049 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:37,464 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-30 22:18:37,465 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: stop_status
+2023-04-30 22:18:37,500 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:18:38,075 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:39,599 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:39,600 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:39,600 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:39,601 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:39,825 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:40,100 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:41,844 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:42,125 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:42,636 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: status_report
+2023-04-30 22:18:44,146 ERROR   gpu       :29436 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-04-30 22:18:44,752 DEBUG   HandlerThread:29436 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-30 22:18:44,754 DEBUG   SenderThread:29436 [sender.py:send():375] send: history
+2023-04-30 22:18:44,754 DEBUG   SenderThread:29436 [sender.py:send_request():402] send_request: summary_record
+2023-04-30 22:18:44,755 INFO    SenderThread:29436 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-30 22:18:44,854 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\wandb-summary.json
+2023-04-30 22:18:45,855 INFO    Thread-16 :29436 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\files\output.log
+2023-04-30 22:18:46,010 INFO    cpu       :29436 [interfaces.py:monitor():140] Process cpu has exited.
+2023-04-30 22:18:46,010 DEBUG   SystemMonitor:29436 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-04-30 22:18:46,010 DEBUG   SystemMonitor:29436 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-04-30 22:18:46,010 DEBUG   SystemMonitor:29436 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-04-30 22:18:46,010 DEBUG   SenderThread:29436 [sender.py:send():375] send: stats
+2023-04-30 22:18:46,472 WARNING StreamThr :29436 [internal.py:is_dead():414] Internal process exiting, parent pid 40480 disappeared
+2023-04-30 22:18:46,472 ERROR   StreamThr :29436 [internal.py:wandb_internal():152] Internal process shutdown.
+2023-04-30 22:18:47,016 INFO    HandlerThread:29436 [handler.py:finish():845] shutting down handler
+2023-04-30 22:18:47,017 INFO    SenderThread:29436 [sender.py:finish():1550] shutting down sender
+2023-04-30 22:18:47,017 INFO    WriterThread:29436 [datastore.py:close():298] close: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\wandb\run-20230430_221821-7hswr3ua\run-7hswr3ua.wandb
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [system_monitor.py:finish():190] Stopping system monitor
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [interfaces.py:finish():202] Joined cpu monitor
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [interfaces.py:finish():202] Joined disk monitor
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [interfaces.py:finish():202] Joined gpu monitor
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [interfaces.py:finish():202] Joined memory monitor
+2023-04-30 22:18:47,017 INFO    HandlerThread:29436 [interfaces.py:finish():202] Joined network monitor
+2023-04-30 22:18:47,032 INFO    MainThread:29436 [internal.py:handle_exit():76] Internal process exited

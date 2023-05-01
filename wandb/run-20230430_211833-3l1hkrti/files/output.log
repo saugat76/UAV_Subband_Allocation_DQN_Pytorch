@@ -1,0 +1,614 @@
+
+0
+[1, 4, 4, 4, 1]
+Number of user connected in  0  episode is:  [0 0 0 8 4]
+Total user connected in  0  episode is:  12
+1
+2
+3
+4
+5
+C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\numpy\core\shape_base.py:121: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  ary = asanyarray(ary)
+6
+7
+8
+9
+10
+[2, 1, 0, 0, 0]
+Number of user connected in  10  episode is:  [ 7  3 10  0  6]
+Total user connected in  10  episode is:  26
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+[0, 1, 0, 0, 0]
+Number of user connected in  20  episode is:  [7 8 7 0 3]
+Total user connected in  20  episode is:  25
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+[0, 2, 0, 0, 2]
+Number of user connected in  30  episode is:  [10  9  0  4  4]
+Total user connected in  30  episode is:  27
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+[1, 2, 1, 0, 3]
+Number of user connected in  40  episode is:  [2 7 6 7 6]
+Total user connected in  40  episode is:  28
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+[2, 2, 2, 2, 2]
+Number of user connected in  50  episode is:  [ 4  7  3 12  9]
+Total user connected in  50  episode is:  35
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+[2, 0, 3, 2, 2]
+Number of user connected in  60  episode is:  [ 6  7  4 10  9]
+Total user connected in  60  episode is:  36
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+[3, 1, 3, 2, 1]
+Number of user connected in  70  episode is:  [ 6 10  4 10  4]
+Total user connected in  70  episode is:  34
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+[2, 2, 3, 2, 2]
+Number of user connected in  80  episode is:  [ 8  4  4 11 14]
+Total user connected in  80  episode is:  41
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+[2, 0, 3, 2, 0]
+Number of user connected in  90  episode is:  [8 2 0 7 6]
+Total user connected in  90  episode is:  23
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+[2, 1, 3, 2, 2]
+Number of user connected in  100  episode is:  [ 8  8  4 11 14]
+Total user connected in  100  episode is:  45
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+[2, 1, 0, 2, 3]
+Number of user connected in  110  episode is:  [ 3  7  7 13 15]
+Total user connected in  110  episode is:  45
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+[0, 1, 1, 2, 2]
+Number of user connected in  120  episode is:  [ 8  7  2 13 14]
+Total user connected in  120  episode is:  44
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+[0, 0, 0, 3, 3]
+Number of user connected in  130  episode is:  [ 8 12  7 12 15]
+Total user connected in  130  episode is:  54
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+[0, 0, 1, 3, 3]
+Number of user connected in  140  episode is:  [11 14  3 12 15]
+Total user connected in  140  episode is:  55
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+[0, 0, 1, 3, 3]
+Number of user connected in  150  episode is:  [11 15  0 12 15]
+Total user connected in  150  episode is:  53
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+[0, 0, 0, 3, 3]
+Number of user connected in  160  episode is:  [11 15 16 12 15]
+Total user connected in  160  episode is:  69
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+[0, 1, 0, 3, 3]
+Number of user connected in  170  episode is:  [11 15 16 12 15]
+Total user connected in  170  episode is:  69
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+[0, 1, 0, 3, 3]
+Number of user connected in  180  episode is:  [11 15 16 12 17]
+Total user connected in  180  episode is:  71
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+[0, 1, 0, 3, 3]
+Number of user connected in  190  episode is:  [11 15 16 12 17]
+Total user connected in  190  episode is:  71
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+[0, 1, 0, 3, 2]
+Number of user connected in  200  episode is:  [11 15 16 12 17]
+Total user connected in  200  episode is:  71
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+[0, 3, 1, 3, 2]
+Number of user connected in  210  episode is:  [11 15 18 12 17]
+Total user connected in  210  episode is:  73
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+[0, 1, 0, 3, 2]
+Number of user connected in  220  episode is:  [11 15 16 12 17]
+Total user connected in  220  episode is:  71
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+[0, 1, 1, 3, 2]
+Number of user connected in  230  episode is:  [11 15 18 12 17]
+Total user connected in  230  episode is:  73
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+[0, 1, 1, 3, 2]
+Number of user connected in  240  episode is:  [11 15 18 12 17]
+Total user connected in  240  episode is:  73
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+[0, 1, 1, 3, 2]
+Number of user connected in  250  episode is:  [11 15 18 12 17]
+Total user connected in  250  episode is:  73
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+[0, 1, 2, 3, 2]
+Number of user connected in  260  episode is:  [11 15 18 12 17]
+Total user connected in  260  episode is:  73
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+[0, 1, 2, 3, 2]
+Number of user connected in  270  episode is:  [11 15 18 12 17]
+Total user connected in  270  episode is:  73
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+[0, 3, 2, 3, 2]
+Number of user connected in  280  episode is:  [11 15 18 12 17]
+Total user connected in  280  episode is:  73
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+[0, 3, 2, 3, 2]
+Number of user connected in  290  episode is:  [11 15 18 12 17]
+Total user connected in  290  episode is:  73
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+[0, 3, 2, 3, 2]
+Number of user connected in  300  episode is:  [11 15 18 12 17]
+Total user connected in  300  episode is:  73
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+[0, 3, 2, 3, 2]
+Number of user connected in  310  episode is:  [11 15 18 12 17]
+Total user connected in  310  episode is:  73
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+[0, 1, 2, 3, 2]
+Number of user connected in  320  episode is:  [11 15 18 12 17]
+Total user connected in  320  episode is:  73
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+[0, 3, 2, 3, 2]
+Number of user connected in  330  episode is:  [11 15 18 12 17]
+Total user connected in  330  episode is:  73
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+[0, 3, 2, 3, 2]
+Number of user connected in  340  episode is:  [11 15 18 12 17]
+Total user connected in  340  episode is:  73
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+[0, 1, 2, 3, 2]
+Number of user connected in  350  episode is:  [11 15 18 12 17]
+Total user connected in  350  episode is:  73
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+[0, 3, 2, 3, 2]
+Number of user connected in  360  episode is:  [11 15 18 12 17]
+Total user connected in  360  episode is:  73
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+[0, 3, 2, 3, 2]
+Number of user connected in  370  episode is:  [11 15 18 12 17]
+Total user connected in  370  episode is:  73
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+[0, 3, 2, 3, 2]
+Number of user connected in  380  episode is:  [11 15 18 12 17]
+Total user connected in  380  episode is:  73
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+[0, 1, 2, 3, 2]
+Number of user connected in  390  episode is:  [11 15 18 12 17]
+Total user connected in  390  episode is:  73
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+[0, 3, 2, 3, 2]
+Number of user connected in  400  episode is:  [11 15 18 12 17]
+Total user connected in  400  episode is:  73
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+[0, 3, 2, 3, 2]
+Number of user connected in  410  episode is:  [11 15 18 12 17]
+Total user connected in  410  episode is:  73
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+[0, 1, 2, 3, 2]
+Number of user connected in  420  episode is:  [11 15 18 12 17]
+Total user connected in  420  episode is:  73
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+[0, 3, 2, 3, 2]
+Number of user connected in  430  episode is:  [11 15 18 12 17]
+Total user connected in  430  episode is:  73
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+[0, 3, 2, 3, 2]
+Number of user connected in  440  episode is:  [11 15 18 12 17]
+Total user connected in  440  episode is:  73
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+[0, 1, 2, 3, 2]
+Number of user connected in  450  episode is:  [11 15 18 12 17]
+Total user connected in  450  episode is:  73
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+[0, 1, 2, 3, 2]
+Number of user connected in  460  episode is:  [11 15 18 12 17]
+Total user connected in  460  episode is:  73
+461
+462
+463
+464
+465
+466
+467
+468
+469

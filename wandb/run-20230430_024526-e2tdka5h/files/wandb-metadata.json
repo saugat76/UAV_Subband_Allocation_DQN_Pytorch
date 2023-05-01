@@ -1,0 +1,59 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.10.4",
+    "heartbeatAt": "2023-04-30T06:45:27.765050",
+    "startedAt": "2023-04-30T06:45:26.901845",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--info-exchange-lvl",
+        "2",
+        "--num-episode",
+        "450",
+        "--wandb-track",
+        "True",
+        "--learning-rate",
+        "0.00025"
+    ],
+    "state": "running",
+    "program": "C:\\Users\\tripats\\Documents\\GitHub\\UAV_Subband_Allocation_DQN_Pytorch\\main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git",
+        "commit": "b5be9602f87d308cd78ec762bf06b3cc47b5f804"
+    },
+    "email": "saugat.tripathi76@gmail.com",
+    "root": "C:/Users/tripats/Documents/GitHub/UAV_Subband_Allocation_DQN_Pytorch",
+    "host": "CEC-ZHANGR43776",
+    "username": "tripats",
+    "executable": "C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 2496.0,
+        "min": 0.0,
+        "max": 2496.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2496.0,
+            "min": 0.0,
+            "max": 2496.0
+        }
+    ],
+    "disk": {
+        "total": 943.7177696228027,
+        "used": 209.68704223632812
+    },
+    "gpu": "NVIDIA RTX A5000 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A5000 Laptop GPU",
+            "memory_total": 17179869184
+        }
+    ],
+    "memory": {
+        "total": 63.204471588134766
+    }
+}
