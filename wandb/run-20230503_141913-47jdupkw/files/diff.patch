@@ -1,0 +1,62 @@
+diff --git a/__pycache__/misc.cpython-310.pyc b/__pycache__/misc.cpython-310.pyc
+index ebdacc3..6dca74b 100644
+Binary files a/__pycache__/misc.cpython-310.pyc and b/__pycache__/misc.cpython-310.pyc differ
+diff --git a/__pycache__/uav_env.cpython-310.pyc b/__pycache__/uav_env.cpython-310.pyc
+index ea4a484..4e41975 100644
+Binary files a/__pycache__/uav_env.cpython-310.pyc and b/__pycache__/uav_env.cpython-310.pyc differ
+diff --git a/main.py b/main.py
+index 87aad68..172af3f 100644
+--- a/main.py
++++ b/main.py
+@@ -20,9 +20,9 @@ import warnings
+ warnings.filterwarnings("ignore", category=DeprecationWarning)
+ 
+ 
+-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+-PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
++# os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
++# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
++# PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
+ 
+ os.chdir = ("")
+ 
+@@ -75,7 +75,7 @@ def parse_args():
+ 
+ 
+ # GPU configuration use for faster processing
+-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
++device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+ 
+ 
+ # DNN modeling
+@@ -86,11 +86,13 @@ class NeuralNetwork(nn.Module):
+         self.state_size = state_size
+         self.action_size = action_size
+         self.linear_stack = model = nn.Sequential(
+-            nn.Linear(self.state_size,400),
++            nn.Linear(self.state_size,64),
+             nn.ReLU(),
+-            nn.Linear(400,400),
++            nn.Linear(64,64),
+             nn.ReLU(),
+-            nn.Linear(400, self.action_size)
++            nn.Linear(64,64),
++            nn.ReLU(),
++            nn.Linear(64, self.action_size)
+         ).to(device=device)
+ 
+     def forward(self, x):
+diff --git a/run.py b/run.py
+index 274347f..4ede1c4 100644
+--- a/run.py
++++ b/run.py
+@@ -9,7 +9,7 @@ for i in range(1,5):
+     g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(1000), "--wandb-track", "True", "--learning-rate", str(2.5e-4)])
+ 
+ #   python uav_env.py
+-#   python main.py --num-episode 1000 --wandb-track True --learning-rate 2.5e-4 --info-exchange-lvl 1 --num-uav 7
++#   python main.py --wandb-track True --learning-rate 2.5e-4 --num-episode 1000 --info-exchange-lvl 4 --num-uav 7
+ 
+ # # ## Running for level 3 with different distance values
+ for i in range(0,1000, 250):
