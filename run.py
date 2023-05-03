@@ -9,7 +9,7 @@ for i in range(1,5):
     g = subprocess.run(["python", "main.py", "--info-exchange-lvl", str(i), "--num-episode", str(1000), "--wandb-track", "True", "--learning-rate", str(2.5e-4)])
 
 #   python uav_env.py
-#   python main.py --wandb-track True --learning-rate 2.5e-4 --num-episode 1000 --info-exchange-lvl 4 --num-uav 7
+#   python main.py --wandb-track True --learning-rate 2.5e-4 --num-episode 1000 --info-exchange-lvl 4 --num-uav 7 --nodes 400 --layers 2 --covered-user-as-input True
 
 # # ## Running for level 3 with different distance values
 for i in range(0,1000, 250):

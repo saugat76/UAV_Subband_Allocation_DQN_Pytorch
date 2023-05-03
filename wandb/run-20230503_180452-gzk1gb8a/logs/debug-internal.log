@@ -1,0 +1,233 @@
+2023-05-03 18:04:52,289 INFO    StreamThr :23780 [internal.py:wandb_internal():86] W&B internal server running at pid: 23780, started at: 2023-05-03 18:04:52.289263
+2023-05-03 18:04:52,289 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status
+2023-05-03 18:04:52,320 INFO    WriterThread:23780 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\run-gzk1gb8a.wandb
+2023-05-03 18:04:52,320 DEBUG   SenderThread:23780 [sender.py:send():375] send: header
+2023-05-03 18:04:52,492 DEBUG   SenderThread:23780 [sender.py:send():375] send: run
+2023-05-03 18:04:52,789 INFO    SenderThread:23780 [dir_watcher.py:__init__():219] watching files in: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files
+2023-05-03 18:04:52,789 INFO    SenderThread:23780 [sender.py:_start_run_threads():1124] run started: gzk1gb8a with start time 1683151492.289262
+2023-05-03 18:04:52,804 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: summary_record
+2023-05-03 18:04:52,804 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-03 18:04:52,804 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: check_version
+2023-05-03 18:04:52,820 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: check_version
+2023-05-03 18:04:53,025 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: run_start
+2023-05-03 18:04:53,103 DEBUG   HandlerThread:23780 [system_info.py:__init__():31] System info init
+2023-05-03 18:04:53,103 DEBUG   HandlerThread:23780 [system_info.py:__init__():46] System info init done
+2023-05-03 18:04:53,103 INFO    HandlerThread:23780 [system_monitor.py:start():181] Starting system monitor
+2023-05-03 18:04:53,103 INFO    SystemMonitor:23780 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-05-03 18:04:53,103 INFO    HandlerThread:23780 [system_monitor.py:probe():201] Collecting system info
+2023-05-03 18:04:53,119 INFO    SystemMonitor:23780 [interfaces.py:start():190] Started cpu monitoring
+2023-05-03 18:04:53,119 INFO    SystemMonitor:23780 [interfaces.py:start():190] Started disk monitoring
+2023-05-03 18:04:53,119 INFO    SystemMonitor:23780 [interfaces.py:start():190] Started gpu monitoring
+2023-05-03 18:04:53,119 INFO    SystemMonitor:23780 [interfaces.py:start():190] Started memory monitoring
+2023-05-03 18:04:53,135 INFO    SystemMonitor:23780 [interfaces.py:start():190] Started network monitoring
+2023-05-03 18:04:53,197 DEBUG   HandlerThread:23780 [system_info.py:probe():195] Probing system
+2023-05-03 18:04:53,213 DEBUG   HandlerThread:23780 [system_info.py:_probe_git():180] Probing git
+2023-05-03 18:04:53,557 DEBUG   HandlerThread:23780 [system_info.py:_probe_git():188] Probing git done
+2023-05-03 18:04:53,557 DEBUG   HandlerThread:23780 [system_info.py:probe():240] Probing system done
+2023-05-03 18:04:53,557 DEBUG   HandlerThread:23780 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.10.4', 'heartbeatAt': '2023-05-03T22:04:53.197719', 'startedAt': '2023-05-03T22:04:52.235939', 'docker': None, 'cuda': None, 'args': ('--wandb-track', 'True', '--learning-rate', '2.5e-4', '--num-episode', '1000', '--info-exchange-lvl', '3', '--num-uav', '7', '--nodes', '300', '--layers', '2', '--covered-user-as-input', 'True'), 'state': 'running', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git', 'commit': 'ce8909340ea9e1af65d8c3b351b3f40494de7f98'}, 'email': 'saugat.tripathi76@gmail.com', 'root': 'C:/Users/tripats/Documents/GitHub/uav_nw_madql_connectivity_pytorch', 'host': 'CEC-ZHANGR43-LL', 'username': 'tripats', 'executable': 'C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3504.0, 'min': 0.0, 'max': 3504.0}, 'cpu_freq_per_core': [{'current': 3504.0, 'min': 0.0, 'max': 3504.0}], 'disk': {'total': 930.9004402160645, 'used': 449.1915397644043}, 'gpu': 'Quadro RTX 6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'Quadro RTX 6000', 'memory_total': 25769803776}, {'name': 'Quadro RTX 6000', 'memory_total': 25769803776}], 'memory': {'total': 63.68939208984375}}
+2023-05-03 18:04:53,557 INFO    HandlerThread:23780 [system_monitor.py:probe():211] Finished collecting system info
+2023-05-03 18:04:53,557 INFO    HandlerThread:23780 [system_monitor.py:probe():214] Publishing system info
+2023-05-03 18:04:53,557 DEBUG   HandlerThread:23780 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-03 18:04:53,572 DEBUG   HandlerThread:23780 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-03 18:04:53,572 DEBUG   HandlerThread:23780 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-05-03 18:04:53,572 ERROR   HandlerThread:23780 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-05-03 18:04:53,572 DEBUG   HandlerThread:23780 [system_info.py:_save_conda():86] Saving conda packages done
+2023-05-03 18:04:53,572 DEBUG   HandlerThread:23780 [system_info.py:_save_code():89] Saving code
+2023-05-03 18:04:53,744 DEBUG   HandlerThread:23780 [system_info.py:_save_code():110] Saving code done
+2023-05-03 18:04:53,744 DEBUG   HandlerThread:23780 [system_info.py:_save_patches():127] Saving git patches
+2023-05-03 18:04:53,806 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\requirements.txt
+2023-05-03 18:04:53,806 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\code\main.py
+2023-05-03 18:04:53,806 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-summary.json
+2023-05-03 18:04:53,806 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\conda-environment.yaml
+2023-05-03 18:04:53,806 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\code
+2023-05-03 18:04:54,820 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\diff.patch
+2023-05-03 18:04:54,876 DEBUG   HandlerThread:23780 [system_info.py:_save_patches():169] Saving git patches done
+2023-05-03 18:04:54,879 INFO    HandlerThread:23780 [system_monitor.py:probe():216] Finished publishing system info
+2023-05-03 18:04:54,900 DEBUG   SenderThread:23780 [sender.py:send():375] send: files
+2023-05-03 18:04:54,900 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-05-03 18:04:54,900 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file code\main.py with policy now
+2023-05-03 18:04:54,900 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file diff.patch with policy now
+2023-05-03 18:04:54,914 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-03 18:04:54,930 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: stop_status
+2023-05-03 18:04:54,930 INFO    HandlerThread:23780 [handler.py:handle_tbrecord():750] handling tbrecord: tbrecord {
+  log_dir: "runs/madql_uav__lvl3__7__1__1683151487"
+  save: true
+}
+control {
+  relay_id: "e310276da3e84dd6ae08c69c28c5f7be"
+}
+_info {
+  stream_id: "gzk1gb8a"
+}
+
+2023-05-03 18:04:54,930 DEBUG   HandlerThread:23780 [config_util.py:dict_from_config_file():104] no default config file found in config-defaults.yaml
+2023-05-03 18:04:55,040 INFO    wandb-upload_1:23780 [upload_job.py:push():117] Skipped uploading C:\Users\tripats\AppData\Local\Temp\tmpj63ofxutwandb\nejawqwx-code/main.py
+2023-05-03 18:04:55,040 DEBUG   SenderThread:23780 [sender.py:send():375] send: telemetry
+2023-05-03 18:04:55,040 DEBUG   SenderThread:23780 [sender.py:send():375] send: tbrecord
+2023-05-03 18:04:55,279 INFO    wandb-upload_0:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpj63ofxutwandb\x7vbjiul-wandb-metadata.json
+2023-05-03 18:04:55,431 INFO    wandb-upload_2:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpj63ofxutwandb\fh26tdek-diff.patch
+2023-05-03 18:04:55,836 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-metadata.json
+2023-05-03 18:04:56,664 DEBUG   SenderThread:23780 [sender.py:send():375] send: exit
+2023-05-03 18:04:56,664 INFO    SenderThread:23780 [sender.py:send_exit():598] handling exit code: 1
+2023-05-03 18:04:56,664 INFO    SenderThread:23780 [sender.py:send_exit():600] handling runtime: 3
+2023-05-03 18:04:56,664 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-03 18:04:56,664 INFO    SenderThread:23780 [sender.py:send_exit():606] send defer
+2023-05-03 18:04:56,664 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:04:56,664 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 0
+2023-05-03 18:04:56,664 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:04:56,664 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-05-03 18:04:56,680 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 1
+2023-05-03 18:04:56,680 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:04:56,681 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 1
+2023-05-03 18:04:56,681 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:04:56,682 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-05-03 18:04:56,682 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 2
+2023-05-03 18:04:56,683 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:04:56,683 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 2
+2023-05-03 18:04:56,683 INFO    HandlerThread:23780 [system_monitor.py:finish():190] Stopping system monitor
+2023-05-03 18:04:56,684 DEBUG   SystemMonitor:23780 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-05-03 18:04:56,684 INFO    HandlerThread:23780 [interfaces.py:finish():202] Joined cpu monitor
+2023-05-03 18:04:56,685 DEBUG   SystemMonitor:23780 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-05-03 18:04:56,693 INFO    HandlerThread:23780 [interfaces.py:finish():202] Joined disk monitor
+2023-05-03 18:04:56,694 DEBUG   SystemMonitor:23780 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-05-03 18:04:56,845 INFO    HandlerThread:23780 [interfaces.py:finish():202] Joined gpu monitor
+2023-05-03 18:04:56,846 INFO    HandlerThread:23780 [interfaces.py:finish():202] Joined memory monitor
+2023-05-03 18:04:56,847 INFO    HandlerThread:23780 [interfaces.py:finish():202] Joined network monitor
+2023-05-03 18:04:56,848 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:04:56,848 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-05-03 18:04:56,848 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 3
+2023-05-03 18:04:56,848 DEBUG   SenderThread:23780 [sender.py:send():375] send: stats
+2023-05-03 18:04:56,849 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:04:56,851 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 3
+2023-05-03 18:04:56,852 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:04:56,853 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-05-03 18:04:56,853 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 4
+2023-05-03 18:04:56,854 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:04:56,854 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 4
+2023-05-03 18:04:56,857 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-summary.json
+2023-05-03 18:04:56,857 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\output.log
+2023-05-03 18:04:58,260 DEBUG   Thread-34 (_thread_except_body):23780 [tb_watcher.py:_process_events():274] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\runs\\madql_uav__lvl3__7__1__1683151487\\events.out.tfevents.1683151494.CEC-ZHANGR43-LL.10592.0' -> 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\wandb\\run-20230503_180452-gzk1gb8a\\files\\events.out.tfevents.1683151494.CEC-ZHANGR43-LL.10592.0'
+2023-05-03 18:04:58,917 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\output.log
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:09,054 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-03 18:05:09,054 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:09,054 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 5
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-03 18:05:09,054 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: poll_exit
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:09,054 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 5
+2023-05-03 18:05:09,054 DEBUG   SenderThread:23780 [sender.py:send():375] send: summary
+2023-05-03 18:05:09,054 INFO    SenderThread:23780 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-03 18:05:09,054 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:09,054 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-05-03 18:05:09,054 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 6
+2023-05-03 18:05:09,054 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:09,054 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 6
+2023-05-03 18:05:09,070 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:09,070 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-05-03 18:05:09,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:09,085 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-summary.json
+2023-05-03 18:05:09,273 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 7
+2023-05-03 18:05:09,273 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:09,273 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 7
+2023-05-03 18:05:09,273 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:09,273 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-05-03 18:05:10,086 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\config.yaml
+2023-05-03 18:05:10,758 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 8
+2023-05-03 18:05:10,758 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:10,758 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 8
+2023-05-03 18:05:10,758 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:10,758 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-05-03 18:05:10,804 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 9
+2023-05-03 18:05:10,804 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:10,804 DEBUG   SenderThread:23780 [sender.py:send():375] send: artifact
+2023-05-03 18:05:10,804 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 9
+2023-05-03 18:05:11,101 INFO    Thread-16 :23780 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\output.log
+2023-05-03 18:05:11,429 INFO    wandb-upload_0:23780 [upload_job.py:push():92] Skipped uploading C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmptq6s656p
+2023-05-03 18:05:11,757 INFO    wandb-upload_2:23780 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmpsu0e1_v7
+2023-05-03 18:05:11,773 INFO    wandb-upload_1:23780 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmpoqy9pjql
+2023-05-03 18:05:12,757 INFO    SenderThread:23780 [sender.py:send_artifact():1474] sent artifact job-https___github.com_saugat76_UAV_Subband_Allocation_DQN_Pytorch.git_main.py - {'id': 'QXJ0aWZhY3Q6NDQxMDY3MTk3', 'digest': '8af3c181056bc5064e3c2326d318ba98', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjYzMDUxNzMy', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDQxMDU1OTM1', 'versionIndex': 60}}, 'version': 'latest'}
+2023-05-03 18:05:12,757 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:12,773 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-05-03 18:05:12,773 INFO    SenderThread:23780 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-05-03 18:05:12,960 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():395] scan: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\conda-environment.yaml conda-environment.yaml
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\config.yaml config.yaml
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\diff.patch diff.patch
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\output.log output.log
+2023-05-03 18:05:13,132 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\requirements.txt requirements.txt
+2023-05-03 18:05:13,148 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-metadata.json wandb-metadata.json
+2023-05-03 18:05:13,148 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-summary.json wandb-summary.json
+2023-05-03 18:05:13,163 INFO    SenderThread:23780 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\code\main.py code\main.py
+2023-05-03 18:05:13,163 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 10
+2023-05-03 18:05:13,163 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:13,163 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 10
+2023-05-03 18:05:13,163 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:13,163 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-05-03 18:05:13,163 INFO    SenderThread:23780 [file_pusher.py:finish():168] shutting down file pusher
+2023-05-03 18:05:13,492 INFO    wandb-upload_0:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\config.yaml
+2023-05-03 18:05:13,507 INFO    wandb-upload_1:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\output.log
+2023-05-03 18:05:13,586 INFO    wandb-upload_3:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\wandb-summary.json
+2023-05-03 18:05:13,601 INFO    wandb-upload_2:23780 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\files\requirements.txt
+2023-05-03 18:05:13,820 INFO    Thread-15 (_thread_body):23780 [sender.py:transition_state():626] send defer: 11
+2023-05-03 18:05:13,820 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:13,820 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 11
+2023-05-03 18:05:13,820 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:13,820 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-05-03 18:05:13,820 INFO    SenderThread:23780 [file_pusher.py:join():173] waiting for file pusher
+2023-05-03 18:05:13,820 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 12
+2023-05-03 18:05:13,820 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:13,820 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 12
+2023-05-03 18:05:13,820 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:13,820 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-05-03 18:05:14,070 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 13
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:14,070 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 13
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:14,070 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-05-03 18:05:14,070 INFO    SenderThread:23780 [sender.py:transition_state():626] send defer: 14
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: defer
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send():375] send: final
+2023-05-03 18:05:14,070 INFO    HandlerThread:23780 [handler.py:handle_request_defer():170] handle defer: 14
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send():375] send: footer
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: defer
+2023-05-03 18:05:14,070 INFO    SenderThread:23780 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: server_info
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: get_summary
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: poll_exit
+2023-05-03 18:05:14,070 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: sampled_history
+2023-05-03 18:05:14,070 DEBUG   SenderThread:23780 [sender.py:send_request():402] send_request: server_info
+2023-05-03 18:05:14,132 INFO    MainThread:23780 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-05-03 18:05:14,132 INFO    MainThread:23780 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-05-03 18:05:14,132 INFO    MainThread:23780 [wandb_run.py:_footer_sync_info():3434] logging synced files
+2023-05-03 18:05:19,180 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:24,225 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:29,273 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:34,335 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:39,352 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:44,398 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:49,429 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:54,460 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:05:59,507 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: status_report
+2023-05-03 18:06:00,476 DEBUG   HandlerThread:23780 [handler.py:handle_request():144] handle_request: shutdown
+2023-05-03 18:06:00,476 INFO    HandlerThread:23780 [handler.py:finish():845] shutting down handler
+2023-05-03 18:06:00,507 INFO    SenderThread:23780 [sender.py:finish():1550] shutting down sender
+2023-05-03 18:06:00,507 INFO    SenderThread:23780 [file_pusher.py:finish():168] shutting down file pusher
+2023-05-03 18:06:00,507 INFO    SenderThread:23780 [file_pusher.py:join():173] waiting for file pusher
+2023-05-03 18:06:00,523 INFO    WriterThread:23780 [datastore.py:close():298] close: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230503_180452-gzk1gb8a\run-gzk1gb8a.wandb

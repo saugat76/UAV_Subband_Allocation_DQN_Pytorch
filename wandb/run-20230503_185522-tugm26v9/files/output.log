@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 264, in <module>
+    UAV_OB.append(DQL())
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 124, in __init__
+    self.main_network = NeuralNetwork().to(device)
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 91, in __init__
+    nn.Linear(self.state_size, args.nodes),
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\torch\nn\modules\module.py", line 1207, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'NeuralNetwork' object has no attribute 'state_size'

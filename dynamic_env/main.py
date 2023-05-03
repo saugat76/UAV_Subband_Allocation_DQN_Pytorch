@@ -20,9 +20,9 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
+# os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+# PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
 os.chdir = ("")
 
@@ -88,11 +88,11 @@ class NeuralNetwork(nn.Module):
         self.state_size = state_size
         self.action_size = action_size
         self.linear_stack = model = nn.Sequential(
-            nn.Linear(self.state_size,400),
+            nn.Linear(self.state_size, args.nodes),
             nn.ReLU(),
-            nn.Linear(400,400),
+            nn.Linear(args.nodes, args.nodes),
             nn.ReLU(),
-            nn.Linear(400, self.action_size)
+            nn.Linear(args.nodes, self.action_size)
         ).to(device=device)
 
     def forward(self, x):

@@ -1,0 +1,6 @@
+
+0
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 385, in <module>
+    Q_values = UAV_OB[k].main_network.forward(state.float())
+AttributeError: 'numpy.ndarray' object has no attribute 'float'

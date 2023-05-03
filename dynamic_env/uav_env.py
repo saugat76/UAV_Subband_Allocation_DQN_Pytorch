@@ -118,9 +118,9 @@ class UAVenv(gym.Env):
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        self.state[:, 0:2] = np.zeros((args.num_uav,2), dtype=np.int32)
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
-        self.flag = [0, 0, 0, 0, 0]
+        self.flag = np.zeros((args.num_uav), dtype=np.int32)
         print(self.coverage_radius)
 
     def step(self, action, info_exchange_lvl):
@@ -250,6 +250,11 @@ class UAVenv(gym.Env):
                             user_asso_flag[close_id, j] = 1
                             break
         
+        # Consideration of third state value as servered user rate per UAV
+        # May need for the normalization of the third state value so all inputs are equally evaluated but not applying currently
+        sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+        self.state[:, 2] = sum_user_assoc / self.NUM_USER
+
         # Need to work on the return parameter of done, info, reward, and obs
         # Calculation of reward function too i.e. total bandwidth providednew to the user
         # Using some form of weighted average to do the reward calculation instead of the collective reward value only
@@ -338,15 +343,17 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
-        self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+        # self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
         # Starting UAV Position at the center of the target area
         # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
-        self.state[:, 2] = self.UAV_HEIGHT
+        # Reset all state value // both position state and user coverage value
+        self.state = np.zeros((self.NUM_UAV,3), dtype=np.int32)
         return self.state
 
     def get_state(self):
-        state_loc = np.zeros((self.NUM_UAV, 2))
+        state_loc = np.zeros((self.NUM_UAV, 3))
         for k in range(self.NUM_UAV):
             state_loc[k, 0] = self.state[k, 0]
             state_loc[k, 1] = self.state[k, 1]
+            state_loc[k, 2] = self.state[k, 2]
         return state_loc

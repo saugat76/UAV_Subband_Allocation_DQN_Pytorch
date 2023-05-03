@@ -1,0 +1,42 @@
+
+0
+[0, 3, 4, 1, 2, 4, 1]
+Number of user connected in  0  episode is:  [4 2 3 1 4 0 0]
+Total user connected in  0  episode is:  14
+1
+2
+3
+4
+5
+C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\numpy\core\shape_base.py:121: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  ary = asanyarray(ary)
+6
+7
+8
+9
+10
+[4, 4, 4, 1, 2, 0, 1]
+Number of user connected in  10  episode is:  [3 0 2 3 0 3 6]
+Total user connected in  10  episode is:  17
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+[3, 2, 4, 0, 3, 2, 0]
+Number of user connected in  20  episode is:  [ 4 12  6  8  1  5 15]
+Total user connected in  20  episode is:  51
+21
+22
+23
+24
+25
+26
+27
+28
+29
