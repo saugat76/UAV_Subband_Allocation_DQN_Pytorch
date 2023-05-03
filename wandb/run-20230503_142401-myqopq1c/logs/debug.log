@@ -19,3 +19,9 @@ config: {'exp_name': 'madql_uav', 'seed': 1, 'torch_deterministic': True, 'cuda'
 2023-05-03 14:24:02,095 INFO    MainThread:11280 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.15.1 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
 
 2023-05-03 14:24:02,095 INFO    MainThread:11280 [wandb_init.py:init():782] starting run threads in backend
+2023-05-03 14:24:03,108 INFO    MainThread:11280 [wandb_run.py:_console_start():2157] atexit reg
+2023-05-03 14:24:03,110 INFO    MainThread:11280 [wandb_run.py:_redirect():2012] redirect: SettingsConsole.WRAP_RAW
+2023-05-03 14:24:03,110 INFO    MainThread:11280 [wandb_run.py:_redirect():2077] Wrapping output streams.
+2023-05-03 14:24:03,110 INFO    MainThread:11280 [wandb_run.py:_redirect():2102] Redirects installed.
+2023-05-03 14:24:03,111 INFO    MainThread:11280 [wandb_init.py:init():824] run started, returning control to user process
+2023-05-03 14:24:03,112 INFO    MainThread:11280 [wandb_run.py:_tensorboard_callback():1432] tensorboard callback: runs/madql_uav__lvl4__7__1__1683138236, True
