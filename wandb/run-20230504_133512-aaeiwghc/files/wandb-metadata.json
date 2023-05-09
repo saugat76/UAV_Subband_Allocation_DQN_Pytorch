@@ -1,0 +1,69 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.10.4",
+    "heartbeatAt": "2023-05-04T17:35:13.901031",
+    "startedAt": "2023-05-04T17:35:12.995024",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--wandb-track",
+        "True",
+        "--learning-rate",
+        "0.5e-4",
+        "--num-episode",
+        "1000",
+        "--info-exchange-lvl",
+        "4",
+        "--num-uav",
+        "7",
+        "--nodes",
+        "512",
+        "--layers",
+        "2"
+    ],
+    "state": "running",
+    "program": "C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git",
+        "commit": "c3e831d882dc0ec866ad7efe208fa79c1bf03822"
+    },
+    "email": "saugat.tripathi76@gmail.com",
+    "root": "C:/Users/tripats/Documents/GitHub/uav_nw_madql_connectivity_pytorch",
+    "host": "CEC-ZHANGR43-LL",
+    "username": "tripats",
+    "executable": "C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe",
+    "cpu_count": 12,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 3504.0,
+        "min": 0.0,
+        "max": 3504.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3504.0,
+            "min": 0.0,
+            "max": 3504.0
+        }
+    ],
+    "disk": {
+        "total": 930.9004402160645,
+        "used": 449.4456253051758
+    },
+    "gpu": "Quadro RTX 6000",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "Quadro RTX 6000",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "Quadro RTX 6000",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 63.68939208984375
+    }
+}
