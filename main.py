@@ -167,7 +167,7 @@ class DQL:
             done = done.to(device = device)
 
             diff = state - next_state
-            done_local = (diff != 0).float().to(device)
+            done_local = (diff != 0).any(dim=1).float().to(device)
 
             # Implementation of DQL algorithm 
             Q_next = self.target_network(next_state).detach()
