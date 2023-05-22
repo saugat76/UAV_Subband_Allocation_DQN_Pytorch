@@ -153,12 +153,12 @@ class DQL:
     def train(self,batch_size, dnn_epoch):
         for k in range(dnn_epoch):
             minibatch = random.sample(self.replay_buffer, batch_size)
-            minibatch = np.vstack(minibatch)
-            minibatch = minibatch.reshape(batch_size,5)
-            state = torch.FloatTensor(np.vstack(minibatch[:,0]))
-            action = torch.LongTensor(np.vstack(minibatch[:,1]))
-            reward = torch.FloatTensor(np.vstack(minibatch[:,2]))
-            next_state = torch.FloatTensor(np.vstack(minibatch[:,3]))
+            minibatch = np.array(minibatch)
+            # minibatch = minibatch.reshape(batch_size,5)
+            state = torch.FloatTensor(np.vstack(minibatch[:,0])).reshape(batch_size, -1)
+            action = torch.LongTensor(np.vstack(minibatch[:,1])).reshape(batch_size, -1)
+            reward = torch.FloatTensor(np.vstack(minibatch[:,2])).reshape(batch_size, -1)
+            next_state = torch.FloatTensor(np.vstack(minibatch[:,3])).reshape(batch_size, -1)
             done = torch.Tensor(np.vstack(minibatch[:,4]))
             state = state.to(device = device)
             action = action.to(device = device)
@@ -167,7 +167,7 @@ class DQL:
             done = done.to(device = device)
 
             diff = state - next_state
-            done_local = (diff != 0).any(dim=1).float().to(device)
+            done_local = (diff != 0).float().to(device)
 
             # Implementation of DQL algorithm 
             Q_next = self.target_network(next_state).detach()
