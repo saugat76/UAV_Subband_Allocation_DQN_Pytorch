@@ -16,3 +16,13 @@ config: {'exp_name': 'madql_uav_contention_complex_uav', 'seed': 1, 'torch_deter
 2023-06-15 15:56:50,410 INFO    MainThread:21776 [wandb_init.py:init():606] backend started and connected
 2023-06-15 15:56:50,428 INFO    MainThread:21776 [wandb_init.py:init():700] updated telemetry
 2023-06-15 15:56:50,516 INFO    MainThread:21776 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-06-15 15:56:55,876 INFO    MainThread:21776 [wandb_run.py:_on_init():2177] communicating current version
+2023-06-15 15:56:55,980 INFO    MainThread:21776 [wandb_run.py:_on_init():2186] got version response upgrade_message: "wandb version 0.15.4 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-06-15 15:56:55,980 INFO    MainThread:21776 [wandb_init.py:init():787] starting run threads in backend
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_run.py:_console_start():2158] atexit reg
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_run.py:_redirect():2103] Redirects installed.
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_init.py:init():829] run started, returning control to user process
+2023-06-15 15:56:56,568 INFO    MainThread:21776 [wandb_run.py:_tensorboard_callback():1433] tensorboard callback: runs/madql_uav_contention_complex_uav__lvl3__5__1__1686859006, True
