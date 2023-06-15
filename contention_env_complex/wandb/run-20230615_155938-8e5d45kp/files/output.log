@@ -1,0 +1,49 @@
+
+0
+[0, 3, 3, 4, 4]
+Number of user connected in  0  episode is:  [4 3 0 0 0]
+Total user connected in  0  episode is:  7
+1
+2
+3
+4
+C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\contention_env_complex\main.py:160: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  minibatch = np.array(minibatch)
+5
+6
+7
+8
+9
+10
+[3, 1, 0, 3, 2]
+Number of user connected in  10  episode is:  [14  5  4  7 12]
+Total user connected in  10  episode is:  42
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+[2, 2, 0, 2, 1]
+Number of user connected in  20  episode is:  [13  5 12 13  8]
+Total user connected in  20  episode is:  51
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+[0, 3, 2, 3, 3]
+Number of user connected in  30  episode is:  [ 7  5  4  8 12]
+Total user connected in  30  episode is:  36
+31
+32
+33

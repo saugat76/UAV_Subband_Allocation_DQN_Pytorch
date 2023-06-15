@@ -311,8 +311,8 @@ class UAVenv(gym.Env):
                 else:
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
                 if total_covered_users <= self.args.coverage_threshold:
-                    reward_solo[k] = np.copy(reward_solo[k] - self.args.coverage_penalty)
                     reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+                    reward_ind[k] = np.copy(reward_ind[k] - self.args.coverage_penalty)
             reward = np.copy(reward_ind)
 
         

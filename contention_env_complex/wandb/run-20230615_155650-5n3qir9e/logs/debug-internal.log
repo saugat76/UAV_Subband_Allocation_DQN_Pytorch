@@ -1,0 +1,5 @@
+2023-06-15 15:56:50,408 INFO    StreamThr :16640 [internal.py:wandb_internal():86] W&B internal server running at pid: 16640, started at: 2023-06-15 15:56:50.408126
+2023-06-15 15:56:50,410 DEBUG   HandlerThread:16640 [handler.py:handle_request():144] handle_request: status
+2023-06-15 15:56:50,429 INFO    WriterThread:16640 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\contention_env_complex\wandb\run-20230615_155650-5n3qir9e\run-5n3qir9e.wandb
+2023-06-15 15:56:50,430 DEBUG   SenderThread:16640 [sender.py:send():375] send: header
+2023-06-15 15:56:50,517 DEBUG   SenderThread:16640 [sender.py:send():375] send: run
