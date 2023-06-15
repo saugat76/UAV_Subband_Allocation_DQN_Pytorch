@@ -30,12 +30,12 @@ os.chdir = ("")
 def parse_args():
     parser = argparse.ArgumentParser()
     # Arguments for the experiments name / run / setup and Weights and Biases
-    parser.add_argument("--exp-name", type=str, default="madql_uav", help="name of this experiment")
+    parser.add_argument("--exp-name", type=str, default="madql_uav_contention_complex_uav", help="name of this experiment")
     parser.add_argument("--seed", type=int, default=1, help="seed of experiment to ensure reproducibility")
     parser.add_argument("--torch-deterministic", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
     parser.add_argument("--cuda", type=lambda x: bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggled, cuda will be enabled by default")
     parser.add_argument("--wandb-track", type=lambda x: bool(strtobool(x)), default=False, help="if toggled, this experiment will be tracked with Weights and Biases project")
-    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch", help="project name in Weight and Biases")
+    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch_Contention_Complex", help="project name in Weight and Biases")
     parser.add_argument("--wandb-entity", type=str, default= None, help="entity(team) for Weights and Biases project")
 
     # Arguments specific to the Algotithm used 
