@@ -26,3 +26,10 @@ config: {'exp_name': 'madql_uav_contention_complex_uav', 'seed': 1, 'torch_deter
 2023-06-15 15:59:39,603 INFO    MainThread:27632 [wandb_run.py:_redirect():2103] Redirects installed.
 2023-06-15 15:59:39,603 INFO    MainThread:27632 [wandb_init.py:init():829] run started, returning control to user process
 2023-06-15 15:59:39,604 INFO    MainThread:27632 [wandb_run.py:_tensorboard_callback():1433] tensorboard callback: runs/madql_uav_contention_complex_uav__lvl4__5__1__1686859174, True
+2023-06-15 17:40:44,166 INFO    MainThread:27632 [wandb_run.py:_finish():1893] finishing run saugat76/UAV_Subband_Allocation_DQN_Pytorch_Contention_Complex/8e5d45kp
+2023-06-15 17:40:44,166 INFO    MainThread:27632 [wandb_run.py:_atexit_cleanup():2127] got exitcode: 0
+2023-06-15 17:40:44,167 INFO    MainThread:27632 [wandb_run.py:_restore():2110] restore
+2023-06-15 17:40:44,167 INFO    MainThread:27632 [wandb_run.py:_restore():2116] restore done
+2023-06-15 17:40:56,758 INFO    MainThread:27632 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-06-15 17:40:56,759 INFO    MainThread:27632 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-06-15 17:40:56,764 INFO    MainThread:27632 [wandb_run.py:_footer_sync_info():3428] logging synced files
