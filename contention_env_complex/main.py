@@ -30,12 +30,12 @@ os.chdir = ("")
 def parse_args():
     parser = argparse.ArgumentParser()
     # Arguments for the experiments name / run / setup and Weights and Biases
-    parser.add_argument("--exp-name", type=str, default="madql_uav", help="name of this experiment")
+    parser.add_argument("--exp-name", type=str, default="madql_uav_contention_complex_uav", help="name of this experiment")
     parser.add_argument("--seed", type=int, default=1, help="seed of experiment to ensure reproducibility")
     parser.add_argument("--torch-deterministic", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
     parser.add_argument("--cuda", type=lambda x: bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggled, cuda will be enabled by default")
     parser.add_argument("--wandb-track", type=lambda x: bool(strtobool(x)), default=False, help="if toggled, this experiment will be tracked with Weights and Biases project")
-    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch", help="project name in Weight and Biases")
+    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch_Contention_Complex", help="project name in Weight and Biases")
     parser.add_argument("--wandb-entity", type=str, default= None, help="entity(team) for Weights and Biases project")
 
     # Arguments specific to the Algotithm used 
@@ -56,6 +56,7 @@ def parse_args():
     parser.add_argument("--nodes", type=int, default=400, help="set the number of nodes for the target and main neural network layers")
     parser.add_argument("--covered-user-as-input", type=lambda x: bool(strtobool(x)), default=False, help="if set true, state will include covered user as one additional value and use it as input to the neural network")
 
+
     # Environment specific arguments 
     parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state")
     
@@ -72,14 +73,17 @@ def parse_args():
     parser.add_argument("--grid-space", type=int, default=100, help="seperating space for grid")
     parser.add_argument("--uav-dis-th", type=int, default=1000, help="distance value that defines which uav agent share info")
     parser.add_argument("--dist-pri-param", type=float, default=1/5, help="distance penalty priority parameter used in level 3 info exchange")
-    
+    parser.add_argument("--coverage-threshold", type=int, default=75, help="if coverage threshold not satisfied, penalize reward, in percentage")
+    parser.add_argument("--coverage-penalty", type=int, default=10, help="penalty value if threshold is not satisfied")
+
+
     args = parser.parse_args()
 
     return args
 
 
 # GPU configuration use for faster processing
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 # DNN modeling
@@ -175,10 +179,9 @@ class DQL:
 
             # Forward 
             # Loss calculation based on loss function
-            Q_main = self.main_network(state).squeeze()
-            target_Q = target_Q.float() * torch.ones(torch.transpose(Q_main, 0, 1).shape, device=device)
-            target_Q = torch.transpose(target_Q, 0, 1)
-            
+            target_Q = target_Q.float()
+
+            Q_main = self.main_network(state).gather(1, action).squeeze()
             loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
