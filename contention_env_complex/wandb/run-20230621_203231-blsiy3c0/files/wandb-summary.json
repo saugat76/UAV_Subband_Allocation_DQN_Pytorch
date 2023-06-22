@@ -1,1 +1,0 @@
-{"covererd_users_per_timestep": 23, "timestep": 511, "_timestamp": 1687393962.2814682, "_runtime": 10.996471166610718, "_step": 516, "episodic_reward": -1141.0, "episodic_length": 100, "connected_users": 1907.0, "global_steps": 4, "_wandb": {"runtime": 10}}
