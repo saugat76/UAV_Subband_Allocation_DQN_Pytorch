@@ -1,0 +1,18 @@
+
+0
+C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py:160: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  minibatch = np.array(minibatch)
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\matplotlib\backends\backend_qt.py", line 362, in sizeHint
+    def sizeHint(self):
+KeyboardInterrupt
+[1, 2, 0, 2, 3]
+Number of user connected in  0  episode is:  [6 3 3 1 3]
+Total user connected in  0  episode is:  16
+1
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 351, in <module>
+    UAV_OB[k].train(batch_size, dnn_epoch)
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 169, in train
+    reward = reward.to(device = device)
+KeyboardInterrupt

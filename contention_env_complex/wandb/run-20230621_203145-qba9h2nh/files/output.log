@@ -1,0 +1,6 @@
+
+0
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 362, in <module>
+    writer.add_scalar("chart/covered_users_per_timestep", temp_data[6], (i_episode * num_epochs + t))
+IndexError: tuple index out of range

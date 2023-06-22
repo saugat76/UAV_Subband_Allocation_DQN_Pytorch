@@ -183,10 +183,10 @@ class DQL:
             target_Q = target_Q.float()
 
             Q_main = self.main_network(state).gather(1, action).squeeze()
-            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
-            self.loss.backward()
+            loss.backward()
             # For gradient clipping
             for param in self.main_network.parameters():
                 param.grad.data.clamp_(-1,1)

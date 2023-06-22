@@ -183,10 +183,10 @@ class DQL:
             target_Q = target_Q.float()
 
             Q_main = self.main_network(state).gather(1, action).squeeze()
-            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
-            self.loss.backward()
+            loss.backward()
             # For gradient clipping
             for param in self.main_network.parameters():
                 param.grad.data.clamp_(-1,1)
@@ -346,16 +346,17 @@ if __name__ == "__main__":
 
             # Also calculting episodic reward for each agent // Add this in your main program 
             episode_reward_agent = np.add(episode_reward_agent, reward)
-
-            for k in range(NUM_UAV):
-                if len(UAV_OB[k].replay_buffer) > batch_size:
-                    UAV_OB[k].train(batch_size, dnn_epoch)
-                    if args.wandb_track:
-                        wandb.log({f"loss__{k}" : UAV_OB[k].loss})
+            
             
             ##########################
             ####       Logs       ####
             ##########################
+
+            for k in range(NUM_UAV):
+                if len(UAV_OB[k].replay_buffer) > batch_size:
+                    UAV_OB[k].train(batch_size, dnn_epoch, k)
+                    if args.wandb_track:
+                        wandb.log({f"loss__{k}" : UAV_OB[k].loss})
 
             # Keeping track of covered users every time step to ensure the hard coded value is satisfied
             writer.add_scalar("chart/covered_users_per_timestep", temp_data[6], (i_episode * num_epochs + t))
@@ -363,6 +364,10 @@ if __name__ == "__main__":
                 wandb.log({"covererd_users_per_timestep": temp_data[6], "timestep": (i_episode * num_epochs + t) })
 
             states = next_state
+
+            for k in range(NUM_UAV):
+                if len(UAV_OB[k].replay_buffer) > batch_size:
+                    UAV_OB[k].train(batch_size, dnn_epoch)
 
         #############################
         ####   Tensorboard logs  ####

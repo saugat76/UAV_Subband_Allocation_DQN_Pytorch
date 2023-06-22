@@ -284,7 +284,7 @@ class UAVenv(gym.Env):
             for k in range(self.NUM_UAV):
                 if self.flag[k] != 0:
                     reward_solo[k] = np.copy(sum_user_assoc[k] - 2) - penalty_overlap[k]
-                    isDone = True
+                    # isDone = True
                 else:
                     reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
                 if total_covered_users <= self.args.coverage_threshold:
@@ -307,7 +307,7 @@ class UAVenv(gym.Env):
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
                     reward_ind[k] = np.average(sum_user_assoc_temp[temp_user_id])
                     reward_ind[k] -= 2
-                    isDone = True
+                    # isDone = True
                 else:
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
                 if total_covered_users <= self.args.coverage_threshold:
@@ -315,7 +315,7 @@ class UAVenv(gym.Env):
                     reward_ind[k] = np.copy(reward_ind[k] - self.args.coverage_penalty)
             reward = np.copy(reward_ind)
 
-        
+        isDone = False
         # Defining the reward function by the number of covered user
         ################################################################
         ##            Opt.4  No. of User Covered as Reward            ##
@@ -323,7 +323,7 @@ class UAVenv(gym.Env):
         # reward = np.copy(total_user_covered)
 
         # Return of obs, reward, done, info
-        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum_user_assoc, rb_allocated
+        return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum_user_assoc, rb_allocated, total_covered_users
 
 
     def render(self, ax, mode='human', close=False):

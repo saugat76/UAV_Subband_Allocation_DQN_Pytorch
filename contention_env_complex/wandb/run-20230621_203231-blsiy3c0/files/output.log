@@ -1,0 +1,14 @@
+
+0
+[0, 3, 3, 4, 4]
+Number of user connected in  0  episode is:  [4 3 0 0 0]
+Total user connected in  0  episode is:  7
+1
+2
+3
+4
+5
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 357, in <module>
+    UAV_OB[k].train(batch_size, dnn_epoch, k)
+TypeError: DQL.train() takes 3 positional arguments but 4 were given

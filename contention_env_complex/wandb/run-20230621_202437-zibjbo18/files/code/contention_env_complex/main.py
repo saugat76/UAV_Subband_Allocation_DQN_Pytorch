@@ -45,7 +45,7 @@ def parse_args():
     parser.add_argument("--num-steps", type=int, default= 100, help="number of steps/epoch use in every episode")
     parser.add_argument("--learning-rate", type=float, default= 3.5e-4, help="learning rate of the dql alggorithm used by every agent")
     parser.add_argument("--gamma", type=float, default= 0.95, help="discount factor used for the calculation of q-value, can prirotize future reward if kept high")
-    parser.add_argument("--batch-size", type=int, default= 512, help="batch sample size used in a trainning batch")
+    parser.add_argument("--batch-size", type=int, default= 2, help="batch sample size used in a trainning batch")
     parser.add_argument("--epsilon", type=float, default= 0.1, help="epsilon to set the eploration vs exploitation")
     parser.add_argument("--update-rate", type=int, default= 10, help="steps at which the target network updates it's parameter from main network")
     parser.add_argument("--buffer-size", type=int, default=125000, help="size of replay buffer of each individual agent")
@@ -183,10 +183,10 @@ class DQL:
             target_Q = target_Q.float()
 
             Q_main = self.main_network(state).gather(1, action).squeeze()
-            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
-            self.loss.backward()
+            loss.backward()
             # For gradient clipping
             for param in self.main_network.parameters():
                 param.grad.data.clamp_(-1,1)
@@ -344,25 +344,11 @@ if __name__ == "__main__":
             # Also calculting episodic reward for each agent // Add this in your main program 
             episode_reward_agent = np.add(episode_reward_agent, reward)
 
-            # Also calculting episodic reward for each agent // Add this in your main program 
-            episode_reward_agent = np.add(episode_reward_agent, reward)
+            states = next_state
 
             for k in range(NUM_UAV):
                 if len(UAV_OB[k].replay_buffer) > batch_size:
                     UAV_OB[k].train(batch_size, dnn_epoch)
-                    if args.wandb_track:
-                        wandb.log({f"loss__{k}" : UAV_OB[k].loss})
-            
-            ##########################
-            ####       Logs       ####
-            ##########################
-
-            # Keeping track of covered users every time step to ensure the hard coded value is satisfied
-            writer.add_scalar("chart/covered_users_per_timestep", temp_data[6], (i_episode * num_epochs + t))
-            if args.wandb_track:
-                wandb.log({"covererd_users_per_timestep": temp_data[6], "timestep": (i_episode * num_epochs + t) })
-
-            states = next_state
 
         #############################
         ####   Tensorboard logs  ####

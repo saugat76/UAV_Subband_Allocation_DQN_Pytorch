@@ -1,0 +1,468 @@
+2023-06-21 20:25:53,845 INFO    StreamThr :18252 [internal.py:wandb_internal():86] W&B internal server running at pid: 18252, started at: 2023-06-21 20:25:53.845494
+2023-06-21 20:25:53,845 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status
+2023-06-21 20:25:53,861 INFO    WriterThread:18252 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\run-t3ygq0sr.wandb
+2023-06-21 20:25:53,861 DEBUG   SenderThread:18252 [sender.py:send():375] send: header
+2023-06-21 20:25:53,970 DEBUG   SenderThread:18252 [sender.py:send():375] send: run
+2023-06-21 20:25:54,220 INFO    SenderThread:18252 [dir_watcher.py:__init__():219] watching files in: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files
+2023-06-21 20:25:54,220 INFO    SenderThread:18252 [sender.py:_start_run_threads():1124] run started: t3ygq0sr with start time 1687393553.845494
+2023-06-21 20:25:54,220 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:25:54,220 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:25:54,220 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: check_version
+2023-06-21 20:25:54,220 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: check_version
+2023-06-21 20:25:54,361 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: run_start
+2023-06-21 20:25:54,423 DEBUG   HandlerThread:18252 [system_info.py:__init__():31] System info init
+2023-06-21 20:25:54,423 DEBUG   HandlerThread:18252 [system_info.py:__init__():46] System info init done
+2023-06-21 20:25:54,423 INFO    HandlerThread:18252 [system_monitor.py:start():181] Starting system monitor
+2023-06-21 20:25:54,423 INFO    SystemMonitor:18252 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-21 20:25:54,423 INFO    HandlerThread:18252 [system_monitor.py:probe():201] Collecting system info
+2023-06-21 20:25:54,439 INFO    SystemMonitor:18252 [interfaces.py:start():190] Started cpu monitoring
+2023-06-21 20:25:54,439 INFO    SystemMonitor:18252 [interfaces.py:start():190] Started disk monitoring
+2023-06-21 20:25:54,439 INFO    SystemMonitor:18252 [interfaces.py:start():190] Started gpu monitoring
+2023-06-21 20:25:54,439 INFO    SystemMonitor:18252 [interfaces.py:start():190] Started memory monitoring
+2023-06-21 20:25:54,439 INFO    SystemMonitor:18252 [interfaces.py:start():190] Started network monitoring
+2023-06-21 20:25:54,470 DEBUG   HandlerThread:18252 [system_info.py:probe():195] Probing system
+2023-06-21 20:25:54,470 DEBUG   HandlerThread:18252 [system_info.py:_probe_git():180] Probing git
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_probe_git():188] Probing git done
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:probe():240] Probing system done
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.10.4', 'heartbeatAt': '2023-06-22T00:25:54.470427', 'startedAt': '2023-06-22T00:25:53.814254', 'docker': None, 'cuda': None, 'args': ('--wandb-track', 'True', '--learning-rate', '2.5e-4', '--num-episode', '350', '--info-exchange-lvl', '3', '--num-uav', '5', '--nodes', '400', '--layers', '2'), 'state': 'running', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\contention_env_complex\\main.py', 'codePath': 'contention_env_complex\\main.py', 'git': {'remote': 'https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git', 'commit': '0df8d995bd36511929c29bfc8be540426aff7147'}, 'email': 'saugat.tripathi76@gmail.com', 'root': 'C:/Users/tripats/Documents/GitHub/uav_nw_madql_connectivity_pytorch', 'host': 'CEC-ZHANGR43-LL', 'username': 'tripats', 'executable': 'C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3504.0, 'min': 0.0, 'max': 3504.0}, 'cpu_freq_per_core': [{'current': 3504.0, 'min': 0.0, 'max': 3504.0}], 'disk': {'total': 930.9004402160645, 'used': 532.9015159606934}, 'gpu': 'Quadro RTX 6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'Quadro RTX 6000', 'memory_total': 25769803776}, {'name': 'Quadro RTX 6000', 'memory_total': 25769803776}], 'memory': {'total': 63.68939208984375}}
+2023-06-21 20:25:54,657 INFO    HandlerThread:18252 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-21 20:25:54,657 INFO    HandlerThread:18252 [system_monitor.py:probe():214] Publishing system info
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-06-21 20:25:54,657 ERROR   HandlerThread:18252 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_save_conda():86] Saving conda packages done
+2023-06-21 20:25:54,657 DEBUG   HandlerThread:18252 [system_info.py:_save_code():89] Saving code
+2023-06-21 20:25:54,751 DEBUG   HandlerThread:18252 [system_info.py:_save_code():110] Saving code done
+2023-06-21 20:25:54,751 DEBUG   HandlerThread:18252 [system_info.py:_save_patches():127] Saving git patches
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\conda-environment.yaml
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\diff.patch
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\requirements.txt
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\code\contention_env_complex\main.py
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\code\contention_env_complex
+2023-06-21 20:25:55,220 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\code
+2023-06-21 20:25:55,751 DEBUG   HandlerThread:18252 [system_info.py:_save_patches():169] Saving git patches done
+2023-06-21 20:25:55,751 INFO    HandlerThread:18252 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-21 20:25:55,751 DEBUG   SenderThread:18252 [sender.py:send():375] send: files
+2023-06-21 20:25:55,751 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-06-21 20:25:55,751 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file code\contention_env_complex\main.py with policy now
+2023-06-21 20:25:55,751 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file diff.patch with policy now
+2023-06-21 20:25:55,751 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file upstream_diff_dd4110ee5b531e1f296bf4f79fc7c7f52ac64da4.patch with policy now
+2023-06-21 20:25:55,766 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:25:55,766 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:25:55,766 INFO    HandlerThread:18252 [handler.py:handle_tbrecord():750] handling tbrecord: tbrecord {
+  log_dir: "runs/madql_uav_contention_complex_uav__lvl3__5__1__1687393548"
+  save: true
+}
+control {
+  relay_id: "a82e7edf4f2947c2b2f763553e31a070"
+}
+_info {
+  stream_id: "t3ygq0sr"
+}
+
+2023-06-21 20:25:55,766 DEBUG   HandlerThread:18252 [config_util.py:dict_from_config_file():104] no default config file found in config-defaults.yaml
+2023-06-21 20:25:55,845 INFO    wandb-upload_1:18252 [upload_job.py:push():117] Skipped uploading C:\Users\tripats\AppData\Local\Temp\tmpj4i2mal6wandb\mxuufvn6-code/contention_env_complex/main.py
+2023-06-21 20:25:55,876 DEBUG   SenderThread:18252 [sender.py:send():375] send: telemetry
+2023-06-21 20:25:55,876 DEBUG   SenderThread:18252 [sender.py:send():375] send: tbrecord
+2023-06-21 20:25:56,126 INFO    wandb-upload_0:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpj4i2mal6wandb\6bvcfx1y-wandb-metadata.json
+2023-06-21 20:25:56,204 INFO    wandb-upload_2:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpj4i2mal6wandb\cu5cjq0p-diff.patch
+2023-06-21 20:25:56,220 INFO    wandb-upload_3:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmpj4i2mal6wandb\c7pkxqwv-upstream_diff_dd4110ee5b531e1f296bf4f79fc7c7f52ac64da4.patch
+2023-06-21 20:25:56,236 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\diff.patch
+2023-06-21 20:25:56,236 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\upstream_diff_dd4110ee5b531e1f296bf4f79fc7c7f52ac64da4.patch
+2023-06-21 20:25:56,236 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-metadata.json
+2023-06-21 20:25:58,267 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:25:59,173 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:25:59,173 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:25:59,173 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:25:59,173 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:25:59,173 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:25:59,282 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:25:59,986 DEBUG   Thread-34 (_thread_except_body):18252 [tb_watcher.py:_process_events():274] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\contention_env_complex\\runs\\madql_uav_contention_complex_uav__lvl3__5__1__1687393548\\events.out.tfevents.1687393555.CEC-ZHANGR43-LL.24312.0' -> 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\contention_env_complex\\wandb\\run-20230621_202553-t3ygq0sr\\files\\events.out.tfevents.1687393555.CEC-ZHANGR43-LL.24312.0'
+2023-06-21 20:26:00,299 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:01,314 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:01,314 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:01,314 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:01,314 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:02,095 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:02,095 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:02,095 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:02,110 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:02,329 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:02,329 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:02,892 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:02,892 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:02,892 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:02,892 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:03,345 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:03,860 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:03,860 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:03,860 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:03,860 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:04,360 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:04,360 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:05,001 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:06,391 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:09,470 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:09,485 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:09,485 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:09,485 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:10,423 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:10,501 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:10,782 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:26:10,782 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:26:12,454 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:15,469 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:15,469 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:15,469 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:15,469 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:15,500 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:16,485 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:16,501 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:20,985 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:20,985 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:20,985 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:20,985 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:21,578 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:22,000 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:22,579 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:25,797 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:26:25,797 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:26:26,735 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:26,735 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:26,735 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:26,735 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:27,641 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:27,750 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:28,656 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\config.yaml
+2023-06-21 20:26:28,656 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:32,750 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:32,750 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:32,750 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:32,750 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:33,734 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:33,765 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:34,750 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:38,843 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:38,984 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:38,984 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:38,984 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:38,984 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:39,860 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:40,812 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:26:40,812 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:26:42,000 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:44,062 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:46,278 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:46,279 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:46,280 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:46,282 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:47,297 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:48,312 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:49,327 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:52,359 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:52,374 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:52,374 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:52,374 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:52,374 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:54,405 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:26:54,405 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:26:54,452 DEBUG   SystemMonitor:18252 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-21 20:26:54,452 DEBUG   SenderThread:18252 [sender.py:send():375] send: stats
+2023-06-21 20:26:55,827 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:26:55,827 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:26:58,546 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:26:58,561 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:26:58,561 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:26:58,561 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:26:59,484 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:26:59,577 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:00,515 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:04,624 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:04,686 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:04,686 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:04,686 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:04,686 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:05,546 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:06,592 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:09,740 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:10,845 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:27:10,846 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:27:10,937 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:10,939 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:10,940 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:10,941 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:11,608 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:12,617 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:14,979 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:17,139 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:17,139 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:17,155 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:17,155 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:17,686 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:18,701 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:20,186 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:23,264 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:23,264 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:23,264 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:23,264 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:23,764 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:24,451 DEBUG   SenderThread:18252 [sender.py:send():375] send: stats
+2023-06-21 20:27:24,764 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:25,467 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:25,842 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:27:25,842 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:27:29,342 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:29,342 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:29,342 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:29,342 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:29,842 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:30,863 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:31,357 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:35,466 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:35,466 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:35,466 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:35,466 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:35,935 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:36,482 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:36,951 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:40,857 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:27:40,857 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:27:41,482 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:41,482 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:41,482 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:41,482 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:42,029 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:42,511 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:45,060 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:47,794 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:48,904 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:48,904 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:48,904 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:48,904 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:49,122 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:51,151 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:52,950 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:27:54,467 DEBUG   SenderThread:18252 [sender.py:send():375] send: stats
+2023-06-21 20:27:55,122 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:27:55,122 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:27:55,122 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:27:55,122 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:27:55,185 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:27:55,870 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:27:55,870 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:27:57,260 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:27:58,935 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:01,463 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:01,465 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:01,465 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:01,467 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:02,307 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:03,315 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:04,500 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:07,771 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:07,771 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:07,787 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:07,787 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:08,370 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:09,360 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:09,813 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:10,887 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:28:10,888 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:28:14,461 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:14,462 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:14,462 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:14,464 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:15,416 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:15,476 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:16,472 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:20,526 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:20,664 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:20,666 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:20,666 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:20,669 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:21,503 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:22,519 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:24,467 DEBUG   SenderThread:18252 [sender.py:send():375] send: stats
+2023-06-21 20:28:25,887 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:28:25,887 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:25,888 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:28:26,997 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:26,998 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:26,999 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:27,000 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:27,580 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:28,589 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:31,040 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:33,311 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:33,312 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:33,313 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:33,315 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:33,623 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:34,634 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:36,335 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:39,955 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:39,957 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:39,957 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:39,959 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:40,704 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:40,705 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:40,888 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-21 20:28:40,888 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: stop_status
+2023-06-21 20:28:43,491 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:46,623 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-21 20:28:46,624 DEBUG   SenderThread:18252 [sender.py:send():375] send: history
+2023-06-21 20:28:46,624 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: summary_record
+2023-06-21 20:28:46,627 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:46,780 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:48,792 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:48,917 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:51,806 DEBUG   SenderThread:18252 [sender.py:send():375] send: exit
+2023-06-21 20:28:51,806 INFO    SenderThread:18252 [sender.py:send_exit():598] handling exit code: 255
+2023-06-21 20:28:51,807 INFO    SenderThread:18252 [sender.py:send_exit():600] handling runtime: 177
+2023-06-21 20:28:51,808 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:51,808 INFO    SenderThread:18252 [sender.py:send_exit():606] send defer
+2023-06-21 20:28:51,808 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:51,809 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-21 20:28:51,809 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:51,809 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-06-21 20:28:51,810 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 1
+2023-06-21 20:28:51,810 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:51,810 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-21 20:28:51,810 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:51,811 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-06-21 20:28:51,811 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 2
+2023-06-21 20:28:51,811 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:51,811 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-21 20:28:51,811 INFO    HandlerThread:18252 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-21 20:28:51,812 DEBUG   SystemMonitor:18252 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-21 20:28:51,812 INFO    HandlerThread:18252 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-21 20:28:51,812 DEBUG   SystemMonitor:18252 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-21 20:28:51,825 INFO    HandlerThread:18252 [interfaces.py:finish():202] Joined disk monitor
+2023-06-21 20:28:51,868 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:51,921 INFO    HandlerThread:18252 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-21 20:28:51,922 INFO    HandlerThread:18252 [interfaces.py:finish():202] Joined memory monitor
+2023-06-21 20:28:51,922 INFO    HandlerThread:18252 [interfaces.py:finish():202] Joined network monitor
+2023-06-21 20:28:51,922 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:51,922 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-06-21 20:28:51,922 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 3
+2023-06-21 20:28:51,922 DEBUG   SenderThread:18252 [sender.py:send():375] send: stats
+2023-06-21 20:28:51,923 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:51,923 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-21 20:28:51,923 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:51,923 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-06-21 20:28:51,923 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 4
+2023-06-21 20:28:51,923 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:51,924 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-21 20:28:53,886 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 5
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: poll_exit
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:57,386 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send():375] send: summary
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 6
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:57,386 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 7
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: status_report
+2023-06-21 20:28:57,386 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:57,386 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-21 20:28:57,386 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:57,386 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-06-21 20:28:57,928 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-21 20:28:57,930 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:28:58,979 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 8
+2023-06-21 20:28:58,979 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:58,979 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-21 20:28:58,979 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:28:58,979 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-06-21 20:28:58,995 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 9
+2023-06-21 20:28:58,995 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:28:58,995 DEBUG   SenderThread:18252 [sender.py:send():375] send: artifact
+2023-06-21 20:28:58,995 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-21 20:28:59,420 INFO    wandb-upload_0:18252 [upload_job.py:push():92] Skipped uploading C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmpl3f6b2ls
+2023-06-21 20:28:59,420 INFO    wandb-upload_2:18252 [upload_job.py:push():92] Skipped uploading C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmpypnpvoa_
+2023-06-21 20:28:59,684 INFO    wandb-upload_1:18252 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmp6tujjr8u
+2023-06-21 20:28:59,948 INFO    Thread-16 :18252 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:29:00,368 INFO    SenderThread:18252 [sender.py:send_artifact():1474] sent artifact job-https___github.com_saugat76_UAV_Subband_Allocation_DQN_Pytorch.git_contention_env_complex_main.py - {'id': 'QXJ0aWZhY3Q6NDk1MjE3OTk0', 'digest': 'd9dc7cf415757dceb915534fec2f3ff4', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc3MDMyMjY1', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDk1MjE0NjQx', 'versionIndex': 3}}, 'version': 'latest'}
+2023-06-21 20:29:00,368 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:00,368 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-06-21 20:29:00,368 INFO    SenderThread:18252 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-06-21 20:29:00,960 INFO    SenderThread:18252 [dir_watcher.py:finish():395] scan: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files
+2023-06-21 20:29:00,961 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\conda-environment.yaml conda-environment.yaml
+2023-06-21 20:29:00,962 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\config.yaml config.yaml
+2023-06-21 20:29:00,962 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\diff.patch diff.patch
+2023-06-21 20:29:00,962 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log output.log
+2023-06-21 20:29:00,966 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\requirements.txt requirements.txt
+2023-06-21 20:29:00,969 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\upstream_diff_dd4110ee5b531e1f296bf4f79fc7c7f52ac64da4.patch upstream_diff_dd4110ee5b531e1f296bf4f79fc7c7f52ac64da4.patch
+2023-06-21 20:29:00,970 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-metadata.json wandb-metadata.json
+2023-06-21 20:29:00,970 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json wandb-summary.json
+2023-06-21 20:29:00,977 INFO    SenderThread:18252 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\code\contention_env_complex\main.py code\contention_env_complex\main.py
+2023-06-21 20:29:00,977 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 10
+2023-06-21 20:29:00,977 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:29:00,977 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-21 20:29:00,978 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:00,978 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-06-21 20:29:00,978 INFO    SenderThread:18252 [file_pusher.py:finish():168] shutting down file pusher
+2023-06-21 20:29:01,261 INFO    wandb-upload_2:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\output.log
+2023-06-21 20:29:01,272 INFO    wandb-upload_1:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\wandb-summary.json
+2023-06-21 20:29:01,284 INFO    wandb-upload_0:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\requirements.txt
+2023-06-21 20:29:01,330 INFO    wandb-upload_3:18252 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\files\config.yaml
+2023-06-21 20:29:01,539 INFO    Thread-15 (_thread_body):18252 [sender.py:transition_state():626] send defer: 11
+2023-06-21 20:29:01,539 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:29:01,539 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 11
+2023-06-21 20:29:01,540 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:01,540 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-06-21 20:29:01,540 INFO    SenderThread:18252 [file_pusher.py:join():173] waiting for file pusher
+2023-06-21 20:29:01,540 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 12
+2023-06-21 20:29:01,540 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:29:01,541 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 12
+2023-06-21 20:29:01,541 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:01,541 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-06-21 20:29:01,606 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 13
+2023-06-21 20:29:01,607 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:29:01,608 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 13
+2023-06-21 20:29:01,608 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:01,608 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-06-21 20:29:01,608 INFO    SenderThread:18252 [sender.py:transition_state():626] send defer: 14
+2023-06-21 20:29:01,609 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: defer
+2023-06-21 20:29:01,609 DEBUG   SenderThread:18252 [sender.py:send():375] send: final
+2023-06-21 20:29:01,609 INFO    HandlerThread:18252 [handler.py:handle_request_defer():170] handle defer: 14
+2023-06-21 20:29:01,609 DEBUG   SenderThread:18252 [sender.py:send():375] send: footer
+2023-06-21 20:29:01,609 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: defer
+2023-06-21 20:29:01,609 INFO    SenderThread:18252 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-06-21 20:29:01,610 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-21 20:29:01,610 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: server_info
+2023-06-21 20:29:01,611 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: get_summary
+2023-06-21 20:29:01,611 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: poll_exit
+2023-06-21 20:29:01,611 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: sampled_history
+2023-06-21 20:29:01,612 DEBUG   SenderThread:18252 [sender.py:send_request():402] send_request: server_info
+2023-06-21 20:29:01,669 INFO    MainThread:18252 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-06-21 20:29:01,670 INFO    MainThread:18252 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-06-21 20:29:01,671 INFO    MainThread:18252 [wandb_run.py:_footer_sync_info():3434] logging synced files
+2023-06-21 20:29:01,673 DEBUG   HandlerThread:18252 [handler.py:handle_request():144] handle_request: shutdown
+2023-06-21 20:29:01,673 INFO    HandlerThread:18252 [handler.py:finish():845] shutting down handler
+2023-06-21 20:29:02,614 INFO    WriterThread:18252 [datastore.py:close():298] close: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\wandb\run-20230621_202553-t3ygq0sr\run-t3ygq0sr.wandb
+2023-06-21 20:29:02,675 INFO    SenderThread:18252 [sender.py:finish():1550] shutting down sender
+2023-06-21 20:29:02,675 INFO    SenderThread:18252 [file_pusher.py:finish():168] shutting down file pusher
+2023-06-21 20:29:02,675 INFO    SenderThread:18252 [file_pusher.py:join():173] waiting for file pusher

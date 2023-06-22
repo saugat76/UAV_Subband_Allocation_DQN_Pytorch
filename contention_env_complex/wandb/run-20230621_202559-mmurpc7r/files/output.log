@@ -1,0 +1,57 @@
+
+0
+[0, 3, 3, 4, 4]
+Number of user connected in  0  episode is:  [4 3 0 0 0]
+Total user connected in  0  episode is:  7
+1
+2
+3
+4
+5
+C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py:160: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  minibatch = np.array(minibatch)
+6
+7
+8
+9
+10
+[0, 3, 4, 4, 4]
+Number of user connected in  10  episode is:  [14  4  1 10 15]
+Total user connected in  10  episode is:  44
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+[0, 3, 4, 4, 4]
+Number of user connected in  20  episode is:  [ 4  5 10 15  8]
+Total user connected in  20  episode is:  42
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+[0, 0, 0, 2, 3]
+Number of user connected in  30  episode is:  [ 7  5  9  5 10]
+Total user connected in  30  episode is:  36
+31
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 351, in <module>
+    UAV_OB[k].train(batch_size, dnn_epoch)
+  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\contention_env_complex\main.py", line 162, in train
+    state = torch.FloatTensor(np.vstack(minibatch[:,0])).reshape(batch_size, -1)
+  File "<__array_function__ internals>", line 180, in vstack
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\numpy\core\shape_base.py", line 279, in vstack
+    arrs = atleast_2d(*tup)
+  File "<__array_function__ internals>", line 177, in atleast_2d
+KeyboardInterrupt
