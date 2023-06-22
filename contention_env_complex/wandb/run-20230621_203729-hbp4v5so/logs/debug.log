@@ -19,3 +19,16 @@ config: {'exp_name': 'madql_uav_contention_complex_uav', 'seed': 1, 'torch_deter
 2023-06-21 20:37:29,980 INFO    MainThread:27000 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.15.4 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
 
 2023-06-21 20:37:29,980 INFO    MainThread:27000 [wandb_init.py:init():782] starting run threads in backend
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_run.py:_console_start():2157] atexit reg
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_run.py:_redirect():2012] redirect: SettingsConsole.WRAP_RAW
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_run.py:_redirect():2077] Wrapping output streams.
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_run.py:_redirect():2102] Redirects installed.
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_init.py:init():824] run started, returning control to user process
+2023-06-21 20:37:31,556 INFO    MainThread:27000 [wandb_run.py:_tensorboard_callback():1432] tensorboard callback: runs/madql_uav_contention_complex_uav__lvl4__5__1__1687394243, True
+2023-06-21 21:17:00,364 INFO    MainThread:27000 [wandb_run.py:_finish():1892] finishing run saugat76/UAV_Subband_Allocation_DQN_Pytorch_Contention_Complex/hbp4v5so
+2023-06-21 21:17:00,364 INFO    MainThread:27000 [wandb_run.py:_atexit_cleanup():2126] got exitcode: 0
+2023-06-21 21:17:00,364 INFO    MainThread:27000 [wandb_run.py:_restore():2109] restore
+2023-06-21 21:17:00,364 INFO    MainThread:27000 [wandb_run.py:_restore():2115] restore done
+2023-06-21 21:17:12,634 INFO    MainThread:27000 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-06-21 21:17:12,634 INFO    MainThread:27000 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-06-21 21:17:12,634 INFO    MainThread:27000 [wandb_run.py:_footer_sync_info():3434] logging synced files
