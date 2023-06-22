@@ -1,0 +1,33 @@
+diff --git a/__pycache__/misc.cpython-310.pyc b/__pycache__/misc.cpython-310.pyc
+index 6dca74b..ebdacc3 100644
+Binary files a/__pycache__/misc.cpython-310.pyc and b/__pycache__/misc.cpython-310.pyc differ
+diff --git a/__pycache__/uav_env.cpython-310.pyc b/__pycache__/uav_env.cpython-310.pyc
+index ae0514d..45ec214 100644
+Binary files a/__pycache__/uav_env.cpython-310.pyc and b/__pycache__/uav_env.cpython-310.pyc differ
+diff --git a/uav_env.py b/uav_env.py
+index 7d2b3be..9e61a4b 100644
+--- a/uav_env.py
++++ b/uav_env.py
+@@ -103,8 +103,8 @@ class UAVenv(gym.Env):
+         # Further complexity by choosing random value of state or starting at same initial position
+         # self.state[:, 0:2] = [[1, 2], [4, 2], [7, 3], [3, 8], [4, 5]]
+         # Starting UAV Position at the center of the target area
+-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
+-        self.state[:, 0:2] = np.zeros((args.num_uav,2), dtype=np.int32)
++        self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
++        # self.state[:, 0:2] = np.zeros((args.num_uav,2), dtype=np.int32)
+         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
+         self.flag = np.zeros((args.num_uav), dtype=np.int32)
+         print(self.coverage_radius)
+@@ -333,9 +333,9 @@ class UAVenv(gym.Env):
+         #     self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+         # elif self.NUM_UAV == 5:
+         #     self.state[:, 0:2] = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]        # Starting UAV Position at the center of the target area
+-        # self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5], [5, 5],[5, 5]]
++        self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5]]
+         # Reset all state value // both position state and user coverage value
+-        self.state = np.zeros((self.NUM_UAV,3), dtype=np.int32)
++        # self.state = np.zeros((self.NUM_UAV,3), dtype=np.int32)
+         return self.state
+ 
+     def get_state(self):

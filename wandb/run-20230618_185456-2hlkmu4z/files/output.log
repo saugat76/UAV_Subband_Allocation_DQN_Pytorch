@@ -1,0 +1,7 @@
+
+0
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 304, in <module>
+    temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\uav_env.py", line 242, in step
+    self.state[:, 2] = sum_user_assoc / self.NUM_USER

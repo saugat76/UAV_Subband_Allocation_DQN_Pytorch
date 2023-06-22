@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 277, in <module>
+    states = u_env.get_state()
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\uav_env.py", line 346, in get_state
+    state_loc[k, 2] = self.state[k, 2]
+IndexError: index 2 is out of bounds for axis 1 with size 2
+0

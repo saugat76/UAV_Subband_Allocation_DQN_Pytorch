@@ -1,0 +1,8 @@
+
+0
+Traceback (most recent call last):
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 274, in <module>
+    u_env.reset()
+  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\uav_env.py", line 336, in reset
+    self.state[:, 0:2] = [[5, 5], [5, 5],[5, 5], [5, 5], [5, 5]]
+TypeError: list indices must be integers or slices, not tuple
