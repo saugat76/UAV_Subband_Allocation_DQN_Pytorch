@@ -270,8 +270,6 @@ class UAVenv(gym.Env):
                     isDone = True
                 else:
                     reward_solo[k] = np.copy(sum_user_assoc[k])
-                if ((total_covered_users/self.NUM_USER)*100) <= self.args.coverage_threshold:
-                    reward_solo[k] = np.copy(reward_solo[k] - self.args.coverage_penalty)
             reward = np.copy(reward_solo)
 
         #############################################################################################
@@ -287,8 +285,6 @@ class UAVenv(gym.Env):
                     # isDone = True
                 else:
                     reward_solo[k] = (sum_user_assoc[k] - penalty_overlap[k])
-                if total_covered_users <= self.args.coverage_threshold:
-                    reward_solo[k] = np.copy(reward_solo[k] - self.args.coverage_penalty)
             # Calculation of reward based in the change in the number of connected user
             reward = np.copy(reward_solo)
 
@@ -310,19 +306,26 @@ class UAVenv(gym.Env):
                     # isDone = True
                 else:
                     temp_user_id = np.where(dist_uav_uav[k, :] <= self.UAV_DIST_THRS)
-                if ((total_covered_users/self.NUM_USER)*100) <= self.args.coverage_threshold:
-                    reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
-                    reward_ind[k] = np.copy(reward_ind[k] - self.args.coverage_penalty)
-                else:
-                    reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
+                reward_ind[k] = np.average(sum_user_assoc[temp_user_id])
             reward = np.copy(reward_ind)
 
-        isDone = False
         # Defining the reward function by the number of covered user
         ################################################################
-        ##            Opt.4  No. of User Covered as Reward            ##
+        ##            Opt.4  Correlated MA-DQL Comparision            ##
         ################################################################
-        # reward = np.copy(total_user_covered)
+        elif info_exchange_lvl == 6:    
+            sum_user_assoc = np.sum(user_asso_flag, axis = 1)
+            reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
+            for k in range(self.NUM_UAV):
+                if self.flag[k] != 0:
+                    reward_solo[k] = np.copy(sum_user_assoc[k] - 2)
+                else:
+                    reward_solo[k] = np.copy(sum_user_assoc[k])
+            reward = np.copy(reward_solo)
+            if ((total_covered_users/self.NUM_USER)*100) <= self.args.connectivity_threshold:
+                reward_solo[k] = np.copy(reward_solo[k] - self.args.connectivity_penalty)
+
+        isDone = False
 
         # Return of obs, reward, done, info
         return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum_user_assoc, rb_allocated, total_covered_users
