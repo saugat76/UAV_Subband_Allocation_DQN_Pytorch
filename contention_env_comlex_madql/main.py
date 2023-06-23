@@ -58,7 +58,7 @@ def parse_args():
 
 
     # Environment specific arguments 
-    parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state")
+    parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state, 6 -> individual with global peanalty (compare with correlated ma-dql)")
     
     # Arguments for used inside the wireless UAV based enviornment  
     parser.add_argument("--num-user", type=int, default=100, help="number of user in defined environment")
@@ -110,7 +110,7 @@ class DQL:
     # Initializing a Deep Neural Network
     def __init__(self):
         # lvl 1-3 info exchange only their respective state for lvl 4 all agents states 
-        if args.info_exchange_lvl in [1, 2, 3]:
+        if args.info_exchange_lvl in [1, 2, 3, 6]:
             if args.covered_user_as_input:
                 self.state_size = 3
             else:
@@ -297,7 +297,7 @@ if __name__ == "__main__":
             # Determining the actions for all drones
             states_ten = torch.from_numpy(states)
             for k in range(NUM_UAV):
-                if args.info_exchange_lvl in [1, 2, 3]:
+                if args.info_exchange_lvl in [1, 2, 3, 6]:
                     state = states_ten[k, :]
                 elif args.info_exchange_lvl == 4:
                     state = states_ten.flatten()
@@ -322,7 +322,7 @@ if __name__ == "__main__":
                 # If the lvl of info exchange is 1/2/3 - implicit/reward/position -> store only respective state
                 # Else if lvl info exchnage is 4 - state -> share and store states of other agents
                 # Currently in lvl 4 all agents exchange their states
-                if args.info_exchange_lvl in [1, 2, 3]:
+                if args.info_exchange_lvl in [1, 2, 3, 6]:
                     state = states_ten[k, :].numpy()
                     next_sta = next_state[k, :]
                 elif args.info_exchange_lvl == 4:
@@ -395,7 +395,7 @@ if __name__ == "__main__":
             for t in range(100):
                 drone_act_list = []
                 for k in range(NUM_UAV):
-                    if args.info_exchange_lvl in [1, 2, 3]:
+                    if args.info_exchange_lvl in [1, 2, 3, 6]:
                         state = states[k, :]
                     elif args.info_exchange_lvl == 4:
                         state = states.flatten()
