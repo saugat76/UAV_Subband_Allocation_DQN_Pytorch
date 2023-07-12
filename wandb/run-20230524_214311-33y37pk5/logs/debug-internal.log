@@ -1,0 +1,1019 @@
+2023-05-24 21:43:11,223 INFO    StreamThr :6600 [internal.py:wandb_internal():86] W&B internal server running at pid: 6600, started at: 2023-05-24 21:43:11.223678
+2023-05-24 21:43:11,223 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status
+2023-05-24 21:43:11,254 INFO    WriterThread:6600 [datastore.py:open_for_write():85] open: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\run-33y37pk5.wandb
+2023-05-24 21:43:11,254 DEBUG   SenderThread:6600 [sender.py:send():375] send: header
+2023-05-24 21:43:11,395 DEBUG   SenderThread:6600 [sender.py:send():375] send: run
+2023-05-24 21:43:11,661 INFO    SenderThread:6600 [dir_watcher.py:__init__():219] watching files in: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files
+2023-05-24 21:43:11,661 INFO    SenderThread:6600 [sender.py:_start_run_threads():1124] run started: 33y37pk5 with start time 1684978991.223678
+2023-05-24 21:43:11,676 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:11,676 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:11,676 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: check_version
+2023-05-24 21:43:11,676 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: check_version
+2023-05-24 21:43:11,832 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: run_start
+2023-05-24 21:43:11,879 DEBUG   HandlerThread:6600 [system_info.py:__init__():31] System info init
+2023-05-24 21:43:11,879 DEBUG   HandlerThread:6600 [system_info.py:__init__():46] System info init done
+2023-05-24 21:43:11,879 INFO    HandlerThread:6600 [system_monitor.py:start():181] Starting system monitor
+2023-05-24 21:43:11,879 INFO    SystemMonitor:6600 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-05-24 21:43:11,879 INFO    HandlerThread:6600 [system_monitor.py:probe():201] Collecting system info
+2023-05-24 21:43:11,879 INFO    SystemMonitor:6600 [interfaces.py:start():190] Started cpu monitoring
+2023-05-24 21:43:11,879 INFO    SystemMonitor:6600 [interfaces.py:start():190] Started disk monitoring
+2023-05-24 21:43:11,879 INFO    SystemMonitor:6600 [interfaces.py:start():190] Started gpu monitoring
+2023-05-24 21:43:11,879 INFO    SystemMonitor:6600 [interfaces.py:start():190] Started memory monitoring
+2023-05-24 21:43:11,895 INFO    SystemMonitor:6600 [interfaces.py:start():190] Started network monitoring
+2023-05-24 21:43:11,942 DEBUG   HandlerThread:6600 [system_info.py:probe():195] Probing system
+2023-05-24 21:43:11,942 DEBUG   HandlerThread:6600 [system_info.py:_probe_git():180] Probing git
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_probe_git():188] Probing git done
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:probe():240] Probing system done
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.10.4', 'heartbeatAt': '2023-05-25T01:43:11.942325', 'startedAt': '2023-05-25T01:43:11.191427', 'docker': None, 'cuda': None, 'args': ('--wandb-track', 'True', '--learning-rate', '2.5e-4', '--num-episode', '100', '--info-exchange-lvl', '3', '--num-uav', '5', '--nodes', '400', '--layers', '2'), 'state': 'running', 'program': 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/saugat76/UAV_Subband_Allocation_DQN_Pytorch.git', 'commit': 'c611ce2c9bf6460a048f301352f72baddc7dee43'}, 'email': 'saugat.tripathi76@gmail.com', 'root': 'C:/Users/tripats/Documents/GitHub/uav_nw_madql_connectivity_pytorch', 'host': 'CEC-ZHANGR43-LL', 'username': 'tripats', 'executable': 'C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3504.0, 'min': 0.0, 'max': 3504.0}, 'cpu_freq_per_core': [{'current': 3504.0, 'min': 0.0, 'max': 3504.0}], 'disk': {'total': 930.9004402160645, 'used': 454.5869903564453}, 'gpu': 'Quadro RTX 6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'Quadro RTX 6000', 'memory_total': 25769803776}, {'name': 'Quadro RTX 6000', 'memory_total': 25769803776}], 'memory': {'total': 63.68939208984375}}
+2023-05-24 21:43:12,145 INFO    HandlerThread:6600 [system_monitor.py:probe():211] Finished collecting system info
+2023-05-24 21:43:12,145 INFO    HandlerThread:6600 [system_monitor.py:probe():214] Publishing system info
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-05-24 21:43:12,145 ERROR   HandlerThread:6600 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\tripats\.conda\envs\uavenv\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_save_conda():86] Saving conda packages done
+2023-05-24 21:43:12,145 DEBUG   HandlerThread:6600 [system_info.py:_save_code():89] Saving code
+2023-05-24 21:43:12,254 DEBUG   HandlerThread:6600 [system_info.py:_save_code():110] Saving code done
+2023-05-24 21:43:12,254 DEBUG   HandlerThread:6600 [system_info.py:_save_patches():127] Saving git patches
+2023-05-24 21:43:12,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\conda-environment.yaml
+2023-05-24 21:43:12,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\code\main.py
+2023-05-24 21:43:12,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\requirements.txt
+2023-05-24 21:43:12,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:12,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\code
+2023-05-24 21:43:13,067 DEBUG   HandlerThread:6600 [system_info.py:_save_patches():169] Saving git patches done
+2023-05-24 21:43:13,067 INFO    HandlerThread:6600 [system_monitor.py:probe():216] Finished publishing system info
+2023-05-24 21:43:13,082 DEBUG   SenderThread:6600 [sender.py:send():375] send: files
+2023-05-24 21:43:13,082 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-05-24 21:43:13,098 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file code\main.py with policy now
+2023-05-24 21:43:13,098 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file diff.patch with policy now
+2023-05-24 21:43:13,098 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:43:13,098 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:43:13,114 INFO    HandlerThread:6600 [handler.py:handle_tbrecord():750] handling tbrecord: tbrecord {
+  log_dir: "runs/madql_uav__lvl3__5__1__1684978986"
+  save: true
+}
+control {
+  relay_id: "09feb783b38145839fa8c4aacd38b496"
+}
+_info {
+  stream_id: "33y37pk5"
+}
+
+2023-05-24 21:43:13,114 DEBUG   HandlerThread:6600 [config_util.py:dict_from_config_file():104] no default config file found in config-defaults.yaml
+2023-05-24 21:43:13,192 DEBUG   SenderThread:6600 [sender.py:send():375] send: telemetry
+2023-05-24 21:43:13,192 INFO    wandb-upload_1:6600 [upload_job.py:push():117] Skipped uploading C:\Users\tripats\AppData\Local\Temp\tmp3am6cni8wandb\8q6ht5gt-code/main.py
+2023-05-24 21:43:13,208 DEBUG   SenderThread:6600 [sender.py:send():375] send: tbrecord
+2023-05-24 21:43:13,520 INFO    wandb-upload_2:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmp3am6cni8wandb\tkl6kta8-diff.patch
+2023-05-24 21:43:13,536 INFO    wandb-upload_0:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\AppData\Local\Temp\tmp3am6cni8wandb\k392waqf-wandb-metadata.json
+2023-05-24 21:43:13,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-metadata.json
+2023-05-24 21:43:13,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\diff.patch
+2023-05-24 21:43:14,692 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:15,598 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:15,598 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:15,598 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:15,598 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:15,785 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:16,129 DEBUG   Thread-34 (_thread_except_body):6600 [tb_watcher.py:_process_events():274] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\runs\\madql_uav__lvl3__5__1__1684978986\\events.out.tfevents.1684978993.CEC-ZHANGR43-LL.10048.0' -> 'C:\\Users\\tripats\\Documents\\GitHub\\uav_nw_madql_connectivity_pytorch\\wandb\\run-20230524_214311-33y37pk5\\files\\events.out.tfevents.1684978993.CEC-ZHANGR43-LL.10048.0'
+2023-05-24 21:43:16,622 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:16,801 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:17,239 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:17,239 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:17,239 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:17,239 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:17,786 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:17,789 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:17,789 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:17,789 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:17,817 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:18,317 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:18,317 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:18,321 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:18,321 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:18,832 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:18,832 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:18,879 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:18,879 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:18,879 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:18,879 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:19,848 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:20,864 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:21,879 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:22,004 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:23,723 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:23,723 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:23,723 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:23,723 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:23,895 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:24,911 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:27,785 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:28,113 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:43:28,113 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:43:29,410 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:29,410 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:29,410 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:29,410 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:29,973 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:30,973 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:33,473 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:35,051 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:35,051 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:35,051 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:35,067 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:36,036 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:37,051 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:39,114 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:40,660 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:40,660 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:40,660 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:40,660 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:41,114 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:43,129 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:43:43,129 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:43:43,145 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:44,176 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:45,161 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\config.yaml
+2023-05-24 21:43:46,457 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:46,473 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:46,473 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:46,473 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:47,192 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:49,207 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:49,504 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:52,301 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:52,301 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:52,301 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:52,301 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:53,257 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:43:55,286 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:43:55,410 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:43:58,145 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:43:58,145 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:43:59,098 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:43:59,098 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:43:59,098 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:43:59,098 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:43:59,332 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:01,113 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:01,363 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:05,191 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:05,191 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:05,191 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:05,191 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:05,410 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:06,207 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:07,441 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:11,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:11,285 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:11,285 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:11,285 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:11,285 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:11,504 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:11,926 DEBUG   SystemMonitor:6600 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-05-24 21:44:11,926 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:44:13,160 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:44:13,160 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:44:13,520 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:17,254 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:17,316 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:17,332 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:17,332 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:17,332 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:17,566 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:19,597 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:22,374 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:23,660 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:23,660 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:23,676 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:23,676 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:24,660 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:25,676 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:27,731 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:28,166 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:44:28,167 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:44:29,822 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:29,824 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:29,824 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:29,829 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:30,705 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:31,719 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:32,870 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:35,460 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:35,461 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:35,462 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:35,464 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:35,760 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:37,776 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:38,494 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:41,275 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:41,276 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:41,276 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:41,280 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:41,816 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:41,943 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:44:43,161 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:44:43,162 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:44:43,842 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:44,219 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:47,316 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:47,316 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:47,316 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:47,316 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:47,894 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:49,332 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:49,926 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:53,128 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:44:53,128 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:44:53,128 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:44:53,128 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:44:53,988 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:44:55,254 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:44:56,004 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:44:58,180 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:44:58,180 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:45:00,255 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:00,256 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:00,257 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:00,257 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:00,258 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:01,060 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:02,067 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:05,316 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:06,535 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:06,535 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:06,535 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:06,535 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:07,149 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:07,150 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:10,569 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:11,943 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:45:12,457 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:12,457 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:12,457 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:12,457 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:13,225 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:45:13,226 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:45:13,229 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:13,229 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:16,287 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:18,380 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:18,382 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:18,382 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:18,384 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:19,318 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:19,318 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:21,413 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:24,532 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:24,534 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:24,534 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:24,536 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:25,388 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:25,389 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:26,551 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:28,224 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:45:28,224 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:45:30,582 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:30,582 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:30,582 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:30,582 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:31,490 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:31,490 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:31,599 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:36,492 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:36,493 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:36,493 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:36,495 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:36,534 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:37,498 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:37,539 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:41,955 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:45:42,470 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:42,472 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:42,473 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:42,474 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:42,615 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:43,223 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:43,238 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:45:43,238 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:45:43,629 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:48,322 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:48,839 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:48,841 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:48,841 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:48,842 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:49,724 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:49,725 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:53,899 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:45:54,676 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:45:54,677 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:45:54,678 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:45:54,679 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:45:54,791 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:45:57,832 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:45:58,261 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:45:58,262 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:45:59,312 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:01,740 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:01,742 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:01,742 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:01,743 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:01,906 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:03,940 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:04,761 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:07,847 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:07,847 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:07,847 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:07,847 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:07,988 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:09,879 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:10,026 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:11,960 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:46:13,255 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:46:13,256 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:46:13,923 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:13,925 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:13,926 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:13,927 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:14,094 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:14,940 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:16,123 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:19,722 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:19,738 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:19,739 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:19,740 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:20,177 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:20,753 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:22,208 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:24,991 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:24,992 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:24,993 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:24,994 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:25,238 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:26,004 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:26,249 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:28,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:46:28,269 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:46:31,129 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:31,129 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:31,129 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:31,129 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:31,129 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:31,319 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:32,332 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:36,191 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:37,128 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:37,128 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:37,128 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:37,128 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:37,409 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:38,425 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:41,961 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:46:41,963 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:42,815 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:42,817 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:42,817 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:42,818 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:43,287 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:46:43,287 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:46:43,504 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:44,529 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:47,364 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:48,684 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:48,684 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:48,684 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:48,684 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:49,595 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:50,615 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:52,736 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:54,769 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:46:54,769 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:46:54,769 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:46:54,784 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:46:55,689 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:46:57,722 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:46:58,019 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:46:58,300 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:46:58,300 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:47:01,784 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:01,800 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:01,800 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:01,800 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:02,799 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:03,800 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:03,816 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:07,597 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:07,613 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:07,613 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:07,613 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:07,863 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:07,863 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:09,629 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:11,972 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:47:13,316 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:47:13,317 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:47:13,564 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:13,566 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:13,567 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:13,574 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:13,941 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:15,597 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:15,971 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:19,456 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:19,456 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:19,456 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:19,456 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:20,034 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:21,486 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:22,064 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:25,050 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:25,050 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:25,050 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:25,050 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:25,113 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:26,120 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:27,081 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:28,332 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:47:28,332 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:47:31,410 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:31,410 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:31,410 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:31,410 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:32,206 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:32,206 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:32,425 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:37,441 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:37,597 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:37,597 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:37,597 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:37,597 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:38,284 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:40,316 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:41,987 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:47:43,003 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:43,347 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:47:43,347 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:47:44,191 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:44,191 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:44,191 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:44,191 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:44,378 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:46,409 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:48,237 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:50,488 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:50,504 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:50,505 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:50,506 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:51,473 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:52,487 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:47:53,534 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:47:56,909 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:47:56,909 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:47:56,909 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:47:56,909 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:47:57,536 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:47:58,362 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:47:58,362 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:47:59,410 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:00,581 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:03,917 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:03,919 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:03,919 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:03,922 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:04,628 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:04,628 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:04,925 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:09,954 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:09,955 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:09,956 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:09,956 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:09,958 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:10,690 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:10,691 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:12,003 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:48:13,376 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:48:13,377 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:48:15,436 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:16,136 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:16,138 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:16,138 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:16,139 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:16,758 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:18,787 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:21,168 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:22,216 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:22,218 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:22,218 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:22,220 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:22,847 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:24,878 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:26,237 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:28,045 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:28,046 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:28,047 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:28,048 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:28,380 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:48:28,381 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:48:28,917 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:30,947 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:31,447 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:34,008 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:34,010 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:34,012 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:34,016 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:34,016 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:35,019 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:37,045 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:37,048 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:40,212 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:40,215 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:40,215 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:40,216 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:41,104 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:42,018 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:48:43,034 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:43,143 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:43,393 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:48:43,393 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:48:46,075 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:46,076 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:46,077 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:46,079 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:46,197 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:47,203 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:48,094 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:51,979 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:51,981 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:51,982 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:51,983 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:52,290 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:54,008 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:48:54,321 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:48:58,022 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:48:58,022 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:48:58,023 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:48:58,023 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:48:58,384 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:48:58,404 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:48:58,405 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:48:59,120 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:00,409 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:04,164 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:05,252 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:05,253 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:05,254 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:05,259 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:05,465 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:06,476 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:09,294 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:10,987 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:10,988 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:10,989 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:10,991 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:11,548 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:12,032 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:49:12,573 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:13,421 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:49:13,422 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:49:14,482 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:16,878 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:16,878 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:16,878 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:16,878 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:17,648 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:18,663 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:19,911 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:23,134 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:23,137 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:23,138 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:23,140 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:23,731 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:24,746 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:25,160 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:28,436 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:49:28,437 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:49:29,131 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:29,133 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:29,133 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:29,134 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:29,814 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:30,836 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:31,142 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:35,087 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:35,088 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:35,089 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:35,092 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:35,910 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:36,920 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:37,100 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:41,197 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:41,197 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:41,198 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:41,199 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:41,991 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:42,040 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:49:43,003 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:43,043 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:43,451 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:49:43,452 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:49:47,262 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:47,264 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:47,265 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:47,266 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:48,092 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:48,278 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:49,110 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:53,205 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:53,205 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:53,205 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:53,205 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:54,190 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:54,221 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:49:55,210 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:49:58,463 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:49:58,464 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:49:58,978 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:49:58,980 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:49:58,981 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:49:58,983 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:49:59,286 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:49:59,986 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:01,311 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:05,099 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:06,171 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:06,172 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:06,173 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:06,176 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:06,389 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:07,411 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:10,200 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:12,049 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:50:12,096 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:12,098 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:12,098 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:12,101 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:12,486 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:13,465 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:50:13,466 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:50:13,503 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:15,518 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:18,175 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:18,177 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:18,177 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:18,178 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:18,568 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:19,582 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:21,191 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:24,373 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:24,375 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:24,383 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:24,386 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:24,650 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:26,414 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:27,693 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:28,472 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:50:28,473 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:50:30,494 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:30,495 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:30,496 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:30,497 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:30,736 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:31,501 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:33,790 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:36,443 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:36,445 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:36,446 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:36,447 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:36,828 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:37,448 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:38,863 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:42,065 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:50:42,211 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:42,213 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:42,214 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:42,216 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:42,922 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:42,923 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:43,232 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:43,481 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:50:43,482 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:50:48,549 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:48,643 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:48,643 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:48,643 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:48,643 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:49,002 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:51,034 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:53,688 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:50:54,723 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:50:54,724 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:50:54,725 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:50:54,726 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:50:55,095 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:50:57,114 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:50:58,491 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:50:58,491 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:50:59,548 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:00,730 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:00,732 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:00,732 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:00,734 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:01,164 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:03,203 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:04,846 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:07,982 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:07,984 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:07,984 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:07,985 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:08,288 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:09,301 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:10,002 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:12,064 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:51:13,500 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:51:13,501 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:51:14,258 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:14,260 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:14,261 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:14,262 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:14,384 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:15,272 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:15,399 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:20,275 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:20,277 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:20,278 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:20,278 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:20,280 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:20,475 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:21,482 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:25,318 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:26,364 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:26,365 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:26,366 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:26,368 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:26,563 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:27,569 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:28,517 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:51:28,518 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:51:30,622 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:32,715 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:32,717 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:32,717 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:32,718 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:33,658 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:33,658 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:35,736 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:38,644 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:38,646 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:38,647 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:38,648 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:38,739 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:39,752 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:41,666 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:42,078 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:51:43,529 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:51:43,530 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:51:44,705 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:44,705 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:44,705 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:44,705 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:44,814 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:45,830 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:46,722 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:51,035 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:51,037 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:51,038 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:51,038 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:51,927 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:51,927 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:51:52,049 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:57,066 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:51:57,236 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:51:57,238 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:51:57,239 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:51:57,240 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:51:58,020 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:51:58,538 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:51:58,539 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:52:00,056 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:02,624 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:03,156 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:03,157 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:03,158 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:03,160 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:04,117 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:06,141 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:08,240 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:09,937 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:09,939 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:09,939 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:09,942 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:10,198 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:11,221 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:12,089 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:52:13,511 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:13,543 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:52:13,544 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:52:15,659 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:15,661 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:15,662 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:15,664 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:16,270 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:17,286 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:18,689 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:21,563 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:21,565 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:21,566 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:21,567 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:22,353 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:23,375 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:24,603 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:27,304 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:27,305 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:27,306 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:27,307 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:27,437 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:28,543 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:52:28,544 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:52:29,483 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:30,595 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:32,966 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:32,967 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:32,968 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:32,970 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:33,547 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:35,582 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:35,993 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:39,091 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:39,093 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:39,094 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:39,096 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:39,636 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:41,117 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:41,667 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:42,095 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:52:43,553 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-24 21:52:43,554 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: stop_status
+2023-05-24 21:52:44,954 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:44,954 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:44,970 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:44,970 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:45,716 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:46,988 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:47,738 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:50,682 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:50,683 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:50,684 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:50,685 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:50,786 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:51,817 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:52:52,692 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:56,564 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-24 21:52:56,579 DEBUG   SenderThread:6600 [sender.py:send():375] send: history
+2023-05-24 21:52:56,579 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: summary_record
+2023-05-24 21:52:56,579 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:56,878 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:58,350 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:52:58,380 DEBUG   SenderThread:6600 [sender.py:send():375] send: telemetry
+2023-05-24 21:52:58,380 DEBUG   SenderThread:6600 [sender.py:send():375] send: exit
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:send_exit():598] handling exit code: 0
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:send_exit():600] handling runtime: 586
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:send_exit():606] send defer
+2023-05-24 21:52:58,380 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:52:58,380 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 0
+2023-05-24 21:52:58,380 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-05-24 21:52:58,380 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 1
+2023-05-24 21:52:58,392 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:52:58,392 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 1
+2023-05-24 21:52:58,392 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:52:58,392 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-05-24 21:52:58,392 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 2
+2023-05-24 21:52:58,392 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:52:58,392 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 2
+2023-05-24 21:52:58,392 INFO    HandlerThread:6600 [system_monitor.py:finish():190] Stopping system monitor
+2023-05-24 21:52:58,392 DEBUG   SystemMonitor:6600 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-05-24 21:52:58,393 INFO    HandlerThread:6600 [interfaces.py:finish():202] Joined cpu monitor
+2023-05-24 21:52:58,393 DEBUG   SystemMonitor:6600 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-05-24 21:52:58,396 INFO    HandlerThread:6600 [interfaces.py:finish():202] Joined disk monitor
+2023-05-24 21:52:58,460 INFO    HandlerThread:6600 [interfaces.py:finish():202] Joined gpu monitor
+2023-05-24 21:52:58,460 INFO    HandlerThread:6600 [interfaces.py:finish():202] Joined memory monitor
+2023-05-24 21:52:58,460 INFO    HandlerThread:6600 [interfaces.py:finish():202] Joined network monitor
+2023-05-24 21:52:58,460 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:52:58,460 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-05-24 21:52:58,460 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 3
+2023-05-24 21:52:58,460 DEBUG   SenderThread:6600 [sender.py:send():375] send: stats
+2023-05-24 21:52:58,460 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:52:58,460 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 3
+2023-05-24 21:52:58,460 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:52:58,460 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-05-24 21:52:58,460 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 4
+2023-05-24 21:52:58,460 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:52:58,460 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 4
+2023-05-24 21:52:58,911 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:52:59,939 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:53:04,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-24 21:53:04,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:53:04,269 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 5
+2023-05-24 21:53:04,269 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: poll_exit
+2023-05-24 21:53:04,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:04,269 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 5
+2023-05-24 21:53:04,269 DEBUG   SenderThread:6600 [sender.py:send():375] send: summary
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-24 21:53:04,269 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 6
+2023-05-24 21:53:04,269 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:04,269 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 6
+2023-05-24 21:53:04,269 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:04,269 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-05-24 21:53:04,284 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: status_report
+2023-05-24 21:53:04,394 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 7
+2023-05-24 21:53:04,394 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:04,394 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 7
+2023-05-24 21:53:04,394 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:04,394 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-05-24 21:53:04,425 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-24 21:53:04,987 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\config.yaml
+2023-05-24 21:53:04,987 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:53:05,738 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 8
+2023-05-24 21:53:05,739 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:05,739 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 8
+2023-05-24 21:53:05,739 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:05,739 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-05-24 21:53:05,757 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 9
+2023-05-24 21:53:05,757 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:05,758 DEBUG   SenderThread:6600 [sender.py:send():375] send: artifact
+2023-05-24 21:53:05,758 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 9
+2023-05-24 21:53:06,010 INFO    Thread-16 :6600 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:53:06,629 INFO    wandb-upload_2:6600 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmp55pyz9fn
+2023-05-24 21:53:06,630 INFO    wandb-upload_1:6600 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmp_653i019
+2023-05-24 21:53:06,630 INFO    wandb-upload_0:6600 [upload_job.py:push():95] Uploaded file C:\Users\tripats\AppData\Local\wandb\wandb\artifacts\staging\tmpd6_d3h0s
+2023-05-24 21:53:07,402 INFO    SenderThread:6600 [sender.py:send_artifact():1474] sent artifact job-https___github.com_saugat76_UAV_Subband_Allocation_DQN_Pytorch.git_main.py - {'id': 'QXJ0aWZhY3Q6NDY1ODIyNTk0', 'digest': '272556b9a45fcb6e8d1974f1aec954b2', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjYzMDUxNzMy', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDQyNDExMDE3', 'versionIndex': 82}}, 'version': 'latest'}
+2023-05-24 21:53:07,402 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:07,402 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-05-24 21:53:07,402 INFO    SenderThread:6600 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():395] scan: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\conda-environment.yaml conda-environment.yaml
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\config.yaml config.yaml
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\diff.patch diff.patch
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log output.log
+2023-05-24 21:53:08,033 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\requirements.txt requirements.txt
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-metadata.json wandb-metadata.json
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json wandb-summary.json
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [dir_watcher.py:finish():409] scan save: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\code\main.py code\main.py
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 10
+2023-05-24 21:53:08,049 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:08,049 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 10
+2023-05-24 21:53:08,049 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-05-24 21:53:08,049 INFO    SenderThread:6600 [file_pusher.py:finish():168] shutting down file pusher
+2023-05-24 21:53:08,392 INFO    wandb-upload_1:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\requirements.txt
+2023-05-24 21:53:08,439 INFO    wandb-upload_2:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\config.yaml
+2023-05-24 21:53:08,454 INFO    wandb-upload_0:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\output.log
+2023-05-24 21:53:08,486 INFO    wandb-upload_3:6600 [upload_job.py:push():137] Uploaded file C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\files\wandb-summary.json
+2023-05-24 21:53:08,704 INFO    Thread-15 (_thread_body):6600 [sender.py:transition_state():626] send defer: 11
+2023-05-24 21:53:08,705 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:08,706 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 11
+2023-05-24 21:53:08,706 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:08,706 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-05-24 21:53:08,706 INFO    SenderThread:6600 [file_pusher.py:join():173] waiting for file pusher
+2023-05-24 21:53:08,706 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 12
+2023-05-24 21:53:08,706 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:08,706 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 12
+2023-05-24 21:53:08,706 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:08,706 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-05-24 21:53:08,920 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 13
+2023-05-24 21:53:08,920 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:08,921 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 13
+2023-05-24 21:53:08,921 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:08,921 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-05-24 21:53:08,922 INFO    SenderThread:6600 [sender.py:transition_state():626] send defer: 14
+2023-05-24 21:53:08,922 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: defer
+2023-05-24 21:53:08,923 DEBUG   SenderThread:6600 [sender.py:send():375] send: final
+2023-05-24 21:53:08,923 INFO    HandlerThread:6600 [handler.py:handle_request_defer():170] handle defer: 14
+2023-05-24 21:53:08,923 DEBUG   SenderThread:6600 [sender.py:send():375] send: footer
+2023-05-24 21:53:08,923 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: defer
+2023-05-24 21:53:08,923 INFO    SenderThread:6600 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-05-24 21:53:08,924 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-24 21:53:08,925 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: server_info
+2023-05-24 21:53:08,925 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: get_summary
+2023-05-24 21:53:08,925 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: poll_exit
+2023-05-24 21:53:08,925 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: sampled_history
+2023-05-24 21:53:08,925 DEBUG   SenderThread:6600 [sender.py:send_request():402] send_request: server_info
+2023-05-24 21:53:08,972 DEBUG   HandlerThread:6600 [handler.py:handle_request():144] handle_request: shutdown
+2023-05-24 21:53:08,972 INFO    HandlerThread:6600 [handler.py:finish():845] shutting down handler
+2023-05-24 21:53:09,929 INFO    WriterThread:6600 [datastore.py:close():298] close: C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\wandb\run-20230524_214311-33y37pk5\run-33y37pk5.wandb
+2023-05-24 21:53:09,989 INFO    SenderThread:6600 [sender.py:finish():1550] shutting down sender
+2023-05-24 21:53:09,989 INFO    SenderThread:6600 [file_pusher.py:finish():168] shutting down file pusher
+2023-05-24 21:53:09,989 INFO    SenderThread:6600 [file_pusher.py:join():173] waiting for file pusher

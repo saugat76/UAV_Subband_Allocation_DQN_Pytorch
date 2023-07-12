@@ -30,12 +30,12 @@ os.chdir = ("")
 def parse_args():
     parser = argparse.ArgumentParser()
     # Arguments for the experiments name / run / setup and Weights and Biases
-    parser.add_argument("--exp-name", type=str, default="madql_uav", help="name of this experiment")
+    parser.add_argument("--exp-name", type=str, default="madql_uav_contention_complex_uav", help="name of this experiment")
     parser.add_argument("--seed", type=int, default=1, help="seed of experiment to ensure reproducibility")
     parser.add_argument("--torch-deterministic", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
     parser.add_argument("--cuda", type=lambda x: bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggled, cuda will be enabled by default")
     parser.add_argument("--wandb-track", type=lambda x: bool(strtobool(x)), default=False, help="if toggled, this experiment will be tracked with Weights and Biases project")
-    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch", help="project name in Weight and Biases")
+    parser.add_argument("--wandb-name", type=str, default="UAV_Subband_Allocation_DQN_Pytorch_Contention_Complex", help="project name in Weight and Biases")
     parser.add_argument("--wandb-entity", type=str, default= None, help="entity(team) for Weights and Biases project")
 
     # Arguments specific to the Algotithm used 
@@ -56,8 +56,9 @@ def parse_args():
     parser.add_argument("--nodes", type=int, default=400, help="set the number of nodes for the target and main neural network layers")
     parser.add_argument("--covered-user-as-input", type=lambda x: bool(strtobool(x)), default=False, help="if set true, state will include covered user as one additional value and use it as input to the neural network")
 
+
     # Environment specific arguments 
-    parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state")
+    parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state, 6 -> individual with global peanalty (compare with correlated ma-dql)")
     
     # Arguments for used inside the wireless UAV based enviornment  
     parser.add_argument("--num-user", type=int, default=100, help="number of user in defined environment")
@@ -72,14 +73,22 @@ def parse_args():
     parser.add_argument("--grid-space", type=int, default=100, help="seperating space for grid")
     parser.add_argument("--uav-dis-th", type=int, default=1000, help="distance value that defines which uav agent share info")
     parser.add_argument("--dist-pri-param", type=float, default=1/5, help="distance penalty priority parameter used in level 3 info exchange")
-    
+<<<<<<< HEAD:contention_env_complex/main.py
+    parser.add_argument("--coverage-threshold", type=int, default=75, help="if coverage threshold not satisfied, penalize reward, in percentage")
+    parser.add_argument("--coverage-penalty", type=int, default=5, help="penalty value if threshold is not satisfied")
+=======
+    parser.add_argument("--connectivity-threshold", type=int, default=75, help="if coverage threshold not satisfied, penalize reward, in percentage")
+    parser.add_argument("--connectivity-penalty", type=int, default=5, help="penalty value if threshold is not satisfied")
+>>>>>>> d3bbc9e10e1a0d19e6d5ecd5dcd75a830414475c:contention_env_comlex_madql/main.py
+
+
     args = parser.parse_args()
 
     return args
 
 
 # GPU configuration use for faster processing
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 # DNN modeling
@@ -106,7 +115,7 @@ class DQL:
     # Initializing a Deep Neural Network
     def __init__(self):
         # lvl 1-3 info exchange only their respective state for lvl 4 all agents states 
-        if args.info_exchange_lvl in [1, 2, 3]:
+        if args.info_exchange_lvl in [1, 2, 3, 6]:
             if args.covered_user_as_input:
                 self.state_size = 3
             else:
@@ -166,23 +175,23 @@ class DQL:
             next_state = next_state.to(device = device)
             done = done.to(device = device)
 
-            diff = state - next_state
-            done_local = (diff != 0).any(dim=1).float().to(device)
+            # diff = state - next_state
+            # done_local = (done != 0).any(dim=1).float().to(device)
 
             # Implementation of DQL algorithm 
             Q_next = self.target_network(next_state).detach()
-            target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
+            # target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
+            target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze()
 
             # Forward 
             # Loss calculation based on loss function
-            Q_main = self.main_network(state).squeeze()
-            target_Q = target_Q.float() * torch.ones(torch.transpose(Q_main, 0, 1).shape, device=device)
-            target_Q = torch.transpose(target_Q, 0, 1)
-            
-            loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            target_Q = target_Q.float()
+
+            Q_main = self.main_network(state).gather(1, action).squeeze()
+            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
             # Intialization of the gradient to zero and computation of the gradient
             self.optimizer.zero_grad()
-            loss.backward()
+            self.loss.backward()
             # For gradient clipping
             for param in self.main_network.parameters():
                 param.grad.data.clamp_(-1,1)
@@ -293,7 +302,7 @@ if __name__ == "__main__":
             # Determining the actions for all drones
             states_ten = torch.from_numpy(states)
             for k in range(NUM_UAV):
-                if args.info_exchange_lvl in [1, 2, 3]:
+                if args.info_exchange_lvl in [1, 2, 3, 6]:
                     state = states_ten[k, :]
                 elif args.info_exchange_lvl == 4:
                     state = states_ten.flatten()
@@ -318,7 +327,7 @@ if __name__ == "__main__":
                 # If the lvl of info exchange is 1/2/3 - implicit/reward/position -> store only respective state
                 # Else if lvl info exchnage is 4 - state -> share and store states of other agents
                 # Currently in lvl 4 all agents exchange their states
-                if args.info_exchange_lvl in [1, 2, 3]:
+                if args.info_exchange_lvl in [1, 2, 3, 6]:
                     state = states_ten[k, :].numpy()
                     next_sta = next_state[k, :]
                 elif args.info_exchange_lvl == 4:
@@ -340,11 +349,25 @@ if __name__ == "__main__":
             # Also calculting episodic reward for each agent // Add this in your main program 
             episode_reward_agent = np.add(episode_reward_agent, reward)
 
-            states = next_state
+            # Also calculting episodic reward for each agent // Add this in your main program 
+            episode_reward_agent = np.add(episode_reward_agent, reward)
 
             for k in range(NUM_UAV):
                 if len(UAV_OB[k].replay_buffer) > batch_size:
                     UAV_OB[k].train(batch_size, dnn_epoch)
+                    if args.wandb_track:
+                        wandb.log({f"loss__{k}" : UAV_OB[k].loss})
+            
+            ##########################
+            ####       Logs       ####
+            ##########################
+
+            # Keeping track of covered users every time step to ensure the hard coded value is satisfied
+            writer.add_scalar("chart/covered_users_per_timestep", temp_data[6], (i_episode * num_epochs + t))
+            if args.wandb_track:
+                wandb.log({"covererd_users_per_timestep": temp_data[6], "timestep": (i_episode * num_epochs + t) })
+
+            states = next_state
 
         #############################
         ####   Tensorboard logs  ####
@@ -377,7 +400,7 @@ if __name__ == "__main__":
             for t in range(100):
                 drone_act_list = []
                 for k in range(NUM_UAV):
-                    if args.info_exchange_lvl in [1, 2, 3]:
+                    if args.info_exchange_lvl in [1, 2, 3, 6]:
                         state = states[k, :]
                     elif args.info_exchange_lvl == 4:
                         state = states.flatten()
