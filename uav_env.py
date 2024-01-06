@@ -6,7 +6,15 @@ import gym
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import time 
+from matplotlib.animation import FuncAnimation
+import random
+import sys
+
+reward_level = int(sys.argv[1])
+
+SEED = 1
+np.random.seed(SEED)
+random.seed(SEED)
 
 ###################################
 ##     UAV Class Defination      ##
@@ -31,31 +39,45 @@ class UAVenv(gym.Env):
     # HOTSPOTS = np.array(
     #     [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
     # USER_DIS = int(NUM_USER / NUM_UAV)
-    # USER_LOC = np.zeros((NUM_USER - USER_DIS, 2))
+    # USER_LOC_1 = np.zeros((NUM_USER - USER_DIS, 2))
     
-    # for i in range(len(HOTSPOTS)):
+    # for i in range(len(HOTSPOTS_1)):
     #     for j in range(USER_DIS):
     #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
     #         temp_loc_theta = random.uniform(0, 2*math.pi)
     #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
     #         (temp_loc_1, temp_loc_2) = temp_loc
-    #         temp_loc_1 = temp_loc_1 + HOTSPOTS[i, 0]
-    #         temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
-    #         USER_LOC[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_1[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_1[i, 1]
+    #         USER_LOC_1[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
     # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
-    # USER_LOC = np.concatenate((USER_LOC, temp_loc))
-    # np.savetxt('UserLocation.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
+    # USER_LOC_1 = np.concatenate((USER_LOC_1, temp_loc))
+
+    # np.savetxt('UserLocation_1.txt', USER_LOC_1, fmt='%.3e', delimiter=' ', newline='\n')
+
+    #############################################################################
+    ##     Second User Distribution // Dynamic Environment // Movement User    ##
+    #############################################################################
+
+    # HOTSPOTS_2 = np.array(
+    #     [[300, 400], [600, 700], [400, 500], [400, 600]])  # Position setup in grid size rather than actual distance
+    # USER_LOC_2 = np.zeros((NUM_USER - USER_DIS, 2))
+
+    # for i in range(len(HOTSPOTS_2)):
+    #     for j in range(USER_DIS):
+    #         temp_loc_r = random.uniform(-(1/3.5)*COVERAGE_XY, (1/3.5)*COVERAGE_XY)
+    #         temp_loc_theta = random.uniform(0, 2*math.pi)
+    #         temp_loc = pol2cart(temp_loc_r, temp_loc_theta)
+    #         (temp_loc_1, temp_loc_2) = temp_loc
+    #         temp_loc_1 = temp_loc_1 + HOTSPOTS_2[i, 0]
+    #         temp_loc_2 = temp_loc_2 + HOTSPOTS_2[i, 1]
+    #         USER_LOC_2[i * USER_DIS + j, :] = [temp_loc_1, temp_loc_2]
+    # temp_loc = np.random.uniform(low=0, high=COVERAGE_XY, size=(USER_DIS, 2))
+    # USER_LOC_2 = np.concatenate((USER_LOC_2, temp_loc))
+
+    # np.savetxt('UserLocation_2.txt', USER_LOC_2, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
-
-    USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
-
-
-    #############################################################################
-    ##     Second User Distribution // Hotspots with Uniform Distribution      ##
-    #############################################################################
-    # USER_LOC = np.random.uniform(low=0, high=COVERAGE_XY, size=(NUM_USER, 2))
-    # np.savetxt('UserLocation_Uniform.txt', USER_LOC, fmt='%.3e', delimiter=' ', newline='\n')
 
     # Saving the user location on a file instead of generating everytime
 
@@ -65,10 +87,10 @@ class UAVenv(gym.Env):
     # USER_RB_REQ[np.random.randint(low = 0, high=NUM_USER, size=(NUM_USER,1))] = 1
     # print(sum(USER_RB_REQ))
     # np.savetxt('UserRBReq.txt', USER_RB_REQ, delimiter=' ', newline='\n')
-    
+
     USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
 
-    def __init__(self, args):
+    def __init__(self, user_loc):
         super(UAVenv, self).__init__()
          
         # Environment specific params 
@@ -116,6 +138,8 @@ class UAVenv(gym.Env):
         # Execution of one step within the environment
         # Deal with out of boundaries conditions
         isDone = False
+        # Initialize sum_user_association
+        sum_user_assoc = 0
         # Calculate the distance of every users to the UAV BS and organize as a list
         dist_u_uav = np.zeros(shape=(self.NUM_UAV, self.NUM_USER))
         for i in range(self.NUM_UAV):
@@ -216,11 +240,12 @@ class UAVenv(gym.Env):
             # Set user association flag to 1 for that UAV and closest user index
             # Iterate over the sorted user index and allocate RB is only available
             for user_index in temp_user_actual_idx[0]:
-                if self.USER_RB_REQ[user_index] + rb_allocated[i] <= cap_rb_num:
-                    user_asso_flag[i, user_index] = 1
-                    rb_allocated[i] += self.USER_RB_REQ[user_index]
-                else:
-                    break
+                if dist_u_uav[i, user_index] <= self.coverage_radius:
+                    if self.USER_RB_REQ[user_index] + rb_allocated[i] <= cap_rb_num:
+                        user_asso_flag[i, user_index] = 1
+                        rb_allocated[i] += self.USER_RB_REQ[user_index]
+                    else:
+                        break
 
         # For the second sweep, sweep through all users
         # If the user is not associated choose the closest UAV and check whether it has any available resource
@@ -276,6 +301,7 @@ class UAVenv(gym.Env):
 
         # Collective reward exchange of nuumber of user associated and calculation of the reward based on it
         # Only share the information to the neighbours based on distance values
+        
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################

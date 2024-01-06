@@ -10,12 +10,19 @@ import torch
 from torch import nn 
 import os
 from scipy.io import savemat
-from torch.utils.tensorboard import SummaryWriter
-import wandb
-import argparse
-from distutils.util import strtobool
-import time
-import warnings
+from matplotlib.animation import FuncAnimation
+import sys
+
+i = int(sys.argv[1])
+
+level_path = [
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl1',
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl2',
+    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl3'
+]
+
+level_path_value = level_path[i-1]
+
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -132,7 +139,10 @@ class DQL:
 
     # Storing information of individual UAV information in their respective buffer
     def store_transition(self, state, action, reward, next_state, done):
-        self.replay_buffer.append((state, action, reward, next_state, done))
+        # Move all tensors to the CPU
+        transition = (state, action, reward, next_state, done)
+        transition = tuple(item.cpu() if isinstance(item, torch.Tensor) else item for item in transition)
+        self.replay_buffer.append(transition)
     
     
     # Deployment of epsilon greedy policy
@@ -146,12 +156,13 @@ class DQL:
         else:
             state = torch.unsqueeze(torch.FloatTensor(state),0)
             Q_values = self.main_network(state)
-            action = Q_values.max(1)[1].view(1,1)
+            action = Q_values.max(1)[1].view(1,1).to(device = device)
         return action
 
     # Training of the DNN 
     def train(self,batch_size, dnn_epoch):
         for k in range(dnn_epoch):
+            minibatch = np.empty(batch_size, dtype=object)
             minibatch = random.sample(self.replay_buffer, batch_size)
             minibatch = np.array(minibatch)
             # minibatch = minibatch.reshape(batch_size,5)

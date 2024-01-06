@@ -6,7 +6,10 @@ from matplotlib.gridspec import GridSpec
 import math
 
 def final_render(state, remark):
-    USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
+    if remark == "best_user1":
+        USER_LOC = np.loadtxt('UserLocation_1.txt', dtype=np.int32, delimiter=' ')
+    elif remark == "best_user2":
+        USER_LOC = np.loadtxt('UserLocation_2.txt', dtype=np.int32, delimiter=' ')
     u_loc = USER_LOC
     fig = plt.figure()
     gs = GridSpec(1, 1, figure=fig)
@@ -15,8 +18,6 @@ def final_render(state, remark):
     UAV_HEIGHT = 350
     THETA = 60 * math.pi / 180
     coverage_radius = UAV_HEIGHT * np.tan(THETA / 2)
-
-
     ax.cla()
     position = state[:, 0:2] * grid_space
     ax.scatter(u_loc[:, 0], u_loc[:, 1], c = '#ff0000', marker='o', label = "Users")
