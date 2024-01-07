@@ -10,21 +10,28 @@ import torch
 from torch import nn 
 import os
 from scipy.io import savemat
-from matplotlib.animation import FuncAnimation
-import sys
-
-i = int(sys.argv[1])
-
-level_path = [
-    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl1',
-    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl2',
-    r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl3'
-]
-
-level_path_value = level_path[i-1]
-
+from torch.utils.tensorboard import SummaryWriter
+import wandb
+import argparse
+from distutils.util import strtobool
+import time
+import warnings
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
+# i = int(sys.argv[1])
+
+# level_path = [
+#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl1',
+#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl2',
+#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl3'
+# ]
+
+# level_path_value = level_path[i-1]
+
+
+# warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 # os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
