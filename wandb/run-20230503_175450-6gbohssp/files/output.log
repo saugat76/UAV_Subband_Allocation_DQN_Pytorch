@@ -1,6 +1,0 @@
-
-0
-Traceback (most recent call last):
-  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 380, in <module>
-    best_next_action = Q_values.max(1)[1].view(1,1)
-IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)

@@ -1,6 +1,0 @@
-
-0
-Traceback (most recent call last):
-  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 383, in <module>
-    state = np.copy(state[:, 0:2])
-IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed

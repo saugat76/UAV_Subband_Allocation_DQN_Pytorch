@@ -17,34 +17,29 @@ from distutils.util import strtobool
 import time
 import warnings
 
+# Set warning filter and os environment path
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-
-# i = int(sys.argv[1])
-
-# level_path = [
-#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl1',
-#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl2',
-#     r'C:\Users\tripats\Documents\GitHub\Results_DQN_Pytorch\Dynamic_Environment\Run201_Dynamic\lvl3'
-# ]
-
-# level_path_value = level_path[i-1]
-
-
-# warnings.filterwarnings("ignore", category=DeprecationWarning)
-
-
-# os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-# PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+PATH_DATASETS = os.environ.get("PATH_DATASETS", ".")
 
 os.chdir = ("")
+
+#TODO 
+# Add parser in a single file for Q and DQL in same using sys args 
+# Add support for dyanamic configuration using sys args 
+# Change the logging file struct for tensorboard, wandb and logging 
+# Add dynamic user with 10 different user setup 
+# User changes position every half of total step (episode)
 
 # Define arg parser with default values
 def parse_args():
     parser = argparse.ArgumentParser()
     # Arguments for the experiments name / run / setup and Weights and Biases
-    parser.add_argument("--exp-name", type=str, default="madql_uav", help="name of this experiment")
+    parser.add_argument("--exp-name", type=str, default="madql", choices=['madql', 'maql', 'sample_limited_madql', 'sample_limited_maql'], help="name of this experiment")
+    parser.add_argument("--user-distribution", type=str, default="static", choices=['static', 'dynamic'], help="set the user distribution, static/dyanmic user mobility")
+    parser.add_argument("--dynamic-user-step", type=int, default=10, choices=[50, 10], help="step count where user position changes")
     parser.add_argument("--seed", type=int, default=1, help="seed of experiment to ensure reproducibility")
     parser.add_argument("--torch-deterministic", type= lambda x:bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggeled, 'torch-backends.cudnn.deterministic=False'")
     parser.add_argument("--cuda", type=lambda x: bool(strtobool(x)), default=True, nargs="?", const=True, help="if toggled, cuda will be enabled by default")
@@ -69,6 +64,7 @@ def parse_args():
     parser.add_argument("--layers", type=int, default=2, help="set the number of layers for the target and main neural network")
     parser.add_argument("--nodes", type=int, default=400, help="set the number of nodes for the target and main neural network layers")
     parser.add_argument("--covered-user-as-input", type=lambda x: bool(strtobool(x)), default=False, help="if set true, state will include covered user as one additional value and use it as input to the neural network")
+    parser.add_argument("--time-as-input", type=lambda x: bool(strtobool(x)), default=False, help="if set true, time will be used as one additional state")
 
     # Environment specific arguments 
     parser.add_argument("--info-exchange-lvl", type=int, default=1, help="information exchange level between UAVs: 1 -> implicit, 2 -> reward, 3 -> position with distance penalty, 4 -> state")
@@ -93,7 +89,7 @@ def parse_args():
 
 
 # GPU configuration use for faster processing
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 # DNN modeling
@@ -116,6 +112,8 @@ class NeuralNetwork(nn.Module):
         Q_values = self.linear_stack(x)
         return Q_values
 
+
+# Deep Q-learning class network design 
 class DQL:
     # Initializing a Deep Neural Network
     def __init__(self):
@@ -151,7 +149,6 @@ class DQL:
         transition = tuple(item.cpu() if isinstance(item, torch.Tensor) else item for item in transition)
         self.replay_buffer.append(transition)
     
-    
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
         temp = random.random()
@@ -186,6 +183,19 @@ class DQL:
 
             diff = state - next_state
             done_local = (diff != 0).any(dim=1).float().to(device)
+            
+            #TODO 
+            # New Proposal for Distributed Learning 
+            # Q_next = Q-value based on target Q-network 
+            # Q_current = Q-value based on current Q-network 
+            # Target_Q = Choose the samples with increament in the Q 
+            # i.e. target_q = max(Q_current, r+gamma*Q_next) 
+            # i.e. or, target_q_idx = Q_current < r+gamma*Q_next // only the sample indexed where there is increament
+            # i.e or, target_q = (r+gamma*Q_next)[Q_current < r+gamma*Q_next]
+            # Drop rest of the samples and only choose these indexes for the computation of loss
+            # Q_main = main_n/w(state)[target_q_idx]
+            # Compute Huber loss, loss(Q_main, Q_taget)
+            # Reiterate for adjusting weights and baises params
 
             # Implementation of DQL algorithm 
             Q_next = self.target_network(next_state).detach()
@@ -206,6 +216,11 @@ class DQL:
                 param.grad.data.clamp_(-1,1)
             # Gradient descent
             self.optimizer.step()
+
+def smooth(y, pts):
+    box = np.ones(pts)/pts
+    y_smooth = np.convolve(y, box, mode='same')
+    return y_smooth
 
 
 if __name__ == "__main__":
@@ -241,7 +256,7 @@ if __name__ == "__main__":
             project=args.wandb_name,
             entity=args.wandb_entity,
             sync_tensorboard= True,
-            # track hyperparameters and run metadata
+            # Track hyperparameters and run metadata
             config=vars(args),
             name= run_id,
             save_code= True,
@@ -299,7 +314,6 @@ if __name__ == "__main__":
         else:
             states = np.copy(states[:, 0:2])
         reward = np.zeros(NUM_UAV)
-
         
         for t in range(num_epochs):
             drone_act_list = []
@@ -318,7 +332,6 @@ if __name__ == "__main__":
                 action = UAV_OB[k].epsilon_greedy(state.float())
                 drone_act_list.append(action)
 
-
             # Find the global reward for the combined set of actions for the UAV
             temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
             reward = temp_data[1]
@@ -328,7 +341,6 @@ if __name__ == "__main__":
                 next_state = np.copy(next_state)
             else:
                 next_state = np.copy(next_state[:, 0:2])
-
 
             # Store the transition information
             for k in range(NUM_UAV):
@@ -436,12 +448,6 @@ if __name__ == "__main__":
             print(drone_act_list)
             print("Number of user connected in ",i_episode," episode is: ", temp_data[4])
             print("Total user connected in ",i_episode," episode is: ", sum(temp_data[4]))
-
-
-    def smooth(y, pts):
-        box = np.ones(pts)/pts
-        y_smooth = np.convolve(y, box, mode='same')
-        return y_smooth
 
     ##########################
     ####   Custom logs    ####

@@ -1,6 +1,0 @@
-
-0
-Traceback (most recent call last):
-  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 328, in <module>
-    UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)
-NameError: name 'next_sta' is not defined

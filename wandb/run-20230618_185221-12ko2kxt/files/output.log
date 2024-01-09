@@ -1,8 +1,0 @@
-
-0
-Traceback (most recent call last):
-  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\main.py", line 304, in <module>
-    temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
-  File "C:\Users\tripats\Documents\GitHub\UAV_Subband_Allocation_DQN_Pytorch\uav_env.py", line 306, in step
-    return np.copy(self.state).reshape(1, self.NUM_UAV * 3), reward, isDone, "empty", sum_user_assoc, rb_allocated
-ValueError: cannot reshape array of size 20 into shape (1,15)

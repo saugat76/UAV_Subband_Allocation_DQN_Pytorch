@@ -1,8 +1,0 @@
-
-0
-Traceback (most recent call last):
-  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\main.py", line 305, in <module>
-    temp_data = u_env.step(drone_act_list, args.info_exchange_lvl)
-  File "C:\Users\tripats\Documents\GitHub\uav_nw_madql_connectivity_pytorch\uav_env.py", line 242, in step
-    self.state[:, 2] = sum_user_assoc / self.NUM_USER
-ValueError: could not broadcast input array from shape (4,) into shape (5,)
