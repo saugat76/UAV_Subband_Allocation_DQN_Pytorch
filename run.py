@@ -21,3 +21,8 @@ for i in range(1,5):
 
 # #   python uav_env.py
 # #   python main.py --info-exchange-lvl 2 --num-episode 1000 --wandb-track True --learning-rate 2.5e-4 --uav-dis-th 0
+    
+
+#UCN
+# python main.py --learning-rate 2.5e-4 --num-episode 500  --num-uav 5 --user-distribution dynamic --time-as-input True --wandb-track True  --info-exchange-lvl 3  --exp-name madql-sample-limited
+

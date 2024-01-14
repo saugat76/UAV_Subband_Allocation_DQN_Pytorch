@@ -5,12 +5,9 @@ import numpy as np
 from matplotlib.gridspec import GridSpec
 import math
 
-def final_render(state, remark):
-    if remark == "best_user1":
-        USER_LOC = np.loadtxt('UserLocation_1.txt', dtype=np.int32, delimiter=' ')
-    elif remark == "best_user2":
-        USER_LOC = np.loadtxt('UserLocation_2.txt', dtype=np.int32, delimiter=' ')
-    u_loc = USER_LOC
+def final_render(state, remark, user_loc):
+    USER_LOC = np.loadtxt('UserLocation.txt', dtype=np.int32, delimiter=' ')
+    u_loc = USER_LOC[:, user_loc * 2 : user_loc * 2 + 2]
     fig = plt.figure()
     gs = GridSpec(1, 1, figure=fig)
     ax = fig.add_subplot(gs[0:1, 0:1])

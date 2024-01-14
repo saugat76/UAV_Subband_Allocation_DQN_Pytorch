@@ -73,13 +73,8 @@ def parse_args():
     parser.add_argument("--grid-space", type=int, default=100, help="seperating space for grid")
     parser.add_argument("--uav-dis-th", type=int, default=1000, help="distance value that defines which uav agent share info")
     parser.add_argument("--dist-pri-param", type=float, default=1/5, help="distance penalty priority parameter used in level 3 info exchange")
-<<<<<<< HEAD:contention_env_complex/main.py
-    parser.add_argument("--coverage-threshold", type=int, default=75, help="if coverage threshold not satisfied, penalize reward, in percentage")
-    parser.add_argument("--coverage-penalty", type=int, default=5, help="penalty value if threshold is not satisfied")
-=======
     parser.add_argument("--connectivity-threshold", type=int, default=75, help="if coverage threshold not satisfied, penalize reward, in percentage")
     parser.add_argument("--connectivity-penalty", type=int, default=5, help="penalty value if threshold is not satisfied")
->>>>>>> d3bbc9e10e1a0d19e6d5ecd5dcd75a830414475c:contention_env_comlex_madql/main.py
 
 
     args = parser.parse_args()

@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe"
+    "python.pythonPath": "C:\\Users\\tripats\\.conda\\envs\\uavenv\\python.exe", 
+    "python.formatting.provider": "yapf",
+    "yapf.args": ["--style", "D:\\UCN\\UAV_Subband_Allocation_DQN_Pytorch\\.vscode\\.style.yapf"], 
 }
