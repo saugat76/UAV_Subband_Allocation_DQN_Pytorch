@@ -258,13 +258,18 @@ class Q_Learning:
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
         self.learning_rate = alpha
-        self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE, int(args.num_steps / args.dynamic_user_step))
+
         self.action_space_size = 5
         # For 10x10 Grid there are 11 possisblity in each direction from 0 to 10
-        self.Q = np.random.rand(self.state_space_size[0] + 1,
-                                self.state_space_size[1] + 1,
-                                self.state_space_size[2] + 1,
-                                self.action_space_size)
+        if args.covered_user_as_input or args.time_as_input:
+            self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE, int(args.num_steps / args.dynamic_user_step))
+            self.Q = np.random.rand(self.state_space_size[0] + 1,
+                                    self.state_space_size[1] + 1,
+                                    self.state_space_size[2] + 1,
+                                    self.action_space_size)
+        else:
+            self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE)
+            self.Q = np.random.rand(self.state_space_size[0] + 1, self.state_space_size[1] + 1, self.action_space_size)
 
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
@@ -279,7 +284,10 @@ class Q_Learning:
             action = np.random.randint(0, 4)
         else:
             # Else (high prob) choosing the best possible action giving maximum Q-value
-            action = np.argmax(self.Q[state[0], state[1], state[2], :])
+            if args.covered_user_as_input or args.time_as_input:
+                action = np.argmax(self.Q[state[0], state[1], state[2], :])
+            else:
+                action = np.argmax(self.Q[state[0], state[1], :])
         return action
 
     # Computation of Q-values of state-action pair
@@ -290,10 +298,25 @@ class Q_Learning:
         action = info[1]
         next_sta = info[2].astype(int)
         reward = info[3]
-        best_next_action = np.argmax(self.Q[next_sta[0], next_sta[1], next_sta[2], :])
-        td_target = reward + self.gamma * self.Q[next_sta[0], next_sta[1], next_sta[2], best_next_action]
-        td_delta = td_target - self.Q[state[0], state[1], action]
-        self.Q[state[0], state[1], action] += self.alpha * td_delta
+        if args.time_as_input or args.covered_user_as_input:
+            best_next_action = np.argmax(self.Q[next_sta[0], next_sta[1], next_sta[2], :])
+            td_target = reward + self.gamma * self.Q[next_sta[0], next_sta[1], next_sta[2], best_next_action]
+            td_delta = td_target - self.Q[state[0], state[1], state[2], action]
+            if args.exp_name in ['maql']:
+                self.Q[state[0], state[1], state[2], action] += self.alpha * td_delta
+            if args.exp_name in ['sample_limited_maql']:
+                self.Q[state[0], state[1], state[2],
+                       action] = max(self.Q[state[0], state[1], state[2], action],
+                                     self.Q[state[0], state[1], state[2], action] + self.alpha * td_delta)
+        else:
+            best_next_action = np.argmax(self.Q[next_sta[0], next_sta[1], :])
+            td_target = reward + self.gamma * self.Q[next_sta[0], next_sta[1], best_next_action]
+            td_delta = td_target - self.Q[state[0], state[1], action]
+            if args.exp_name in ['maql']:
+                self.Q[state[0], state[1], action] += self.alpha * td_delta
+            if args.exp_name in ['sample_limited_maql']:
+                self.Q[state[0], state[1], action] = max(self.Q[state[0], state[1], action],
+                                                         self.Q[state[0], state[1], action] + self.alpha * td_delta)
 
 
 # DNN modeling
@@ -391,7 +414,7 @@ class DQL:
             #TODO
             # New Proposal for Distributed Learning
             # Q_next = Q-value based on target Q-network
-            # Q_current = Q-value based on current Q-network
+            # Q_current = Q-value based on current main Q-network
             # Target_Q = Choose the samples with increament in the Q
             # i.e. target_q = max(Q_current, r+gamma*Q_next)
             # i.e. or, target_q_idx = Q_current < r+gamma*Q_next // only the sample indexed where there is increament
@@ -411,26 +434,25 @@ class DQL:
             elif args.exp_name in ['sample_limited_madql']:
                 # New Proposal for Distributed Learning
                 Q_next = self.target_network(next_state).detach()
-                Q_current = self.main_network(state).squeeze()
+                Q_main = self.main_network(state).gather(1, action).squeeze()
                 # Compute the target Q value
                 target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze()
-                Q_current_max = Q_current.max(1)[0].view(batch_size, 1).squeeze()
-                # Find the indices where Q_current_max < target_Q
-                target_q_idx = torch.le(Q_current_max, target_Q)
+                # Find the indices where Q_current < target_Q
+                target_q_idx = torch.le(Q_main, target_Q)
                 # Only keep the samples where there is an increment in Q
                 target_Q = target_Q[target_q_idx]
-                # Compute Q_main using the main network
-                Q_main = self.main_network(state).gather(1, action).squeeze()[target_q_idx]
-
-            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
-            # Intialization of the gradient to zero and computation of the gradient
-            self.optimizer.zero_grad()
-            self.loss.backward()
-            # For gradient clipping
-            for param in self.main_network.parameters():
-                param.grad.data.clamp_(-1, 1)
-            # Gradient descent
-            self.optimizer.step()
+                # Compute Q_main using the main network, and index samples where there is an increment in Q
+                Q_main = Q_main[target_q_idx]
+                self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+                # self.loss = torch.mean(torch.square(torch.sub(Q_main, target_Q)))
+                # Intialization of the gradient to zero and computation of the gradient
+                self.optimizer.zero_grad()
+                self.loss.backward()
+                # For gradient clipping
+                for param in self.main_network.parameters():
+                    param.grad.data.clamp_(-1, 1)
+                # Gradient descent
+                self.optimizer.step()
 
 
 def smooth(y, pts):
@@ -649,6 +671,11 @@ if __name__ == "__main__":
                 "connected_users": episode_user_connected[i_episode],
                 "global_steps": global_step
             })
+            try:
+                wandb.log({"agent_loss: " + str(agent_l): UAV_OB[agent_l].loss for agent_l in range(NUM_UAV)})
+            except:
+                # Initial state, no loss yet
+                pass
             # wandb.log({"reward: "+ str(agent): reward[agent] for agent in range(NUM_UAV)})
             # wandb.log({"connected_users: "+ str(agent_l): user_connected[agent_l] for agent_l in range(NUM_UAV)})
         global_step += 1
@@ -658,6 +685,12 @@ if __name__ == "__main__":
         # Since all agents are identical only tracking one agents params
         if args.exp_name in ['madql', 'sample_limited_madql']:
             writer.add_scalar("params/learning_rate", UAV_OB[1].learning_rate, i_episode)
+            try:
+                for agent_l in range(NUM_UAV):
+                    writer.add_scalar(f"chart/loss{k}", UAV_OB[k].loss, i_episode)
+            except:
+                # Initial state, no loss yet
+                pass
         writer.add_scalar("params/epsilon", UAV_OB[1].epsilon_thres, i_episode)
 
         if i_episode % 10 == 0:
@@ -681,7 +714,10 @@ if __name__ == "__main__":
                     # Determining the actions for all drones
                     if args.exp_name in ['maql', 'sample_limited_maql']:
                         state = state.astype(int)
-                        best_next_action = np.argmax(UAV_OB[k].Q[state[0], state[1], state[2], :])
+                        if args.covered_user_as_input or args.time_as_input:
+                            best_next_action = np.argmax(UAV_OB[k].Q[state[0], state[1], state[2], :])
+                        else:
+                            best_next_action = np.argmax(UAV_OB[k].Q[state[0], state[1], :])
                     elif args.exp_name in ['madql', 'sample_limited_madql']:
                         state = torch.unsqueeze(torch.FloatTensor(state), 0)
                         Q_values = UAV_OB[k].main_network.forward(state)
@@ -773,11 +809,18 @@ if __name__ == "__main__":
     plt.close()
 
     # Plot for best and final states
-    for k in range((num_epochs // args.dynamic_user_step)):
-        fig_user_loc = plt.figure(figsize=(10, 8))  # Increase the figure size
-        final_render(best_state[:, :, k], "best", k)
-        plt.savefig(custom_dir + r'\best_users_user_loc_' + str(k) + '.png')
-        writer.add_figure(f"images/uav_users_best_{k}", fig_user_loc)
+    if args.user_distribution == 'dynamic':
+        for k in range((num_epochs // args.dynamic_user_step)):
+            fig_user_loc = plt.figure(figsize=(10, 8))  # Increase the figure size
+            final_render(best_state[:, :, k], "best", k)
+            plt.savefig(custom_dir + r'\best_users_user_loc_' + str(k) + '.png')
+            writer.add_figure(f"images/uav_users_best_{k}", fig_user_loc)
+            plt.close()
+    else:
+        fig_user_loc = plt.figure(figsize=(10, 8))
+        final_render(best_state, "best", 0)
+        plt.savefig(custom_dir + r'\best_users_user_loc.png')
+        writer.add_figure(f"images/uav_users_best", fig_user_loc)
         plt.close()
 
     print(states_fin)
@@ -789,9 +832,9 @@ if __name__ == "__main__":
     #############################
     ####   Tensorboard logs  ####
     #############################
-    
+
     for k in range(num_epochs // args.dynamic_user_step):
-        writer.add_text(f"best_outcome_{k}_distribution" + str(best_state[k]))
-        writer.add_text("best_result_{k}_distribution" + str(best_result[k]))
+        writer.add_text(f"best_outcome_{k}_distribution", str(best_state[:,:k]))
+        writer.add_text(f"best_result_{k}_distribution", str(best_result[k]))
     wandb.finish()
     writer.close()
