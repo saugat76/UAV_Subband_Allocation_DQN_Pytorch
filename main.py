@@ -378,7 +378,7 @@ class DQL:
             else:
                 self.state_size = args.num_uav * 2
         self.action_size = 5
-        self.replay_buffer = deque(maxlen=125000)
+        self.replay_buffer = deque(maxlen=250000)
         self.gamma = discount_factor
         self.epsilon = epsilon
         self.epsilon_min = epsilon_min
@@ -438,7 +438,8 @@ class DQL:
             if args.exp_name in ['madql']:
                 # Implementation of DQL algorithm
                 Q_next = self.target_network(next_state).detach()
-                target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
+                target_Q = (reward.squeeze() +
+                            self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local).float()
                 # Forward and Loss calculation based on loss function
                 Q_main = self.main_network(state).gather(1, action).squeeze()
 
@@ -447,7 +448,7 @@ class DQL:
                 Q_next = self.target_network(next_state).detach()
                 Q_main = self.main_network(state).gather(1, action).squeeze()
                 # Compute the target Q value
-                target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze()
+                target_Q = (reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze()).float()
                 # Find the indices where Q_current < target_Q
                 target_q_idx = torch.le(Q_main, target_Q)
                 # Only keep the samples where there is an increment in Q
