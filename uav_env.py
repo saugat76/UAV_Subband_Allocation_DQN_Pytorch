@@ -31,7 +31,6 @@ class UAVenv(gym.Env):
 
     def cart2pol(self, z):
         return (np.abs(z), np.angle(z))
-    
 
     def __init__(self, args):
         super(UAVenv, self).__init__()
@@ -65,12 +64,11 @@ class UAVenv(gym.Env):
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state or starting at same initial position
         # Starting UAV Position at the center of the target area
-        self.state = np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
-           [0, 0, 0]])
+        self.state = np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]])
+        # self.state = np.array([[0, 0, 0], [0, 0, 0]])
         self.coverage_radius = self.UAV_HEIGHT * np.tan(self.THETA / 2)
         self.flag = np.zeros((args.num_uav), dtype=np.int32)
         print(self.coverage_radius)
-
 
     # Compute and load user location and resource block requirement
     def user_location_rb(self):
@@ -110,18 +108,18 @@ class UAVenv(gym.Env):
         # Set user location to initial position
         self.u_loc = self.USER_LOC[:,:, 0]
         # Saving the user location on a file instead of generating everytime
-        # USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int32)
+        # self.USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int32)
+        # self.u_loc = self.USER_LOC[:, :]
 
         #############################################################################
         ##                        RB Allocation for Each User                      ##
         #############################################################################
         # User RB requirement // currently based randomly, can be later calculated using SINR value and Shannon Capacity Theorem
         self.USER_RB_REQ = np.random.randint(low=1, high=3, size=(self.NUM_USER, 1))
-        self.USER_RB_REQ[np.random.randint(low = 0, high=self.NUM_USER, size=(self.NUM_USER,1))] = 1
+        self.USER_RB_REQ[np.random.randint(low=0, high=self.NUM_USER, size=(self.NUM_USER, 1))] = 1
         np.savetxt('UserRBReq.txt', self.USER_RB_REQ, delimiter=' ', newline='\n')
 
         # USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
-
 
     def step(self, action, info_exchange_lvl):
         # Take the action
@@ -258,7 +256,7 @@ class UAVenv(gym.Env):
                             user_asso_flag[close_id, j] = 1
                             break
 
-        # Consideration of third state value as servered user rate per UAV 
+        # Consideration of third state value as servered user rate per UAV
         # Or time as one of the state value
         # sum_user_assoc = np.sum(user_asso_flag, axis=1)
         # self.state[:, 2] = sum_user_assoc / self.NUM_USER
@@ -269,7 +267,7 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        if info_exchange_lvl == 1 or info_exchange_lvl == 4:
+        if info_exchange_lvl == 1 or (info_exchange_lvl == 4 and self.args.level_4_reward == 'average'):
             sum_user_assoc = np.sum(user_asso_flag, axis=1)
             reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
             for k in range(self.NUM_UAV):
@@ -283,7 +281,7 @@ class UAVenv(gym.Env):
         #############################################################################################
         ##     Opt.2  No. of User Connected as Indiviudal Reward with Penalty Over Buffer Area     ##
         #############################################################################################
-        elif info_exchange_lvl == 3:
+        elif info_exchange_lvl == 3 or (info_exchange_lvl == 4 and self.args.level_4_reward == 'penalized-average'):
             sum_user_assoc = np.sum(user_asso_flag, axis=1)
             reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
             penalty_overlap = penalty_overlap.flatten()
@@ -349,7 +347,9 @@ class UAVenv(gym.Env):
         # Reset out states
         # Set the states to the hotspots and one at the centre for faster convergence
         # Further complexity by choosing random value of state
-        self.state[:, 0:3] = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]        # Starting UAV Position at the center of the target area
+        self.state[:, 0:3] = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
+                              [0, 0, 0]]  # Starting UAV Position at the center of the target area
+        # self.state[:, 0:3] = [[0, 0, 0], [0, 0, 0]]
         # self.state[:, 0:2] = [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]
         # Reset all state value // both position state and user coverage value
         # self.state = np.zeros((self.NUM_UAV,3), dtype=np.int32)

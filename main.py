@@ -79,7 +79,7 @@ def parse_args():
                         "if toggled, this experiment will be tracked with Weights and Biases project")
     parser.add_argument("--wandb-name",
                         type=str,
-                        default="unc_connectivity_v0",
+                        default="ucn_connectivity_v1",
                         help="project name in Weight and Biases")
     parser.add_argument("--wandb-entity",
                         type=str,
@@ -89,7 +89,7 @@ def parse_args():
     # Arguments specific to the Algotithm used
     parser.add_argument("--env-id",
                         type=str,
-                        default="unc_connectivity-v0",
+                        default="ucn_connectivity-v1",
                         help="id of developed custom environment")
     parser.add_argument("--num-env",
                         type=int,
@@ -237,6 +237,13 @@ def parse_args():
                         type=int,
                         default=5,
                         help="penalty value if threshold is not satisfied")
+
+    parser.add_argument("--level-4-reward",
+                        type=str,
+                        choices=['average', 'penalized-average'],
+                        default='average',
+                        help="reward calculation for level 4 info exchange")
+
     #yapf: enable
     args = parser.parse_args()
 
@@ -261,15 +268,32 @@ class Q_Learning:
 
         self.action_space_size = 5
         # For 10x10 Grid there are 11 possisblity in each direction from 0 to 10
-        if args.covered_user_as_input or args.time_as_input:
-            self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE, int(args.num_steps / args.dynamic_user_step))
-            self.Q = np.random.rand(self.state_space_size[0] + 1,
-                                    self.state_space_size[1] + 1,
-                                    self.state_space_size[2] + 1,
-                                    self.action_space_size)
+        if args.info_exchange_lvl == 4:
+            if args.covered_user_as_input or args.time_as_input:
+                self.state_space_size = (np.uint16(NUM_UAV**u_env.GRID_SIZE),
+                                         np.uint16(NUM_UAV**u_env.GRID_SIZE),
+                                         np.uint16(NUM_UAV**int(args.num_steps / args.dynamic_user_step)))
+                self.Q = np.random.rand((self.state_space_size[0] + 1), (self.state_space_size[1] + 1),
+                                        (self.state_space_size[2] + 1),
+                                        self.action_space_size).astype(np.float16)
+            else:
+                self.state_space_size = (NUM_UAV**u_env.GRID_SIZE, NUM_UAV**u_env.GRID_SIZE)
+                self.Q = np.random.rand(self.state_space_size[0] + 1,
+                                        self.state_space_size[1] + 1,
+                                        self.action_space_size).astype(np.float16)
+
         else:
-            self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE)
-            self.Q = np.random.rand(self.state_space_size[0] + 1, self.state_space_size[1] + 1, self.action_space_size)
+            if args.covered_user_as_input or args.time_as_input:
+                self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE, int(args.num_steps / args.dynamic_user_step))
+                self.Q = np.random.rand(self.state_space_size[0] + 1,
+                                        self.state_space_size[1] + 1,
+                                        self.state_space_size[2] + 1,
+                                        self.action_space_size)
+            else:
+                self.state_space_size = (u_env.GRID_SIZE, u_env.GRID_SIZE)
+                self.Q = np.random.rand(self.state_space_size[0] + 1,
+                                        self.state_space_size[1] + 1,
+                                        self.action_space_size)
 
     # Deployment of epsilon greedy policy
     def epsilon_greedy(self, state):
@@ -411,23 +435,10 @@ class DQL:
             diff = torch.ne(state, next_state)
             done_local = (diff != 0).any(dim=1).float().to(device)
 
-            #TODO
-            # New Proposal for Distributed Learning
-            # Q_next = Q-value based on target Q-network
-            # Q_current = Q-value based on current main Q-network
-            # Target_Q = Choose the samples with increament in the Q
-            # i.e. target_q = max(Q_current, r+gamma*Q_next)
-            # i.e. or, target_q_idx = Q_current < r+gamma*Q_next // only the sample indexed where there is increament
-            # i.e or, target_q = (r+gamma*Q_next)[Q_current < r+gamma*Q_next]
-            # Drop rest of the samples and only choose these indexes for the computation of loss
-            # Q_main = main_n/w(state)[target_q_idx]
-            # Compute Huber loss, loss(Q_main, Q_taget)
-            # Reiterate for adjusting weights and baises params
-
             if args.exp_name in ['madql']:
                 # Implementation of DQL algorithm
                 Q_next = self.target_network(next_state).detach()
-                target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze()
+                target_Q = reward.squeeze() + self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local
                 # Forward and Loss calculation based on loss function
                 Q_main = self.main_network(state).gather(1, action).squeeze()
 
@@ -443,16 +454,18 @@ class DQL:
                 target_Q = target_Q[target_q_idx]
                 # Compute Q_main using the main network, and index samples where there is an increment in Q
                 Q_main = Q_main[target_q_idx]
-                self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
-                # self.loss = torch.mean(torch.square(torch.sub(Q_main, target_Q)))
-                # Intialization of the gradient to zero and computation of the gradient
-                self.optimizer.zero_grad()
-                self.loss.backward()
-                # For gradient clipping
-                for param in self.main_network.parameters():
-                    param.grad.data.clamp_(-1, 1)
-                # Gradient descent
-                self.optimizer.step()
+
+            # Compute the loss and backpropagate
+            self.loss = self.loss_func(target_Q.cpu().detach(), Q_main.cpu())
+            # self.loss = torch.mean(torch.square(torch.sub(Q_main, target_Q)))
+            # Intialization of the gradient to zero and computation of the gradient
+            self.optimizer.zero_grad()
+            self.loss.backward()
+            # For gradient clipping
+            for param in self.main_network.parameters():
+                param.grad.data.clamp_(-1, 1)
+            # Gradient descent
+            self.optimizer.step()
 
 
 def smooth(y, pts):
@@ -545,8 +558,12 @@ if __name__ == "__main__":
             UAV_OB.append(Q_Learning())
         elif args.exp_name in ['madql', 'sample_limited_madql']:
             UAV_OB.append(DQL())
-    best_result = np.zeros((num_epochs // args.dynamic_user_step))
-    best_state = np.zeros((NUM_UAV, 2, num_epochs // args.dynamic_user_step))
+    if args.user_distribution == 'dynamic':
+        best_result = np.zeros((num_epochs // args.dynamic_user_step))
+        best_state = np.zeros((NUM_UAV, 2, num_epochs // args.dynamic_user_step))
+    elif args.user_distribution == 'static':
+        best_result = 0
+        best_state = np.zeros((NUM_UAV, 2))
 
     # Start of the episode
     for i_episode in range(num_episode):
@@ -578,7 +595,14 @@ if __name__ == "__main__":
                 # Determining the actions for all drones
                 states_ten = states
                 for k in range(NUM_UAV):
-                    state = states_ten[k, :].astype(int)
+                    if args.info_exchange_lvl == 4:
+                        # Convert conmbied state to a single state value
+                        state = np.array([
+                            sum([states_ten[0, i] * ((GRID_SIZE + 1)**i) for i in range(states_ten.shape[0])]),
+                            sum([states_ten[1, i] * ((GRID_SIZE + 1)**i) for i in range(states_ten.shape[0])])
+                        ]).astype(int)
+                    else:
+                        state = states_ten[k, :].astype(int)
                     action = UAV_OB[k].epsilon_greedy(state)
                     drone_act_list.append(action)
                 # Find the rewards for the combined set of actions for the UAV
@@ -735,6 +759,10 @@ if __name__ == "__main__":
                     if best_result[t // args.dynamic_user_step] < sum(temp_data[4]):
                         best_result[t // args.dynamic_user_step] = sum(temp_data[4])
                         best_state[:, :, t // args.dynamic_user_step] = states[:, 0:2]
+                elif args.user_distribution == 'static':
+                    if best_result < sum(temp_data[4]):
+                        best_result = sum(temp_data[4])
+                        best_state[:, :] = states[:, 0:2]
 
             # Custom logs and figures save /
             custom_dir = f'custom_logs\lvl_{args.info_exchange_lvl}\{run_id}'
@@ -750,7 +778,7 @@ if __name__ == "__main__":
                             'model_state_dict': UAV_OB[k].main_network.linear_stack.state_dict(),
                             'optimizer_state_dict': UAV_OB[k].optimizer.state_dict(),
                         },
-                        custom_dir + '/model.pth')
+                        custom_dir + f'/model_{k}.pth')
 
             u_env.render(ax1)
             ##########################
@@ -811,14 +839,14 @@ if __name__ == "__main__":
     # Plot for best and final states
     if args.user_distribution == 'dynamic':
         for k in range((num_epochs // args.dynamic_user_step)):
-            fig_user_loc = plt.figure(figsize=(10, 8))  # Increase the figure size
-            final_render(best_state[:, :, k], "best", k)
+            fig_user_loc = plt.figure(figsize=(10, 8))
+            final_render(best_state[:, :, k], "best", k, fig_user_loc)
             plt.savefig(custom_dir + r'\best_users_user_loc_' + str(k) + '.png')
             writer.add_figure(f"images/uav_users_best_{k}", fig_user_loc)
             plt.close()
     else:
         fig_user_loc = plt.figure(figsize=(10, 8))
-        final_render(best_state, "best", 0)
+        final_render(best_state[:, :], "best", 0, fig_user_loc)
         plt.savefig(custom_dir + r'\best_users_user_loc.png')
         writer.add_figure(f"images/uav_users_best", fig_user_loc)
         plt.close()
@@ -833,8 +861,12 @@ if __name__ == "__main__":
     ####   Tensorboard logs  ####
     #############################
 
-    for k in range(num_epochs // args.dynamic_user_step):
-        writer.add_text(f"best_outcome_{k}_distribution", str(best_state[:,:k]))
-        writer.add_text(f"best_result_{k}_distribution", str(best_result[k]))
+    if args.user_distribution == 'dynamic':
+        for k in range(num_epochs // args.dynamic_user_step):
+            writer.add_text(f"best_outcome_{k}_distribution", str(best_state[:, :k]))
+            writer.add_text(f"best_result_{k}_distribution", str(best_result[k]))
+    elif args.user_distribution == 'static':
+        writer.add_text(f"best_outcome_distribution", str(best_state[:, :]))
+        writer.add_text(f"best_result_distribution", str(best_result))
     wandb.finish()
     writer.close()
