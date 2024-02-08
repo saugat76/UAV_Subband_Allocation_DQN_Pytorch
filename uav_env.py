@@ -77,14 +77,14 @@ class UAVenv(gym.Env):
         ############################################################################
         # User distribution on the target area // NUM_USER/5 users in each of four hotspots
         # Remaining NUM_USER/5 is then uniformly distributed in the target area
-        HOTSPOTS = np.array(
-            [[200, 200], [800, 800], [300, 800], [800, 300]])  # Position setup in grid size rather than actual distance
         USER_DIS = int(self.NUM_USER / self.NUM_UAV)
 
         if self.args.user_distribution == 'static':
             step = 1
+            HOTSPOTS = np.array([[200, 200], [800, 800], [300, 800], [800, 300]])
         elif self.args.user_distribution == 'dynamic':
-            step = int(self.args.num_steps / self.args.dynamic_user_step)
+            HOTSPOTS = np.array([[200, 200], [800, 800], [200, 800], [800, 200]])  # Position setup in grid size rather than actual distance
+            step = int(self.args.num_steps / self.args.dynamic_user_step) + 1
         USER_LOC = np.zeros((self.NUM_USER - USER_DIS, 2, step))
         USER_LOC_2D = np.zeros((self.NUM_USER - USER_DIS, 2 * step))
         for step_count in range(step):
@@ -98,7 +98,7 @@ class UAVenv(gym.Env):
                     temp_loc_2 = temp_loc_2 + HOTSPOTS[i, 1]
                     USER_LOC_2D[i * USER_DIS + j, 2*step_count: 2*step_count+ 2] = [temp_loc_1, temp_loc_2]
                     USER_LOC[i * USER_DIS + j, :, step_count] = [temp_loc_1, temp_loc_2]
-            HOTSPOTS = (HOTSPOTS - 500)/1.125 + 500
+            HOTSPOTS = (HOTSPOTS - 500)/2 + 500
         temp_loc_2d = np.random.uniform(low=0, high=self.COVERAGE_XY, size=(USER_DIS, 2*step))
         temp_loc = np.random.uniform(low=0, high=self.COVERAGE_XY, size=(USER_DIS, 2, step))
         USER_LOC_2D = np.concatenate((USER_LOC_2D, temp_loc_2d))
@@ -267,7 +267,7 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.1  No. of User Connected as Indiviudal Reward      ##
         ################################################################
-        if info_exchange_lvl == 1 or (info_exchange_lvl == 4 and self.args.level_4_reward == 'average'):
+        if info_exchange_lvl == 1 or (info_exchange_lvl == 4 and self.args.level_4_reward == 'individual'):
             sum_user_assoc = np.sum(user_asso_flag, axis=1)
             reward_solo = np.zeros(np.size(sum_user_assoc), dtype="float32")
             for k in range(self.NUM_UAV):
@@ -300,7 +300,7 @@ class UAVenv(gym.Env):
         ################################################################
         ##     Opt.3  No. of User Connected as Collective Reward      ##
         ################################################################
-        elif info_exchange_lvl == 2:
+        elif info_exchange_lvl == 2 or (info_exchange_lvl == 4 and self.args.level_4_reward == 'average'):
             sum_user_assoc = np.sum(user_asso_flag, axis=1)
             sum_user_assoc_temp = np.copy(sum_user_assoc)
             reward_ind = np.zeros(np.size(sum_user_assoc))

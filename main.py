@@ -54,7 +54,7 @@ def parse_args():
     parser.add_argument("--dynamic-user-step",
                         type=int,
                         default=10,
-                        choices=[50, 10],
+                        choices=[50, 34, 10],
                         help="step count where user position changes")
     parser.add_argument("--seed",
                         type=int,
@@ -240,7 +240,7 @@ def parse_args():
 
     parser.add_argument("--level-4-reward",
                         type=str,
-                        choices=['average', 'penalized-average'],
+                        choices=['individual', 'average', 'penalized-average'],
                         default='average',
                         help="reward calculation for level 4 info exchange")
 
@@ -560,8 +560,8 @@ if __name__ == "__main__":
         elif args.exp_name in ['madql', 'sample_limited_madql']:
             UAV_OB.append(DQL())
     if args.user_distribution == 'dynamic':
-        best_result = np.zeros((num_epochs // args.dynamic_user_step))
-        best_state = np.zeros((NUM_UAV, 2, num_epochs // args.dynamic_user_step))
+        best_result = np.zeros((num_epochs // args.dynamic_user_step) + 1)
+        best_state = np.zeros((NUM_UAV, 2, (num_epochs // args.dynamic_user_step) + 1))
     elif args.user_distribution == 'static':
         best_result = 0
         best_state = np.zeros((NUM_UAV, 2))
@@ -588,7 +588,7 @@ if __name__ == "__main__":
                     u_env.u_loc = u_env.USER_LOC[:, :, t // args.dynamic_user_step]
                     # Record time as a state
                     if args.time_as_input:
-                        states[:, 2] = t / args.dynamic_user_step
+                        states[:, 2] = t // args.dynamic_user_step
 
             drone_act_list = []
 
@@ -663,9 +663,10 @@ if __name__ == "__main__":
                     reward_ind = reward[k]
                     UAV_OB[k].store_transition(state, action, reward_ind, next_sta, done)
 
-                    for k in range(NUM_UAV):
-                        if len(UAV_OB[k].replay_buffer) > batch_size:
-                            UAV_OB[k].train(batch_size, dnn_epoch)
+                # Train the network
+                for k in range(NUM_UAV):
+                    if len(UAV_OB[k].replay_buffer) > batch_size:
+                        UAV_OB[k].train(batch_size, dnn_epoch)
 
             # Update the states
             states = next_state
@@ -723,12 +724,22 @@ if __name__ == "__main__":
             u_env.reset()
             # Get the states
             states = u_env.get_state()
+
             if args.covered_user_as_input or args.time_as_input:
                 states = states
             else:
                 states = states[:, 0:2]
             for t in range(100):
+                # Dyanmic user mobility, change the user distribution
+                if args.user_distribution == 'dynamic':
+                    if t % args.dynamic_user_step == 0:
+                        u_env.u_loc = u_env.USER_LOC[:, :, t // args.dynamic_user_step]
+                        # Record time as a state
+                        if args.time_as_input:
+                            states[:, 2] = t // args.dynamic_user_step
+
                 drone_act_list = []
+                
                 for k in range(NUM_UAV):
                     # Determining the states
                     if args.info_exchange_lvl in [1, 2, 3]:
@@ -839,7 +850,7 @@ if __name__ == "__main__":
 
     # Plot for best and final states
     if args.user_distribution == 'dynamic':
-        for k in range((num_epochs // args.dynamic_user_step)):
+        for k in range((num_epochs // args.dynamic_user_step) + 1):
             fig_user_loc = plt.figure(figsize=(10, 8))
             final_render(best_state[:, :, k], "best", k, fig_user_loc)
             plt.savefig(custom_dir + r'\best_users_user_loc_' + str(k) + '.png')
