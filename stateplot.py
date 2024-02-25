@@ -10,7 +10,7 @@ ax = fig.add_subplot(gs[0:1, 0:1])
 THETA = 60 * math.pi / 180
 grid_space = 100
 coverage_radius = 350 * np.tan(60 * math.pi / 180 / 2)
-u_loc = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int64)
+u_loc = np.loadtxt('UserLocation_test.txt', delimiter=' ').astype(np.int64)
 state = np.zeros((5, 3), dtype=np.int32)
 state[:, 0:2] = [[3, 0], [3, 4], [2, 9], [8, 7], [9, 2]]
 

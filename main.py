@@ -54,7 +54,7 @@ def parse_args():
     parser.add_argument("--dynamic-user-step",
                         type=int,
                         default=10,
-                        choices=[50, 34, 10],
+                        choices=[51, 34, 10],
                         help="step count where user position changes")
     parser.add_argument("--seed",
                         type=int,
@@ -440,8 +440,16 @@ class DQL:
                 Q_next = self.target_network(next_state).detach()
                 target_Q = (reward.squeeze() +
                             self.gamma * Q_next.max(1)[0].view(batch_size, 1).squeeze() * done_local).float()
+                
                 # Forward and Loss calculation based on loss function
                 Q_main = self.main_network(state).gather(1, action).squeeze()
+
+                #TODO: Experimental setup for loss function // Use loss for each possible action or for the action taken
+                # Rearrange target Q for loss computation 
+                # Q_main = self.main_network(state).squeeze()
+                # target_Q = target_Q * torch.ones(torch.transpose(Q_main, 0, 1).shape, device=device)
+                # target_Q = torch.transpose(target_Q, 0, 1)
+
 
             elif args.exp_name in ['sample_limited_madql']:
                 # New Proposal for Distributed Learning

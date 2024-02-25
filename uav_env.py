@@ -108,7 +108,7 @@ class UAVenv(gym.Env):
         # Set user location to initial position
         self.u_loc = self.USER_LOC[:,:, 0]
         # Saving the user location on a file instead of generating everytime
-        # self.USER_LOC = np.loadtxt('UserLocation.txt', delimiter=' ').astype(np.int32)
+        # self.USER_LOC = np.loadtxt('UserLocation_test.txt', delimiter=' ').astype(np.int32)
         # self.u_loc = self.USER_LOC[:, :]
 
         #############################################################################
@@ -119,7 +119,7 @@ class UAVenv(gym.Env):
         self.USER_RB_REQ[np.random.randint(low=0, high=self.NUM_USER, size=(self.NUM_USER, 1))] = 1
         np.savetxt('UserRBReq.txt', self.USER_RB_REQ, delimiter=' ', newline='\n')
 
-        # USER_RB_REQ = np.loadtxt('UserRBReq.txt', delimiter=' ').astype(np.int64)
+        # self.USER_RB_REQ = np.loadtxt('UserRBReq_test.txt', delimiter=' ').astype(np.int64)
 
     def step(self, action, info_exchange_lvl):
         # Take the action
