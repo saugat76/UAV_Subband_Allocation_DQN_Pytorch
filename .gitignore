@@ -1,3 +1,5 @@
-wandb
-runs
-custom_logs
+wandb/
+runs/
+custom_logs/
+.history/
+__pycache__/
