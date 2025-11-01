@@ -1,15 +1,25 @@
 from matplotlib import gridspec
 import matplotlib.pyplot as plt
 from uav_env import UAVenv
-import numpy as np 
+import numpy as np
 from matplotlib.gridspec import GridSpec
 import math
 
+
 def final_render(state, remark):
     if remark == "best_user1":
-        USER_LOC = np.loadtxt('UserLocation_1.txt', dtype=np.int32, delimiter=' ')
+        USER_LOC = np.loadtxt('UserLocation_1.txt',
+                              dtype=np.int32,
+                              delimiter=' ')
     elif remark == "best_user2":
-        USER_LOC = np.loadtxt('UserLocation_2.txt', dtype=np.int32, delimiter=' ')
+        USER_LOC = np.loadtxt('UserLocation_2.txt',
+                              dtype=np.int32,
+                              delimiter=' ')
+    else:
+        USER_LOC = np.loadtxt('UserLocation.txt',
+                              dtype=np.int32,
+                              delimiter=' ')
+
     u_loc = USER_LOC
     fig = plt.figure()
     gs = GridSpec(1, 1, figure=fig)
@@ -20,10 +30,18 @@ def final_render(state, remark):
     coverage_radius = UAV_HEIGHT * np.tan(THETA / 2)
     ax.cla()
     position = state[:, 0:2] * grid_space
-    ax.scatter(u_loc[:, 0], u_loc[:, 1], c = '#ff0000', marker='o', label = "Users")
-    ax.scatter(position[:, 0], position[:, 1], c = '#000000', marker='x', label = "UAV")
-    for (i,j) in (position[:,:]):
-        cc = plt.Circle((i,j), coverage_radius, alpha=0.1)
+    ax.scatter(u_loc[:, 0],
+               u_loc[:, 1],
+               c='#ff0000',
+               marker='o',
+               label="Users")
+    ax.scatter(position[:, 0],
+               position[:, 1],
+               c='#000000',
+               marker='x',
+               label="UAV")
+    for (i, j) in (position[:, :]):
+        cc = plt.Circle((i, j), coverage_radius, alpha=0.1)
         ax.set_aspect(1)
         ax.add_artist(cc)
     ax.legend(loc="lower right")
